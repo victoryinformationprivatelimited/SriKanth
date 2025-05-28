@@ -1,0 +1,38 @@
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\bin\Release\net8.0\SriKanth.Service.deps.json
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\bin\Release\net8.0\SriKanth.Service.runtimeconfig.json
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\bin\Release\net8.0\SriKanth.Service.dll
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\bin\Release\net8.0\SriKanth.Service.pdb
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\bin\Release\net8.0\SriKanth.Interface.dll
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\bin\Release\net8.0\SriKanth.Model.dll
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\bin\Release\net8.0\SriKanth.Interface.pdb
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\bin\Release\net8.0\SriKanth.Model.pdb
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.csproj.AssemblyReference.cache
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.AssemblyInfoInputs.cache
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.AssemblyInfo.cs
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.csproj.CoreCompileInputs.cache
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\SriKanth.0456A22D.Up2Date
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.dll
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\refint\SriKanth.Service.dll
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.pdb
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.genruntimeconfig.cache
+D:\My projects\Victory\SriKanthWeb\SriKanth.Service\obj\Release\net8.0\ref\SriKanth.Service.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\bin\Release\net8.0\SriKanth.Service.deps.json
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\bin\Release\net8.0\SriKanth.Service.runtimeconfig.json
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\bin\Release\net8.0\SriKanth.Service.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\bin\Release\net8.0\SriKanth.Service.pdb
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\bin\Release\net8.0\SriKanth.Interface.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\bin\Release\net8.0\SriKanth.Model.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\bin\Release\net8.0\SriKanth.Interface.pdb
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\bin\Release\net8.0\SriKanth.Model.pdb
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.csproj.AssemblyReference.cache
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.AssemblyInfoInputs.cache
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.AssemblyInfo.cs
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.csproj.CoreCompileInputs.cache
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.0456A22D.Up2Date
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\refint\SriKanth.Service.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.pdb
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.genruntimeconfig.cache
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\ref\SriKanth.Service.dll

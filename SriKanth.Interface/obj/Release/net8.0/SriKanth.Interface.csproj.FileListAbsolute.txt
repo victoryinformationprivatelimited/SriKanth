@@ -1,0 +1,30 @@
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\bin\Release\net8.0\SriKanth.Interface.deps.json
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\bin\Release\net8.0\SriKanth.Interface.dll
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\bin\Release\net8.0\SriKanth.Interface.pdb
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\bin\Release\net8.0\SriKanth.Model.dll
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\bin\Release\net8.0\SriKanth.Model.pdb
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.csproj.AssemblyReference.cache
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.GeneratedMSBuildEditorConfig.editorconfig
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.AssemblyInfoInputs.cache
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.AssemblyInfo.cs
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.csproj.CoreCompileInputs.cache
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\SriKanth.A5598A7B.Up2Date
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.dll
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\refint\SriKanth.Interface.dll
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.pdb
+D:\My projects\Victory\SriKanthWeb\SriKanth.Interface\obj\Release\net8.0\ref\SriKanth.Interface.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\bin\Release\net8.0\SriKanth.Interface.deps.json
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\bin\Release\net8.0\SriKanth.Interface.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\bin\Release\net8.0\SriKanth.Interface.pdb
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\bin\Release\net8.0\SriKanth.Model.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\bin\Release\net8.0\SriKanth.Model.pdb
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.csproj.AssemblyReference.cache
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.AssemblyInfoInputs.cache
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.AssemblyInfo.cs
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.csproj.CoreCompileInputs.cache
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.A5598A7B.Up2Date
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\refint\SriKanth.Interface.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.pdb
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\ref\SriKanth.Interface.dll
