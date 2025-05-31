@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.Login_Module.Entities;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,8 @@ namespace SriKanth.Model
 		public virtual DbSet<SendToken> SendToken { get; set; }
 		public virtual DbSet<Message> Message { get; set; }
 		public virtual DbSet<SentNotification> SentNotification { get; set; }
-
+		public virtual DbSet<Order> Order { get; set; }
+		public virtual DbSet<OrderItem> OrderItem { get; set; }
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			if (!optionsBuilder.IsConfigured)
@@ -125,7 +127,7 @@ namespace SriKanth.Model
 			{
 				entity.HasKey(e => e.TokenID);
 				entity.Property(e => e.UserID);
-				entity.Property(e => e.Token).HasMaxLength(500).IsRequired();
+				entity.Property(e => e.Token).HasMaxLength(1000).IsRequired();
 				entity.Property(e => e.TokenType).HasMaxLength(50).IsRequired();
 				entity.Property(e => e.CreatedAt);
 				entity.Property(e => e.ExpiresAt);
@@ -171,6 +173,28 @@ namespace SriKanth.Model
 				entity.Property(e => e.Message);
 				entity.Property(e => e.SentAt);
 				entity.Property(e => e.IsSuccess);
+
+			});
+			modelBuilder.Entity<Order>(entity =>
+			{
+				entity.HasKey(e => e.OrderNumber);
+				entity.Property(e => e.CustomerCode).IsRequired();
+				entity.Property(e => e.LocationCode).IsRequired();
+				entity.Property(e => e.OrderDate).IsRequired();
+				entity.Property(e => e.Status).IsRequired();
+				entity.Property(e => e.TotalAmount);
+				entity.Property(e => e.SalesPersonCode);
+				entity.Property(e => e.PaymentMethodCode);
+			});
+			modelBuilder.Entity<OrderItem>(entity =>
+			{
+				entity.HasKey(e => e.OrderItemId);
+				entity.Property(e => e.ItemCode).IsRequired();
+				entity.Property(e => e.OrderNumber).IsRequired();
+				entity.Property(e => e.Description).IsRequired();
+				entity.Property(e => e.Quantity);
+				entity.Property(e => e.UnitPrice).IsRequired();
+				entity.Property(e => e.DiscountPercent);
 
 			});
 			base.OnModelCreating(modelBuilder);

@@ -24,7 +24,7 @@ namespace SriKanth.Model.Login_Module.DTOs
 		public int RoleId { get; set; }
 		public string RoleName { get; set; }
 	}
-    public class Location 
+    public class Location
     {
         public string LocationCode {  get; set; }
 		public string LocationName {  get; set; }

@@ -10,10 +10,10 @@ namespace SriKanth.Model.ExistingApis
 	public class LocationApiResponse
 	{
 		[JsonPropertyName("@odata.context")] public string ODataContext { get; set; }
-		public List<Location> value { get; set; }
+		public List<LocationDetail> value { get; set; }
 	}
 
-	public class Location
+	public class LocationDetail
 	{
 		[JsonPropertyName("@odata.etag")] public string ODataEtag { get; set; }
 		public string code { get; set; }

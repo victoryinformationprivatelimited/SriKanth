@@ -37,12 +37,12 @@ namespace SriKanth.Service
 			var client = _httpClientFactory.CreateClient();
 
 			var parameters = new Dictionary<string, string>
-		{
-			{ "client_id", _configuration["OAuth:ClientId"] },
-			{ "client_secret", _configuration["OAuth:ClientSecret"] },
-			{ "grant_type", "client_credentials" },
-			{ "scope", _configuration["OAuth:Scope"] ?? "https://api.businesscentral.dynamics.com/.default" }
-		};
+			{
+				{ "client_id", _configuration["OAuth:ClientId"] },
+				{ "client_secret", _configuration["OAuth:ClientSecret"] },
+				{ "grant_type", "client_credentials" },
+				{ "scope", _configuration["OAuth:Scope"] ?? "https://api.businesscentral.dynamics.com/.default" }
+			};
 
 			var tokenEndpoint = _configuration["OAuth:TokenEndpoint"]
 				?? "https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token";
@@ -151,6 +151,11 @@ namespace SriKanth.Service
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPrices";
 			return await GetDataFromApiAsync<SalesPriceApiResponse>(apiUrl);
+		}
+		public async Task<CustomerApiResponse> GetCustomerDetailsAsync()
+		{
+			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/customers";
+			return await GetDataFromApiAsync<CustomerApiResponse>(apiUrl);
 		}
 
 		public class TokenResponse

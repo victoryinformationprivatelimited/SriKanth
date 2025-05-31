@@ -372,3 +372,4 @@ C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth\obj\Release\net8.0\refint\Sr
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth\obj\Release\net8.0\SriKanth.API.pdb
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth\obj\Release\net8.0\SriKanth.API.genruntimeconfig.cache
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth\obj\Release\net8.0\ref\SriKanth.API.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth\obj\Release\net8.0\SriKanth.API.sourcelink.json

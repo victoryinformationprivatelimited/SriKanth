@@ -1,4 +1,6 @@
 ﻿using SriKanth.Model;
+using SriKanth.Model.BusinessModule.Entities;
+using SriKanth.Model.Login_Module.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +17,16 @@ namespace SriKanth.Data
 		{
 			_context = dbContext;
 		}
+		public async Task AddOrderAsync(Order order)
+		{
+			await _context.Order.AddAsync(order);
+			await _context.SaveChangesAsync();
+		}
+		public async Task AddOrderItemsAsync(IEnumerable<OrderItem> orderItems)
+		{
+			await _context.OrderItem.AddRangeAsync(orderItems);
+			await _context.SaveChangesAsync();
+		}
+
 	}
 }

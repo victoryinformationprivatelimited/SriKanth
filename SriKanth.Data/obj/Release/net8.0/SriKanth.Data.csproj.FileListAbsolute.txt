@@ -32,3 +32,4 @@ C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Data\obj\Release\net8.0\SriK
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Data\obj\Release\net8.0\refint\SriKanth.Data.dll
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Data\obj\Release\net8.0\SriKanth.Data.pdb
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Data\obj\Release\net8.0\ref\SriKanth.Data.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Data\obj\Release\net8.0\SriKanth.Data.sourcelink.json

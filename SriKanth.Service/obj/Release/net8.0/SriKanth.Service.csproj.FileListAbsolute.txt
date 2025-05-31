@@ -36,3 +36,4 @@ C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\r
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.pdb
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.genruntimeconfig.cache
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\ref\SriKanth.Service.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.sourcelink.json

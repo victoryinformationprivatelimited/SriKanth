@@ -22,3 +22,4 @@ C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Model\obj\Release\net8.0\Sri
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Model\obj\Release\net8.0\refint\SriKanth.Model.dll
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Model\obj\Release\net8.0\SriKanth.Model.pdb
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Model\obj\Release\net8.0\ref\SriKanth.Model.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Model\obj\Release\net8.0\SriKanth.Model.sourcelink.json

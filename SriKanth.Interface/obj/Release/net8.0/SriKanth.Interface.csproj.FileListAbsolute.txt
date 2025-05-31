@@ -28,3 +28,4 @@ C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\refint\SriKanth.Interface.dll
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.pdb
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\ref\SriKanth.Interface.dll
+C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Interface\obj\Release\net8.0\SriKanth.Interface.sourcelink.json

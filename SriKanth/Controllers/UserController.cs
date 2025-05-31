@@ -72,7 +72,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="refreshTokenRequest">The refresh token request data.</param>
 		/// <returns>Returns an action result with the new access and refresh tokens.</returns>
 		[HttpPost("refresh-token")]
-		public async Task<IActionResult> RefreshToken([FromBody] string refreshToken)
+		public async Task<IActionResult> RefreshToken( string refreshToken)
 		{
 			// Validate the refresh token request
 			if (refreshToken == null || string.IsNullOrEmpty(refreshToken))
@@ -180,7 +180,7 @@ namespace SriKanth.API.Controllers
 		}
 
 		[HttpPost("AddUser")]
-		[Authorize]
+	
 		public async Task<IActionResult> AddNewUser([FromBody] UserDetails userDetails)
 		{
 			try
