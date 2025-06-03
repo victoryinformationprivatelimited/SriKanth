@@ -24,3 +24,16 @@ C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKa
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Model\obj\Debug\net8.0\refint\SriKanth.Model.dll
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKanth.Model.pdb
 C:\Users\Dinuk\OneDrive\Documents\SriKanth\SriKanth.Model\obj\Debug\net8.0\ref\SriKanth.Model.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\bin\Debug\net8.0\SriKanth.Model.deps.json
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\bin\Debug\net8.0\SriKanth.Model.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\bin\Debug\net8.0\SriKanth.Model.pdb
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKanth.Model.csproj.AssemblyReference.cache
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKanth.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKanth.Model.AssemblyInfoInputs.cache
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKanth.Model.AssemblyInfo.cs
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKanth.Model.csproj.CoreCompileInputs.cache
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKanth.Model.sourcelink.json
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKanth.Model.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\refint\SriKanth.Model.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\SriKanth.Model.pdb
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Debug\net8.0\ref\SriKanth.Model.dll

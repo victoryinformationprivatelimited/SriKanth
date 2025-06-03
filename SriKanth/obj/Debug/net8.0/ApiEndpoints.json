@@ -1,0 +1,266 @@
+[
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "UpdateOrderStatus",
+    "RelativePath": "api/Business/ChangeStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateOrderRequest",
+        "Type": "SriKanth.Model.BusinessModule.DTOs.UpdateOrderRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Business/CreateOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "orderRequest",
+        "Type": "SriKanth.Model.BusinessModule.DTOs.OrderRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetDeliveredOrdersByUser",
+    "RelativePath": "api/Business/GetDeliveredOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetListOfOrderCreationDetails",
+    "RelativePath": "api/Business/GetListOfOrderCreationDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetOrderCreationDetailsByUser",
+    "RelativePath": "api/Business/GetOrderCreationDetailsByUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetPendingOrdersByUser",
+    "RelativePath": "api/Business/GetPendingOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetRejectedOrdersByUser",
+    "RelativePath": "api/Business/GetRejectedOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetStockDetails",
+    "RelativePath": "api/Business/GetStockDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "AddNewUser",
+    "RelativePath": "api/User/AddUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDetails",
+        "Type": "SriKanth.Model.Login_Module.DTOs.UserDetails",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "GetUserCreationDetails",
+    "RelativePath": "api/User/GetUserCreationDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "GetUserDetailsById",
+    "RelativePath": "api/User/GetUserDetailsById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "Login",
+    "RelativePath": "api/User/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginRequest",
+        "Type": "SriKanth.Model.Login_Module.DTOs.RequestLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "SetnewPassword",
+    "RelativePath": "api/User/new-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "passwordreset",
+        "Type": "SriKanth.Model.Login_Module.DTOs.PasswordReset",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/User/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SriKanth.Model.Login_Module.DTOs.RefreshTokenRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "PasswordReset",
+    "RelativePath": "api/User/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginreq",
+        "Type": "SriKanth.Model.Login_Module.DTOs.RequestLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "UpdateUserInfo",
+    "RelativePath": "api/User/UpdateUser",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "userDetails",
+        "Type": "SriKanth.Model.Login_Module.DTOs.UserDetails",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "ValidateMfa",
+    "RelativePath": "api/User/validate-mfa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mfaRequest",
+        "Type": "SriKanth.Model.Login_Module.DTOs.MFAValidationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ii38xGIFHRk=",
+  "dgSpecHash": "lhY/380/jvw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj",
+  "projectFilePath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dinuk\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Dinuk\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

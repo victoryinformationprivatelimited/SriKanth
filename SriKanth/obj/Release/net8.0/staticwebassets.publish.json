@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "YR+dcoAOmSndzvx0BbQxDH3qRMMqZ4u9lL4HCnOgMvU=",
-  "Source": "SriKanth.API",
-  "BasePath": "_content/SriKanth.API",
-  "Mode": "Default",
-  "ManifestType": "Publish",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"RN/QsVubOA0fdsytVn5RZcRHvVCtFC1O7zo/10DEmkc=","Source":"SriKanth.API","BasePath":"_content/SriKanth.API","Mode":"Default","ManifestType":"Publish","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

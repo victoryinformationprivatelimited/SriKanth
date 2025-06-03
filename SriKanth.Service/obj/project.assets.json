@@ -103,6 +103,22 @@
           }
         }
       },
+      "Microsoft.ApplicationInsights/2.23.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.14": {
         "type": "package",
         "dependencies": {
@@ -2017,6 +2033,27 @@
         "lib/netstandard2.1/MailKit.xml",
         "mailkit.4.11.0.nupkg.sha512",
         "mailkit.nuspec"
+      ]
+    },
+    "Microsoft.ApplicationInsights/2.23.0": {
+      "sha512": "nWArUZTdU7iqZLycLKWe0TDms48KKGE6pONH2terYNa8REXiqixrMOkf1sk5DHGMaUTqONU2YkS4SAXBhLStgw==",
+      "type": "package",
+      "path": "microsoft.applicationinsights/2.23.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net452/Microsoft.ApplicationInsights.dll",
+        "lib/net452/Microsoft.ApplicationInsights.pdb",
+        "lib/net452/Microsoft.ApplicationInsights.xml",
+        "lib/net46/Microsoft.ApplicationInsights.dll",
+        "lib/net46/Microsoft.ApplicationInsights.pdb",
+        "lib/net46/Microsoft.ApplicationInsights.xml",
+        "lib/netstandard2.0/Microsoft.ApplicationInsights.dll",
+        "lib/netstandard2.0/Microsoft.ApplicationInsights.pdb",
+        "lib/netstandard2.0/Microsoft.ApplicationInsights.xml",
+        "microsoft.applicationinsights.2.23.0.nupkg.sha512",
+        "microsoft.applicationinsights.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.14": {
@@ -5145,6 +5182,7 @@
     "net8.0": [
       "BCrypt.Net-Next >= 4.0.3",
       "MailKit >= 4.11.0",
+      "Microsoft.ApplicationInsights >= 2.23.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.14",
       "Microsoft.AspNetCore.Http >= 2.3.0",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.3.0",
@@ -5168,11 +5206,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\SriKanth.Service.csproj",
+      "projectUniqueName": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SriKanth.Service.csproj",
       "projectName": "SriKanth.Service",
-      "projectPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\SriKanth.Service.csproj",
+      "projectPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SriKanth.Service.csproj",
       "packagesPath": "C:\\Users\\Dinuk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\obj\\",
+      "outputPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5187,18 +5225,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj": {
-              "projectPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj"
+            "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj": {
+              "projectPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj"
             },
-            "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj": {
-              "projectPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj"
+            "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj": {
+              "projectPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj"
             }
           }
         }
@@ -5212,7 +5249,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -5225,6 +5263,10 @@
           "MailKit": {
             "target": "Package",
             "version": "[4.11.0, )"
+          },
+          "Microsoft.ApplicationInsights": {
+            "target": "Package",
+            "version": "[2.23.0, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
@@ -5293,7 +5335,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

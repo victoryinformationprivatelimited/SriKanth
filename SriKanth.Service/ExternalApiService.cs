@@ -158,6 +158,13 @@ namespace SriKanth.Service
 			return await GetDataFromApiAsync<CustomerApiResponse>(apiUrl);
 		}
 
+		public async Task<SalesIntegrationResponse> PostSalesOrderAsync(SalesOrderRequest salesOrder)
+		{
+			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/" +
+						   "companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesIntegrations?$expand=salesIntegrationLines";
+
+			return await PostDataToApiAsync<SalesIntegrationResponse>(apiUrl, salesOrder);
+		}
 		public class TokenResponse
 		{
 			public string token_type { get; set; }

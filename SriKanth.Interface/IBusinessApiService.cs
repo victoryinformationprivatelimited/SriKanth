@@ -1,4 +1,5 @@
 ﻿using SriKanth.Model.BusinessModule.DTOs;
+using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.Login_Module.DTOs;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,7 @@ namespace SriKanth.Interface
 		Task<OrderCreationDetails> GetOrderCreationDetailsAsync();
 		Task<OrderCreationDetails> GetFilteredOrderCreationDetailsAsync(int userId);
 		Task<ServiceResult> SubmitOrderAsync(int userId, OrderRequest request);
+		Task<List<OrderReturn>> GetOrdersListAsync(int userId, OrderStatus orderStatus);
+		Task<ServiceResult> UpdateOrderStatusAsync(UpdateOrderRequest updateOrderRequest);
 	}
 }

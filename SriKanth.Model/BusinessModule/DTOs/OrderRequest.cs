@@ -11,6 +11,7 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public string CustomerCode { get; set; }
 		public string LocationCode { get; set; }
 		public string PaymentMethodCode { get; set; }
+		public string? SpecialNote { get; set; }
 		public decimal TotalAmount { get; set; }
 		public List<OrderItemRequest> Items { get; set; }
 	}

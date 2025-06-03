@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using HRIS.API.Infrastructure.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.IdentityModel.Tokens;
@@ -22,11 +23,12 @@ namespace SriKanth.API.Controllers
 		/// <param name="userService">The user service.</param>
 		/// <param name="configuration">The configuration.</param>
 		/// <param name="mfaService">The MFA service.</param>
-		public UserController(IUserService userService, IConfiguration configuration, IMfaService mfaService)
+		public UserController(IUserService userService, IConfiguration configuration, IMfaService mfaService, IJwtTokenService jwtTokenService)
 		{
 			_userService = userService;
 			_configuration = configuration;
 			_mfaService = mfaService;
+			_jwtTokenService = jwtTokenService;
 		}
 
 		// Endpoint for user login
@@ -72,20 +74,17 @@ namespace SriKanth.API.Controllers
 		/// <param name="refreshTokenRequest">The refresh token request data.</param>
 		/// <returns>Returns an action result with the new access and refresh tokens.</returns>
 		[HttpPost("refresh-token")]
-		public async Task<IActionResult> RefreshToken( string refreshToken)
+		public async Task<IActionResult> RefreshToken( [FromBody] RefreshTokenRequest request)
 		{
 			// Validate the refresh token request
-			if (refreshToken == null || string.IsNullOrEmpty(refreshToken))
+			if (request?.RefreshToken == null || string.IsNullOrEmpty(request.RefreshToken))
 			{
 				return BadRequest(new { message = "Refresh token is required." });
 			}
 
 			try
 			{
-				// Use the JwtTokenService to refresh the token
-				var response = await _jwtTokenService.RefreshToken(refreshToken);
-
-				// Return the new access token and refresh token
+				var response = await _jwtTokenService.RefreshToken(request.RefreshToken);
 				return Ok(new
 				{
 					AccessToken = response.AccessToken,
@@ -180,7 +179,8 @@ namespace SriKanth.API.Controllers
 		}
 
 		[HttpPost("AddUser")]
-	
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> AddNewUser([FromBody] UserDetails userDetails)
 		{
 			try
@@ -206,6 +206,7 @@ namespace SriKanth.API.Controllers
 
 		[HttpPut("UpdateUser")]
 		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> UpdateUserInfo(int userId, [FromBody] UserDetails userDetails)
 		{
 			try
@@ -245,6 +246,7 @@ namespace SriKanth.API.Controllers
 
 		[HttpGet("GetUserDetailsById")]
 		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetUserDetailsById(int userId)
 		{
 			try

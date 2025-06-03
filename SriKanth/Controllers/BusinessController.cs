@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using HRIS.API.Infrastructure.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SriKanth.Interface;
 using SriKanth.Model.BusinessModule.DTOs;
+using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.Login_Module.DTOs;
 
 namespace SriKanth.API.Controllers
@@ -20,6 +22,7 @@ namespace SriKanth.API.Controllers
 
 		[HttpGet("GetStockDetails")]
 		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetStockDetails()
 		{
 			try
@@ -35,6 +38,7 @@ namespace SriKanth.API.Controllers
 
 		[HttpGet("GetListOfOrderCreationDetails")]
 		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetListOfOrderCreationDetails()
 		{
 			try
@@ -50,6 +54,7 @@ namespace SriKanth.API.Controllers
 
 		[HttpGet("GetOrderCreationDetailsByUser")]
 		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetOrderCreationDetailsByUser(int userId)
 		{
 			try
@@ -64,7 +69,8 @@ namespace SriKanth.API.Controllers
 		}
 
 		[HttpPost("CreateOrder")]
-		[Authorize]
+		//[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> CreateOrder(int userId, [FromBody] OrderRequest orderRequest)
 		{
 			try
@@ -88,6 +94,76 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		[HttpGet("GetPendingOrders")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetPendingOrdersByUser(int userId)
+		{
+			try
+			{
+				var stockData = await _businessApiService.GetOrdersListAsync(userId, OrderStatus.Pending);
+				return Ok(stockData);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+		[HttpGet("GetDeliveredOrders")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetDeliveredOrdersByUser(int userId)
+		{
+			try
+			{
+				var stockData = await _businessApiService.GetOrdersListAsync(userId, OrderStatus.Delivered);
+				return Ok(stockData);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+		[HttpGet("GetRejectedOrders")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetRejectedOrdersByUser(int userId)
+		{
+			try
+			{
+				var stockData = await _businessApiService.GetOrdersListAsync(userId, OrderStatus.Rejected);
+				return Ok(stockData);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+		[HttpPost("ChangeStatus")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> UpdateOrderStatus(UpdateOrderRequest updateOrderRequest)
+		{
+			try
+			{
+				if (!ModelState.IsValid)
+				{
+					return BadRequest(ModelState);
+				}
+
+				var result = await _businessApiService.UpdateOrderStatusAsync(updateOrderRequest);
+
+				if (!result.Success)
+				{
+					return BadRequest(new { message = result.Message });
+				}
+				return Ok(new { message = result.Message });
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Internal server error:{ex.InnerException}");
+			}
+		}
 
 	}
 }

@@ -112,7 +112,7 @@ namespace SriKanth.Service.Login_Module
 		/// <param name="user">The user for whom the refresh token is generated.</param>
 		/// <returns>The generated refresh token as a string.</returns>
 		public async Task<string> GenerateRefreshToken(User user)
-		{
+		 {
 			// Generate a random 32-byte refresh token
 			var randomNumber = new byte[32];
 			using (var rng = RandomNumberGenerator.Create())

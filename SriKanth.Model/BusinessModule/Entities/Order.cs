@@ -17,10 +17,20 @@ namespace SriKanth.Model.BusinessModule.Entities
 		public string CustomerCode { get; set; }
 		public string LocationCode { get; set; }
 		public DateTime OrderDate { get; set; }
-		public string Status { get; set; } // Pending, Completed, Rejected
+		public OrderStatus Status { get; set; } // Pending, Completed, Rejected
 		public decimal TotalAmount { get; set; }
 		public string SalesPersonCode { get; set; }
 		public string PaymentMethodCode { get; set; }
-		
+		public string? Note { get; set; }
+		public string? RejectReason { get; set; }
+
 	}
+	public enum OrderStatus
+	{
+		Pending,
+		Processing,
+		Delivered,
+		Rejected
+	}
+
 }

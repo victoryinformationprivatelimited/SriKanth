@@ -1,4 +1,5 @@
-﻿using SriKanth.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using SriKanth.Model;
 using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.Login_Module.Entities;
 using System;
@@ -27,6 +28,33 @@ namespace SriKanth.Data
 			await _context.OrderItem.AddRangeAsync(orderItems);
 			await _context.SaveChangesAsync();
 		}
+		public async Task<List<Order>> GetListOfOrdersAsync(string salesPersonCode, OrderStatus orderStatus)
+		{
+			return await _context.Order
+				.Where(o => o.SalesPersonCode == salesPersonCode && o.Status == orderStatus)
+				.ToListAsync();
+		}
 
+		public async Task<List<OrderItem>> GetOrderItemsByOrderNumbersAsync(List<int> orderNumbers)
+		{
+			return await _context.OrderItem
+				.Where(oi => orderNumbers.Contains(oi.OrderNumber))
+				.ToListAsync();
+		}
+		public async Task<Order> GetOrderByIdAsync(int orderNumber)
+		{
+			return await _context.Order.FirstOrDefaultAsync(m => m.OrderNumber == orderNumber);
+		}
+		public async Task UpdateOrderStatusAsync(Order order)
+		{
+			_context.Order.Update(order);
+			await _context.SaveChangesAsync();
+		}
+		public async Task<List<OrderItem>> GetOrderItemsAsync(int orderNumber)
+		{
+			return await _context.OrderItem
+				.Where(o => o.OrderNumber == orderNumber )
+				.ToListAsync();
+		}
 	}
 }

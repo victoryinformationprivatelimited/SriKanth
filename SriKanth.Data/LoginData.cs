@@ -154,5 +154,11 @@ namespace SriKanth.Data
 			return await _context.MFASetting
 				.FirstOrDefaultAsync(m => m.UserID == userId);
 		}
+
+		public async Task AddUserHistoryAsync(UserHistory userHistory)
+		{
+			await _context.UserHistory.AddAsync(userHistory);
+			await _context.SaveChangesAsync();
+		}
 	}
 }

@@ -20,23 +20,30 @@ namespace SriKanth.Service
 {
 	public class BusinessApiService : IBusinessApiService
 	{
-		public readonly IExternalApiService _externalApiService;
+		private readonly IExternalApiService _externalApiService;
 		private readonly ILogger<BusinessApiService> _logger;
 		private readonly ILoginData _loginData;
 		private readonly IBusinessData _businessData;
 
-		public BusinessApiService(IExternalApiService externalApiService, ILogger<BusinessApiService> logger, ILoginData loginData, IBusinessData businessData)
+		public BusinessApiService(
+			IExternalApiService externalApiService,
+			ILogger<BusinessApiService> logger,
+			ILoginData loginData,
+			IBusinessData businessData)
 		{
 			_externalApiService = externalApiService;
 			_logger = logger;
 			_loginData = loginData;
 			_businessData = businessData;
 		}
+
 		public async Task<List<StockItem>> GetSalesStockDetails()
 		{
+			_logger.LogDebug("Entering GetSalesStockDetails method");
 			try
 			{
-				// Get all required data in parallel
+				_logger.LogInformation("Beginning to retrieve sales stock details");
+
 				var inventoryTask = _externalApiService.GetInventoryBalanceAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
 				var salesPricesTask = _externalApiService.GetSalesPriceAsync();
@@ -49,22 +56,22 @@ namespace SriKanth.Service
 				var salesPrices = await salesPricesTask;
 				var locations = await locationsTask;
 
-				// Validate data
 				if (items?.value == null || inventory?.value == null ||
 					salesPrices?.value == null || locations?.value == null)
 				{
+					_logger.LogWarning("One or more required API responses returned null data");
 					throw new ApplicationException("Required data not available from APIs");
 				}
 
-				// Pre-fetch pictures safely
-				var pictureTasks = new Dictionary<string, Task<string>>();
-				foreach (var item in items.value.Where(i => i?.no != null && i.systemId != Guid.Empty))
-				{
-					pictureTasks[item.no] = _externalApiService.GetItemsPictureAsync(item.systemId);
-				}
+				var pictureTasks = items.value
+					.Where(i => i?.no != null && i.systemId != Guid.Empty)
+					.ToDictionary(
+						item => item.no,
+						item => _externalApiService.GetItemsPictureAsync(item.systemId)
+					);
+
 				await Task.WhenAll(pictureTasks.Values);
 
-				// Create lookup dictionaries with null checks
 				var inventoryLookup = inventory.value
 					.Where(i => i?.itemNo != null)
 					.GroupBy(i => i.itemNo)
@@ -79,7 +86,6 @@ namespace SriKanth.Service
 					.Where(l => l?.code != null)
 					.ToDictionary(l => l.code, l => l.name);
 
-				// Transform data
 				var stockList = new List<StockItem>();
 				foreach (var item in items.value.Where(i => i?.no != null))
 				{
@@ -92,8 +98,9 @@ namespace SriKanth.Service
 					{
 						locationLookup.TryGetValue(inv.locationCode, out var locationName);
 
-						pictureTasks.TryGetValue(item.no, out var pictureTask);
-						var picture = pictureTask?.IsCompletedSuccessfully == true ? pictureTask.Result : null;
+						var picture = pictureTasks.TryGetValue(item.no, out var task) && task.IsCompletedSuccessfully
+							? task.Result
+							: null;
 
 						stockList.Add(new StockItem
 						{
@@ -115,11 +122,12 @@ namespace SriKanth.Service
 					}
 				}
 
+				_logger.LogInformation("Successfully retrieved {StockItemCount} stock items", stockList.Count);
 				return stockList;
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error occurred while getting stock list");
+				_logger.LogError(ex, "Failed to retrieve stock details");
 				throw new ApplicationException("Failed to retrieve stock details. Please try again later.", ex);
 			}
 		}
@@ -128,9 +136,8 @@ namespace SriKanth.Service
 		{
 			try
 			{
-				_logger.LogInformation("Retrieving Order creation details");
+				_logger.LogInformation("Beginning to retrieve order creation details");
 
-				// Get all data in parallel
 				var locationsTask = _externalApiService.GetLocationsAsync();
 				var customersTask = _externalApiService.GetCustomerDetailsAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
@@ -138,27 +145,24 @@ namespace SriKanth.Service
 
 				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask);
 
-				// Process locations
 				var locations = await locationsTask;
 				if (locations?.value == null || !locations.value.Any())
 				{
-					_logger.LogWarning("No location data found");
+					_logger.LogWarning("Location data not available");
 					throw new InvalidOperationException("No location data found.");
 				}
 
-				// Process customers
 				var customers = await customersTask;
 				if (customers?.value == null || !customers.value.Any())
 				{
-					_logger.LogWarning("No Customer data found");
+					_logger.LogWarning("Customer data not available");
 					throw new InvalidOperationException("No Customer data found.");
 				}
 
-				// Process items and prices
 				var items = await itemsTask;
 				if (items?.value == null || !items.value.Any())
 				{
-					_logger.LogWarning("No Items data found");
+					_logger.LogWarning("Item data not available");
 					throw new InvalidOperationException("No Items data found.");
 				}
 
@@ -168,7 +172,6 @@ namespace SriKanth.Service
 					.ToDictionary(g => g.Key, g => g.First().unitPrice)
 					?? new Dictionary<string, decimal>();
 
-				// Create fixed payment types
 				var paymentTypes = new List<PaymentType>
 				{
 					new PaymentType { Code = "CASH", Name = "Cash" },
@@ -177,7 +180,6 @@ namespace SriKanth.Service
 					new PaymentType { Code = "CHEQUE", Name = "Cheque" }
 				};
 
-				// Transform data
 				var details = new OrderCreationDetails
 				{
 					Locations = locations.value.Select(l => new Location
@@ -214,35 +216,31 @@ namespace SriKanth.Service
 					}).ToList()
 				};
 
-				_logger.LogInformation($"Retrieved order creation details: " +
-									 $"{details.Locations.Count} locations, " +
-									 $"{details.Customers.Count} customers, " +
-									 $"{details.Items.Count} items");
-
+				_logger.LogInformation("Retrieved order creation details with {LocationCount} locations, {CustomerCount} customers, and {ItemCount} items",
+					details.Locations.Count, details.Customers.Count, details.Items.Count);
 				return details;
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error while retrieving order creation details");
+				_logger.LogError(ex, "Failed to retrieve order creation details");
+				_logger.LogDebug("Exiting GetOrderCreationDetailsAsync method due to exception");
 				throw new InvalidOperationException("Error while retrieving order creation details", ex);
 			}
-
 		}
 
 		public async Task<OrderCreationDetails> GetFilteredOrderCreationDetailsAsync(int userId)
 		{
 			try
 			{
-				_logger.LogInformation($"Retrieving filtered order details for user:{userId}");
+				_logger.LogInformation("Beginning to retrieve filtered order details for user {UserId}", userId);
+
 				var user = await _loginData.GetUserByIdAsync(userId);
 				if (user == null)
 				{
-					_logger.LogWarning($"User with UserId:{userId} not found ");
+					_logger.LogWarning("User with ID {UserId} not found", userId);
 					throw new InvalidOperationException("User Not found");
 				}
-				string userLocationCode = user.LocationCode;
-				string salesPersonCode = user.SalesPersonCode;
-				// Get all data in parallel
+
 				var locationsTask = _externalApiService.GetLocationsAsync();
 				var customersTask = _externalApiService.GetCustomerDetailsAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
@@ -250,29 +248,26 @@ namespace SriKanth.Service
 
 				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask);
 
-				// Process locations - filter by user's location
 				var locations = await locationsTask;
 				var filteredLocations = locations?.value?
-					.Where(l => l.code == userLocationCode)
+					.Where(l => l.code == user.LocationCode)
 					.ToList() ?? new List<LocationDetail>();
 
 				if (!filteredLocations.Any())
 				{
-					_logger.LogWarning($"No location data found for code: {userLocationCode}");
+					_logger.LogWarning("No location data found for code: {LocationCode}", user.LocationCode);
 					throw new InvalidOperationException("No valid location data found for user.");
 				}
 
-				// Process customers - filter by salesperson code
 				var customers = await customersTask;
 				var filteredCustomers = customers?.value?
-					.Where(c => c.salespersonCode == salesPersonCode)
+					.Where(c => c.salespersonCode == user.SalesPersonCode)
 					.ToList() ?? new List<Customer>();
 
-				// Process items and prices (no filtering)
 				var items = await itemsTask;
 				if (items?.value == null || !items.value.Any())
 				{
-					_logger.LogWarning("No Items data found");
+					_logger.LogWarning("No items data available");
 					throw new InvalidOperationException("No Items data found.");
 				}
 
@@ -282,7 +277,6 @@ namespace SriKanth.Service
 					.ToDictionary(g => g.Key, g => g.First().unitPrice)
 					?? new Dictionary<string, decimal>();
 
-				// Create fixed payment types
 				var paymentTypes = new List<PaymentType>
 				{
 					new PaymentType { Code = "CASH", Name = "Cash" },
@@ -291,7 +285,6 @@ namespace SriKanth.Service
 					new PaymentType { Code = "CHEQUE", Name = "Cheque" }
 				};
 
-				// Transform data
 				var details = new OrderCreationDetails
 				{
 					Locations = filteredLocations.Select(l => new Location
@@ -328,40 +321,43 @@ namespace SriKanth.Service
 					}).ToList()
 				};
 
-				_logger.LogInformation($"Retrieved filtered order details: " +
-									 $"{details.Locations.Count} locations, " +
-									 $"{details.Customers.Count} customers, " +
-									 $"{details.Items.Count} items");
-
+				_logger.LogInformation("Retrieved filtered order details for user {UserId} with {LocationCount} locations, {CustomerCount} customers, and {ItemCount} items",
+					userId, details.Locations.Count, details.Customers.Count, details.Items.Count);
 				return details;
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, $"Error while retrieving filtered order details for userId: {userId}");
+				_logger.LogError(ex, "Failed to retrieve filtered order details for user {UserId}", userId);
 				throw new InvalidOperationException("Error while retrieving filtered order details", ex);
 			}
 		}
 
 		public async Task<ServiceResult> SubmitOrderAsync(int userId, OrderRequest request)
 		{
+			_logger.LogDebug("Entering SubmitOrderAsync method for user {UserId}", userId);
 			try
 			{
+				_logger.LogInformation("Beginning order submission for user {UserId}, customer {CustomerCode}, location {LocationCode}",
+					userId, request.CustomerCode, request.LocationCode);
+
 				var user = await _loginData.GetUserByIdAsync(userId);
 				if (user == null)
 				{
-					_logger.LogWarning($"User with UserId: {userId} not found.");
+					_logger.LogWarning("User with ID {UserId} not found during order submission", userId);
 					return new ServiceResult { Success = false, Message = "User not found" };
 				}
 
 				var creditValidation = await ValidateCustomerCredit(request.CustomerCode, request.TotalAmount);
 				if (!creditValidation.Success)
 				{
+					_logger.LogWarning("Credit validation failed for customer {CustomerCode}", request.CustomerCode);
 					return creditValidation;
 				}
 
 				var inventoryValidation = await ValidateInventory(request.Items, request.LocationCode);
 				if (!inventoryValidation.Success)
 				{
+					_logger.LogWarning("Inventory validation failed for location {LocationCode}", request.LocationCode);
 					return inventoryValidation;
 				}
 
@@ -370,12 +366,15 @@ namespace SriKanth.Service
 					CustomerCode = request.CustomerCode,
 					LocationCode = request.LocationCode,
 					OrderDate = DateTime.UtcNow,
-					Status = "Pending",
+					Status = OrderStatus.Pending,
 					TotalAmount = request.TotalAmount,
 					SalesPersonCode = user.SalesPersonCode,
 					PaymentMethodCode = request.PaymentMethodCode,
+					Note = request.SpecialNote
 				};
+
 				await _businessData.AddOrderAsync(order);
+
 				var orderItems = request.Items.Select(item => new OrderItem
 				{
 					ItemCode = item.ItemCode,
@@ -385,89 +384,295 @@ namespace SriKanth.Service
 					UnitPrice = item.UnitPrice,
 					DiscountPercent = item.DiscountPercent
 				}).ToList();
+
 				await _businessData.AddOrderItemsAsync(orderItems);
+
+				_logger.LogInformation("Successfully submitted order {OrderNumber} for customer {CustomerCode} by user {UserId}",
+					order.OrderNumber, request.CustomerCode, userId);
 				return new ServiceResult { Success = true, Message = "Order submitted successfully" };
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Order submission failed");
+				_logger.LogError(ex, "Failed to submit order for user {UserId}", userId);
 				return new ServiceResult { Success = false, Message = "Order submission failed. Please try again." };
+			}
+		}
+
+		public async Task<List<OrderReturn>> GetOrdersListAsync(int userId, OrderStatus orderStatus)
+		{
+			try
+			{
+				_logger.LogInformation("Beginning to retrieve orders for user {UserId} with status {OrderStatus}",
+					userId, orderStatus);
+
+				var user = await _loginData.GetUserByIdAsync(userId);
+				if (user == null)
+				{
+					_logger.LogWarning("User with ID {UserId} not found while retrieving orders", userId);
+					throw new ApplicationException("Failed to retrieve orders. Please try again later.");
+				}
+
+				var pendingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
+				var orderNumbers = pendingOrders.Select(o => o.OrderNumber).ToList();
+
+				var orderItems = await _businessData.GetOrderItemsByOrderNumbersAsync(orderNumbers);
+
+				var itemsByOrder = orderItems
+					.GroupBy(i => i.OrderNumber)
+					.ToDictionary(g => g.Key, g => g.ToList());
+
+				var customersTask = _externalApiService.GetCustomersAsync();
+				var salesPeopleTask = _externalApiService.GetSalesPeopleAsync();
+				await Task.WhenAll(customersTask, salesPeopleTask);
+
+				var customers = (await customersTask).value;
+				var salesPeople = (await salesPeopleTask).value;
+
+				var customerDict = customers.ToDictionary(c => c.no, c => c.name);
+				var salesPersonDict = salesPeople.ToDictionary(s => s.code, s => s.name);
+
+				var result = pendingOrders.Select(order => new OrderReturn
+				{
+					OrderNumber = order.OrderNumber,
+					CustomerName = customerDict.TryGetValue(order.CustomerCode, out var custName) ? custName : string.Empty,
+					SalesPersonName = salesPersonDict.TryGetValue(order.SalesPersonCode, out var spName) ? spName : string.Empty,
+					OrderDate = order.OrderDate,
+					PaymentMethodType = order.PaymentMethodCode,
+					Status = order.Status.ToString(),
+					SpecialNote = order.Note ?? string.Empty,
+					TotalAmount = order.TotalAmount,
+					Items = itemsByOrder.TryGetValue(order.OrderNumber, out var items)
+						? items.Select(i => new OrderItemReturn
+						{
+							ItemCode = i.ItemCode,
+							Description = i.Description,
+							Quantity = i.Quantity,
+							UnitPrice = i.UnitPrice,
+							DiscountPercent = i.DiscountPercent
+						}).ToList() : new List<OrderItemReturn>(),
+					RejectReason = order.RejectReason ?? null
+				}).ToList();
+
+				_logger.LogInformation("Retrieved {OrderCount} {OrderStatus} orders for user {UserId}",
+					result.Count, orderStatus, userId);
+				return result;
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Failed to retrieve {OrderStatus} orders for user {UserId}", orderStatus, userId);
+				_logger.LogDebug("Exiting GetOrdersListAsync method due to exception");
+				throw new ApplicationException("Failed to retrieve orders. Please try again later.", ex);
+			}
+		}
+
+		public async Task<ServiceResult> UpdateOrderStatusAsync(UpdateOrderRequest updateOrderRequest)
+		{
+			try
+			{
+				_logger.LogInformation("Beginning status update for order {OrderNumber} to status {OrderStatus}",
+					updateOrderRequest.Ordernumber, updateOrderRequest.Status);
+
+				var order = await _businessData.GetOrderByIdAsync(updateOrderRequest.Ordernumber);
+				if (order == null)
+				{
+					_logger.LogWarning("Order {OrderNumber} not found during status update", updateOrderRequest.Ordernumber);
+					return new ServiceResult { Success = false, Message = $"Order {updateOrderRequest.Ordernumber} not found." };
+				}
+
+				order.Status = updateOrderRequest.Status;
+				order.RejectReason = updateOrderRequest.RejectReason ?? null;
+				await _businessData.UpdateOrderStatusAsync(order);
+
+				if (updateOrderRequest.Status == OrderStatus.Processing)
+				{
+					var customersTask = _externalApiService.GetCustomersAsync();
+					var locationsTask = _externalApiService.GetLocationsAsync();
+					await Task.WhenAll(customersTask, locationsTask);
+
+					var customers = (await customersTask).value;
+					var locations = (await locationsTask).value;
+
+					var customer = customers?.FirstOrDefault(c => c.no == order.CustomerCode);
+					var paymentTermCode = customer?.paymentTermsCode;
+
+					if (customer == null)
+					{
+						_logger.LogWarning("Customer {CustomerCode} not found in external API during order processing", order.CustomerCode);
+						return new ServiceResult { Success = false, Message = $"Customer {order.CustomerCode} not found in external API." };
+					}
+
+					var location = locations?.FirstOrDefault(l => l.code == order.LocationCode);
+					var locationName = location?.name;
+
+					if (location == null)
+					{
+						_logger.LogWarning("Location {LocationCode} not found in external API during order processing", order.LocationCode);
+						return new ServiceResult { Success = false, Message = $"Location {order.LocationCode} not found in external API." };
+					}
+
+					var orderItems = await _businessData.GetOrderItemsAsync(updateOrderRequest.Ordernumber);
+
+					var salesOrderRequest = new SalesOrderRequest
+					{
+						orderNo = order.OrderNumber.ToString(),
+						customerNo = order.CustomerCode,
+						orderDate = order.OrderDate.ToString("yyyy-MM-dd"),
+						salespersonCode = order.SalesPersonCode,
+						paymentMethodCode = order.PaymentMethodCode,
+						paymentTermCode = paymentTermCode,
+						salesIntegrationLines = orderItems
+							.Select((line, index) => new SalesIntegrationLine
+							{
+								lineNo = index + 1,
+								itemNo = line.ItemCode,
+								description = line.Description,
+								location = locationName,
+								quantity = line.Quantity,
+								unitPrice = line.UnitPrice,
+								lineDiscount = line.DiscountPercent
+							})
+							.ToList()
+					};
+
+					try
+					{
+						await _externalApiService.PostSalesOrderAsync(salesOrderRequest);
+						_logger.LogInformation("Successfully posted order {OrderNumber} to external API", updateOrderRequest.Ordernumber);
+					}
+					catch (Exception ex)
+					{
+						_logger.LogError(ex, "Failed to send order {OrderNumber} to external API", updateOrderRequest.Ordernumber);
+						return new ServiceResult
+						{
+							Success = false,
+							Message = $"Failed to send Order {updateOrderRequest.Ordernumber} to external API."
+						};
+					}
+				}
+
+				_logger.LogInformation("Successfully updated status of order {OrderNumber} to {OrderStatus}",
+					updateOrderRequest.Ordernumber, updateOrderRequest.Status);
+				return new ServiceResult { Success = true, Message = "Order status updated successfully." };
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Failed to update status for order {OrderNumber}", updateOrderRequest.Ordernumber);
+				return new ServiceResult { Success = false, Message = "Unexpected error updating order status." };
 			}
 		}
 
 		private async Task<ServiceResult> ValidateCustomerCredit(string customerCode, decimal orderTotal)
 		{
-			var customersResponse = await _externalApiService.GetCustomerDetailsAsync();
-
-			if (customersResponse?.value == null || !customersResponse.value.Any())
+		try
 			{
-				return new ServiceResult { Success = false, Message = "Customer data not available" };
+				var customersResponse = await _externalApiService.GetCustomerDetailsAsync();
+
+				if (customersResponse?.value == null || !customersResponse.value.Any())
+				{
+					_logger.LogWarning("Customer data not available for validation");
+					return new ServiceResult { Success = false, Message = "Customer data not available" };
+				}
+
+				var customer = customersResponse.value.FirstOrDefault(c => c.no == customerCode);
+
+				if (customer == null)
+				{
+					_logger.LogWarning("Customer {CustomerCode} not found for validation", customerCode);
+					return new ServiceResult { Success = false, Message = $"Customer {customerCode} not found" };
+				}
+
+				if (!customer.creditAllowed && orderTotal > 0)
+				{
+					_logger.LogWarning("Customer {CustomerCode} not allowed credit purchases", customerCode);
+					return new ServiceResult { Success = false, Message = "Customer not allowed credit purchases" };
+				}
+
+				if (customer.creditAllowed && (customer.balanceLCY + orderTotal) > customer.creditLimitLCY)
+				{
+					_logger.LogWarning("Order exceeds credit limit for customer {CustomerCode}", customerCode);
+					return new ServiceResult
+					{
+						Success = false,
+						Message = $"Order exceeds credit limit (Limit: {customer.creditLimitLCY}, Balance: {customer.balanceLCY})"
+					};
+				}
+
+				_logger.LogInformation("Exiting ValidateCustomerCredit with validation success");
+				return new ServiceResult { Success = true, Message = "Credit validation passed" };
 			}
-
-			var customer = customersResponse.value.FirstOrDefault(c => c.no == customerCode);
-
-			if (customer == null)
+			catch (Exception ex)
 			{
-				return new ServiceResult { Success = false, Message = $"Customer {customerCode} not found" };
+				_logger.LogError(ex, "Error during credit validation for customer {CustomerCode}", customerCode);
+				return new ServiceResult { Success = false, Message = "Error during credit validation" };
 			}
-
-			if (!customer.creditAllowed && orderTotal > 0)
-			{
-				return new ServiceResult { Success = false, Message = "Customer not allowed credit purchases" };
-			}
-
-			if (customer.creditAllowed && (customer.balanceLCY + orderTotal) > customer.creditLimitLCY)
-			{
-				return new ServiceResult { Success = false, Message = "Order exceeds credit limit" };
-			}
-
-			return new ServiceResult { Success = true, Message = "Credit validation passed" };
 		}
-
 
 		private async Task<ServiceResult> ValidateInventory(List<OrderItemRequest> items, string locationCode)
 		{
-			var inventoryResponse = await _externalApiService.GetInventoryBalanceAsync();
-
-			if (inventoryResponse?.value == null || !inventoryResponse.value.Any())
+			_logger.LogInformation("Entering ValidateInventory for location {LocationCode}", locationCode);
+			try
 			{
-				return new ServiceResult { Success = false, Message = "Inventory data not available" };
-			}
+				var inventoryResponse = await _externalApiService.GetInventoryBalanceAsync();
 
-			var filteredInventory = inventoryResponse.value
-				.Where(i => i.locationCode == locationCode)
-				.ToList();
-
-			if (!filteredInventory.Any())
-			{
-				return new ServiceResult { Success = false, Message = $"No inventory data found for location: {locationCode}" };
-			}
-
-			var inventoryLookup = filteredInventory.ToDictionary(i => i.itemNo);
-
-			foreach (var item in items)
-			{
-				if (!inventoryLookup.TryGetValue(item.ItemCode, out var inventoryItem))
+				if (inventoryResponse?.value == null || !inventoryResponse.value.Any())
 				{
+					_logger.LogWarning("Inventory data not available for validation");
+					_logger.LogDebug("Exiting ValidateInventory with validation failure");
+					return new ServiceResult { Success = false, Message = "Inventory data not available" };
+				}
+
+				var filteredInventory = inventoryResponse.value
+					.Where(i => i.locationCode == locationCode)
+					.ToList();
+
+				if (!filteredInventory.Any())
+				{
+					_logger.LogWarning("No inventory data found for location {LocationCode}", locationCode);
+					_logger.LogDebug("Exiting ValidateInventory with validation failure");
 					return new ServiceResult
 					{
 						Success = false,
-						Message = $"Item {item.ItemCode} not found in inventory at location {locationCode}"
+						Message = $"No inventory data found for location: {locationCode}"
 					};
 				}
 
-				if (inventoryItem.inventory < item.Quantity)
+				var inventoryLookup = filteredInventory.ToDictionary(i => i.itemNo);
+
+				foreach (var item in items)
 				{
-					return new ServiceResult
+					if (!inventoryLookup.TryGetValue(item.ItemCode, out var inventoryItem))
 					{
-						Success = false,
-						Message = $"Insufficient stock for item {item.ItemCode} (Available: {inventoryItem.inventory}, Requested: {item.Quantity})"
-					};
-				}
-			}
+						_logger.LogWarning("Item {ItemCode} not found in inventory at location {LocationCode}",
+							item.ItemCode, locationCode);
+						_logger.LogDebug("Exiting ValidateInventory with validation failure");
+						return new ServiceResult
+						{
+							Success = false,
+							Message = $"Item {item.ItemCode} not found in inventory at location {locationCode}"
+						};
+					}
 
-			return new ServiceResult { Success = true, Message = "Inventory validation passed" };
+					if (inventoryItem.inventory < item.Quantity)
+					{
+						_logger.LogWarning("Insufficient stock for item {ItemCode} (Available: {Available}, Requested: {Requested})",
+							item.ItemCode, inventoryItem.inventory, item.Quantity);
+						_logger.LogDebug("Exiting ValidateInventory with validation failure");
+						return new ServiceResult
+						{
+							Success = false,
+							Message = $"Insufficient stock for item {item.ItemCode} (Available: {inventoryItem.inventory}, Requested: {item.Quantity})"
+						};
+					}
+				}
+
+				_logger.LogInformation("Exiting ValidateInventory with validation success");
+				return new ServiceResult { Success = true, Message = "Inventory validation passed" };
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Error during inventory validation for location {LocationCode}", locationCode);
+				return new ServiceResult { Success = false, Message = "Error during inventory validation" };
+			}
 		}
-
 	}
 }

@@ -33,6 +33,7 @@ namespace SriKanth.Interface.Data
 		Task AddMfaSettingAsync(MFASetting mFASetting);
 		Task UpdateMfaTypeAsync(MFASetting mFASetting);
 		Task<MFASetting> GetMfaSettingByIdAsync(int userId);
+		Task AddUserHistoryAsync(UserHistory userHistory);
 
 
 	}

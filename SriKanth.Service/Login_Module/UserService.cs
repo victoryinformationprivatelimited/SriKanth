@@ -244,7 +244,7 @@ namespace SriKanth.Service.Login_Module
 				}
 
 				// Hash the new password and update the user's password in the database.
-				user.PasswordHash = HashPassword(passwordreset.NewPassword);
+				user.PasswordHash = _encryption.EncryptData(passwordreset.NewPassword);
 				await _dbContext.SaveChangesAsync();
 
 				_logger.LogInformation("Password reset successfully for user {UserId}.", user.UserID);
@@ -314,10 +314,7 @@ namespace SriKanth.Service.Login_Module
 		
 		
 
-		private string HashPassword(string password)
-		{
-			return BCrypt.Net.BCrypt.HashPassword(password);  // Return the hashed password
-		}
+		
 		public bool VerifyPassword(string enteredPassword, string storedPasswordHash)
 		{
 			try

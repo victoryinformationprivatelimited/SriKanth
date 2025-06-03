@@ -37,6 +37,7 @@ namespace SriKanth.Model
 		public virtual DbSet<SentNotification> SentNotification { get; set; }
 		public virtual DbSet<Order> Order { get; set; }
 		public virtual DbSet<OrderItem> OrderItem { get; set; }
+		public virtual DbSet<UserHistory> UserHistory { get; set; }
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			if (!optionsBuilder.IsConfigured)
@@ -181,10 +182,14 @@ namespace SriKanth.Model
 				entity.Property(e => e.CustomerCode).IsRequired();
 				entity.Property(e => e.LocationCode).IsRequired();
 				entity.Property(e => e.OrderDate).IsRequired();
-				entity.Property(e => e.Status).IsRequired();
+				entity.Property(e => e.Status)
+					 .HasConversion<string>() 
+					 .IsRequired();
 				entity.Property(e => e.TotalAmount);
 				entity.Property(e => e.SalesPersonCode);
 				entity.Property(e => e.PaymentMethodCode);
+				entity.Property(e => e.Note).HasMaxLength(1000);
+				entity.Property(e => e.RejectReason).HasMaxLength(1000);
 			});
 			modelBuilder.Entity<OrderItem>(entity =>
 			{
@@ -195,6 +200,18 @@ namespace SriKanth.Model
 				entity.Property(e => e.Quantity);
 				entity.Property(e => e.UnitPrice).IsRequired();
 				entity.Property(e => e.DiscountPercent);
+
+			});
+			modelBuilder.Entity<UserHistory>(entity =>
+			{
+				entity.HasKey(e => e.UserHistoryId);
+				entity.Property(e => e.UserId).IsRequired();
+				entity.Property(e => e.ActionType).IsRequired();
+				entity.Property(e => e.EntityType);
+				entity.Property(e => e.Endpoint);
+				entity.Property(e => e.Timestamp).IsRequired();
+				entity.Property(e => e.IPAddress);
+
 
 			});
 			base.OnModelCreating(modelBuilder);

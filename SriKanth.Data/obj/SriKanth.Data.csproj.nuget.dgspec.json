@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Data\\SriKanth.Data.csproj": {}
+    "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Data\\SriKanth.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Data\\SriKanth.Data.csproj": {
+    "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Data\\SriKanth.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Data\\SriKanth.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Data\\SriKanth.Data.csproj",
         "projectName": "SriKanth.Data",
-        "projectPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Data\\SriKanth.Data.csproj",
+        "projectPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Data\\SriKanth.Data.csproj",
         "packagesPath": "C:\\Users\\Dinuk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Data\\obj\\",
+        "outputPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,18 +26,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj": {
-                "projectPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj"
+              "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj": {
+                "projectPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj"
               },
-              "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj": {
-                "projectPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj"
+              "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj": {
+                "projectPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj"
               }
             }
           }
@@ -51,7 +50,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -72,18 +72,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj": {
+    "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj",
+        "projectUniqueName": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj",
         "projectName": "SriKanth.Interface",
-        "projectPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj",
+        "projectPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SriKanth.Interface.csproj",
         "packagesPath": "C:\\Users\\Dinuk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\obj\\",
+        "outputPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -98,15 +98,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj": {
-                "projectPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj"
+              "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj": {
+                "projectPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj"
               }
             }
           }
@@ -120,7 +119,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -141,18 +141,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj": {
+    "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj",
+        "projectUniqueName": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj",
         "projectName": "SriKanth.Model",
-        "projectPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj",
+        "projectPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanth.Model.csproj",
         "packagesPath": "C:\\Users\\Dinuk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\obj\\",
+        "outputPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -167,7 +167,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -185,7 +184,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -224,7 +224,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
