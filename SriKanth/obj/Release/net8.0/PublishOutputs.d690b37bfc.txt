@@ -6,6 +6,8 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\SriKanth.API.pdb
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Azure.Core.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Azure.Identity.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Azure.Storage.Blobs.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Azure.Storage.Common.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\BCrypt.Net-Next.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\BouncyCastle.Cryptography.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\MailKit.dll
@@ -64,6 +66,7 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\System.Drawing.Common.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\System.Formats.Asn1.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\System.IO.Hashing.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\System.IO.Pipelines.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\System.Memory.Data.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\System.Runtime.Caching.dll

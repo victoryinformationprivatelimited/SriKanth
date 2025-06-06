@@ -189,6 +189,131 @@
         }
       }
     },
+    "/api/Business/GetInvoiceDetails": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Business/UploadUserDocument": {
+      "post": {
+        "tags": [
+          "Business"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "UserId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Document": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "UserId": {
+                  "style": "form"
+                },
+                "Document": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Business/GetListOfDocuments": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Business/download": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "documentUrl",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Business/DeleteDocument": {
+      "delete": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "documentUrl",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/User/login": {
       "post": {
         "tags": [
@@ -449,6 +574,18 @@
           }
         }
       }
+    },
+    "/api/User/GetAllUsers": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -652,8 +789,11 @@
             "type": "string",
             "nullable": true
           },
-          "locationCode": {
-            "type": "string",
+          "locationCodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           },
           "email": {

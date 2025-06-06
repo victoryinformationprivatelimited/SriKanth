@@ -125,6 +125,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -191,6 +197,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.3, )"
@@ -281,6 +291,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.24.0, )"
+            },
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"
@@ -423,6 +437,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.24.0, )"
+            },
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"

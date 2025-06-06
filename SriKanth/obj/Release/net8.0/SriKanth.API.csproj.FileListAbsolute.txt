@@ -574,3 +574,6 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Release\net8.0\Serilog.Set
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Release\net8.0\Serilog.Sinks.Console.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Release\net8.0\Serilog.Sinks.Debug.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Release\net8.0\Serilog.Sinks.File.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Release\net8.0\Azure.Storage.Blobs.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Release\net8.0\Azure.Storage.Common.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Release\net8.0\System.IO.Hashing.dll

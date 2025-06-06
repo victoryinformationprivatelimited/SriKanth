@@ -10,10 +10,12 @@ using SriKanth.Interface;
 using SriKanth.Interface.Data;
 using SriKanth.Interface.Login_Module;
 using SriKanth.Interface.Notification;
+using SriKanth.Interface.SalesModule;
 using SriKanth.Model;
 using SriKanth.Service;
 using SriKanth.Service.Login_Module;
 using SriKanth.Service.Notification;
+using SriKanth.Service.SalesModule;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -46,7 +48,7 @@ builder.Services.AddScoped<IBusinessApiService, BusinessApiService>();
 builder.Services.AddScoped<IBusinessData, BusinessData>();
 builder.Services.AddScoped<IUserHistoryService, UserHistoryService>();
 builder.Services.AddScoped<UserHistoryActionFilter>();
-
+builder.Services.AddScoped<IAzureBlobStorageService, AzureBlobStorageService>();
 
 
 builder.Services.AddDbContext<SriKanthDbContext>(options =>

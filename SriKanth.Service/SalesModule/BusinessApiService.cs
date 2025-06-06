@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SriKanth.Data;
-using SriKanth.Interface;
 using SriKanth.Interface.Data;
+using SriKanth.Interface.SalesModule;
 using SriKanth.Model;
 using SriKanth.Model.BusinessModule.DTOs;
 using SriKanth.Model.BusinessModule.Entities;
@@ -15,8 +15,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
-namespace SriKanth.Service
+namespace SriKanth.Service.SalesModule
 {
 	public class BusinessApiService : IBusinessApiService
 	{
@@ -73,13 +74,12 @@ namespace SriKanth.Service
 				await Task.WhenAll(pictureTasks.Values);
 
 				var inventoryLookup = inventory.value
-					.Where(i => i?.itemNo != null)
-					.GroupBy(i => i.itemNo)
-					.ToDictionary(g => g.Key, g => g.ToList());
+					.Where(i => i?.itemNo != null && i?.locationCode != null)
+					.ToDictionary(i => (i.itemNo, i.locationCode), i => i);
 
 				var priceLookup = salesPrices.value
 					.Where(p => p?.itemNo != null)
-					.GroupBy(p => p.itemNo)
+					.GroupBy(p => p.itemNo )
 					.ToDictionary(g => g.Key, g => g.First().unitPrice);
 
 				var locationLookup = locations.value
@@ -87,16 +87,16 @@ namespace SriKanth.Service
 					.ToDictionary(l => l.code, l => l.name);
 
 				var stockList = new List<StockItem>();
+
 				foreach (var item in items.value.Where(i => i?.no != null))
 				{
-					if (!inventoryLookup.TryGetValue(item.no, out var itemInventory))
-						continue;
-
-					priceLookup.TryGetValue(item.no, out var itemPrice);
-
-					foreach (var inv in itemInventory.Where(i => i != null))
+					foreach (var location in locations.value.Where(l => l?.code != null))
 					{
-						locationLookup.TryGetValue(inv.locationCode, out var locationName);
+						var key = (item.no, location.code);
+						if (!inventoryLookup.TryGetValue(key, out var inv))
+							continue; // No inventory for this item at this location
+
+						priceLookup.TryGetValue(item.no, out var itemPrice);
 
 						var picture = pictureTasks.TryGetValue(item.no, out var task) && task.IsCompletedSuccessfully
 							? task.Result
@@ -106,7 +106,7 @@ namespace SriKanth.Service
 						{
 							ItemCode = item.no,
 							ItemName = item.description ?? string.Empty,
-							Location = locationName ?? inv.locationCode ?? "Unknown",
+							Location = location.name ?? location.code ?? "Unknown",
 							Stock = inv.inventory > 40 ? "40+" : inv.inventory.ToString(),
 							UnitPrice = itemPrice,
 							ItemCategory = item.itemCategoryCode ?? string.Empty,
@@ -182,7 +182,7 @@ namespace SriKanth.Service
 
 				var details = new OrderCreationDetails
 				{
-					Locations = locations.value.Select(l => new Location
+					Locations = locations.value.Select(l => new Model.Login_Module.DTOs.Location
 					{
 						LocationCode = l.code,
 						LocationName = l.name
@@ -240,22 +240,29 @@ namespace SriKanth.Service
 					_logger.LogWarning("User with ID {UserId} not found", userId);
 					throw new InvalidOperationException("User Not found");
 				}
+				var userLocations = await _loginData.GetUserLocationCodesAsync(userId);
+				if (userLocations == null || !userLocations.Any())
+				{
+					_logger.LogWarning("No locations found for user {UserId}", userId);
+					throw new InvalidOperationException("User has no locations assigned.");
+				}
 
 				var locationsTask = _externalApiService.GetLocationsAsync();
 				var customersTask = _externalApiService.GetCustomerDetailsAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
 				var salesPriceTask = _externalApiService.GetSalesPriceAsync();
+				var inventoryTask = _externalApiService.GetInventoryBalanceAsync();
 
-				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask);
+				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask, inventoryTask);
 
 				var locations = await locationsTask;
 				var filteredLocations = locations?.value?
-					.Where(l => l.code == user.LocationCode)
+					 .Where(l => userLocations.Contains(l.code))
 					.ToList() ?? new List<LocationDetail>();
 
 				if (!filteredLocations.Any())
 				{
-					_logger.LogWarning("No location data found for code: {LocationCode}", user.LocationCode);
+					_logger.LogWarning("No location data found for user {UserId}", userId);
 					throw new InvalidOperationException("No valid location data found for user.");
 				}
 
@@ -277,6 +284,15 @@ namespace SriKanth.Service
 					.ToDictionary(g => g.Key, g => g.First().unitPrice)
 					?? new Dictionary<string, decimal>();
 
+				var inventory = await inventoryTask;
+				// Filter inventory for the user's location
+				var inventoryAtLocations = inventory?.value?
+					.Where(i => userLocations.Contains(i.locationCode) && i.inventory > 0)
+					.ToList() ?? new List<InventoryBalance>();
+
+				// Get item numbers available at these locations
+				var availableItemNos = new HashSet<string>(inventoryAtLocations.Select(i => i.itemNo));
+
 				var paymentTypes = new List<PaymentType>
 				{
 					new PaymentType { Code = "CASH", Name = "Cash" },
@@ -287,7 +303,7 @@ namespace SriKanth.Service
 
 				var details = new OrderCreationDetails
 				{
-					Locations = filteredLocations.Select(l => new Location
+					Locations = filteredLocations.Select(l => new Model.Login_Module.DTOs.Location
 					{
 						LocationCode = l.code,
 						LocationName = l.name
@@ -305,20 +321,22 @@ namespace SriKanth.Service
 
 					PaymentTypes = paymentTypes,
 
-					Items = items.value.Select(i => new OrderItemDetails
-					{
-						ItemCode = i.no,
-						ItemName = i.description,
-						Unitprice = priceLookup.TryGetValue(i.no, out var price) ? price.ToString() : "0",
-						SubstituteItems = i.itemsubstitutions?.FirstOrDefault() == null ? null : new SubstituteItem
+					Items = items.value
+						.Where(i => availableItemNos.Contains(i.no))
+						.Select(i => new OrderItemDetails
 						{
-							ItemCode = i.itemsubstitutions.First().substituteNo,
-							ItemName = i.itemsubstitutions.First().description,
-							UnitPrice = priceLookup.TryGetValue(i.itemsubstitutions.First().substituteNo, out var subPrice)
-								? subPrice
-								: 0
-						}
-					}).ToList()
+							ItemCode = i.no,
+							ItemName = i.description,
+							Unitprice = priceLookup.TryGetValue(i.no, out var price) ? price.ToString() : "0",
+							SubstituteItems = i.itemsubstitutions?.FirstOrDefault() == null ? null : new SubstituteItem
+							{
+								ItemCode = i.itemsubstitutions.First().substituteNo,
+								ItemName = i.itemsubstitutions.First().description,
+								UnitPrice = priceLookup.TryGetValue(i.itemsubstitutions.First().substituteNo, out var subPrice)
+									? subPrice
+									: 0
+							}
+						}).ToList()
 				};
 
 				_logger.LogInformation("Retrieved filtered order details for user {UserId} with {LocationCount} locations, {CustomerCount} customers, and {ItemCount} items",
@@ -561,6 +579,64 @@ namespace SriKanth.Service
 			}
 		}
 
+		public async Task<CustomerInvoiceReturn> GetCustomerInvoicesAsync(int userId)
+		{
+			try
+			{
+				_logger.LogInformation("Beginning to retrieve Customer Invoice Details for user {UserId} ", userId);
+
+				var user = await _loginData.GetUserByIdAsync(userId);
+				if (user == null)
+				{
+					_logger.LogWarning("User with ID {UserId} not found while retrieving invoices", userId);
+					throw new ApplicationException("Failed to retrieve invoices. Please try again later.");
+				}
+
+				// 1. Get all customers
+				var customerResponse = await _externalApiService.GetCustomerDetailsAsync();
+				var customers = customerResponse?.value ?? new List<Customer>();
+
+				// 2. Filter customers by salesperson code
+				var filteredCustomers = customers
+					.Where(c => c.salespersonCode == user.SalesPersonCode)
+					.ToList();
+
+				if (!filteredCustomers.Any())
+					return new CustomerInvoiceReturn { TotalDueAmount = 0, CustomerInvoices = new List<CustomerInvoice>() };
+
+				// 3. Get all invoices
+				var invoiceResponse = await _externalApiService.GetInvoiceDetailsAsync();
+				var invoices = invoiceResponse?.value ?? new List<Invoice>();
+
+				// 4. Filter invoices for the filtered customers
+				var customerCodes = filteredCustomers.Select(c => c.no).ToHashSet();
+
+				var customerInvoices = invoices
+					.Where(inv => customerCodes.Contains(inv.CustomerNo))
+					.Select(inv => new CustomerInvoice
+					{
+						CustomerCode = inv.CustomerNo,
+						CustomerName = filteredCustomers.FirstOrDefault(c => c.no == inv.CustomerNo)?.name ?? "",
+						InvoiceDate = null,
+						InvoicedAmount = inv.Amount,
+						DueAmount = null
+					})
+					.ToList();
+
+				var totalDue = customerInvoices.Sum(ci => ci.DueAmount);
+				_logger.LogInformation("Successfully retrived customer invoice details for user{userId}", userId);
+				return new CustomerInvoiceReturn
+				{
+					TotalDueAmount = totalDue,
+					CustomerInvoices = customerInvoices
+				};
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Failed to retrieve invoices for user {UserId}", userId);
+				throw new ApplicationException("Failed to retrieve invoices. Please try again later.", ex);
+			}
+		}
 		private async Task<ServiceResult> ValidateCustomerCredit(string customerCode, decimal orderTotal)
 		{
 		try
@@ -587,7 +663,7 @@ namespace SriKanth.Service
 					return new ServiceResult { Success = false, Message = "Customer not allowed credit purchases" };
 				}
 
-				if (customer.creditAllowed && (customer.balanceLCY + orderTotal) > customer.creditLimitLCY)
+				if (customer.creditAllowed && customer.balanceLCY + orderTotal > customer.creditLimitLCY)
 				{
 					_logger.LogWarning("Order exceeds credit limit for customer {CustomerCode}", customerCode);
 					return new ServiceResult
@@ -617,7 +693,6 @@ namespace SriKanth.Service
 				if (inventoryResponse?.value == null || !inventoryResponse.value.Any())
 				{
 					_logger.LogWarning("Inventory data not available for validation");
-					_logger.LogDebug("Exiting ValidateInventory with validation failure");
 					return new ServiceResult { Success = false, Message = "Inventory data not available" };
 				}
 
@@ -628,7 +703,6 @@ namespace SriKanth.Service
 				if (!filteredInventory.Any())
 				{
 					_logger.LogWarning("No inventory data found for location {LocationCode}", locationCode);
-					_logger.LogDebug("Exiting ValidateInventory with validation failure");
 					return new ServiceResult
 					{
 						Success = false,
@@ -674,5 +748,7 @@ namespace SriKanth.Service
 				return new ServiceResult { Success = false, Message = "Error during inventory validation" };
 			}
 		}
+
+
 	}
 }

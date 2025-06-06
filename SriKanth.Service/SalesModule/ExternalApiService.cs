@@ -1,7 +1,7 @@
 ﻿using Azure.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Identity.Client;
-using SriKanth.Interface;
+using SriKanth.Interface.SalesModule;
 using SriKanth.Model.ExistingApis;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace SriKanth.Service
+namespace SriKanth.Service.SalesModule
 {
 	public class ExternalApiService : IExternalApiService
 	{
@@ -164,6 +164,11 @@ namespace SriKanth.Service
 						   "companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesIntegrations?$expand=salesIntegrationLines";
 
 			return await PostDataToApiAsync<SalesIntegrationResponse>(apiUrl, salesOrder);
+		}
+		public async Task<InvoiceApiResponse> GetInvoiceDetailsAsync()
+		{
+			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/postedInvoiceLines";
+			return await GetDataFromApiAsync<InvoiceApiResponse>(apiUrl);
 		}
 		public class TokenResponse
 		{

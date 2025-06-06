@@ -11,13 +11,13 @@ namespace SriKanth.Interface.Login_Module
 	{
 		Task<LoginResult> LoginAsync(RequestLogin loginRequest);
 		Task<LoginResult> PasswordResetAsync(RequestLogin loginReq);
-		Task<LoginResult> StoreNewpasswordAsync(PasswordReset passwordreset); 
+		Task<LoginResult> StoreNewpasswordAsync(PasswordReset passwordreset);
 		Task<bool> LockAccountAsync(RequestLogin loginRequest);
 		Task<bool> UnlockAccountAsync(RequestLogin loginRequest);
 		Task<ServiceResult> CreateUserAsync(UserDetails userDetails);
 		Task<ServiceResult> UpdateUserAsync(int userId, UserDetails userDetails);
 		Task<UserCreationDetails> GetUserCreationDetailsAsync();
 		Task<UserDetails> GetUserDetailsByIdAsync(int userId);
-		bool VerifyPassword(string enteredPassword, string storedPasswordHash);
+		Task<List<UserReturn>> GetListOfUsersAsync();
 	}
 }

@@ -22,7 +22,6 @@ namespace SriKanth.Model.Login_Module.Entities
         public string PasswordHash { get; set; }
 		public int UserRoleId { get; set; }
 		public string SalesPersonCode { get; set; }
-		public string LocationCode { get; set; }
         [Required]
         [StringLength(255)]
         public string? Email { get; set; }

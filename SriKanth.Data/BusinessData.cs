@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HRIS.Model.Employee_Module.Entities;
+using Microsoft.EntityFrameworkCore;
 using SriKanth.Model;
 using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.Login_Module.Entities;
@@ -54,6 +55,17 @@ namespace SriKanth.Data
 		{
 			return await _context.OrderItem
 				.Where(o => o.OrderNumber == orderNumber )
+				.ToListAsync();
+		}
+		public async Task AddDocumentAsync(UserDocumentStorage userDocument)
+		{
+			await _context.UserDocumentStorage.AddAsync(userDocument);
+			await _context.SaveChangesAsync();
+		}
+		public async Task<List<UserDocumentStorage>> GetUserDocumentsAsync(int userId)
+		{
+			return await _context.UserDocumentStorage
+				.Where(d => d.UserId == userId)
 				.ToListAsync();
 		}
 	}

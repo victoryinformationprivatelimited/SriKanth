@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SriKanth.Interface
+namespace SriKanth.Interface.SalesModule
 {
 	public interface IBusinessApiService
 	{
@@ -17,5 +17,6 @@ namespace SriKanth.Interface
 		Task<ServiceResult> SubmitOrderAsync(int userId, OrderRequest request);
 		Task<List<OrderReturn>> GetOrdersListAsync(int userId, OrderStatus orderStatus);
 		Task<ServiceResult> UpdateOrderStatusAsync(UpdateOrderRequest updateOrderRequest);
+		Task<CustomerInvoiceReturn> GetCustomerInvoicesAsync(int userId);
 	}
 }

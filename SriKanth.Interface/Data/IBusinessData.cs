@@ -1,4 +1,5 @@
-﻿using SriKanth.Model.BusinessModule.Entities;
+﻿using HRIS.Model.Employee_Module.Entities;
+using SriKanth.Model.BusinessModule.Entities;
 
 namespace SriKanth.Data
 {
@@ -11,6 +12,7 @@ namespace SriKanth.Data
 		Task<Order> GetOrderByIdAsync(int orderNumber);
 		Task UpdateOrderStatusAsync(Order order);
 		Task<List<OrderItem>> GetOrderItemsAsync(int orderNumber);
-
+		Task AddDocumentAsync(UserDocumentStorage userDocument);
+		Task<List<UserDocumentStorage>> GetUserDocumentsAsync(int userId);
 	}
 }

@@ -13,7 +13,7 @@ namespace SriKanth.Interface.Data
 	{
 		Task<User> GetUserByUsernameOrEmailAsync(string usernameOrEmail);
 		Task UpdateUserAsync(User user);
-		Task<IEnumerable<User>> GetAllUsersAsync();
+		Task<List<User>> GetAllUsersAsync();
 		Task<User> GetUserByIdAsync(int userId);
 		Task AddUserTokenAsync(UserToken userToken);
 		Task AddSendTokenAsync(SendToken sendToken);
@@ -34,7 +34,9 @@ namespace SriKanth.Interface.Data
 		Task UpdateMfaTypeAsync(MFASetting mFASetting);
 		Task<MFASetting> GetMfaSettingByIdAsync(int userId);
 		Task AddUserHistoryAsync(UserHistory userHistory);
-
-
+		Task AddUserLocationsAsync(IEnumerable<UserLocation> userLocations);
+		Task<List<UserLocation>> GetUserLocationsByIdAsync(int userId);
+		Task RemoveUserLocationsByIdAsync(IEnumerable<UserLocation> userLocations);
+		Task<List<string>> GetUserLocationCodesAsync(int userId);
 	}
 }

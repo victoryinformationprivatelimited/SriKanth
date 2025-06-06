@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HRIS.Model.Employee_Module.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using SriKanth.Model.BusinessModule.Entities;
@@ -38,6 +39,8 @@ namespace SriKanth.Model
 		public virtual DbSet<Order> Order { get; set; }
 		public virtual DbSet<OrderItem> OrderItem { get; set; }
 		public virtual DbSet<UserHistory> UserHistory { get; set; }
+		public virtual DbSet<UserDocumentStorage> UserDocumentStorage { get; set; }
+		public virtual DbSet<UserLocation> UserLocation { get; set; }
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			if (!optionsBuilder.IsConfigured)
@@ -66,7 +69,6 @@ namespace SriKanth.Model
 				entity.Property(e => e.PasswordHash).HasMaxLength(255).IsRequired();
 				entity.Property(e => e.UserRoleId);
 				entity.Property(e => e.SalesPersonCode).HasMaxLength(100);
-				entity.Property(e => e.LocationCode);
 				entity.Property(e => e.Email).HasMaxLength(255).IsRequired();
 				entity.Property(e => e.PhoneNumber).HasMaxLength(50);
 				entity.Property(e => e.IsPhoneNumberVerified).IsRequired();
@@ -212,6 +214,39 @@ namespace SriKanth.Model
 				entity.Property(e => e.Timestamp).IsRequired();
 				entity.Property(e => e.IPAddress);
 
+				entity.HasOne<User>()
+					  .WithMany()
+					  .HasForeignKey(e => e.UserId) 
+					  .OnDelete(DeleteBehavior.NoAction);
+
+
+			});
+			modelBuilder.Entity<UserDocumentStorage>(entity =>
+			{
+				entity.HasKey(e => e.UserDocumentStorageId);
+				entity.Property(e => e.UserId).IsRequired();
+				entity.Property(e => e.DocumentReference).IsRequired();
+				entity.Property(e => e.OriginalFileName);
+				entity.Property(e => e.FileSize);
+				entity.Property(e => e.DocumentType);
+				entity.Property(e => e.AddedDate);
+
+				entity.HasOne<User>()
+					  .WithMany()
+					  .HasForeignKey(e => e.UserId)
+					  .OnDelete(DeleteBehavior.NoAction);
+
+			});
+			modelBuilder.Entity<UserLocation>(entity =>
+			{
+				entity.HasKey(e => e.UserLocationId);
+				entity.Property(e => e.UserId).IsRequired();
+				entity.Property(e => e.LocationCode).IsRequired();
+
+				entity.HasOne<User>()
+					  .WithMany()
+					  .HasForeignKey(e => e.UserId)
+					  .OnDelete(DeleteBehavior.NoAction);
 
 			});
 			base.OnModelCreating(modelBuilder);

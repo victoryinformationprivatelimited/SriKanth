@@ -1,0 +1,775 @@
+2025-06-05 09:26:15.414 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 09:26:15.913 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 09:26:15.915 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 09:26:16.073 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 09:26:16.075 +05:30 [INF] Hosting environment: Development
+2025-06-05 09:26:16.076 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 09:26:22.653 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 09:26:23.065 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 427.4189ms
+2025-06-05 09:26:23.104 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 09:26:23.219 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 09:26:23.223 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 118.7817ms
+2025-06-05 09:26:23.376 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 157.7865ms
+2025-06-05 09:26:24.011 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 09:26:24.051 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 39.8255ms
+2025-06-05 09:28:02.610 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetStockDetails - null null
+2025-06-05 09:28:02.742 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-05 09:28:02.748 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-05 09:28:02.749 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetStockDetails - 401 0 null 140.1273ms
+2025-06-05 09:28:47.031 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 09:28:47.341 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 09:28:47.342 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 09:28:47.427 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 09:28:47.428 +05:30 [INF] Hosting environment: Development
+2025-06-05 09:28:47.429 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 09:28:48.848 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 09:28:49.161 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 326.9265ms
+2025-06-05 09:28:49.192 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 09:28:49.209 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 17.4704ms
+2025-06-05 09:28:49.308 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 09:28:49.385 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 77.8961ms
+2025-06-05 09:28:50.246 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 09:28:50.272 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.7599ms
+2025-06-05 09:29:13.913 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetStockDetails - null null
+2025-06-05 09:29:14.026 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetStockDetails (SriKanth.API)'
+2025-06-05 09:29:14.270 +05:30 [INF] Route matched with {action = "GetStockDetails", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStockDetails() on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 09:30:01.948 +05:30 [INF] Beginning to retrieve sales stock details
+2025-06-05 09:30:01.960 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:30:01.966 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:30:01.975 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:30:01.976 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:30:01.979 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:30:01.980 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:30:01.983 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:30:01.985 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:30:02.666 +05:30 [INF] Received HTTP response headers after 697.6348ms - 200
+2025-06-05 09:30:02.670 +05:30 [INF] Received HTTP response headers after 693.5009ms - 200
+2025-06-05 09:30:02.670 +05:30 [INF] End processing HTTP request after 713.2442ms - 200
+2025-06-05 09:30:02.673 +05:30 [INF] End processing HTTP request after 698.2425ms - 200
+2025-06-05 09:30:02.679 +05:30 [INF] Received HTTP response headers after 698.1702ms - 200
+2025-06-05 09:30:02.679 +05:30 [INF] End processing HTTP request after 700.4765ms - 200
+2025-06-05 09:30:02.686 +05:30 [INF] Received HTTP response headers after 699.434ms - 200
+2025-06-05 09:30:02.687 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items?$expand=itemsubstitutions
+2025-06-05 09:30:02.687 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/inventoryBalances
+2025-06-05 09:30:02.687 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPrices
+2025-06-05 09:30:02.687 +05:30 [INF] End processing HTTP request after 704.3326ms - 200
+2025-06-05 09:30:02.688 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items?$expand=itemsubstitutions
+2025-06-05 09:30:02.688 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/inventoryBalances
+2025-06-05 09:30:02.689 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPrices
+2025-06-05 09:30:02.690 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/locations
+2025-06-05 09:30:02.694 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/locations
+2025-06-05 09:30:03.786 +05:30 [INF] Received HTTP response headers after 1090.8861ms - 200
+2025-06-05 09:30:03.791 +05:30 [INF] End processing HTTP request after 1101.5966ms - 200
+2025-06-05 09:30:03.818 +05:30 [INF] Received HTTP response headers after 1127.4658ms - 200
+2025-06-05 09:30:03.821 +05:30 [INF] End processing HTTP request after 1134.5791ms - 200
+2025-06-05 09:30:03.826 +05:30 [INF] Received HTTP response headers after 1133.1813ms - 200
+2025-06-05 09:30:03.827 +05:30 [INF] End processing HTTP request after 1140.2803ms - 200
+2025-06-05 09:30:03.955 +05:30 [INF] Received HTTP response headers after 1265.3841ms - 200
+2025-06-05 09:30:03.957 +05:30 [INF] End processing HTTP request after 1270.6611ms - 200
+2025-06-05 09:30:04.136 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(c511ff2b-d123-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:30:04.139 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(c511ff2b-d123-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:30:04.144 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(570ecf51-3f24-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:30:04.145 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(570ecf51-3f24-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:30:04.147 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(ea7f73d6-3e24-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:30:04.147 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(ea7f73d6-3e24-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:30:04.149 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(0f624732-ce2e-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:30:04.149 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(0f624732-ce2e-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:30:04.151 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(a9bd6544-4d2d-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:30:04.152 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(a9bd6544-4d2d-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:30:04.154 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(eb75eea1-4d2d-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:30:04.155 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(eb75eea1-4d2d-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:30:04.157 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(6f0f6efc-ab2a-f011-9a4a-000d3aa30ece)/picture/pictureContent
+2025-06-05 09:30:04.160 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(6f0f6efc-ab2a-f011-9a4a-000d3aa30ece)/picture/pictureContent
+2025-06-05 09:30:04.162 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(c611ff2b-d123-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:30:04.163 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(c611ff2b-d123-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:30:04.477 +05:30 [INF] Received HTTP response headers after 329.1093ms - 200
+2025-06-05 09:30:04.479 +05:30 [INF] End processing HTTP request after 332.6612ms - 200
+2025-06-05 09:30:04.489 +05:30 [INF] Received HTTP response headers after 347.6326ms - 200
+2025-06-05 09:30:04.490 +05:30 [INF] Received HTTP response headers after 339.66ms - 204
+2025-06-05 09:30:04.491 +05:30 [INF] End processing HTTP request after 354.9369ms - 200
+2025-06-05 09:30:04.491 +05:30 [INF] End processing HTTP request after 342.5821ms - 204
+2025-06-05 09:30:04.694 +05:30 [INF] Received HTTP response headers after 548.6928ms - 200
+2025-06-05 09:30:04.697 +05:30 [INF] End processing HTTP request after 553.075ms - 200
+2025-06-05 09:30:05.073 +05:30 [INF] Received HTTP response headers after 912.6347ms - 204
+2025-06-05 09:30:05.074 +05:30 [INF] Received HTTP response headers after 921.0242ms - 204
+2025-06-05 09:30:05.076 +05:30 [INF] End processing HTTP request after 918.9947ms - 204
+2025-06-05 09:30:05.077 +05:30 [INF] End processing HTTP request after 925.6791ms - 204
+2025-06-05 09:30:05.112 +05:30 [INF] Received HTTP response headers after 956.3969ms - 204
+2025-06-05 09:30:05.113 +05:30 [INF] End processing HTTP request after 959.0837ms - 204
+2025-06-05 09:30:05.274 +05:30 [INF] Received HTTP response headers after 1110.6345ms - 200
+2025-06-05 09:30:05.277 +05:30 [INF] End processing HTTP request after 1115.3695ms - 200
+2025-06-05 09:30:05.691 +05:30 [INF] Successfully retrieved 11 stock items
+2025-06-05 09:30:05.699 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.BusinessModule.DTOs.StockItem, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-05 09:30:05.728 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetStockDetails (SriKanth.API) in 51453.4691ms
+2025-06-05 09:30:05.730 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetStockDetails (SriKanth.API)'
+2025-06-05 09:30:05.732 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetStockDetails - 200 null application/json; charset=utf-8 51818.6848ms
+2025-06-05 09:51:00.157 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 09:51:00.382 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 09:51:00.383 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 09:51:00.474 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 09:51:00.476 +05:30 [INF] Hosting environment: Development
+2025-06-05 09:51:00.478 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 09:51:01.538 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 09:51:01.825 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 302.8528ms
+2025-06-05 09:51:01.891 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 09:51:01.910 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 18.6325ms
+2025-06-05 09:51:01.967 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 09:51:02.058 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 91.7897ms
+2025-06-05 09:51:02.891 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 09:51:02.926 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 35.365ms
+2025-06-05 09:51:06.806 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetStockDetails - null null
+2025-06-05 09:51:06.895 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetStockDetails (SriKanth.API)'
+2025-06-05 09:51:07.120 +05:30 [INF] Route matched with {action = "GetStockDetails", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStockDetails() on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 09:51:09.226 +05:30 [INF] Beginning to retrieve sales stock details
+2025-06-05 09:51:09.244 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:51:09.248 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:51:09.263 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:51:09.266 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:51:09.272 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:51:09.272 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:51:09.277 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:51:09.280 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-05 09:51:09.803 +05:30 [INF] Received HTTP response headers after 550.632ms - 200
+2025-06-05 09:51:09.803 +05:30 [INF] Received HTTP response headers after 527.5321ms - 200
+2025-06-05 09:51:09.806 +05:30 [INF] End processing HTTP request after 567.7952ms - 200
+2025-06-05 09:51:09.807 +05:30 [INF] End processing HTTP request after 535.1175ms - 200
+2025-06-05 09:51:09.822 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/inventoryBalances
+2025-06-05 09:51:09.822 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPrices
+2025-06-05 09:51:09.824 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/inventoryBalances
+2025-06-05 09:51:09.827 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPrices
+2025-06-05 09:51:09.832 +05:30 [INF] Received HTTP response headers after 550.5714ms - 200
+2025-06-05 09:51:09.838 +05:30 [INF] End processing HTTP request after 560.9462ms - 200
+2025-06-05 09:51:09.839 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/locations
+2025-06-05 09:51:09.840 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/locations
+2025-06-05 09:51:09.842 +05:30 [INF] Received HTTP response headers after 574.793ms - 200
+2025-06-05 09:51:09.844 +05:30 [INF] End processing HTTP request after 580.6852ms - 200
+2025-06-05 09:51:09.845 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items?$expand=itemsubstitutions
+2025-06-05 09:51:09.846 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items?$expand=itemsubstitutions
+2025-06-05 09:51:11.822 +05:30 [INF] Received HTTP response headers after 1992.451ms - 200
+2025-06-05 09:51:11.824 +05:30 [INF] Received HTTP response headers after 1993.9312ms - 200
+2025-06-05 09:51:11.825 +05:30 [INF] End processing HTTP request after 2002.8209ms - 200
+2025-06-05 09:51:11.826 +05:30 [INF] End processing HTTP request after 2003.4719ms - 200
+2025-06-05 09:51:11.874 +05:30 [INF] Received HTTP response headers after 2033.0305ms - 200
+2025-06-05 09:51:11.877 +05:30 [INF] End processing HTTP request after 2037.3525ms - 200
+2025-06-05 09:51:11.986 +05:30 [INF] Received HTTP response headers after 2139.7909ms - 200
+2025-06-05 09:51:11.990 +05:30 [INF] End processing HTTP request after 2144.4795ms - 200
+2025-06-05 09:51:12.180 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(c511ff2b-d123-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:51:12.184 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(c511ff2b-d123-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:51:12.189 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(570ecf51-3f24-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:51:12.190 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(570ecf51-3f24-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:51:12.192 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(ea7f73d6-3e24-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:51:12.193 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(ea7f73d6-3e24-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:51:12.195 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(0f624732-ce2e-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:51:12.196 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(0f624732-ce2e-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:51:12.197 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(a9bd6544-4d2d-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:51:12.198 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(a9bd6544-4d2d-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:51:12.199 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(eb75eea1-4d2d-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:51:12.202 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(eb75eea1-4d2d-f011-9a4a-000d3aa33119)/picture/pictureContent
+2025-06-05 09:51:12.205 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(6f0f6efc-ab2a-f011-9a4a-000d3aa30ece)/picture/pictureContent
+2025-06-05 09:51:12.207 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(6f0f6efc-ab2a-f011-9a4a-000d3aa30ece)/picture/pictureContent
+2025-06-05 09:51:12.208 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(c611ff2b-d123-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:51:12.210 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items(c611ff2b-d123-f011-9af7-000d3a087c80)/picture/pictureContent
+2025-06-05 09:51:12.660 +05:30 [INF] Received HTTP response headers after 463.8626ms - 204
+2025-06-05 09:51:12.662 +05:30 [INF] End processing HTTP request after 466.9534ms - 204
+2025-06-05 09:51:12.679 +05:30 [INF] Received HTTP response headers after 492.4479ms - 200
+2025-06-05 09:51:12.681 +05:30 [INF] End processing HTTP request after 500.8532ms - 200
+2025-06-05 09:51:12.694 +05:30 [INF] Received HTTP response headers after 500.7568ms - 200
+2025-06-05 09:51:12.696 +05:30 [INF] End processing HTTP request after 503.8996ms - 200
+2025-06-05 09:51:12.905 +05:30 [INF] Received HTTP response headers after 714.291ms - 200
+2025-06-05 09:51:12.908 +05:30 [INF] End processing HTTP request after 718.5627ms - 200
+2025-06-05 09:51:13.064 +05:30 [INF] Received HTTP response headers after 856.337ms - 204
+2025-06-05 09:51:13.070 +05:30 [INF] End processing HTTP request after 864.2745ms - 204
+2025-06-05 09:51:13.230 +05:30 [INF] Received HTTP response headers after 1025.9554ms - 204
+2025-06-05 09:51:13.234 +05:30 [INF] End processing HTTP request after 1034.1525ms - 204
+2025-06-05 09:51:13.292 +05:30 [INF] Received HTTP response headers after 1093.5976ms - 204
+2025-06-05 09:51:13.294 +05:30 [INF] End processing HTTP request after 1096.9896ms - 204
+2025-06-05 09:51:13.454 +05:30 [INF] Received HTTP response headers after 1242.8349ms - 200
+2025-06-05 09:51:13.457 +05:30 [INF] End processing HTTP request after 1249.0332ms - 200
+2025-06-05 09:51:14.115 +05:30 [INF] Successfully retrieved 11 stock items
+2025-06-05 09:51:14.133 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.BusinessModule.DTOs.StockItem, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-05 09:51:14.162 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetStockDetails (SriKanth.API) in 7037.9198ms
+2025-06-05 09:51:14.164 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetStockDetails (SriKanth.API)'
+2025-06-05 09:51:14.167 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetStockDetails - 200 null application/json; charset=utf-8 7361.3413ms
+2025-06-05 19:50:05.734 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 19:50:06.097 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 19:50:06.100 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 19:50:06.221 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 19:50:06.223 +05:30 [INF] Hosting environment: Development
+2025-06-05 19:50:06.224 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 19:50:07.060 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 19:50:07.401 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 360.4495ms
+2025-06-05 19:50:07.462 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 19:50:07.488 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 25.6718ms
+2025-06-05 19:50:07.543 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 19:50:07.632 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 89.4014ms
+2025-06-05 19:50:08.197 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 19:50:08.240 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 43.122ms
+2025-06-05 19:51:22.469 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 19:51:22.776 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 19:51:22.780 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 19:51:22.873 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 19:51:22.876 +05:30 [INF] Hosting environment: Development
+2025-06-05 19:51:22.877 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 19:51:24.888 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 19:51:25.243 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 374.5929ms
+2025-06-05 19:51:25.457 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 19:51:25.457 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 19:51:25.476 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 19.1543ms
+2025-06-05 19:51:25.535 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 78.0244ms
+2025-06-05 19:51:26.393 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 19:51:26.443 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 49.7061ms
+2025-06-05 19:52:33.351 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 19:52:33.618 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 19:52:33.621 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 19:52:33.707 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 19:52:33.708 +05:30 [INF] Hosting environment: Development
+2025-06-05 19:52:33.710 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 19:52:35.192 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 19:52:35.473 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 294.5191ms
+2025-06-05 19:52:35.513 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 19:52:35.543 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 29.9107ms
+2025-06-05 19:52:35.626 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 19:52:35.718 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 92.08ms
+2025-06-05 19:52:36.532 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 19:52:36.559 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.4519ms
+2025-06-05 20:00:26.373 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 20:00:26.629 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 20:00:26.632 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 20:00:26.711 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 20:00:26.713 +05:30 [INF] Hosting environment: Development
+2025-06-05 20:00:26.715 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 20:00:28.429 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 20:00:28.769 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 351.2447ms
+2025-06-05 20:00:28.974 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 20:00:28.974 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 20:00:29.001 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 24.2413ms
+2025-06-05 20:00:29.061 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 86.7049ms
+2025-06-05 20:00:29.873 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 20:00:29.910 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 37.1419ms
+2025-06-05 20:00:55.574 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - multipart/form-data; boundary=----WebKitFormBoundaryAM1FAsSBJWFcBQtI 18020
+2025-06-05 20:00:55.651 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:00:55.942 +05:30 [INF] Route matched with {action = "UploadUserDocument", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadUserDocument(SriKanth.Model.BusinessModule.DTOs.DocumentAdd) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 20:00:55.952 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API) in 4.4574ms
+2025-06-05 20:00:55.956 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:00:55.962 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'SriKanth.Interface.IAzureBlobStorageService' while attempting to activate 'SriKanth.API.Controllers.BusinessController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method21(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-06-05 20:00:56.003 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - 500 null text/plain; charset=utf-8 428.8065ms
+2025-06-05 20:01:29.773 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - multipart/form-data; boundary=----WebKitFormBoundarywiwCDAf71jt7IG5z 18020
+2025-06-05 20:01:29.788 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:01:29.805 +05:30 [INF] Route matched with {action = "UploadUserDocument", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadUserDocument(SriKanth.Model.BusinessModule.DTOs.DocumentAdd) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 20:01:29.810 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API) in 1.3456ms
+2025-06-05 20:01:29.813 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:01:29.815 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'SriKanth.Interface.IAzureBlobStorageService' while attempting to activate 'SriKanth.API.Controllers.BusinessController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method21(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-06-05 20:01:29.820 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - 500 null text/plain; charset=utf-8 47.4695ms
+2025-06-05 20:02:37.967 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 20:02:38.207 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 20:02:38.210 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 20:02:38.290 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 20:02:38.292 +05:30 [INF] Hosting environment: Development
+2025-06-05 20:02:38.293 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 20:02:39.774 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 20:02:40.103 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 341.1514ms
+2025-06-05 20:02:40.139 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 20:02:40.177 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 38.4264ms
+2025-06-05 20:02:40.237 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 20:02:40.331 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 94.1823ms
+2025-06-05 20:02:41.164 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 20:02:41.191 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.7027ms
+2025-06-05 20:03:51.049 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 20:03:51.300 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 20:03:51.303 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 20:03:51.590 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 20:03:51.594 +05:30 [INF] Hosting environment: Development
+2025-06-05 20:03:51.596 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 20:03:53.207 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 20:03:53.601 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 413.0658ms
+2025-06-05 20:03:53.630 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 20:03:53.642 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 11.0202ms
+2025-06-05 20:03:53.735 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 20:03:53.831 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 96.7557ms
+2025-06-05 20:03:54.684 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 20:03:54.728 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 43.7239ms
+2025-06-05 20:04:10.504 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - multipart/form-data; boundary=----WebKitFormBoundary6ZHsMaddUl9mJWDs 180117
+2025-06-05 20:04:10.583 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:04:10.796 +05:30 [INF] Route matched with {action = "UploadUserDocument", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadUserDocument(SriKanth.Model.BusinessModule.DTOs.DocumentAdd) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 20:04:10.809 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API) in 4.1604ms
+2025-06-05 20:04:10.812 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:04:10.816 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'SriKanth.Interface.IAzureBlobStorageService' while attempting to activate 'SriKanth.API.Controllers.BusinessController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method21(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-06-05 20:04:10.848 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - 500 null text/plain; charset=utf-8 344.3011ms
+2025-06-05 20:06:29.045 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 20:06:29.358 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 20:06:29.366 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 20:06:29.500 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 20:06:29.501 +05:30 [INF] Hosting environment: Development
+2025-06-05 20:06:29.504 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 20:06:29.866 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 20:06:30.150 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 295.9072ms
+2025-06-05 20:06:30.211 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 20:06:30.230 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 19.054ms
+2025-06-05 20:06:30.310 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 20:06:30.503 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 192.422ms
+2025-06-05 20:06:31.318 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 20:06:31.351 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.423ms
+2025-06-05 20:06:43.110 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - multipart/form-data; boundary=----WebKitFormBoundary528HwqM4F1zYuvWn 101298
+2025-06-05 20:06:43.185 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:06:43.442 +05:30 [INF] Route matched with {action = "UploadUserDocument", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadUserDocument(SriKanth.Model.BusinessModule.DTOs.DocumentAdd) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 20:07:27.125 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:07:27.129 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:07:27.132 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:07:27.134 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:07:29.808 +05:30 [ERR] Failed executing DbCommand (321ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserDocumentStorage] ([AddedDate], [DocumentReference], [DocumentType], [UserId])
+OUTPUT INSERTED.[UserDocumentStorageId]
+VALUES (@p0, @p1, @p2, @p3);
+2025-06-05 20:07:29.852 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'SriKanth.Model.SriKanthDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'UserDocumentStorage'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:50bcd6bb-9a62-49bd-80a3-3f71c407963e
+Error Number:208,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'UserDocumentStorage'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:50bcd6bb-9a62-49bd-80a3-3f71c407963e
+Error Number:208,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-06-05 20:07:29.936 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2025-06-05 20:07:29.944 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API) in 46496.1249ms
+2025-06-05 20:07:29.946 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:07:29.956 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - 500 null text/plain; charset=utf-8 46846.9298ms
+2025-06-05 20:12:59.007 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:12:59.033 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:12:59.034 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:12:59.034 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:13:37.397 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:13:37.421 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:13:37.421 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:13:37.421 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:13:39.802 +05:30 [INF] Executed DbCommand (221ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-05 20:13:39.809 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-06-05 20:13:40.038 +05:30 [INF] Executed DbCommand (228ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-06-05 20:13:40.742 +05:30 [INF] Executed DbCommand (459ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-06-05 20:13:41.627 +05:30 [INF] Executed DbCommand (310ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-05 20:13:42.602 +05:30 [INF] Executed DbCommand (974ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-06-05 20:13:42.804 +05:30 [INF] Executed DbCommand (200ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-06-05 20:13:42.811 +05:30 [INF] Applying migration '20250605144259_documnetstore'.
+2025-06-05 20:13:43.241 +05:30 [INF] Executed DbCommand (405ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserDocumentStorage] (
+    [UserDocumentStorageId] int NOT NULL IDENTITY,
+    [UserId] int NOT NULL,
+    [DocumentReference] nvarchar(max) NOT NULL,
+    [DocumentType] nvarchar(max) NOT NULL,
+    [AddedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_UserDocumentStorage] PRIMARY KEY ([UserDocumentStorageId])
+);
+2025-06-05 20:13:43.549 +05:30 [INF] Executed DbCommand (308ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250605144259_documnetstore', N'9.0.3');
+2025-06-05 20:13:44.194 +05:30 [INF] Executed DbCommand (408ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-06-05 20:13:58.137 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 20:13:58.361 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 20:13:58.364 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 20:13:58.451 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 20:13:58.453 +05:30 [INF] Hosting environment: Development
+2025-06-05 20:13:58.455 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 20:14:00.057 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 20:14:00.348 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 304.6324ms
+2025-06-05 20:14:00.386 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 20:14:00.402 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 16.0245ms
+2025-06-05 20:14:00.508 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 20:14:00.610 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 102.712ms
+2025-06-05 20:14:01.525 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 20:14:01.582 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 57.6952ms
+2025-06-05 20:14:12.398 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - multipart/form-data; boundary=----WebKitFormBoundary03XGkGRIVqyC0Hgt 239057
+2025-06-05 20:14:12.491 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:14:12.719 +05:30 [INF] Route matched with {action = "UploadUserDocument", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadUserDocument(SriKanth.Model.BusinessModule.DTOs.DocumentAdd) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 20:14:24.133 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:14:24.137 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:14:24.138 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:14:24.139 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:14:26.524 +05:30 [INF] Executed DbCommand (350ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserDocumentStorage] ([AddedDate], [DocumentReference], [DocumentType], [UserId])
+OUTPUT INSERTED.[UserDocumentStorageId]
+VALUES (@p0, @p1, @p2, @p3);
+2025-06-05 20:14:26.579 +05:30 [INF] Document uploaded for user 5: https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf
+2025-06-05 20:14:26.587 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-05 20:14:26.602 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API) in 13873.2188ms
+2025-06-05 20:14:26.606 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 20:14:26.615 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - 200 null application/json; charset=utf-8 14217.895ms
+2025-06-05 20:26:53.738 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 20:26:53.986 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 20:26:53.988 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 20:26:54.066 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 20:26:54.067 +05:30 [INF] Hosting environment: Development
+2025-06-05 20:26:54.068 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 20:26:55.466 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 20:26:55.796 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 343.7934ms
+2025-06-05 20:26:55.831 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 20:26:55.847 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 15.6924ms
+2025-06-05 20:26:55.945 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 20:26:56.023 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 78.9506ms
+2025-06-05 20:26:56.914 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 20:26:56.942 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.9677ms
+2025-06-05 20:27:21.763 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 20:27:22.043 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 20:27:22.047 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 20:27:22.135 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 20:27:22.140 +05:30 [INF] Hosting environment: Development
+2025-06-05 20:27:22.142 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 20:27:23.714 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 20:27:24.070 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 367.3481ms
+2025-06-05 20:27:24.142 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 20:27:24.169 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 27.1858ms
+2025-06-05 20:27:24.213 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 20:27:24.292 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 81.4059ms
+2025-06-05 20:27:25.221 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 20:27:25.264 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 43.2066ms
+2025-06-05 20:27:33.641 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-05 20:27:33.748 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 20:27:33.987 +05:30 [INF] Route matched with {action = "GetDocumentsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 20:27:34.020 +05:30 [INF] Retrieving all documents for user 5
+2025-06-05 20:27:37.365 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:27:37.369 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:27:37.370 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:27:37.372 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:27:40.718 +05:30 [INF] Executed DbCommand (896ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-05 20:27:44.227 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.ValueTuple`3[[System.IO.Stream, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-05 20:27:44.245 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API) in 10246.7775ms
+2025-06-05 20:27:44.248 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 20:27:44.258 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 200 null application/json; charset=utf-8 10617.6053ms
+2025-06-05 20:29:25.558 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 20:29:25.894 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 20:29:25.897 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 20:29:25.989 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 20:29:25.991 +05:30 [INF] Hosting environment: Development
+2025-06-05 20:29:25.992 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 20:29:27.784 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 20:29:28.102 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 331.8373ms
+2025-06-05 20:29:28.123 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 20:29:28.145 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 22.6299ms
+2025-06-05 20:29:28.247 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 20:29:28.347 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 100.1066ms
+2025-06-05 20:29:29.199 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 20:29:29.253 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 54.3813ms
+2025-06-05 20:29:39.564 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-05 20:29:39.650 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 20:29:39.794 +05:30 [INF] Route matched with {action = "GetDocumentsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 20:29:39.837 +05:30 [INF] Retrieving all documents for user 5
+2025-06-05 20:29:42.888 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:29:42.890 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:29:42.891 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:29:42.892 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:29:45.172 +05:30 [INF] Executed DbCommand (377ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-05 20:30:57.641 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.ValueTuple`3[[System.IO.Stream, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-05 20:30:57.655 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API) in 77845.8444ms
+2025-06-05 20:30:57.658 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 20:30:57.666 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 200 null application/json; charset=utf-8 78101.7883ms
+2025-06-05 20:37:03.039 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 20:37:03.296 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 20:37:03.298 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 20:37:03.386 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 20:37:03.388 +05:30 [INF] Hosting environment: Development
+2025-06-05 20:37:03.390 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 20:37:05.266 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 20:37:05.577 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 324.6384ms
+2025-06-05 20:37:05.624 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 20:37:05.642 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 17.6849ms
+2025-06-05 20:37:05.728 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 20:37:05.816 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.7543ms
+2025-06-05 20:37:06.690 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 20:37:06.727 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 37.2143ms
+2025-06-05 20:37:23.613 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-05 20:37:23.727 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 20:37:23.956 +05:30 [INF] Route matched with {action = "GetDocumentsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 20:37:23.993 +05:30 [INF] Retrieving all document URLs for user 5
+2025-06-05 20:37:26.759 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:37:26.762 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:37:26.766 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:37:26.768 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 20:37:29.191 +05:30 [INF] Executed DbCommand (314ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-05 20:37:29.278 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.ValueTuple`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-05 20:37:29.292 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API) in 5327.9268ms
+2025-06-05 20:37:29.294 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 20:37:29.300 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 200 null application/json; charset=utf-8 5688.0863ms
+2025-06-05 20:37:52.253 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-05 20:37:52.263 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 20:37:52.270 +05:30 [INF] Route matched with {action = "GetDocumentsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 20:37:52.276 +05:30 [INF] Retrieving all document URLs for user 5
+2025-06-05 20:37:52.516 +05:30 [INF] Executed DbCommand (219ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-05 20:44:56.359 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.ValueTuple`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-05 20:44:56.376 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API) in 424102.1366ms
+2025-06-05 20:44:56.383 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 20:44:56.384 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 200 null application/json; charset=utf-8 424131.1796ms
+2025-06-05 21:20:09.753 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:20:09.783 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:20:09.783 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:20:09.783 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:20:31.586 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:20:31.622 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:20:31.622 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:20:31.622 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:20:33.403 +05:30 [INF] Executed DbCommand (280ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-05 21:20:33.411 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-06-05 21:20:33.635 +05:30 [INF] Executed DbCommand (223ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-06-05 21:20:34.093 +05:30 [INF] Executed DbCommand (225ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-06-05 21:20:34.676 +05:30 [INF] Executed DbCommand (185ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-05 21:20:34.867 +05:30 [INF] Executed DbCommand (189ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-06-05 21:20:35.059 +05:30 [INF] Executed DbCommand (188ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-06-05 21:20:35.072 +05:30 [INF] Applying migration '20250605155010_changedocumnetstore'.
+2025-06-05 21:20:35.354 +05:30 [INF] Executed DbCommand (267ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [UserDocumentStorage] ADD [FileSize] bigint NOT NULL DEFAULT CAST(0 AS bigint);
+2025-06-05 21:20:35.579 +05:30 [INF] Executed DbCommand (224ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [UserDocumentStorage] ADD [OriginalFileName] nvarchar(max) NOT NULL DEFAULT N'';
+2025-06-05 21:20:35.807 +05:30 [INF] Executed DbCommand (227ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250605155010_changedocumnetstore', N'9.0.3');
+2025-06-05 21:20:36.218 +05:30 [INF] Executed DbCommand (199ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-06-05 21:20:58.112 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 21:20:58.616 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 21:20:58.618 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 21:20:58.720 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 21:20:58.722 +05:30 [INF] Hosting environment: Development
+2025-06-05 21:20:58.723 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 21:20:59.614 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 21:21:00.068 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 467.9308ms
+2025-06-05 21:21:00.133 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 21:21:00.147 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 13.48ms
+2025-06-05 21:21:00.210 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 21:21:00.285 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 75.897ms
+2025-06-05 21:21:00.943 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 21:21:01.007 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 63.6824ms
+2025-06-05 21:21:32.854 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - multipart/form-data; boundary=----WebKitFormBoundarypwhGjKDLX7E1J1PA 239057
+2025-06-05 21:21:32.952 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 21:21:33.130 +05:30 [INF] Route matched with {action = "UploadUserDocument", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadUserDocument(SriKanth.Model.BusinessModule.DTOs.DocumentAdd) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 21:21:36.680 +05:30 [INF] Beginning to upload document for user 5
+2025-06-05 21:21:46.483 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:21:46.486 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:21:46.488 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:21:46.488 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:21:49.235 +05:30 [INF] Executed DbCommand (239ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[LocationCode], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-06-05 21:22:24.549 +05:30 [INF] Executed DbCommand (218ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Int64), @p4='?' (Size = 4000), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserDocumentStorage] ([AddedDate], [DocumentReference], [DocumentType], [FileSize], [OriginalFileName], [UserId])
+OUTPUT INSERTED.[UserDocumentStorageId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-06-05 21:22:26.339 +05:30 [INF] Successfully uploaded document for user 5: 20192020 Semester V End Semester Examination.pdf
+2025-06-05 21:22:33.041 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-05 21:22:33.151 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API) in 60013.9806ms
+2025-06-05 21:22:33.155 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UploadUserDocument (SriKanth.API)'
+2025-06-05 21:22:33.169 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - 200 null application/json; charset=utf-8 60314.2599ms
+2025-06-05 21:23:32.551 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-05 21:23:32.557 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 21:23:32.562 +05:30 [INF] Route matched with {action = "GetDocumentsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 21:23:34.938 +05:30 [INF] Retrieving documents for user 5
+2025-06-05 21:23:35.233 +05:30 [INF] Executed DbCommand (268ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[FileSize], [u].[OriginalFileName], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-05 21:23:35.240 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.ValueTuple`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-05 21:23:35.245 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API) in 2680.8689ms
+2025-06-05 21:23:35.246 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 21:23:35.247 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 200 null application/json; charset=utf-8 2695.8329ms
+2025-06-05 21:23:41.920 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-05 21:23:41.925 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 21:23:41.934 +05:30 [INF] Route matched with {action = "GetDocumentsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 21:23:45.645 +05:30 [INF] Retrieving documents for user 5
+2025-06-05 21:23:53.787 +05:30 [INF] Executed DbCommand (566ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[FileSize], [u].[OriginalFileName], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-05 21:23:53.792 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.ValueTuple`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-05 21:23:53.794 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API) in 11857.5755ms
+2025-06-05 21:23:53.801 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 21:23:53.804 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 200 null application/json; charset=utf-8 11884.4745ms
+2025-06-05 21:23:58.501 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-05 21:23:58.505 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDocumentsByUser (SriKanth.API)'
+2025-06-05 21:23:58.508 +05:30 [INF] Route matched with {action = "GetDocumentsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 21:24:04.842 +05:30 [INF] Retrieving documents for user 5
+2025-06-05 21:24:06.808 +05:30 [INF] Executed DbCommand (1,962ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[FileSize], [u].[OriginalFileName], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-05 21:43:11.813 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-05 21:43:12.071 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-05 21:43:12.074 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-05 21:43:12.323 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-05 21:43:12.326 +05:30 [INF] Hosting environment: Development
+2025-06-05 21:43:12.327 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-05 21:43:13.264 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-05 21:43:13.487 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 239.0959ms
+2025-06-05 21:43:13.722 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-05 21:43:13.722 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-05 21:43:13.739 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 17.1064ms
+2025-06-05 21:43:13.777 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 55.7054ms
+2025-06-05 21:43:14.371 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-05 21:43:14.389 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.6258ms
+2025-06-05 21:43:47.059 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-05 21:43:47.133 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetUserDocuments (SriKanth.API)'
+2025-06-05 21:43:47.297 +05:30 [INF] Route matched with {action = "GetUserDocuments", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserDocuments(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 21:43:54.099 +05:30 [INF] Retrieving documents for user 5
+2025-06-05 21:43:56.017 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:43:56.021 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:43:56.023 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:43:56.025 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-05 21:43:58.356 +05:30 [INF] Executed DbCommand (274ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[FileSize], [u].[OriginalFileName], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-05 21:44:36.849 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[System.ValueTuple`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], SriKanth.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-05 21:44:36.867 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetUserDocuments (SriKanth.API) in 49563.3462ms
+2025-06-05 21:44:36.870 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetUserDocuments (SriKanth.API)'
+2025-06-05 21:44:36.878 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 200 null application/json; charset=utf-8 49819.4616ms
+2025-06-05 21:46:08.738 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/download?documentUrl=https%3A%2F%2Fsasrikanthasalesapp.blob.core.windows.net%2Fdocuments%2F6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - null null
+2025-06-05 21:46:08.750 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.DownloadDocument (SriKanth.API)'
+2025-06-05 21:46:08.755 +05:30 [INF] Route matched with {action = "DownloadDocument", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DownloadDocument(System.String) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-05 21:46:10.920 +05:30 [INF] Executing FileStreamResult, sending file with download name '6503c61b-4cf0-454a-bffe-49e671d79d76.pdf' ...
+2025-06-05 21:46:13.122 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.DownloadDocument (SriKanth.API) in 4366.3799ms
+2025-06-05 21:46:13.127 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.DownloadDocument (SriKanth.API)'
+2025-06-05 21:46:13.130 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/download?documentUrl=https%3A%2F%2Fsasrikanthasalesapp.blob.core.windows.net%2Fdocuments%2F6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - 200 null application/octet-stream 4392.5499ms

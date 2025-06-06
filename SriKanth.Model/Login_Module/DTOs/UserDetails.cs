@@ -16,7 +16,7 @@ namespace SriKanth.Model.Login_Module.DTOs
 		public string LastName { get; set; }
 		public int UserRoleId { get; set; }
 		public string SalesPersonCode { get; set; }
-		public string LocationCode { get; set; }
+		public List<string> LocationCodes { get; set; }
 		public string? Email { get; set; }
 		public string? PhoneNumber { get; set; }
 		public bool IsActive { get; set; }

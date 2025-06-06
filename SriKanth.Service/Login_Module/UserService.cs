@@ -9,6 +9,7 @@ using Org.BouncyCastle.Ocsp;
 using SriKanth.Interface;
 using SriKanth.Interface.Data;
 using SriKanth.Interface.Login_Module;
+using SriKanth.Interface.SalesModule;
 using SriKanth.Model;
 using SriKanth.Model.Login_Module.DTOs;
 using SriKanth.Model.Login_Module.Entities;
@@ -367,14 +368,24 @@ namespace SriKanth.Service.Login_Module
 					PasswordHash = hashedPassword,
 					UserRoleId = userDetails.UserRoleId,
 					SalesPersonCode = userDetails.SalesPersonCode,
-					LocationCode = userDetails.LocationCode,
 					Email = _encryption.EncryptData(userDetails.Email),
 					PhoneNumber = _encryption.EncryptData(userDetails.PhoneNumber),
 					IsActive = userDetails.IsActive,
 					CreatedAt = DateTime.UtcNow
 				};
 				await _userData.CreateUserAsync(user);
+				var locations = new List<UserLocation>();
+				foreach (var locationCode in userDetails.LocationCodes)
+				{
+					locations.Add(new UserLocation
+					{
+						UserId = user.UserID,
+						LocationCode = locationCode
+					});
 
+				}
+
+				await _userData.AddUserLocationsAsync(locations);
 				var mfaUser = new MFASetting
 				{
 					UserID = user.UserID,
@@ -438,14 +449,13 @@ namespace SriKanth.Service.Login_Module
 					exUser.PasswordHash = hashedPassword;
 				}
 				// If password is null/empty, keep the existing password unchanged
-
+				var userLocations = await _userData.GetUserLocationsByIdAsync(userId);
 				// Update user properties
 				exUser.Username = _encryption.EncryptData(userDetails.Username);
 				exUser.FirstName = userDetails.FirstName;
 				exUser.LastName = userDetails.LastName;
 				exUser.UserRoleId = userDetails.UserRoleId;
 				exUser.SalesPersonCode = userDetails.SalesPersonCode;
-				exUser.LocationCode = userDetails.LocationCode;
 				exUser.Email = _encryption.EncryptData(userDetails.Email);
 				exUser.PhoneNumber = _encryption.EncryptData(userDetails.PhoneNumber);
 				exUser.IsActive = userDetails.IsActive; // Added missing property
@@ -459,7 +469,12 @@ namespace SriKanth.Service.Login_Module
 				// Save to database
 				await _userData.UpdateUserAsync(exUser);
 				await _userData.UpdateMfaTypeAsync(exMfa);
-
+				await _userData.RemoveUserLocationsByIdAsync(userLocations);
+				await _userData.AddUserLocationsAsync(userDetails.LocationCodes.Select(loc => new UserLocation
+				{
+					UserId = userId,
+					LocationCode = loc
+				}));
 				_logger.LogInformation("User updated successfully with UserId: {UserId}", userId);
 				return new ServiceResult { Success = true, Message = "User updated successfully.",UserId = exUser.UserID };
 			}
@@ -535,6 +550,7 @@ namespace SriKanth.Service.Login_Module
 				_logger.LogInformation("Retrieving user details by userId");
 				var user = await _userData.GetUserByIdAsync(userId);
 				var mfa = await _userData.GetMFATypeAsync(userId);
+				var userLocations = await _userData.GetUserLocationCodesAsync(userId);
 				if (user == null)
 				{
 					_logger.LogWarning($"User with UserId:{userId} not found ");
@@ -551,7 +567,7 @@ namespace SriKanth.Service.Login_Module
 					LastName = user.LastName,
 					UserRoleId = user.UserRoleId,
 					SalesPersonCode = user.SalesPersonCode,
-					LocationCode = user.LocationCode,
+					LocationCodes = userLocations,
 					Email = _encryption.DecryptData(user.Email),
 					PhoneNumber = _encryption.DecryptData(user.PhoneNumber),
 					IsActive = user.IsActive,
@@ -567,6 +583,39 @@ namespace SriKanth.Service.Login_Module
 				_logger.LogError(ex, "Error while retrieving user details for UserId: {UserId}", userId);
 				throw new InvalidOperationException($"An error occurred while retrieving user details for ID {userId}", ex);
 			
+			}
+		}
+		public async Task<List<UserReturn>> GetListOfUsersAsync()
+		{
+
+			try
+			{
+				_logger.LogInformation("Retrieving List of users ");
+				var users = await _userData.GetAllUsersAsync();
+
+				var userDetailsList = new List<UserReturn>();
+				foreach (var user in users)
+				{
+					var decryptedPassword = _encryption.DecryptData(user.PasswordHash);
+					userDetailsList.Add(new UserReturn
+					{
+						Username = _encryption.DecryptData(user.Username),
+						FirstName = user.FirstName,
+						LastName = user.LastName,
+						UserRoleId = user.UserRoleId,
+						SalesPersonCode = user.SalesPersonCode,
+						IsActive = user.IsActive,
+					});
+				}
+
+				_logger.LogInformation("Successfully retrieved user details list");
+				return userDetailsList;
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Error while retrieving user details");
+				throw new InvalidOperationException($"An error occurred while retrieving user details", ex);
+
 			}
 		}
 		/// <summary>

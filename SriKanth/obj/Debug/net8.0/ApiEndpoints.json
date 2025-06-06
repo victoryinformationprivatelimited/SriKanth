@@ -38,8 +38,72 @@
   },
   {
     "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "DeleteDocument",
+    "RelativePath": "api/Business/DeleteDocument",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "documentUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "DownloadDocument",
+    "RelativePath": "api/Business/download",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "documentUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
     "Method": "GetDeliveredOrdersByUser",
     "RelativePath": "api/Business/GetDeliveredOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetInvoicedByUser",
+    "RelativePath": "api/Business/GetInvoiceDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetUserDocuments",
+    "RelativePath": "api/Business/GetListOfDocuments",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -121,6 +185,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "UploadUserDocument",
+    "RelativePath": "api/Business/UploadUserDocument",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Document",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SriKanth.API.Controllers.UserController",
     "Method": "AddNewUser",
     "RelativePath": "api/User/AddUser",
@@ -134,6 +219,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/User/GetAllUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

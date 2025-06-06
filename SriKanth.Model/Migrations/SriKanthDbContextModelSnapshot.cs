@@ -22,6 +22,40 @@ namespace SriKanth.Model.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("HRIS.Model.Employee_Module.Entities.UserDocumentStorage", b =>
+                {
+                    b.Property<int>("UserDocumentStorageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserDocumentStorageId"));
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DocumentReference")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DocumentType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("OriginalFileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserDocumentStorageId");
+
+                    b.ToTable("UserDocumentStorage");
+                });
+
             modelBuilder.Entity("SriKanth.Model.BusinessModule.Entities.Order", b =>
                 {
                     b.Property<int>("OrderNumber")

@@ -31,7 +31,7 @@ namespace SriKanth.Data
 			await _context.SaveChangesAsync();
 		}
 
-		public async Task<IEnumerable<User>> GetAllUsersAsync()
+		public async Task<List<User>> GetAllUsersAsync()
 		{
 			return await _context.Users.ToListAsync();
 		}
@@ -160,5 +160,32 @@ namespace SriKanth.Data
 			await _context.UserHistory.AddAsync(userHistory);
 			await _context.SaveChangesAsync();
 		}
+		public async Task AddUserLocationsAsync(IEnumerable<UserLocation> userLocations)
+		{
+			await _context.UserLocation.AddRangeAsync(userLocations);
+			await _context.SaveChangesAsync();
+		}
+		public async Task<List<UserLocation>> GetUserLocationsByIdAsync(int userId)
+		{
+			return await _context.UserLocation
+								 .Where(l => l.UserId == userId)
+								 .ToListAsync();
+		}
+		public async Task RemoveUserLocationsByIdAsync(IEnumerable<UserLocation> userLocations)
+		{
+			if (userLocations.Any())
+			{
+				_context.UserLocation.RemoveRange(userLocations);
+				await _context.SaveChangesAsync();
+			}
+		}
+		public async Task<List<string>> GetUserLocationCodesAsync(int userId)
+		{
+			return await _context.UserLocation
+								 .Where(l => l.UserId == userId)
+								 .Select(l => l.LocationCode)
+								 .ToListAsync();
+		}
+
 	}
 }

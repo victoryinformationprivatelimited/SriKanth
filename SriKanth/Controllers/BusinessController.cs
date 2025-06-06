@@ -1,25 +1,41 @@
 ﻿using HRIS.API.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SriKanth.Interface;
+using SriKanth.Interface.SalesModule;
 using SriKanth.Model.BusinessModule.DTOs;
 using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.Login_Module.DTOs;
 
 namespace SriKanth.API.Controllers
 {
+	/// <summary>
+	/// Controller for handling business-related operations including orders, documents, and inventory
+	/// </summary>
 	[ApiController]
 	[Route("api/[controller]")]
 	public class BusinessController : Controller
 	{
 		private readonly IConfiguration _configuration;
 		private readonly IBusinessApiService _businessApiService;
-		public BusinessController(IConfiguration configuration, IBusinessApiService businessApiService) 
+		private readonly IAzureBlobStorageService _azureBlobStorage;
+
+		/// <summary>
+		/// Initializes a new instance of the BusinessController class
+		/// </summary>
+		/// <param name="configuration">Application configuration</param>
+		/// <param name="businessApiService">Business API service</param>
+		/// <param name="azureBlobStorage">Azure Blob Storage service</param>
+		public BusinessController(IConfiguration configuration, IBusinessApiService businessApiService, IAzureBlobStorageService azureBlobStorage)
 		{
 			_configuration = configuration;
 			_businessApiService = businessApiService;
+			_azureBlobStorage = azureBlobStorage;
 		}
 
+		/// <summary>
+		/// Retrieves stock details from the inventory
+		/// </summary>
+		/// <returns>List of stock items</returns>
 		[HttpGet("GetStockDetails")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -27,6 +43,7 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Get stock data from the business service
 				var stockData = await _businessApiService.GetSalesStockDetails();
 				return Ok(stockData);
 			}
@@ -36,6 +53,10 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Retrieves order creation details for all users
+		/// </summary>
+		/// <returns>List of order creation details</returns>
 		[HttpGet("GetListOfOrderCreationDetails")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -43,6 +64,7 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Get order creation details from the business service
 				var stockData = await _businessApiService.GetOrderCreationDetailsAsync();
 				return Ok(stockData);
 			}
@@ -52,6 +74,11 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Retrieves order creation details for a specific user
+		/// </summary>
+		/// <param name="userId">ID of the user</param>
+		/// <returns>List of order creation details for the specified user</returns>
 		[HttpGet("GetOrderCreationDetailsByUser")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -59,6 +86,7 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Get filtered order creation details for the specified user
 				var stockData = await _businessApiService.GetFilteredOrderCreationDetailsAsync(userId);
 				return Ok(stockData);
 			}
@@ -68,19 +96,27 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Creates a new order for a user
+		/// </summary>
+		/// <param name="userId">ID of the user creating the order</param>
+		/// <param name="orderRequest">Order request details</param>
+		/// <returns>Result of the order creation</returns>
 		[HttpPost("CreateOrder")]
-		//[Authorize]
+		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> CreateOrder(int userId, [FromBody] OrderRequest orderRequest)
 		{
 			try
 			{
+				// Validate the model state
 				if (!ModelState.IsValid)
 				{
 					return BadRequest(ModelState);
 				}
 
-				var result = await _businessApiService.SubmitOrderAsync(userId,orderRequest);
+				// Submit the order to the business service
+				var result = await _businessApiService.SubmitOrderAsync(userId, orderRequest);
 
 				if (!result.Success)
 				{
@@ -94,6 +130,11 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Retrieves pending orders for a specific user
+		/// </summary>
+		/// <param name="userId">ID of the user</param>
+		/// <returns>List of pending orders</returns>
 		[HttpGet("GetPendingOrders")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -101,6 +142,7 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Get pending orders for the specified user
 				var stockData = await _businessApiService.GetOrdersListAsync(userId, OrderStatus.Pending);
 				return Ok(stockData);
 			}
@@ -109,6 +151,12 @@ namespace SriKanth.API.Controllers
 				return StatusCode(500, $"Error: {ex.Message}");
 			}
 		}
+
+		/// <summary>
+		/// Retrieves delivered orders for a specific user
+		/// </summary>
+		/// <param name="userId">ID of the user</param>
+		/// <returns>List of delivered orders</returns>
 		[HttpGet("GetDeliveredOrders")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -116,6 +164,7 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Get delivered orders for the specified user
 				var stockData = await _businessApiService.GetOrdersListAsync(userId, OrderStatus.Delivered);
 				return Ok(stockData);
 			}
@@ -124,6 +173,12 @@ namespace SriKanth.API.Controllers
 				return StatusCode(500, $"Error: {ex.Message}");
 			}
 		}
+
+		/// <summary>
+		/// Retrieves rejected orders for a specific user
+		/// </summary>
+		/// <param name="userId">ID of the user</param>
+		/// <returns>List of rejected orders</returns>
 		[HttpGet("GetRejectedOrders")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -131,6 +186,7 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Get rejected orders for the specified user
 				var stockData = await _businessApiService.GetOrdersListAsync(userId, OrderStatus.Rejected);
 				return Ok(stockData);
 			}
@@ -139,6 +195,12 @@ namespace SriKanth.API.Controllers
 				return StatusCode(500, $"Error: {ex.Message}");
 			}
 		}
+
+		/// <summary>
+		/// Updates the status of an order
+		/// </summary>
+		/// <param name="updateOrderRequest">Order status update request</param>
+		/// <returns>Result of the status update</returns>
 		[HttpPost("ChangeStatus")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -146,11 +208,13 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Validate the model state
 				if (!ModelState.IsValid)
 				{
 					return BadRequest(ModelState);
 				}
 
+				// Update the order status through the business service
 				var result = await _businessApiService.UpdateOrderStatusAsync(updateOrderRequest);
 
 				if (!result.Success)
@@ -165,5 +229,135 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Retrieves invoice details for a specific user
+		/// </summary>
+		/// <param name="userId">ID of the user</param>
+		/// <returns>List of invoices</returns>
+		[HttpGet("GetInvoiceDetails")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetInvoicedByUser(int userId)
+		{
+			try
+			{
+				// Get invoice details for the specified user
+				var stockData = await _businessApiService.GetCustomerInvoicesAsync(userId);
+				return Ok(stockData);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+
+		/// <summary>
+		/// Uploads a document for a user to Azure Blob Storage
+		/// </summary>
+		/// <param name="documentAdd">Document upload request</param>
+		/// <returns>Result of the upload operation</returns>
+		[HttpPost("UploadUserDocument")]
+		[Authorize]
+		[DisableRequestSizeLimit] // For large file uploads
+		[RequestFormLimits(ValueLengthLimit = int.MaxValue, MultipartBodyLengthLimit = long.MaxValue)]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> UploadUserDocument([FromForm] DocumentAdd documentAdd)
+		{
+			try
+			{
+				// Check if document is provided
+				if (documentAdd.Document == null)
+					return BadRequest(new { message = "No document uploaded." });
+
+				// Upload the document to Azure Blob Storage
+				var (documentUrl, documentType, documentReference) = await _azureBlobStorage.UploadDocumentAsync(documentAdd.UserId, documentAdd.Document);
+
+				return Ok(new
+				{
+					message = "Document uploaded successfully.",
+					documentUrl,
+					documentType
+				});
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Internal server error: {ex.Message}");
+			}
+		}
+
+		/// <summary>
+		/// Retrieves a list of documents for a specific user
+		/// </summary>
+		/// <param name="userId">ID of the user</param>
+		/// <returns>List of document metadata</returns>
+		[HttpGet("GetListOfDocuments")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetUserDocuments(int userId)
+		{
+			try
+			{
+				// Get list of documents for the specified user
+				var documents = await _azureBlobStorage.GetListOfDocumentsAsync(userId);
+
+				// Format the response
+				var result = documents.Select(d => new
+				{
+					Url = d.DocumentUrl,
+					Type = d.DocumentType,
+					OriginalName = d.OriginalFileName
+				});
+
+				return Ok(result);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, "Error retrieving documents");
+			}
+		}
+
+		/// <summary>
+		/// Downloads a document from Azure Blob Storage
+		/// </summary>
+		/// <param name="documentUrl">URL of the document to download</param>
+		/// <returns>The document file</returns>
+		[HttpGet("download")]
+		[Authorize]
+		public async Task<IActionResult> DownloadDocument([FromQuery] string documentUrl)
+		{
+			try
+			{
+				// Download the document from Azure Blob Storage
+				var result = await _azureBlobStorage.DownloadDocumentAsync(documentUrl);
+
+				// Return the file with proper content type and file name
+				return File(result.FileStream, result.ContentType, result.FileName);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, "Error downloading document");
+			}
+		}
+
+		/// <summary>
+		/// Deletes a document from Azure Blob Storage
+		/// </summary>
+		/// <param name="documentUrl">URL of the document to delete</param>
+		/// <returns>Result of the delete operation</returns>
+		[HttpDelete("DeleteDocument")]
+		[Authorize]
+		public async Task<IActionResult> DeleteDocument([FromQuery] string documentUrl)
+		{
+			try
+			{
+				// Delete the document from Azure Blob Storage
+				await _azureBlobStorage.DeleteDocumentAsync(documentUrl);
+				return NoContent();
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, "Error deleting document");
+			}
+		}
 	}
 }

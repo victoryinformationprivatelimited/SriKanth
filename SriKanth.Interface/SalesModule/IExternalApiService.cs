@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SriKanth.Interface
+namespace SriKanth.Interface.SalesModule
 {
 	public interface IExternalApiService
 	{
@@ -21,5 +21,6 @@ namespace SriKanth.Interface
 		Task<SalesPriceApiResponse> GetSalesPriceAsync();
 		Task<CustomerApiResponse> GetCustomerDetailsAsync();
 		Task<SalesIntegrationResponse> PostSalesOrderAsync(SalesOrderRequest salesOrder);
+		Task<InvoiceApiResponse> GetInvoiceDetailsAsync();
 	}
 }

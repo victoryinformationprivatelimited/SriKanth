@@ -8,6 +8,9 @@ using SriKanth.Model.Login_Module.DTOs;
 
 namespace SriKanth.API.Controllers
 {
+	/// <summary>
+	/// Controller for handling user authentication, authorization, and management operations
+	/// </summary>
 	[ApiController]
 	[Route("api/[controller]")]
 	public class UserController : ControllerBase
@@ -20,10 +23,12 @@ namespace SriKanth.API.Controllers
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UserController"/> class.
 		/// </summary>
-		/// <param name="userService">The user service.</param>
-		/// <param name="configuration">The configuration.</param>
-		/// <param name="mfaService">The MFA service.</param>
-		public UserController(IUserService userService, IConfiguration configuration, IMfaService mfaService, IJwtTokenService jwtTokenService)
+		/// <param name="userService">Service for user-related operations</param>
+		/// <param name="configuration">Application configuration settings</param>
+		/// <param name="mfaService">Service for Multi-Factor Authentication</param>
+		/// <param name="jwtTokenService">Service for JWT token operations</param>
+		public UserController(IUserService userService, IConfiguration configuration,
+							IMfaService mfaService, IJwtTokenService jwtTokenService)
 		{
 			_userService = userService;
 			_configuration = configuration;
@@ -31,36 +36,43 @@ namespace SriKanth.API.Controllers
 			_jwtTokenService = jwtTokenService;
 		}
 
-		// Endpoint for user login
 		/// <summary>
-		/// Endpoint for user login.
+		/// Authenticates a user and returns access tokens or MFA requirement
 		/// </summary>
-		/// <param name="loginRequest">The login request data.</param>
-		/// <returns>Returns an action result indicating the login outcome.</returns>
+		/// <param name="loginRequest">User credentials including username and password</param>
+		/// <returns>
+		/// Returns JWT tokens if authentication succeeds without MFA,
+		/// or MFA requirements if MFA is enabled for the user
+		/// </returns>
 		[HttpPost("login")]
 		[EnableRateLimiting("LoginLimit")]
 		public async Task<IActionResult> Login([FromBody] RequestLogin loginRequest)
 		{
 			try
-			{   // Check if the model state is valid
+			{
+				// Validate the request model
 				if (!ModelState.IsValid)
 				{
 					return BadRequest(ModelState);
 				}
-				// Attempt to log the user in
+
+				// Attempt user authentication
 				var result = await _userService.LoginAsync(loginRequest);
-				// Check if login was unsuccessful
+
+				// Handle failed authentication
 				if (!result.Success)
 				{
 					return Unauthorized(new { userlocked = result.UserLocked, message = result.Message });
 				}
 
-				// If MFA is required
+				// Return tokens if MFA not required
 				if (!result.RequiresMfa)
 				{
 					return Ok(new { Acctoken = result.AccessToken, RefToken = result.RefreshToken });
 				}
-				return Ok(new { Success = result.Success, Message = result.Message, UserId = result.UserId, });
+
+				// Return MFA requirements if needed
+				return Ok(new { Success = result.Success, Message = result.Message, UserId = result.UserId });
 			}
 			catch (Exception ex)
 			{
@@ -69,14 +81,14 @@ namespace SriKanth.API.Controllers
 		}
 
 		/// <summary>
-		/// Endpoint for refreshing tokens.
+		/// Generates new access and refresh tokens using a valid refresh token
 		/// </summary>
-		/// <param name="refreshTokenRequest">The refresh token request data.</param>
-		/// <returns>Returns an action result with the new access and refresh tokens.</returns>
+		/// <param name="request">Contains the refresh token</param>
+		/// <returns>New access and refresh tokens if validation succeeds</returns>
 		[HttpPost("refresh-token")]
-		public async Task<IActionResult> RefreshToken( [FromBody] RefreshTokenRequest request)
+		public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest request)
 		{
-			// Validate the refresh token request
+			// Validate refresh token presence
 			if (request?.RefreshToken == null || string.IsNullOrEmpty(request.RefreshToken))
 			{
 				return BadRequest(new { message = "Refresh token is required." });
@@ -84,6 +96,7 @@ namespace SriKanth.API.Controllers
 
 			try
 			{
+				// Attempt to refresh tokens
 				var response = await _jwtTokenService.RefreshToken(request.RefreshToken);
 				return Ok(new
 				{
@@ -101,50 +114,53 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
-		// Endpoint for MFA code validation
 		/// <summary>
-		/// Endpoint for MFA code validation.
+		/// Validates a Multi-Factor Authentication code
 		/// </summary>
-		/// <param name="mfaRequest">The MFA validation request data.</param>
-		/// <returns>Returns an action result indicating the validation outcome.</returns>
+		/// <param name="mfaRequest">Contains user ID and MFA code</param>
+		/// <returns>JWT tokens if validation succeeds</returns>
 		[HttpPost("validate-mfa")]
 		[EnableRateLimiting("LoginLimit")]
 		public async Task<IActionResult> ValidateMfa([FromBody] MFAValidationRequest mfaRequest)
 		{
-			// Validate the request model state
+			// Validate the request model
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
-			// Attempt to validate the MFA code
+
+			// Validate MFA code
 			var result = await _mfaService.ValidateMfaAsync(mfaRequest.UserId, mfaRequest.MfaCode);
-			// Check if validation was unsuccessful
+
+			// Handle failed validation
 			if (!result.Success)
 			{
 				return Unauthorized(new { message = result.Message });
 			}
 
-			// If MFA is successfully validated, return JWT token
+			// Return tokens on successful validation
 			return Ok(new { Success = true, Acctoken = result.AccessToken, RefToken = result.RefreshToken });
 		}
 
 		/// <summary>
-		/// Endpoint for password reset.
+		/// Initiates a password reset process for a user
 		/// </summary>
-		/// <param name="loginreq">The login request data for password reset.</param>
-		/// <returns>Returns an action result indicating the reset outcome.</returns>
+		/// <param name="loginreq">User credentials for password reset</param>
+		/// <returns>Confirmation of reset initiation</returns>
 		[HttpPost("reset-password")]
 		[EnableRateLimiting("LoginLimit")]
 		public async Task<IActionResult> PasswordReset([FromBody] RequestLogin loginreq)
 		{
-			// Validate the request model state
+			// Validate the request model
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
-			// Attempt to reset the password
+
+			// Initiate password reset
 			var result = await _userService.PasswordResetAsync(loginreq);
 
+			// Handle failed reset request
 			if (!result.Success)
 			{
 				return Unauthorized(new { message = result.Message });
@@ -153,23 +169,24 @@ namespace SriKanth.API.Controllers
 			return Ok(new { UserId = result.UserId, message = result.Message });
 		}
 
-
 		/// <summary>
-		/// Endpoint for setting a new password.
+		/// Sets a new password for a user after reset confirmation
 		/// </summary>
-		/// <param name="passwordreset">The new password request data.</param>
-		/// <returns>Returns an action result indicating the outcome.</returns>
+		/// <param name="passwordreset">New password information</param>
+		/// <returns>Confirmation of password change</returns>
 		[HttpPost("new-password")]
 		public async Task<IActionResult> SetnewPassword([FromBody] PasswordReset passwordreset)
 		{
-			// Validate the request model state
+			// Validate the request model
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
-			// Attempt to store the new password
+
+			// Store new password
 			var result = await _userService.StoreNewpasswordAsync(passwordreset);
 
+			// Handle failed password change
 			if (!result.Success)
 			{
 				return Unauthorized(new { message = result.Message });
@@ -178,6 +195,11 @@ namespace SriKanth.API.Controllers
 			return Ok(new { message = result.Message });
 		}
 
+		/// <summary>
+		/// Creates a new user account
+		/// </summary>
+		/// <param name="userDetails">Complete user information</param>
+		/// <returns>Confirmation of user creation</returns>
 		[HttpPost("AddUser")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -185,13 +207,16 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Validate the request model
 				if (!ModelState.IsValid)
 				{
 					return BadRequest(ModelState);
 				}
 
+				// Create new user
 				var result = await _userService.CreateUserAsync(userDetails);
 
+				// Handle failed user creation
 				if (!result.Success)
 				{
 					return BadRequest(new { message = result.Message });
@@ -204,6 +229,12 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Updates an existing user's information
+		/// </summary>
+		/// <param name="userId">ID of the user to update</param>
+		/// <param name="userDetails">Updated user information</param>
+		/// <returns>Confirmation of user update</returns>
 		[HttpPut("UpdateUser")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -211,13 +242,16 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Validate the request model
 				if (!ModelState.IsValid)
 				{
 					return BadRequest(ModelState);
 				}
 
+				// Update user information
 				var result = await _userService.UpdateUserAsync(userId, userDetails);
 
+				// Handle failed update
 				if (!result.Success)
 				{
 					return BadRequest(new { message = result.Message });
@@ -230,11 +264,16 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Retrieves details required for user creation (roles, permissions, etc.)
+		/// </summary>
+		/// <returns>List of user creation options and templates</returns>
 		[HttpGet("GetUserCreationDetails")]
 		public async Task<IActionResult> GetUserCreationDetails()
 		{
 			try
 			{
+				// Get user creation metadata
 				var userData = await _userService.GetUserCreationDetailsAsync();
 				return Ok(userData);
 			}
@@ -244,6 +283,11 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Retrieves detailed information for a specific user
+		/// </summary>
+		/// <param name="userId">ID of the user to retrieve</param>
+		/// <returns>Complete user details</returns>
 		[HttpGet("GetUserDetailsById")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
@@ -251,7 +295,29 @@ namespace SriKanth.API.Controllers
 		{
 			try
 			{
+				// Get user details by ID
 				var userData = await _userService.GetUserDetailsByIdAsync(userId);
+				return Ok(userData);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+
+		/// <summary>
+		/// Retrieves a list of all users in the system
+		/// </summary>
+		/// <returns>List of all users with basic information</returns>
+		[HttpGet("GetAllUsers")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetAllUsers()
+		{
+			try
+			{
+				// Get all users
+				var userData = await _userService.GetListOfUsersAsync();
 				return Ok(userData);
 			}
 			catch (Exception ex)
