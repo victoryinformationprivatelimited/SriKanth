@@ -53,6 +53,8 @@ namespace SriKanth.Model.Migrations
 
                     b.HasKey("UserDocumentStorageId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("UserDocumentStorage");
                 });
 
@@ -338,10 +340,6 @@ namespace SriKanth.Model.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("LocationCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -372,6 +370,28 @@ namespace SriKanth.Model.Migrations
                     b.HasIndex("UserRoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("SriKanth.Model.Login_Module.Entities.UserLocation", b =>
+                {
+                    b.Property<int>("UserLocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserLocationId"));
+
+                    b.Property<string>("LocationCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserLocationId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserLocation");
                 });
 
             modelBuilder.Entity("SriKanth.Model.Login_Module.Entities.UserRole", b =>
@@ -499,7 +519,18 @@ namespace SriKanth.Model.Migrations
 
                     b.HasKey("UserHistoryId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("UserHistory");
+                });
+
+            modelBuilder.Entity("HRIS.Model.Employee_Module.Entities.UserDocumentStorage", b =>
+                {
+                    b.HasOne("SriKanth.Model.Login_Module.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SriKanth.Model.Login_Module.Entities.LoginTrack", b =>
@@ -538,11 +569,29 @@ namespace SriKanth.Model.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SriKanth.Model.Login_Module.Entities.UserLocation", b =>
+                {
+                    b.HasOne("SriKanth.Model.Login_Module.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("SriKanth.Model.Login_Module.Entities.UserToken", b =>
                 {
                     b.HasOne("SriKanth.Model.Login_Module.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SriKanth.Model.UserHistory", b =>
+                {
+                    b.HasOne("SriKanth.Model.Login_Module.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });

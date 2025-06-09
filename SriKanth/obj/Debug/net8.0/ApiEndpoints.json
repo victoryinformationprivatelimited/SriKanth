@@ -223,6 +223,22 @@
   },
   {
     "ContainingType": "SriKanth.API.Controllers.UserController",
+    "Method": "EncryptText",
+    "RelativePath": "api/User/encrypt",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SriKanth.API.Controllers.EncryptTextRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.UserController",
     "Method": "GetAllUsers",
     "RelativePath": "api/User/GetAllUsers",
     "HttpMethod": "GET",

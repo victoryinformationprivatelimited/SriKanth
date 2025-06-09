@@ -41,14 +41,7 @@ namespace SriKanth.Model
 		public virtual DbSet<UserHistory> UserHistory { get; set; }
 		public virtual DbSet<UserDocumentStorage> UserDocumentStorage { get; set; }
 		public virtual DbSet<UserLocation> UserLocation { get; set; }
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			if (!optionsBuilder.IsConfigured)
-			{
-				// Correct way to get connection string from IConfiguration
-				optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
-			}
-		}
+		
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

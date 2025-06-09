@@ -37,7 +37,7 @@ namespace SriKanth.API.Controllers
 		/// </summary>
 		/// <returns>List of stock items</returns>
 		[HttpGet("GetStockDetails")]
-		[Authorize]
+		//[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetStockDetails()
 		{
@@ -58,7 +58,7 @@ namespace SriKanth.API.Controllers
 		/// </summary>
 		/// <returns>List of order creation details</returns>
 		[HttpGet("GetListOfOrderCreationDetails")]
-		[Authorize]
+		//[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetListOfOrderCreationDetails()
 		{
@@ -80,7 +80,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userId">ID of the user</param>
 		/// <returns>List of order creation details for the specified user</returns>
 		[HttpGet("GetOrderCreationDetailsByUser")]
-		[Authorize]
+	//	[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetOrderCreationDetailsByUser(int userId)
 		{
@@ -136,7 +136,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userId">ID of the user</param>
 		/// <returns>List of pending orders</returns>
 		[HttpGet("GetPendingOrders")]
-		[Authorize]
+		//[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetPendingOrdersByUser(int userId)
 		{
@@ -158,7 +158,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userId">ID of the user</param>
 		/// <returns>List of delivered orders</returns>
 		[HttpGet("GetDeliveredOrders")]
-		[Authorize]
+		//[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetDeliveredOrdersByUser(int userId)
 		{
@@ -180,7 +180,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userId">ID of the user</param>
 		/// <returns>List of rejected orders</returns>
 		[HttpGet("GetRejectedOrders")]
-		[Authorize]
+		//[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetRejectedOrdersByUser(int userId)
 		{
@@ -202,7 +202,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="updateOrderRequest">Order status update request</param>
 		/// <returns>Result of the status update</returns>
 		[HttpPost("ChangeStatus")]
-		[Authorize]
+		//[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> UpdateOrderStatus(UpdateOrderRequest updateOrderRequest)
 		{
@@ -235,7 +235,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userId">ID of the user</param>
 		/// <returns>List of invoices</returns>
 		[HttpGet("GetInvoiceDetails")]
-		[Authorize]
+		//[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetInvoicedByUser(int userId)
 		{

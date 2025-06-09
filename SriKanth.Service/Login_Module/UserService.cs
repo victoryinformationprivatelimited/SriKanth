@@ -62,7 +62,7 @@ namespace SriKanth.Service.Login_Module
 
 				if (user != null)
 				{
-					user.RememberMe = loginRequest.Rememberme;
+					user.RememberMe = loginRequest.RememberMe;
 				}
 
 				// If the user doesn't exist or the password is incorrect
@@ -335,121 +335,157 @@ namespace SriKanth.Service.Login_Module
 				return false;
 			}
 		}
+		/// <summary>
+		/// Creates a new user account
+		/// </summary>
+		/// <param name="userDetails">User details for new account</param>
+		/// <returns>Service result with success status</returns>
 		public async Task<ServiceResult> CreateUserAsync(UserDetails userDetails)
 		{
 			try
 			{
-				_logger.LogInformation("Attempting to create new user with Username: {Username} or Email: {Email}", userDetails.Username, userDetails.Email);
+				_logger.LogInformation("Creating user: {Username}", userDetails.Username);
 
-				// Check if a user already exists with the given username or email
-				var existingUser = await _userData.CheckUserByUsernameOrEmailAsync(_encryption.EncryptData(userDetails.Username), _encryption.EncryptData(userDetails.Email));
+				// Check for existing user
+				var encryptedUsername = _encryption.EncryptData(userDetails.Username);
+				var encryptedEmail = _encryption.EncryptData(userDetails.Email);
+				var existingUser = await _userData.CheckUserByUsernameOrEmailAsync(encryptedUsername, encryptedEmail);
 				if (existingUser != null)
 				{
-					_logger.LogWarning("Username or Email already exists.");
-					return new ServiceResult { Success = false, Message = "Username or Email already exists." };
+					_logger.LogWarning("Duplicate user: {Username}", userDetails.Username);
+					return new ServiceResult
+					{
+						Success = false,
+						Message = "Username or Email already exists."
+					};
 				}
 
-				// Check if passwords match
+				// Validate password match
 				if (userDetails.Password != userDetails.ReEnteredPassword)
 				{
-					_logger.LogWarning("Passwords do not match for user creation.");
-					return new ServiceResult { Success = false, Message = "Passwords do not match." };
+					_logger.LogWarning("Password mismatch for user: {Username}", userDetails.Username);
+					return new ServiceResult
+					{
+						Success = false,
+						Message = "Passwords do not match."
+					};
 				}
-
-				// Hash the password
-				string hashedPassword =  _encryption.EncryptData(userDetails.Password);
 
 				// Create user entity
 				var user = new User
 				{
-					Username = _encryption.EncryptData(userDetails.Username),
+					Username = encryptedUsername,
 					FirstName = userDetails.FirstName,
 					LastName = userDetails.LastName,
-					PasswordHash = hashedPassword,
+					PasswordHash = _encryption.EncryptData(userDetails.Password),
 					UserRoleId = userDetails.UserRoleId,
 					SalesPersonCode = userDetails.SalesPersonCode,
-					Email = _encryption.EncryptData(userDetails.Email),
+					Email = encryptedEmail,
 					PhoneNumber = _encryption.EncryptData(userDetails.PhoneNumber),
 					IsActive = userDetails.IsActive,
 					CreatedAt = DateTime.UtcNow
 				};
-				await _userData.CreateUserAsync(user);
-				var locations = new List<UserLocation>();
-				foreach (var locationCode in userDetails.LocationCodes)
-				{
-					locations.Add(new UserLocation
-					{
-						UserId = user.UserID,
-						LocationCode = locationCode
-					});
 
-				}
+				await _userData.CreateUserAsync(user);
+
+				// Add user locations
+				var locations = userDetails.LocationCodes.Select(loc => new UserLocation
+				{
+					UserId = user.UserID,
+					LocationCode = loc
+				}).ToList();
 
 				await _userData.AddUserLocationsAsync(locations);
+
+				// Add MFA settings
 				var mfaUser = new MFASetting
 				{
 					UserID = user.UserID,
-					IsMFAEnabled = userDetails.IsMfaEnabled, 
+					IsMFAEnabled = userDetails.IsMfaEnabled,
 					PreferredMFAType = userDetails.MfaType
 				};
-						// Save to database
-			
 				await _userData.AddMfaSettingAsync(mfaUser);
 
-				_logger.LogInformation("User created successfully.");
-				return new ServiceResult { Success = true, Message = "User created successfully.",UserId = user.UserID };
+				_logger.LogInformation("User created: {UserId}", user.UserID);
+				return new ServiceResult
+				{
+					Success = true,
+					Message = "User created successfully.",
+					UserId = user.UserID
+				};
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "An error occurred while creating user with Username: {Username}", userDetails.Username);
-				return new ServiceResult { Success = false, Message = "An unexpected error occurred. Please try again." };
+				_logger.LogError(ex, "User creation error: {Username}", userDetails.Username);
+				return new ServiceResult
+				{
+					Success = false,
+					Message = "User creation error. Please try again."
+				};
 			}
 		}
+
+		/// <summary>
+		/// Updates an existing user account
+		/// </summary>
+		/// <param name="userId">ID of user to update</param>
+		/// <param name="userDetails">Updated user details</param>
+		/// <returns>Service result with success status</returns>
 		public async Task<ServiceResult> UpdateUserAsync(int userId, UserDetails userDetails)
 		{
 			try
 			{
-				_logger.LogInformation("Attempting to update user with UserId: {UserId}", userId);
+				_logger.LogInformation("Updating user: {UserId}", userId);
 
-				// Get existing user first
+				// Get existing user
 				var exUser = await _userData.GetUserByIdAsync(userId);
 				var exMfa = await _userData.GetMfaSettingByIdAsync(userId);
 				if (exUser == null)
 				{
-					_logger.LogWarning("User not found with UserId: {UserId}", userId);
-					return new ServiceResult { Success = false, Message = "User not found." };
+					_logger.LogWarning("User not found: {UserId}", userId);
+					return new ServiceResult
+					{
+						Success = false,
+						Message = "User not found."
+					};
 				}
 
-				// Only check for duplicates if username or email has actually changed
-				bool usernameChanged = !string.Equals(exUser.Username, _encryption.EncryptData(userDetails.Username), StringComparison.OrdinalIgnoreCase);
-				bool emailChanged = !string.Equals(exUser.Email, _encryption.EncryptData(userDetails.Email), StringComparison.OrdinalIgnoreCase);
+				// Check for duplicate username/email if changed
+				bool usernameChanged = !string.Equals(exUser.Username, _encryption.EncryptData(userDetails.Username),
+					StringComparison.OrdinalIgnoreCase);
+				bool emailChanged = !string.Equals(exUser.Email, _encryption.EncryptData(userDetails.Email),
+					StringComparison.OrdinalIgnoreCase);
 
 				if (usernameChanged || emailChanged)
 				{
-					var existingUser = await _userData.CheckUserByUsernameOrEmailExceptIdAsync(userId, userDetails.Username, userDetails.Email);
+					var existingUser = await _userData.CheckUserByUsernameOrEmailExceptIdAsync(
+						userId, userDetails.Username, userDetails.Email);
 					if (existingUser != null)
 					{
-						_logger.LogWarning("Username or Email already exists for UserId: {UserId}", userId);
-						return new ServiceResult { Success = false, Message = "Username or Email already exists." };
+						_logger.LogWarning("Duplicate user details: {UserId}", userId);
+						return new ServiceResult
+						{
+							Success = false,
+							Message = "Username or Email already exists."
+						};
 					}
 				}
 
-				// Only validate and hash password if it's provided (not null/empty)
+				// Update password if provided
 				if (!string.IsNullOrWhiteSpace(userDetails.Password))
 				{
-					// Check if passwords match
 					if (userDetails.Password != userDetails.ReEnteredPassword)
 					{
-						_logger.LogWarning("Passwords do not match for user update with UserId: {UserId}", userId);
-						return new ServiceResult { Success = false, Message = "Passwords do not match." };
+						_logger.LogWarning("Password mismatch for user: {UserId}", userId);
+						return new ServiceResult
+						{
+							Success = false,
+							Message = "Passwords do not match."
+						};
 					}
-
-					// Hash the new password
-					string hashedPassword = _encryption.EncryptData(userDetails.Password);
-					exUser.PasswordHash = hashedPassword;
+					exUser.PasswordHash = _encryption.EncryptData(userDetails.Password);
 				}
-				// If password is null/empty, keep the existing password unchanged
-				var userLocations = await _userData.GetUserLocationsByIdAsync(userId);
+
 				// Update user properties
 				exUser.Username = _encryption.EncryptData(userDetails.Username);
 				exUser.FirstName = userDetails.FirstName;
@@ -458,62 +494,79 @@ namespace SriKanth.Service.Login_Module
 				exUser.SalesPersonCode = userDetails.SalesPersonCode;
 				exUser.Email = _encryption.EncryptData(userDetails.Email);
 				exUser.PhoneNumber = _encryption.EncryptData(userDetails.PhoneNumber);
-				exUser.IsActive = userDetails.IsActive; // Added missing property
+				exUser.IsActive = userDetails.IsActive;
 
-				// Add audit fields if they exist in your User model
-				// exUser.ModifiedDate = DateTime.UtcNow;
-				// exUser.ModifiedBy = currentUserId; // if you track who modified
-
+				// Update MFA settings
 				exMfa.IsMFAEnabled = userDetails.IsMfaEnabled;
 				exMfa.PreferredMFAType = userDetails.MfaType;
-				// Save to database
+
+				// Update locations
+				var userLocations = await _userData.GetUserLocationsByIdAsync(userId);
+				await _userData.RemoveUserLocationsByIdAsync(userLocations);
+				await _userData.AddUserLocationsAsync(
+					userDetails.LocationCodes.Select(loc => new UserLocation
+					{
+						UserId = userId,
+						LocationCode = loc
+					}));
+
 				await _userData.UpdateUserAsync(exUser);
 				await _userData.UpdateMfaTypeAsync(exMfa);
-				await _userData.RemoveUserLocationsByIdAsync(userLocations);
-				await _userData.AddUserLocationsAsync(userDetails.LocationCodes.Select(loc => new UserLocation
+
+				_logger.LogInformation("User updated: {UserId}", userId);
+				return new ServiceResult
 				{
-					UserId = userId,
-					LocationCode = loc
-				}));
-				_logger.LogInformation("User updated successfully with UserId: {UserId}", userId);
-				return new ServiceResult { Success = true, Message = "User updated successfully.",UserId = exUser.UserID };
+					Success = true,
+					Message = "User updated successfully.",
+					UserId = exUser.UserID
+				};
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "An error occurred while updating user with UserId: {UserId}, Username: {Username}",
-					userId, userDetails.Username);
-				return new ServiceResult { Success = false, Message = "An unexpected error occurred. Please try again." };
+				_logger.LogError(ex, "User update error: {UserId}", userId);
+				return new ServiceResult
+				{
+					Success = false,
+					Message = "User update error. Please try again."
+				};
 			}
 		}
 
+		/// <summary>
+		/// Gets details needed for user creation
+		/// </summary>
+		/// <returns>User creation details including roles, locations, and sales persons</returns>
 		public async Task<UserCreationDetails> GetUserCreationDetailsAsync()
 		{
-
 			try
 			{
-				_logger.LogInformation("Retrieving user creation details");
+				_logger.LogInformation("Getting user creation details");
+
+				// Get sales persons
 				var salesPersons = await _externalApiService.GetSalesPeopleAsync();
 				if (salesPersons?.value == null || !salesPersons.value.Any())
 				{
-					_logger.LogWarning("No sales person data found ");
+					_logger.LogWarning("No sales persons found");
 					throw new InvalidOperationException("No sales person data found.");
 				}
 
+				// Get locations
 				var locations = await _externalApiService.GetLocationsAsync();
 				if (locations?.value == null || !locations.value.Any())
 				{
-					_logger.LogWarning("No location data found ");
+					_logger.LogWarning("No locations found");
 					throw new InvalidOperationException("No location data found.");
 				}
 
+				// Get roles
 				var roles = await _userData.GetRoleDetailsAsync();
 				if (roles == null || !roles.Any())
 				{
-					_logger.LogWarning("No role data found ");
+					_logger.LogWarning("No roles found");
 					throw new InvalidOperationException("No role data found.");
 				}
 
-				// Map data into response model
+				// Map to response model
 				var details = new UserCreationDetails
 				{
 					SalesPersons = salesPersons.value.Select(sp => new Poses
@@ -530,39 +583,45 @@ namespace SriKanth.Service.Login_Module
 						LocationName = loc.name
 					}).ToList(),
 
-					Roles = roles // Already in expected format
+					Roles = roles
 				};
 
 				return details;
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error while retrieving user creation details");
-				throw new InvalidOperationException("Error while retrieving user creation details");
+				_logger.LogError(ex, "Error getting user creation details");
+				throw;
 			}
 		}
 
+		/// <summary>
+		/// Gets detailed information for a specific user
+		/// </summary>
+		/// <param name="userId">ID of user to retrieve</param>
+		/// <returns>User details including personal info and settings</returns>
 		public async Task<UserDetails> GetUserDetailsByIdAsync(int userId)
 		{
-
 			try
 			{
-				_logger.LogInformation("Retrieving user details by userId");
+				_logger.LogInformation("Getting details for user: {UserId}", userId);
+
 				var user = await _userData.GetUserByIdAsync(userId);
 				var mfa = await _userData.GetMFATypeAsync(userId);
 				var userLocations = await _userData.GetUserLocationCodesAsync(userId);
+
 				if (user == null)
 				{
-					_logger.LogWarning($"User with UserId:{userId} not found ");
+					_logger.LogWarning("User not found: {UserId}", userId);
 					throw new InvalidOperationException("User Not found");
 				}
-				string decryptedPassword = _encryption.DecryptData(user.PasswordHash);
 
+				// Decrypt sensitive data
 				var userDetails = new UserDetails
 				{
 					Username = _encryption.DecryptData(user.Username),
-					Password = decryptedPassword,
-					ReEnteredPassword = decryptedPassword,
+					Password = _encryption.DecryptData(user.PasswordHash),
+					ReEnteredPassword = _encryption.DecryptData(user.PasswordHash),
 					FirstName = user.FirstName,
 					LastName = user.LastName,
 					UserRoleId = user.UserRoleId,
@@ -575,28 +634,31 @@ namespace SriKanth.Service.Login_Module
 					MfaType = mfa.PreferredMFAType
 				};
 
-				_logger.LogInformation("Successfully retrieved user details for UserId: {UserId}", userId);
+				_logger.LogInformation("Retrieved details for user: {UserId}", userId);
 				return userDetails;
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error while retrieving user details for UserId: {UserId}", userId);
-				throw new InvalidOperationException($"An error occurred while retrieving user details for ID {userId}", ex);
-			
+				_logger.LogError(ex, "Error getting details for user: {UserId}", userId);
+				throw;
 			}
 		}
+
+		/// <summary>
+		/// Gets a list of all users in the system
+		/// </summary>
+		/// <returns>List of user information</returns>
 		public async Task<List<UserReturn>> GetListOfUsersAsync()
 		{
-
 			try
 			{
-				_logger.LogInformation("Retrieving List of users ");
-				var users = await _userData.GetAllUsersAsync();
+				_logger.LogInformation("Getting list of users");
 
+				var users = await _userData.GetAllUsersAsync();
 				var userDetailsList = new List<UserReturn>();
+
 				foreach (var user in users)
 				{
-					var decryptedPassword = _encryption.DecryptData(user.PasswordHash);
 					userDetailsList.Add(new UserReturn
 					{
 						Username = _encryption.DecryptData(user.Username),
@@ -608,16 +670,16 @@ namespace SriKanth.Service.Login_Module
 					});
 				}
 
-				_logger.LogInformation("Successfully retrieved user details list");
+				_logger.LogInformation("Retrieved {Count} users", userDetailsList.Count);
 				return userDetailsList;
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error while retrieving user details");
-				throw new InvalidOperationException($"An error occurred while retrieving user details", ex);
-
+				_logger.LogError(ex, "Error getting user list");
+				throw;
 			}
 		}
+
 		/// <summary>
 		/// Checks if Multi-Factor Authentication (MFA) is enabled for the user and retrieves the preferred MFA type.
 		/// </summary>

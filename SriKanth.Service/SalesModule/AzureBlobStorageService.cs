@@ -25,7 +25,14 @@ namespace SriKanth.Service.SalesModule
 		private readonly bool _generateSasTokens;
 		private readonly int _sasTokenExpiryHours;
 
-		public AzureBlobStorageService(IConfiguration configuration,ILogger<AzureBlobStorageService> logger,IBusinessData businessData,ILoginData loginData)
+		/// <summary>
+		/// Initializes a new instance of the <see cref="AzureBlobStorageService"/> class.
+		/// </summary>
+		/// <param name="configuration">Configuration to read Azure Blob settings.</param>
+		/// <param name="logger">Logger for logging operations.</param>
+		/// <param name="businessData">Data access for document storage.</param>
+		/// <param name="loginData">Data access for user info.</param>
+		public AzureBlobStorageService(IConfiguration configuration, ILogger<AzureBlobStorageService> logger, IBusinessData businessData, ILoginData loginData)
 		{
 			var connectionString = configuration["AzureBlobStorage:ConnectionString"] ??
 				throw new ArgumentNullException("AzureBlobStorage:ConnectionString is missing in configuration");
@@ -38,11 +45,17 @@ namespace SriKanth.Service.SalesModule
 			_businessData = businessData;
 			_loginData = loginData;
 
-			// Optional SAS token configuration
+			// Optional: Configure whether to generate SAS tokens and how long they are valid
 			_generateSasTokens = configuration.GetValue("AzureBlobStorage:GenerateSasTokens", false);
 			_sasTokenExpiryHours = configuration.GetValue("AzureBlobStorage:SasTokenExpiryHours", 1);
 		}
 
+		/// <summary>
+		/// Uploads a document to Azure Blob Storage.
+		/// </summary>
+		/// <param name="userId">User ID to associate the document with.</param>
+		/// <param name="document">Document to upload.</param>
+		/// <returns>Tuple containing URL, content type, and original file name.</returns>
 		public async Task<(string DocumentUrl, string DocumentType, string OriginalFileName)> UploadDocumentAsync(int userId, IFormFile document)
 		{
 			_logger.LogInformation("Beginning to upload document for user {UserId}", userId);
@@ -50,37 +63,35 @@ namespace SriKanth.Service.SalesModule
 			if (document == null || document.Length == 0)
 				throw new ArgumentException("Document is null or empty.");
 
+			// Get user information from the database
 			var user = await _loginData.GetUserByIdAsync(userId) ??
 				throw new ApplicationException($"User with ID {userId} not found");
 
-			// Generate a unique file name while preserving original extension
+			// Generate a unique name for the blob while preserving original file extension
 			var originalFileName = document.FileName;
 			var fileExtension = Path.GetExtension(originalFileName);
 			var uniqueFileName = $"{Guid.NewGuid()}{fileExtension}";
 
 			try
 			{
-				// Get blob client and upload
 				var blobClient = _blobContainerClient.GetBlobClient(uniqueFileName);
 
+				// Upload the file stream with appropriate content type
 				await using (var stream = document.OpenReadStream())
 				{
 					var uploadOptions = new BlobUploadOptions
 					{
-						HttpHeaders = new BlobHttpHeaders
-						{
-							ContentType = document.ContentType
-						}
+						HttpHeaders = new BlobHttpHeaders { ContentType = document.ContentType }
 					};
 					await blobClient.UploadAsync(stream, uploadOptions);
 				}
 
-				// Generate appropriate URL
+				// Get URL (with SAS token if required)
 				var documentUrl = _generateSasTokens
 					? GenerateSasToken(blobClient)
 					: blobClient.Uri.ToString();
 
-				// Store reference in database
+				// Save document metadata in the database
 				var userDoc = new UserDocumentStorage
 				{
 					UserId = userId,
@@ -104,6 +115,11 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Retrieves a list of uploaded documents for a user.
+		/// </summary>
+		/// <param name="userId">User ID.</param>
+		/// <returns>List of document metadata tuples.</returns>
 		public async Task<List<(string DocumentUrl, string DocumentType, string OriginalFileName)>> GetListOfDocumentsAsync(int userId)
 		{
 			_logger.LogInformation("Retrieving documents for user {UserId}", userId);
@@ -117,7 +133,7 @@ namespace SriKanth.Service.SalesModule
 				{
 					try
 					{
-						// If using SAS tokens and the stored URL is a regular URI, generate new SAS token
+						// If needed, regenerate SAS token
 						var documentUrl = _generateSasTokens && !doc.DocumentReference.Contains("?")
 							? GenerateSasTokenFromUrl(doc.DocumentReference)
 							: doc.DocumentReference;
@@ -128,7 +144,6 @@ namespace SriKanth.Service.SalesModule
 					{
 						_logger.LogError(ex, "Failed to process document {DocumentReference} for user {UserId}",
 							doc.DocumentReference, userId);
-						// Continue with next document
 					}
 				}
 
@@ -141,6 +156,11 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Downloads a document from Azure Blob Storage.
+		/// </summary>
+		/// <param name="documentUrl">URL of the document.</param>
+		/// <returns>Tuple containing stream, content type, and file name.</returns>
 		public async Task<(Stream FileStream, string ContentType, string FileName)> DownloadDocumentAsync(string documentUrl)
 		{
 			try
@@ -148,7 +168,6 @@ namespace SriKanth.Service.SalesModule
 				var blobClient = GetBlobClientFromUrl(documentUrl);
 				var response = await blobClient.DownloadAsync();
 
-				// Try to get content type from blob properties if available
 				var contentType = response.Value.Details.ContentType ??
 					GetContentType(blobClient.Name);
 
@@ -161,6 +180,11 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Deletes a document from Azure Blob Storage.
+		/// </summary>
+		/// <param name="documentUrl">URL of the document.</param>
+		/// <returns>True if deleted, false otherwise.</returns>
 		public async Task<bool> DeleteDocumentAsync(string documentUrl)
 		{
 			_logger.LogInformation("Attempting to delete document: {DocumentUrl}", documentUrl);
@@ -169,14 +193,12 @@ namespace SriKanth.Service.SalesModule
 			{
 				var blobClient = GetBlobClientFromUrl(documentUrl);
 
-				// Check if blob exists before attempting to delete
 				if (!await blobClient.ExistsAsync())
 				{
 					_logger.LogWarning("Document not found: {DocumentUrl}", documentUrl);
 					return false;
 				}
 
-				// Delete the blob
 				var response = await blobClient.DeleteAsync();
 
 				if (response.Status == 200 || response.Status == 202)
@@ -185,8 +207,7 @@ namespace SriKanth.Service.SalesModule
 					return true;
 				}
 
-				_logger.LogWarning("Failed to delete document: {DocumentUrl}. Status: {Status}",
-					documentUrl, response.Status);
+				_logger.LogWarning("Failed to delete document: {DocumentUrl}. Status: {Status}", documentUrl, response.Status);
 				return false;
 			}
 			catch (Exception ex)
@@ -196,36 +217,55 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Extracts the blob client from a given URL.
+		/// </summary>
+		/// <param name="documentUrl">Document URL.</param>
+		/// <returns>Blob client object.</returns>
 		private BlobClient GetBlobClientFromUrl(string documentUrl)
 		{
-			// Extract blob name from URL (handles both regular URLs and SAS URLs)
 			var uri = new Uri(documentUrl);
-			var blobName = uri.Segments[^1].Split('?')[0]; // Get last segment and remove query string
+			var blobName = uri.Segments[^1].Split('?')[0]; // Handles SAS tokens
 			return _blobContainerClient.GetBlobClient(blobName);
 		}
 
+		/// <summary>
+		/// Generates a SAS token for the given blob.
+		/// </summary>
+		/// <param name="blobClient">Blob client.</param>
+		/// <returns>SAS URL string.</returns>
 		private string GenerateSasToken(BlobClient blobClient)
 		{
 			var sasBuilder = new BlobSasBuilder
 			{
 				BlobContainerName = _blobContainerClient.Name,
 				BlobName = blobClient.Name,
-				Resource = "b", // "b" for blob
+				Resource = "b",
 				ExpiresOn = DateTimeOffset.UtcNow.AddHours(_sasTokenExpiryHours)
 			};
 
-			sasBuilder.SetPermissions(BlobSasPermissions.Read); // Read-only permission
+			sasBuilder.SetPermissions(BlobSasPermissions.Read);
 
 			var sasToken = blobClient.GenerateSasUri(sasBuilder);
 			return sasToken.ToString();
 		}
 
+		/// <summary>
+		/// Generates a SAS token using a blob URL.
+		/// </summary>
+		/// <param name="blobUrl">URL of the blob.</param>
+		/// <returns>SAS token URL string.</returns>
 		private string GenerateSasTokenFromUrl(string blobUrl)
 		{
 			var blobClient = GetBlobClientFromUrl(blobUrl);
 			return GenerateSasToken(blobClient);
 		}
 
+		/// <summary>
+		/// Returns MIME content type based on file extension.
+		/// </summary>
+		/// <param name="fileName">File name.</param>
+		/// <returns>Content type string.</returns>
 		private static string GetContentType(string fileName)
 		{
 			var extension = Path.GetExtension(fileName).ToLowerInvariant();

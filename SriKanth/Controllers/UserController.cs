@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.IdentityModel.Tokens;
+using SriKanth.Interface;
 using SriKanth.Interface.Login_Module;
 using SriKanth.Model.Login_Module.DTOs;
 
@@ -19,6 +20,7 @@ namespace SriKanth.API.Controllers
 		private readonly IMfaService _mfaService; // Service for handling Multi-Factor Authentication
 		private readonly IConfiguration _configuration; // Configuration for application settings
 		private readonly IJwtTokenService _jwtTokenService; // Service for handling JWT tokens
+		private readonly IEncryptionService _encryptionService;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UserController"/> class.
@@ -28,12 +30,13 @@ namespace SriKanth.API.Controllers
 		/// <param name="mfaService">Service for Multi-Factor Authentication</param>
 		/// <param name="jwtTokenService">Service for JWT token operations</param>
 		public UserController(IUserService userService, IConfiguration configuration,
-							IMfaService mfaService, IJwtTokenService jwtTokenService)
+							IMfaService mfaService, IJwtTokenService jwtTokenService, IEncryptionService encryptionService)
 		{
 			_userService = userService;
 			_configuration = configuration;
 			_mfaService = mfaService;
 			_jwtTokenService = jwtTokenService;
+			_encryptionService = encryptionService;
 		}
 
 		/// <summary>
@@ -201,7 +204,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userDetails">Complete user information</param>
 		/// <returns>Confirmation of user creation</returns>
 		[HttpPost("AddUser")]
-		[Authorize]
+		//[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> AddNewUser([FromBody] UserDetails userDetails)
 		{
@@ -310,7 +313,7 @@ namespace SriKanth.API.Controllers
 		/// </summary>
 		/// <returns>List of all users with basic information</returns>
 		[HttpGet("GetAllUsers")]
-		[Authorize]
+		//[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetAllUsers()
 		{
@@ -325,5 +328,29 @@ namespace SriKanth.API.Controllers
 				return StatusCode(500, $"Error: {ex.Message}");
 			}
 		}
+
+		[HttpPost("encrypt")]
+		public IActionResult EncryptText([FromBody] EncryptTextRequest request)
+		{
+			try
+			{
+				if (request == null || string.IsNullOrWhiteSpace(request.Text))
+				{
+					return BadRequest(new { message = "Text is required." });
+				}
+
+				var result = _encryptionService.EncryptData(request.Text);
+				return Ok(new { encrypted = result });
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, new { message = "Internal server error.", error = ex.Message });
+			}
+		}
+		
+	}
+	public class EncryptTextRequest
+	{
+		public string Text { get; set; }
 	}
 }

@@ -8,17 +8,12 @@ using SriKanth.Model.BusinessModule.DTOs;
 using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.ExistingApis;
 using SriKanth.Model.Login_Module.DTOs;
-using SriKanth.Model.Login_Module.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace SriKanth.Service.SalesModule
 {
+	/// <summary>
+	/// Service class for handling business operations related to sales, orders, and inventory
+	/// </summary>
 	public class BusinessApiService : IBusinessApiService
 	{
 		private readonly IExternalApiService _externalApiService;
@@ -26,6 +21,13 @@ namespace SriKanth.Service.SalesModule
 		private readonly ILoginData _loginData;
 		private readonly IBusinessData _businessData;
 
+		/// <summary>
+		/// Initializes a new instance of the BusinessApiService class
+		/// </summary>
+		/// <param name="externalApiService">Service for external API calls</param>
+		/// <param name="logger">Logger instance</param>
+		/// <param name="loginData">Data access for login-related operations</param>
+		/// <param name="businessData">Data access for business operations</param>
 		public BusinessApiService(
 			IExternalApiService externalApiService,
 			ILogger<BusinessApiService> logger,
@@ -38,6 +40,10 @@ namespace SriKanth.Service.SalesModule
 			_businessData = businessData;
 		}
 
+		/// <summary>
+		/// Retrieves detailed stock information including inventory levels, prices, and item details
+		/// </summary>
+		/// <returns>List of stock items with comprehensive details</returns>
 		public async Task<List<StockItem>> GetSalesStockDetails()
 		{
 			_logger.LogDebug("Entering GetSalesStockDetails method");
@@ -45,6 +51,7 @@ namespace SriKanth.Service.SalesModule
 			{
 				_logger.LogInformation("Beginning to retrieve sales stock details");
 
+				// Execute all API calls in parallel for better performance
 				var inventoryTask = _externalApiService.GetInventoryBalanceAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
 				var salesPricesTask = _externalApiService.GetSalesPriceAsync();
@@ -52,11 +59,13 @@ namespace SriKanth.Service.SalesModule
 
 				await Task.WhenAll(inventoryTask, itemsTask, salesPricesTask, locationsTask);
 
+				// Retrieve results from completed tasks
 				var inventory = await inventoryTask;
 				var items = await itemsTask;
 				var salesPrices = await salesPricesTask;
 				var locations = await locationsTask;
 
+				// Validate API responses
 				if (items?.value == null || inventory?.value == null ||
 					salesPrices?.value == null || locations?.value == null)
 				{
@@ -64,6 +73,7 @@ namespace SriKanth.Service.SalesModule
 					throw new ApplicationException("Required data not available from APIs");
 				}
 
+				// Fetch item pictures in parallel
 				var pictureTasks = items.value
 					.Where(i => i?.no != null && i.systemId != Guid.Empty)
 					.ToDictionary(
@@ -73,13 +83,14 @@ namespace SriKanth.Service.SalesModule
 
 				await Task.WhenAll(pictureTasks.Values);
 
+				// Create lookup dictionaries for efficient data access
 				var inventoryLookup = inventory.value
 					.Where(i => i?.itemNo != null && i?.locationCode != null)
 					.ToDictionary(i => (i.itemNo, i.locationCode), i => i);
 
 				var priceLookup = salesPrices.value
 					.Where(p => p?.itemNo != null)
-					.GroupBy(p => p.itemNo )
+					.GroupBy(p => p.itemNo)
 					.ToDictionary(g => g.Key, g => g.First().unitPrice);
 
 				var locationLookup = locations.value
@@ -88,16 +99,18 @@ namespace SriKanth.Service.SalesModule
 
 				var stockList = new List<StockItem>();
 
+				// Process each item and location combination
 				foreach (var item in items.value.Where(i => i?.no != null))
 				{
 					foreach (var location in locations.value.Where(l => l?.code != null))
 					{
 						var key = (item.no, location.code);
 						if (!inventoryLookup.TryGetValue(key, out var inv))
-							continue; // No inventory for this item at this location
+							continue; // Skip items with no inventory at this location
 
 						priceLookup.TryGetValue(item.no, out var itemPrice);
 
+						// Retrieve item picture if available
 						var picture = pictureTasks.TryGetValue(item.no, out var task) && task.IsCompletedSuccessfully
 							? task.Result
 							: null;
@@ -132,12 +145,17 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Retrieves all necessary details for creating a new order
+		/// </summary>
+		/// <returns>OrderCreationDetails containing locations, customers, payment types and items</returns>
 		public async Task<OrderCreationDetails> GetOrderCreationDetailsAsync()
 		{
 			try
 			{
 				_logger.LogInformation("Beginning to retrieve order creation details");
 
+				// Execute all API calls in parallel
 				var locationsTask = _externalApiService.GetLocationsAsync();
 				var customersTask = _externalApiService.GetCustomerDetailsAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
@@ -145,6 +163,7 @@ namespace SriKanth.Service.SalesModule
 
 				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask);
 
+				// Process locations data
 				var locations = await locationsTask;
 				if (locations?.value == null || !locations.value.Any())
 				{
@@ -152,6 +171,7 @@ namespace SriKanth.Service.SalesModule
 					throw new InvalidOperationException("No location data found.");
 				}
 
+				// Process customers data
 				var customers = await customersTask;
 				if (customers?.value == null || !customers.value.Any())
 				{
@@ -159,6 +179,7 @@ namespace SriKanth.Service.SalesModule
 					throw new InvalidOperationException("No Customer data found.");
 				}
 
+				// Process items data
 				var items = await itemsTask;
 				if (items?.value == null || !items.value.Any())
 				{
@@ -166,12 +187,14 @@ namespace SriKanth.Service.SalesModule
 					throw new InvalidOperationException("No Items data found.");
 				}
 
+				// Create price lookup dictionary
 				var salesPrices = await salesPriceTask;
 				var priceLookup = salesPrices?.value?
 					.GroupBy(p => p.itemNo)
 					.ToDictionary(g => g.Key, g => g.First().unitPrice)
 					?? new Dictionary<string, decimal>();
 
+				// Define available payment types
 				var paymentTypes = new List<PaymentType>
 				{
 					new PaymentType { Code = "CASH", Name = "Cash" },
@@ -180,6 +203,7 @@ namespace SriKanth.Service.SalesModule
 					new PaymentType { Code = "CHEQUE", Name = "Cheque" }
 				};
 
+				// Compile all order creation details
 				var details = new OrderCreationDetails
 				{
 					Locations = locations.value.Select(l => new Model.Login_Module.DTOs.Location
@@ -228,18 +252,26 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Retrieves filtered order creation details based on user permissions and assigned locations
+		/// </summary>
+		/// <param name="userId">ID of the user making the request</param>
+		/// <returns>Filtered OrderCreationDetails specific to the user</returns>
 		public async Task<OrderCreationDetails> GetFilteredOrderCreationDetailsAsync(int userId)
 		{
 			try
 			{
 				_logger.LogInformation("Beginning to retrieve filtered order details for user {UserId}", userId);
 
+				// Get user and validate existence
 				var user = await _loginData.GetUserByIdAsync(userId);
 				if (user == null)
 				{
 					_logger.LogWarning("User with ID {UserId} not found", userId);
 					throw new InvalidOperationException("User Not found");
 				}
+
+				// Get user's assigned locations
 				var userLocations = await _loginData.GetUserLocationCodesAsync(userId);
 				if (userLocations == null || !userLocations.Any())
 				{
@@ -247,6 +279,7 @@ namespace SriKanth.Service.SalesModule
 					throw new InvalidOperationException("User has no locations assigned.");
 				}
 
+				// Execute all API calls in parallel
 				var locationsTask = _externalApiService.GetLocationsAsync();
 				var customersTask = _externalApiService.GetCustomerDetailsAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
@@ -255,6 +288,7 @@ namespace SriKanth.Service.SalesModule
 
 				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask, inventoryTask);
 
+				// Filter locations to only those assigned to the user
 				var locations = await locationsTask;
 				var filteredLocations = locations?.value?
 					 .Where(l => userLocations.Contains(l.code))
@@ -266,11 +300,13 @@ namespace SriKanth.Service.SalesModule
 					throw new InvalidOperationException("No valid location data found for user.");
 				}
 
+				// Filter customers by salesperson code
 				var customers = await customersTask;
 				var filteredCustomers = customers?.value?
 					.Where(c => c.salespersonCode == user.SalesPersonCode)
 					.ToList() ?? new List<Customer>();
 
+				// Process items data
 				var items = await itemsTask;
 				if (items?.value == null || !items.value.Any())
 				{
@@ -278,14 +314,15 @@ namespace SriKanth.Service.SalesModule
 					throw new InvalidOperationException("No Items data found.");
 				}
 
+				// Create price lookup dictionary
 				var salesPrices = await salesPriceTask;
 				var priceLookup = salesPrices?.value?
 					.GroupBy(p => p.itemNo)
 					.ToDictionary(g => g.Key, g => g.First().unitPrice)
 					?? new Dictionary<string, decimal>();
 
+				// Filter inventory to only user's locations with stock
 				var inventory = await inventoryTask;
-				// Filter inventory for the user's location
 				var inventoryAtLocations = inventory?.value?
 					.Where(i => userLocations.Contains(i.locationCode) && i.inventory > 0)
 					.ToList() ?? new List<InventoryBalance>();
@@ -293,6 +330,7 @@ namespace SriKanth.Service.SalesModule
 				// Get item numbers available at these locations
 				var availableItemNos = new HashSet<string>(inventoryAtLocations.Select(i => i.itemNo));
 
+				// Define available payment types
 				var paymentTypes = new List<PaymentType>
 				{
 					new PaymentType { Code = "CASH", Name = "Cash" },
@@ -301,6 +339,7 @@ namespace SriKanth.Service.SalesModule
 					new PaymentType { Code = "CHEQUE", Name = "Cheque" }
 				};
 
+				// Compile all filtered order creation details
 				var details = new OrderCreationDetails
 				{
 					Locations = filteredLocations.Select(l => new Model.Login_Module.DTOs.Location
@@ -350,6 +389,12 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Submits a new order after validating customer credit and inventory availability
+		/// </summary>
+		/// <param name="userId">ID of the user submitting the order</param>
+		/// <param name="request">Order details including items and customer information</param>
+		/// <returns>ServiceResult indicating success or failure</returns>
 		public async Task<ServiceResult> SubmitOrderAsync(int userId, OrderRequest request)
 		{
 			_logger.LogDebug("Entering SubmitOrderAsync method for user {UserId}", userId);
@@ -358,6 +403,7 @@ namespace SriKanth.Service.SalesModule
 				_logger.LogInformation("Beginning order submission for user {UserId}, customer {CustomerCode}, location {LocationCode}",
 					userId, request.CustomerCode, request.LocationCode);
 
+				// Validate user exists
 				var user = await _loginData.GetUserByIdAsync(userId);
 				if (user == null)
 				{
@@ -365,6 +411,7 @@ namespace SriKanth.Service.SalesModule
 					return new ServiceResult { Success = false, Message = "User not found" };
 				}
 
+				// Validate customer credit
 				var creditValidation = await ValidateCustomerCredit(request.CustomerCode, request.TotalAmount);
 				if (!creditValidation.Success)
 				{
@@ -372,6 +419,7 @@ namespace SriKanth.Service.SalesModule
 					return creditValidation;
 				}
 
+				// Validate inventory availability
 				var inventoryValidation = await ValidateInventory(request.Items, request.LocationCode);
 				if (!inventoryValidation.Success)
 				{
@@ -379,6 +427,7 @@ namespace SriKanth.Service.SalesModule
 					return inventoryValidation;
 				}
 
+				// Create order record
 				var order = new Order
 				{
 					CustomerCode = request.CustomerCode,
@@ -393,6 +442,7 @@ namespace SriKanth.Service.SalesModule
 
 				await _businessData.AddOrderAsync(order);
 
+				// Create order items
 				var orderItems = request.Items.Select(item => new OrderItem
 				{
 					ItemCode = item.ItemCode,
@@ -416,6 +466,12 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Retrieves a list of orders filtered by status and user's salesperson code
+		/// </summary>
+		/// <param name="userId">ID of the user making the request</param>
+		/// <param name="orderStatus">Status of orders to retrieve</param>
+		/// <returns>List of orders with detailed information</returns>
 		public async Task<List<OrderReturn>> GetOrdersListAsync(int userId, OrderStatus orderStatus)
 		{
 			try
@@ -423,6 +479,7 @@ namespace SriKanth.Service.SalesModule
 				_logger.LogInformation("Beginning to retrieve orders for user {UserId} with status {OrderStatus}",
 					userId, orderStatus);
 
+				// Validate user exists
 				var user = await _loginData.GetUserByIdAsync(userId);
 				if (user == null)
 				{
@@ -430,15 +487,19 @@ namespace SriKanth.Service.SalesModule
 					throw new ApplicationException("Failed to retrieve orders. Please try again later.");
 				}
 
+				// Get orders filtered by salesperson and status
 				var pendingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
 				var orderNumbers = pendingOrders.Select(o => o.OrderNumber).ToList();
 
+				// Get all items for these orders
 				var orderItems = await _businessData.GetOrderItemsByOrderNumbersAsync(orderNumbers);
 
+				// Group items by order number for efficient lookup
 				var itemsByOrder = orderItems
 					.GroupBy(i => i.OrderNumber)
 					.ToDictionary(g => g.Key, g => g.ToList());
 
+				// Get customer and salesperson details in parallel
 				var customersTask = _externalApiService.GetCustomersAsync();
 				var salesPeopleTask = _externalApiService.GetSalesPeopleAsync();
 				await Task.WhenAll(customersTask, salesPeopleTask);
@@ -446,9 +507,11 @@ namespace SriKanth.Service.SalesModule
 				var customers = (await customersTask).value;
 				var salesPeople = (await salesPeopleTask).value;
 
+				// Create lookup dictionaries for names
 				var customerDict = customers.ToDictionary(c => c.no, c => c.name);
 				var salesPersonDict = salesPeople.ToDictionary(s => s.code, s => s.name);
 
+				// Compile order return objects with all details
 				var result = pendingOrders.Select(order => new OrderReturn
 				{
 					OrderNumber = order.OrderNumber,
@@ -483,6 +546,11 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Updates the status of an order and performs related business logic
+		/// </summary>
+		/// <param name="updateOrderRequest">Request containing order number and new status</param>
+		/// <returns>ServiceResult indicating success or failure</returns>
 		public async Task<ServiceResult> UpdateOrderStatusAsync(UpdateOrderRequest updateOrderRequest)
 		{
 			try
@@ -490,6 +558,7 @@ namespace SriKanth.Service.SalesModule
 				_logger.LogInformation("Beginning status update for order {OrderNumber} to status {OrderStatus}",
 					updateOrderRequest.Ordernumber, updateOrderRequest.Status);
 
+				// Get the order to update
 				var order = await _businessData.GetOrderByIdAsync(updateOrderRequest.Ordernumber);
 				if (order == null)
 				{
@@ -497,12 +566,15 @@ namespace SriKanth.Service.SalesModule
 					return new ServiceResult { Success = false, Message = $"Order {updateOrderRequest.Ordernumber} not found." };
 				}
 
+				// Update order status
 				order.Status = updateOrderRequest.Status;
 				order.RejectReason = updateOrderRequest.RejectReason ?? null;
 				await _businessData.UpdateOrderStatusAsync(order);
 
+				// Additional processing for orders moving to Processing status
 				if (updateOrderRequest.Status == OrderStatus.Processing)
 				{
+					// Get customer and location details in parallel
 					var customersTask = _externalApiService.GetCustomersAsync();
 					var locationsTask = _externalApiService.GetLocationsAsync();
 					await Task.WhenAll(customersTask, locationsTask);
@@ -510,6 +582,7 @@ namespace SriKanth.Service.SalesModule
 					var customers = (await customersTask).value;
 					var locations = (await locationsTask).value;
 
+					// Validate customer exists
 					var customer = customers?.FirstOrDefault(c => c.no == order.CustomerCode);
 					var paymentTermCode = customer?.paymentTermsCode;
 
@@ -519,6 +592,7 @@ namespace SriKanth.Service.SalesModule
 						return new ServiceResult { Success = false, Message = $"Customer {order.CustomerCode} not found in external API." };
 					}
 
+					// Validate location exists
 					var location = locations?.FirstOrDefault(l => l.code == order.LocationCode);
 					var locationName = location?.name;
 
@@ -528,8 +602,10 @@ namespace SriKanth.Service.SalesModule
 						return new ServiceResult { Success = false, Message = $"Location {order.LocationCode} not found in external API." };
 					}
 
+					// Get order items
 					var orderItems = await _businessData.GetOrderItemsAsync(updateOrderRequest.Ordernumber);
 
+					// Prepare sales order request for external API
 					var salesOrderRequest = new SalesOrderRequest
 					{
 						orderNo = order.OrderNumber.ToString(),
@@ -554,6 +630,7 @@ namespace SriKanth.Service.SalesModule
 
 					try
 					{
+						// Submit to external API
 						await _externalApiService.PostSalesOrderAsync(salesOrderRequest);
 						_logger.LogInformation("Successfully posted order {OrderNumber} to external API", updateOrderRequest.Ordernumber);
 					}
@@ -579,12 +656,18 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Retrieves invoice details for customers assigned to the specified user
+		/// </summary>
+		/// <param name="userId">ID of the user making the request</param>
+		/// <returns>CustomerInvoiceReturn containing invoice details and total due amount</returns>
 		public async Task<CustomerInvoiceReturn> GetCustomerInvoicesAsync(int userId)
 		{
 			try
 			{
 				_logger.LogInformation("Beginning to retrieve Customer Invoice Details for user {UserId} ", userId);
 
+				// Validate user exists
 				var user = await _loginData.GetUserByIdAsync(userId);
 				if (user == null)
 				{
@@ -637,10 +720,18 @@ namespace SriKanth.Service.SalesModule
 				throw new ApplicationException("Failed to retrieve invoices. Please try again later.", ex);
 			}
 		}
+
+		/// <summary>
+		/// Validates customer credit status against order total
+		/// </summary>
+		/// <param name="customerCode">Customer code to validate</param>
+		/// <param name="orderTotal">Total amount of the order</param>
+		/// <returns>ServiceResult indicating validation success or failure</returns>
 		private async Task<ServiceResult> ValidateCustomerCredit(string customerCode, decimal orderTotal)
 		{
-		try
+			try
 			{
+				// Get customer details from external API
 				var customersResponse = await _externalApiService.GetCustomerDetailsAsync();
 
 				if (customersResponse?.value == null || !customersResponse.value.Any())
@@ -649,6 +740,7 @@ namespace SriKanth.Service.SalesModule
 					return new ServiceResult { Success = false, Message = "Customer data not available" };
 				}
 
+				// Find specific customer
 				var customer = customersResponse.value.FirstOrDefault(c => c.no == customerCode);
 
 				if (customer == null)
@@ -657,12 +749,14 @@ namespace SriKanth.Service.SalesModule
 					return new ServiceResult { Success = false, Message = $"Customer {customerCode} not found" };
 				}
 
+				// Check credit allowed
 				if (!customer.creditAllowed && orderTotal > 0)
 				{
 					_logger.LogWarning("Customer {CustomerCode} not allowed credit purchases", customerCode);
 					return new ServiceResult { Success = false, Message = "Customer not allowed credit purchases" };
 				}
 
+				// Check credit limit
 				if (customer.creditAllowed && customer.balanceLCY + orderTotal > customer.creditLimitLCY)
 				{
 					_logger.LogWarning("Order exceeds credit limit for customer {CustomerCode}", customerCode);
@@ -683,11 +777,18 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Validates inventory availability for order items at specified location
+		/// </summary>
+		/// <param name="items">List of order items to validate</param>
+		/// <param name="locationCode">Location code to check inventory at</param>
+		/// <returns>ServiceResult indicating validation success or failure</returns>
 		private async Task<ServiceResult> ValidateInventory(List<OrderItemRequest> items, string locationCode)
 		{
 			_logger.LogInformation("Entering ValidateInventory for location {LocationCode}", locationCode);
 			try
 			{
+				// Get inventory data from external API
 				var inventoryResponse = await _externalApiService.GetInventoryBalanceAsync();
 
 				if (inventoryResponse?.value == null || !inventoryResponse.value.Any())
@@ -696,6 +797,7 @@ namespace SriKanth.Service.SalesModule
 					return new ServiceResult { Success = false, Message = "Inventory data not available" };
 				}
 
+				// Filter inventory for specific location
 				var filteredInventory = inventoryResponse.value
 					.Where(i => i.locationCode == locationCode)
 					.ToList();
@@ -710,10 +812,13 @@ namespace SriKanth.Service.SalesModule
 					};
 				}
 
+				// Create lookup dictionary for inventory items
 				var inventoryLookup = filteredInventory.ToDictionary(i => i.itemNo);
 
+				// Validate each item in the order
 				foreach (var item in items)
 				{
+					// Check item exists at location
 					if (!inventoryLookup.TryGetValue(item.ItemCode, out var inventoryItem))
 					{
 						_logger.LogWarning("Item {ItemCode} not found in inventory at location {LocationCode}",
@@ -726,6 +831,7 @@ namespace SriKanth.Service.SalesModule
 						};
 					}
 
+					// Check sufficient quantity available
 					if (inventoryItem.inventory < item.Quantity)
 					{
 						_logger.LogWarning("Insufficient stock for item {ItemCode} (Available: {Available}, Requested: {Requested})",
@@ -748,7 +854,5 @@ namespace SriKanth.Service.SalesModule
 				return new ServiceResult { Success = false, Message = "Error during inventory validation" };
 			}
 		}
-
-
 	}
 }

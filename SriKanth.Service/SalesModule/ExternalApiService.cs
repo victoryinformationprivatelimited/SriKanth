@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 
 namespace SriKanth.Service.SalesModule
 {
+	/// <summary>
+	/// Service class for handling all external API communications with Business Central
+	/// </summary>
 	public class ExternalApiService : IExternalApiService
 	{
 		private readonly IHttpClientFactory _httpClientFactory;
@@ -20,12 +23,25 @@ namespace SriKanth.Service.SalesModule
 		private string _cachedToken;
 		private DateTime _tokenExpiryTime;
 
+		/// <summary>
+		/// Initializes a new instance of the ExternalApiService class
+		/// </summary>
+		/// <param name="httpClientFactory">Factory for creating HttpClient instances</param>
+		/// <param name="configuration">Application configuration</param>
 		public ExternalApiService(IHttpClientFactory httpClientFactory, IConfiguration configuration)
 		{
 			_httpClientFactory = httpClientFactory;
 			_configuration = configuration;
 		}
 
+		/// <summary>
+		/// Retrieves an access token for Business Central API authentication
+		/// </summary>
+		/// <returns>Access token string</returns>
+		/// <remarks>
+		/// Implements token caching to avoid unnecessary requests to the token endpoint.
+		/// Tokens are cached until they are about to expire (with a 1-minute buffer).
+		/// </remarks>
 		public async Task<string> GetAccessTokenAsync()
 		{
 			// Return cached token if it's still valid
@@ -36,6 +52,7 @@ namespace SriKanth.Service.SalesModule
 
 			var client = _httpClientFactory.CreateClient();
 
+			// Prepare OAuth2 token request parameters
 			var parameters = new Dictionary<string, string>
 			{
 				{ "client_id", _configuration["OAuth:ClientId"] },
@@ -44,9 +61,11 @@ namespace SriKanth.Service.SalesModule
 				{ "scope", _configuration["OAuth:Scope"] ?? "https://api.businesscentral.dynamics.com/.default" }
 			};
 
+			// Get token endpoint from config or use default
 			var tokenEndpoint = _configuration["OAuth:TokenEndpoint"]
 				?? "https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token";
 
+			// Request token from Azure AD
 			var response = await client.PostAsync(tokenEndpoint, new FormUrlEncodedContent(parameters));
 
 			if (!response.IsSuccessStatusCode)
@@ -54,61 +73,104 @@ namespace SriKanth.Service.SalesModule
 				throw new Exception($"Failed to obtain access token. Status: {response.StatusCode}");
 			}
 
+			// Parse token response
 			var content = await response.Content.ReadAsStringAsync();
 			var tokenResponse = JsonSerializer.Deserialize<TokenResponse>(content);
 
-			// Cache the token with expiration buffer
+			// Cache the token with expiration buffer (1 minute before actual expiry)
 			_cachedToken = tokenResponse.access_token;
-			_tokenExpiryTime = DateTime.UtcNow.AddSeconds(tokenResponse.expires_in - 60); // 1-minute buffer
+			_tokenExpiryTime = DateTime.UtcNow.AddSeconds(tokenResponse.expires_in - 60);
 
 			return _cachedToken;
 		}
 
+		/// <summary>
+		/// Generic method for making GET requests to the Business Central API
+		/// </summary>
+		/// <typeparam name="T">Type to deserialize the response into</typeparam>
+		/// <param name="apiUrl">Full API endpoint URL</param>
+		/// <returns>Deserialized response of type T</returns>
+		/// <remarks>
+		/// Handles both JSON responses and binary responses (for image requests)
+		/// </remarks>
 		public async Task<T> GetDataFromApiAsync<T>(string apiUrl)
 		{
+			// Get authentication token
 			var token = await GetAccessTokenAsync();
 			var client = _httpClientFactory.CreateClient();
 
+			// Set authorization header
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+			// Make API request
 			var response = await client.GetAsync(apiUrl);
 
 			if (!response.IsSuccessStatusCode)
 			{
 				throw new Exception($"API request failed. Status: {response.StatusCode}");
 			}
-			// Special handling for image requests
+
+			// Special handling for image requests (byte array responses)
 			if (typeof(T) == typeof(byte[]))
 			{
 				return (T)(object)await response.Content.ReadAsByteArrayAsync();
 			}
+
+			// Standard JSON response handling
 			var content = await response.Content.ReadAsStringAsync();
 			return JsonSerializer.Deserialize<T>(content);
 		}
 
+		/// <summary>
+		/// Generic method for making POST requests to the Business Central API
+		/// </summary>
+		/// <typeparam name="T">Type to deserialize the response into</typeparam>
+		/// <param name="apiUrl">Full API endpoint URL</param>
+		/// <param name="data">Data object to serialize and send in the request body</param>
+		/// <returns>Deserialized response of type T</returns>
 		public async Task<T> PostDataToApiAsync<T>(string apiUrl, object data)
 		{
+			// Get authentication token
 			var token = await GetAccessTokenAsync();
-			var client = _httpClientFactory.CreateClient();
+			using var client = _httpClientFactory.CreateClient();
 
+			// Set authorization header
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+			// Configure JSON serialization options
+			var options = new JsonSerializerOptions
+			{
+				PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+				PropertyNameCaseInsensitive = true
+			};
+
+			// Serialize request data
 			var jsonContent = new StringContent(
-				JsonSerializer.Serialize(data),
+				JsonSerializer.Serialize(data, options),
 				Encoding.UTF8,
 				"application/json");
 
+			// Make API request
 			var response = await client.PostAsync(apiUrl, jsonContent);
+
+			// Read response content
+			var responseContent = await response.Content.ReadAsStringAsync();
 
 			if (!response.IsSuccessStatusCode)
 			{
-				throw new Exception($"API request failed. Status: {response.StatusCode}");
+				throw new Exception($"API request failed. Status: {response.StatusCode}. Response: {responseContent}");
 			}
 
-			var content = await response.Content.ReadAsStringAsync();
-			return JsonSerializer.Deserialize<T>(content);
+			// Deserialize and return response
+			return JsonSerializer.Deserialize<T>(responseContent, options);
 		}
-		// Customer API
+
+		#region Business Central API Methods
+
+		/// <summary>
+		/// Retrieves a list of customers from Business Central
+		/// </summary>
+		/// <returns>CustomerApiResponse containing customer data</returns>
 		public async Task<CustomerApiResponse> GetCustomersAsync()
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/" +
@@ -116,60 +178,106 @@ namespace SriKanth.Service.SalesModule
 			return await GetDataFromApiAsync<CustomerApiResponse>(apiUrl);
 		}
 
-		// SalesPeople API
+		/// <summary>
+		/// Retrieves a list of sales people from Business Central
+		/// </summary>
+		/// <returns>SalesPeopleApiResponse containing sales person data</returns>
 		public async Task<SalesPeopleApiResponse> GetSalesPeopleAsync()
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPeople";
 			return await GetDataFromApiAsync<SalesPeopleApiResponse>(apiUrl);
 		}
 
-		// Locations API
+		/// <summary>
+		/// Retrieves a list of locations from Business Central
+		/// </summary>
+		/// <returns>LocationApiResponse containing location data</returns>
 		public async Task<LocationApiResponse> GetLocationsAsync()
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/locations";
 			return await GetDataFromApiAsync<LocationApiResponse>(apiUrl);
 		}
 
-		// Items API with substitutions
+		/// <summary>
+		/// Retrieves items with their substitution items from Business Central
+		/// </summary>
+		/// <returns>ItemApiResponse containing item data with substitutions</returns>
 		public async Task<ItemApiResponse> GetItemsWithSubstitutionsAsync()
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items?$expand=itemsubstitutions";
 			return await GetDataFromApiAsync<ItemApiResponse>(apiUrl);
 		}
+
+		/// <summary>
+		/// Retrieves an item's picture from Business Central
+		/// </summary>
+		/// <param name="systemId">GUID of the item</param>
+		/// <returns>Base64 encoded string of the item picture</returns>
 		public async Task<string> GetItemsPictureAsync(Guid systemId)
 		{
 			string apiUrl = $"https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items({systemId})/picture/pictureContent";
 			var imageBytes = await GetDataFromApiAsync<byte[]>(apiUrl);
 			return Convert.ToBase64String(imageBytes);
 		}
+
+		/// <summary>
+		/// Retrieves inventory balance information from Business Central
+		/// </summary>
+		/// <returns>InventoryApiResponse containing inventory data</returns>
 		public async Task<InventoryApiResponse> GetInventoryBalanceAsync()
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/inventoryBalances";
 			return await GetDataFromApiAsync<InventoryApiResponse>(apiUrl);
 		}
+
+		/// <summary>
+		/// Retrieves sales price information from Business Central
+		/// </summary>
+		/// <returns>SalesPriceApiResponse containing price data</returns>
 		public async Task<SalesPriceApiResponse> GetSalesPriceAsync()
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPrices";
 			return await GetDataFromApiAsync<SalesPriceApiResponse>(apiUrl);
 		}
+
+		/// <summary>
+		/// Retrieves detailed customer information from Business Central
+		/// </summary>
+		/// <returns>CustomerApiResponse containing detailed customer data</returns>
 		public async Task<CustomerApiResponse> GetCustomerDetailsAsync()
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/customers";
 			return await GetDataFromApiAsync<CustomerApiResponse>(apiUrl);
 		}
 
+		/// <summary>
+		/// Posts a sales order to Business Central
+		/// </summary>
+		/// <param name="salesOrder">Sales order data to post</param>
+		/// <returns>SalesIntegrationResponse containing the API response</returns>
 		public async Task<SalesIntegrationResponse> PostSalesOrderAsync(SalesOrderRequest salesOrder)
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/" +
-						   "companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesIntegrations?$expand=salesIntegrationLines";
+							"companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesIntegrations?$expand=salesIntegrationLines";
 
 			return await PostDataToApiAsync<SalesIntegrationResponse>(apiUrl, salesOrder);
 		}
+
+		/// <summary>
+		/// Retrieves invoice details from Business Central
+		/// </summary>
+		/// <returns>InvoiceApiResponse containing invoice data</returns>
 		public async Task<InvoiceApiResponse> GetInvoiceDetailsAsync()
 		{
 			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/postedInvoiceLines";
 			return await GetDataFromApiAsync<InvoiceApiResponse>(apiUrl);
 		}
+
+		#endregion
+
+		/// <summary>
+		/// Internal class for deserializing token responses from Azure AD
+		/// </summary>
 		public class TokenResponse
 		{
 			public string token_type { get; set; }
