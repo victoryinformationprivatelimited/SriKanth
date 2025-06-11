@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Identity.Client;
+using SriKanth.Interface;
 using SriKanth.Interface.SalesModule;
 using SriKanth.Model.ExistingApis;
 using System;
@@ -22,16 +23,18 @@ namespace SriKanth.Service.SalesModule
 		private readonly IConfiguration _configuration;
 		private string _cachedToken;
 		private DateTime _tokenExpiryTime;
+		private readonly IEncryptionService _encryption;
 
 		/// <summary>
 		/// Initializes a new instance of the ExternalApiService class
 		/// </summary>
 		/// <param name="httpClientFactory">Factory for creating HttpClient instances</param>
 		/// <param name="configuration">Application configuration</param>
-		public ExternalApiService(IHttpClientFactory httpClientFactory, IConfiguration configuration)
+		public ExternalApiService(IHttpClientFactory httpClientFactory, IConfiguration configuration, IEncryptionService encryption)
 		{
 			_httpClientFactory = httpClientFactory;
 			_configuration = configuration;
+			_encryption = encryption;
 		}
 
 		/// <summary>
@@ -44,6 +47,7 @@ namespace SriKanth.Service.SalesModule
 		/// </remarks>
 		public async Task<string> GetAccessTokenAsync()
 		{
+			
 			// Return cached token if it's still valid
 			if (!string.IsNullOrEmpty(_cachedToken) && DateTime.UtcNow < _tokenExpiryTime)
 			{
@@ -51,12 +55,13 @@ namespace SriKanth.Service.SalesModule
 			}
 
 			var client = _httpClientFactory.CreateClient();
-
+			var clientId = _encryption.DecryptData(_configuration["OAuth:ClientId"]);
+			var clientSecret = _encryption.DecryptData(_configuration["OAuth:ClientSecret"]);
 			// Prepare OAuth2 token request parameters
 			var parameters = new Dictionary<string, string>
 			{
-				{ "client_id", _configuration["OAuth:ClientId"] },
-				{ "client_secret", _configuration["OAuth:ClientSecret"] },
+				{ "client_id", clientId},
+				{ "client_secret", clientSecret},
 				{ "grant_type", "client_credentials" },
 				{ "scope", _configuration["OAuth:Scope"] ?? "https://api.businesscentral.dynamics.com/.default" }
 			};
@@ -165,7 +170,6 @@ namespace SriKanth.Service.SalesModule
 			return JsonSerializer.Deserialize<T>(responseContent, options);
 		}
 
-		#region Business Central API Methods
 
 		/// <summary>
 		/// Retrieves a list of customers from Business Central
@@ -173,8 +177,7 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>CustomerApiResponse containing customer data</returns>
 		public async Task<CustomerApiResponse> GetCustomersAsync()
 		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/" +
-					   "companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/customers";
+			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/customers";
 			return await GetDataFromApiAsync<CustomerApiResponse>(apiUrl);
 		}
 
@@ -241,16 +244,6 @@ namespace SriKanth.Service.SalesModule
 		}
 
 		/// <summary>
-		/// Retrieves detailed customer information from Business Central
-		/// </summary>
-		/// <returns>CustomerApiResponse containing detailed customer data</returns>
-		public async Task<CustomerApiResponse> GetCustomerDetailsAsync()
-		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/customers";
-			return await GetDataFromApiAsync<CustomerApiResponse>(apiUrl);
-		}
-
-		/// <summary>
 		/// Posts a sales order to Business Central
 		/// </summary>
 		/// <param name="salesOrder">Sales order data to post</param>
@@ -273,8 +266,7 @@ namespace SriKanth.Service.SalesModule
 			return await GetDataFromApiAsync<InvoiceApiResponse>(apiUrl);
 		}
 
-		#endregion
-
+		
 		/// <summary>
 		/// Internal class for deserializing token responses from Azure AD
 		/// </summary>

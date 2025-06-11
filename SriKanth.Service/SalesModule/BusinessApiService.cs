@@ -157,7 +157,7 @@ namespace SriKanth.Service.SalesModule
 
 				// Execute all API calls in parallel
 				var locationsTask = _externalApiService.GetLocationsAsync();
-				var customersTask = _externalApiService.GetCustomerDetailsAsync();
+				var customersTask = _externalApiService.GetCustomersAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
 				var salesPriceTask = _externalApiService.GetSalesPriceAsync();
 
@@ -281,7 +281,7 @@ namespace SriKanth.Service.SalesModule
 
 				// Execute all API calls in parallel
 				var locationsTask = _externalApiService.GetLocationsAsync();
-				var customersTask = _externalApiService.GetCustomerDetailsAsync();
+				var customersTask = _externalApiService.GetCustomersAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
 				var salesPriceTask = _externalApiService.GetSalesPriceAsync();
 				var inventoryTask = _externalApiService.GetInventoryBalanceAsync();
@@ -612,7 +612,7 @@ namespace SriKanth.Service.SalesModule
 						customerNo = order.CustomerCode,
 						orderDate = order.OrderDate.ToString("yyyy-MM-dd"),
 						salespersonCode = order.SalesPersonCode,
-						paymentMethodCode = order.PaymentMethodCode,
+						paymentMethodCode = "BNKTRNSFR", // just added fix value for testing purpose
 						paymentTermCode = paymentTermCode,
 						salesIntegrationLines = orderItems
 							.Select((line, index) => new SalesIntegrationLine
@@ -676,7 +676,7 @@ namespace SriKanth.Service.SalesModule
 				}
 
 				// 1. Get all customers
-				var customerResponse = await _externalApiService.GetCustomerDetailsAsync();
+				var customerResponse = await _externalApiService.GetCustomersAsync();
 				var customers = customerResponse?.value ?? new List<Customer>();
 
 				// 2. Filter customers by salesperson code
@@ -732,7 +732,7 @@ namespace SriKanth.Service.SalesModule
 			try
 			{
 				// Get customer details from external API
-				var customersResponse = await _externalApiService.GetCustomerDetailsAsync();
+				var customersResponse = await _externalApiService.GetCustomersAsync();
 
 				if (customersResponse?.value == null || !customersResponse.value.Any())
 				{

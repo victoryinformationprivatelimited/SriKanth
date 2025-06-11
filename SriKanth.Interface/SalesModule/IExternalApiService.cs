@@ -19,7 +19,6 @@ namespace SriKanth.Interface.SalesModule
 		Task<string> GetItemsPictureAsync(Guid systemId);
 		Task<InventoryApiResponse> GetInventoryBalanceAsync();
 		Task<SalesPriceApiResponse> GetSalesPriceAsync();
-		Task<CustomerApiResponse> GetCustomerDetailsAsync();
 		Task<SalesIntegrationResponse> PostSalesOrderAsync(SalesOrderRequest salesOrder);
 		Task<InvoiceApiResponse> GetInvoiceDetailsAsync();
 	}

@@ -67,6 +67,10 @@ builder.Services.AddRateLimiter(options =>
                 QueueLimit = 0
             }));
 });
+var tempProvider = builder.Services.BuildServiceProvider();
+var encryptionService = tempProvider.GetRequiredService<IEncryptionService>();
+string encryptedJwtKey = builder.Configuration["Jwt:Key"]!;
+string decryptedJwtKey = encryptionService.DecryptData(encryptedJwtKey);
 
 builder.Services.AddAuthentication(options =>
 {
@@ -82,7 +86,7 @@ builder.Services.AddAuthentication(options =>
 		ValidateAudience = true,
 		ValidAudience = builder.Configuration["Jwt:Audience"],
 		ValidateLifetime = true,
-		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)),
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(decryptedJwtKey)),
 		NameClaimType = JwtRegisteredClaimNames.Name
 	};
 
@@ -111,12 +115,6 @@ builder.Services.AddAuthentication(options =>
         }
     };
 });
-
-Log.Logger = new LoggerConfiguration()
-	.MinimumLevel.Information()
-	.WriteTo.Console() // Optional: Log to console too
-	.WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
-	.CreateLogger();
 
 builder.Services.AddCors(o =>
 {

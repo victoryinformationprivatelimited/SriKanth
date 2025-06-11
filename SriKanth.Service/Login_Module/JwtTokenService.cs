@@ -52,7 +52,7 @@ namespace SriKanth.Service.Login_Module
 				string email = _encryption.DecryptData(user.Email);
 				string uname = _encryption.DecryptData(user.Username);
 				string number = _encryption.DecryptData(user.PhoneNumber);
-
+				var jwtKey = _encryption.DecryptData(_configuration["Jwt:Key"]);
 				// Determine the token expiration based on the "RememberMe" flag.
 				var tokenExpiration = user.RememberMe ? DateTime.UtcNow.AddDays(07) : DateTime.UtcNow.AddHours(1);
 
@@ -71,7 +71,7 @@ namespace SriKanth.Service.Login_Module
 					Issuer = _configuration["Jwt:Issuer"],
 					Expires = tokenExpiration,
 					SigningCredentials = new SigningCredentials(
-						new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"])),
+						new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
 						SecurityAlgorithms.HmacSha512Signature)
 				};
 

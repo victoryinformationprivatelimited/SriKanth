@@ -20,9 +20,8 @@ namespace SriKanth.Model.Login_Module.DTOs
 		[Required(ErrorMessage = "Password is required.")]
 		[StringLength(50, ErrorMessage = "Password must be between {2} and {1} characters.", MinimumLength = 8)]
 		[DataType(DataType.Password)]
-		[RegularExpression(
-			pattern: @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$",
-			ErrorMessage = "Password requires uppercase, lowercase, number, and special character.")]
+		[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z]).{8,}$",
+			ErrorMessage = "Password must contain at least one uppercase and one lowercase letter.")]
 		[Display(Name = "Password")]
 		public string Password { get; set; }
 
