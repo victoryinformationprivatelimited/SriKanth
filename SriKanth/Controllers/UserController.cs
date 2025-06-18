@@ -204,7 +204,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userDetails">Complete user information</param>
 		/// <returns>Confirmation of user creation</returns>
 		[HttpPost("AddUser")]
-		[Authorize]
+		[Authorize(Roles = "Admin")] // Only Admins can add new users
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> AddNewUser([FromBody] UserDetails userDetails)
 		{
@@ -239,7 +239,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userDetails">Updated user information</param>
 		/// <returns>Confirmation of user update</returns>
 		[HttpPut("UpdateUser")]
-		[Authorize]
+		[Authorize(Roles = "Admin")]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> UpdateUserInfo(int userId, [FromBody] UserDetails userDetails)
 		{
@@ -313,7 +313,7 @@ namespace SriKanth.API.Controllers
 		/// </summary>
 		/// <returns>List of all users with basic information</returns>
 		[HttpGet("GetAllUsers")]
-		[Authorize]
+		[Authorize(Roles = "Admin")]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetAllUsers()
 		{

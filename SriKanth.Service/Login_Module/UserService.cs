@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace SriKanth.Service.Login_Module
 {
@@ -372,7 +373,7 @@ namespace SriKanth.Service.Login_Module
 				}
 
 				// Create user entity
-				var user = new User
+				var user = new Model.Login_Module.Entities.User
 				{
 					Username = encryptedUsername,
 					FirstName = userDetails.FirstName,
@@ -577,7 +578,7 @@ namespace SriKanth.Service.Login_Module
 						Phone = sp.phoneNo
 					}).ToList(),
 
-					Locations = locations.value.Select(loc => new Location
+					Locations = locations.value.Select(loc => new Model.Login_Module.DTOs.Location
 					{
 						LocationCode = loc.code,
 						LocationName = loc.name
@@ -659,14 +660,23 @@ namespace SriKanth.Service.Login_Module
 
 				foreach (var user in users)
 				{
+					var locations = await _userData.GetUserLocationCodesAsync(user.UserID);
+					var mfa = await _userData.GetMFATypeAsync(user.UserID);
 					userDetailsList.Add(new UserReturn
 					{
+						UserId = user.UserID,
 						Username = _encryption.DecryptData(user.Username),
+						Password = _encryption.DecryptData(user.PasswordHash),
 						FirstName = user.FirstName,
 						LastName = user.LastName,
 						UserRoleId = user.UserRoleId,
 						SalesPersonCode = user.SalesPersonCode,
+						LocationCodes = locations,
+						Email = _encryption.DecryptData(user.Email),
+						PhoneNumber = _encryption.DecryptData(user.PhoneNumber),
 						IsActive = user.IsActive,
+						IsMfaEnabled = mfa.IsMFAEnabled,
+						MfaType = mfa.PreferredMFAType
 					});
 				}
 
@@ -685,7 +695,7 @@ namespace SriKanth.Service.Login_Module
 		/// </summary>
 		/// <param name="user">The user to check for MFA settings.</param>
 		/// <returns>Returns a tuple indicating whether MFA is enabled and the preferred MFA type.</returns>
-		private async Task<(bool IsEnabled, string PreferredMFAType)> IsMfaEnabledAndGetType(User user)
+		private async Task<(bool IsEnabled, string PreferredMFAType)> IsMfaEnabledAndGetType(Model.Login_Module.Entities.User user)
 		{
 			// Retrieve MFA settings for the user
 			var mfa = await _userData.GetMFATypeAsync(user.UserID);

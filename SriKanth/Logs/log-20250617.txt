@@ -1,0 +1,653 @@
+2025-06-17 06:13:36.298 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 06:13:36.669 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-17 06:13:36.671 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-17 06:13:36.816 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 06:13:36.817 +05:30 [INF] Hosting environment: Development
+2025-06-17 06:13:36.819 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-17 06:13:38.372 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-17 06:13:39.249 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 898.4114ms
+2025-06-17 06:13:39.281 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 06:13:39.298 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 17.1526ms
+2025-06-17 06:13:39.389 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-17 06:13:39.493 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 104.7486ms
+2025-06-17 06:13:40.292 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-17 06:13:40.313 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.9442ms
+2025-06-17 06:13:40.536 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - null null
+2025-06-17 06:13:40.593 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-17 06:13:40.595 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - 200 628 image/png 59.1029ms
+2025-06-17 06:13:47.204 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/User/GetAllUsers - null null
+2025-06-17 06:13:47.331 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-17 06:13:47.339 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-17 06:13:47.342 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/User/GetAllUsers - 401 0 null 138.3562ms
+2025-06-17 06:15:24.244 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/login - application/json 93
+2025-06-17 06:15:24.271 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-06-17 06:15:24.343 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:15:24.710 +05:30 [INF] Login attempt started for the user with username or email: DinukaChathuraga.
+2025-06-17 06:15:27.225 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 06:15:27.228 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 06:15:27.230 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 06:15:27.232 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 06:15:30.010 +05:30 [INF] Executed DbCommand (396ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-06-17 06:15:30.045 +05:30 [WRN] Invalid login attempt for user: DinukaChathuraga.
+2025-06-17 06:15:30.055 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType3`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-17 06:15:30.071 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 5716.7548ms
+2025-06-17 06:15:30.075 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-06-17 06:15:30.083 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/login - 401 null application/json; charset=utf-8 5840.6867ms
+2025-06-17 06:16:28.383 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/login - application/json 93
+2025-06-17 06:16:28.396 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-06-17 06:16:28.397 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:16:28.407 +05:30 [INF] Login attempt started for the user with username or email: DinukaChathuraga.
+2025-06-17 06:16:28.703 +05:30 [INF] Executed DbCommand (279ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-06-17 06:16:28.707 +05:30 [WRN] Invalid login attempt for user: DinukaChathuraga.
+2025-06-17 06:16:28.708 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType3`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-17 06:16:28.709 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 309.5786ms
+2025-06-17 06:16:28.709 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-06-17 06:16:28.710 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/login - 401 null application/json; charset=utf-8 327.2496ms
+2025-06-17 06:17:07.182 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/login - application/json 86
+2025-06-17 06:17:07.198 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-06-17 06:17:07.198 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:17:07.206 +05:30 [INF] Login attempt started for the user with username or email: navindaH.
+2025-06-17 06:17:07.490 +05:30 [INF] Executed DbCommand (236ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-06-17 06:17:07.810 +05:30 [INF] Executed DbCommand (231ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:17:08.126 +05:30 [INF] Executed DbCommand (229ms) [Parameters=[@p16='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [Email] = @p1, [FailedLoginCount] = @p2, [FirstName] = @p3, [IsActive] = @p4, [IsEmailVerified] = @p5, [IsLocked] = @p6, [IsPhoneNumberVerified] = @p7, [LastLoginAt] = @p8, [LastName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [RememberMe] = @p12, [SalesPersonCode] = @p13, [UserRoleId] = @p14, [Username] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+2025-06-17 06:17:08.137 +05:30 [INF] Updated the last login time for user: 11.
+2025-06-17 06:17:08.971 +05:30 [WRN] API Response: {
+  "ip": "::1",
+  "bogon": true
+}
+2025-06-17 06:17:09.323 +05:30 [INF] Executed DbCommand (234ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (Size = 50), @p4='?' (Size = 255), @p5='?' (Size = 50), @p6='?' (DbType = Boolean), @p7='?' (Size = 50), @p8='?' (DbType = DateTime2), @p9='?' (Size = 50), @p10='?' (DbType = Boolean), @p11='?' (Size = 50), @p12='?' (Size = 255), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginTrack] ([Browser], [City], [Country], [DeviceType], [FailureReason], [IPAddress], [IsSuccessful], [LoginMethod], [LoginTime], [MFAMethod], [MFAUsed], [OperatingSystem], [SessionID], [UserID])
+OUTPUT INSERTED.[LoginTrackID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2025-06-17 06:17:21.508 +05:30 [INF] Executed DbCommand (355ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-06-17 06:17:21.513 +05:30 [INF] JWT token generated and stored for user 11.
+2025-06-17 06:17:22.781 +05:30 [INF] Executed DbCommand (423ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-06-17 06:17:22.784 +05:30 [INF] Login successful without MFA for user: 11.
+2025-06-17 06:17:22.788 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-17 06:17:22.793 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 15594.0943ms
+2025-06-17 06:17:22.795 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-06-17 06:17:22.796 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/login - 200 null application/json; charset=utf-8 15614.283ms
+2025-06-17 06:18:29.324 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - null null
+2025-06-17 06:18:29.328 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-17 06:18:29.330 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-17 06:18:29.334 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - 401 0 null 10.2759ms
+2025-06-17 06:23:20.704 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - null null
+2025-06-17 06:23:20.768 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:23:20.777 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:23:22.721 +05:30 [INF] Getting list of users
+2025-06-17 06:23:23.841 +05:30 [INF] Executed DbCommand (235ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+2025-06-17 06:23:24.095 +05:30 [INF] Executed DbCommand (221ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:23:24.321 +05:30 [INF] Executed DbCommand (224ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:23:25.383 +05:30 [ERR] Error getting user list
+System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at SriKanth.Service.EncryptionService.DecryptData(String cipherText) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\EncryptionService.cs:line 111
+   at SriKanth.Service.Login_Module.UserService.GetListOfUsersAsync() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\Login_Module\UserService.cs:line 665
+2025-06-17 06:23:25.761 +05:30 [INF] Executed DbCommand (264ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-06-17 06:23:25.769 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2025-06-17 06:23:25.775 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API) in 4993.3008ms
+2025-06-17 06:23:25.778 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:23:25.780 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - 500 null text/plain; charset=utf-8 5075.2196ms
+2025-06-17 06:23:34.476 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - null null
+2025-06-17 06:23:34.479 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:23:34.481 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:23:36.774 +05:30 [INF] Getting list of users
+2025-06-17 06:23:41.100 +05:30 [INF] Executed DbCommand (216ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+2025-06-17 06:23:51.937 +05:30 [INF] Executed DbCommand (222ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:23:58.297 +05:30 [INF] Executed DbCommand (279ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:24:27.391 +05:30 [ERR] Error getting user list
+System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at SriKanth.Service.EncryptionService.DecryptData(String cipherText) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\EncryptionService.cs:line 111
+   at SriKanth.Service.Login_Module.UserService.GetListOfUsersAsync() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\Login_Module\UserService.cs:line 665
+2025-06-17 06:24:27.752 +05:30 [INF] Executed DbCommand (310ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-06-17 06:24:27.755 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2025-06-17 06:24:27.757 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API) in 53275.709ms
+2025-06-17 06:24:27.759 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:24:27.759 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - 500 null text/plain; charset=utf-8 53283.5862ms
+2025-06-17 06:26:15.730 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - null null
+2025-06-17 06:26:15.732 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:26:15.734 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:26:17.497 +05:30 [INF] Getting list of users
+2025-06-17 06:26:21.977 +05:30 [INF] Executed DbCommand (503ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+2025-06-17 06:26:35.732 +05:30 [INF] Executed DbCommand (266ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:26:42.464 +05:30 [INF] Executed DbCommand (315ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:27:12.245 +05:30 [ERR] Error getting user list
+System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at SriKanth.Service.EncryptionService.DecryptData(String cipherText) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\EncryptionService.cs:line 111
+   at SriKanth.Service.Login_Module.UserService.GetListOfUsersAsync() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\Login_Module\UserService.cs:line 665
+2025-06-17 06:27:12.542 +05:30 [INF] Executed DbCommand (247ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-06-17 06:27:12.544 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2025-06-17 06:27:12.546 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API) in 56810.6578ms
+2025-06-17 06:27:12.548 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:27:12.550 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - 500 null text/plain; charset=utf-8 56820.0234ms
+2025-06-17 06:27:24.436 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - null null
+2025-06-17 06:27:24.439 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:27:24.440 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:27:26.471 +05:30 [INF] Getting list of users
+2025-06-17 06:27:30.238 +05:30 [INF] Executed DbCommand (263ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+2025-06-17 06:27:31.327 +05:30 [INF] Executed DbCommand (211ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:27:31.535 +05:30 [INF] Executed DbCommand (202ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:32:18.567 +05:30 [ERR] Error getting user list
+System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at SriKanth.Service.EncryptionService.DecryptData(String cipherText) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\EncryptionService.cs:line 111
+   at SriKanth.Service.Login_Module.UserService.GetListOfUsersAsync() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\Login_Module\UserService.cs:line 665
+2025-06-17 06:32:18.717 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/encrypt - application/json 24
+2025-06-17 06:32:18.721 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.EncryptText (SriKanth.API)'
+2025-06-17 06:32:18.727 +05:30 [INF] Route matched with {action = "EncryptText", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EncryptText(SriKanth.API.Controllers.EncryptTextRequest) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:32:18.738 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType10`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-17 06:32:18.745 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.EncryptText (SriKanth.API) in 14.9002ms
+2025-06-17 06:32:18.747 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.EncryptText (SriKanth.API)'
+2025-06-17 06:32:18.748 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/encrypt - 200 null application/json; charset=utf-8 31.654ms
+2025-06-17 06:32:18.953 +05:30 [INF] Executed DbCommand (242ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-06-17 06:32:18.959 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2025-06-17 06:32:18.961 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API) in 294518.7193ms
+2025-06-17 06:32:18.962 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:32:19.015 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - 500 null text/plain; charset=utf-8 294578.5462ms
+2025-06-17 06:32:22.448 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/encrypt - application/json 24
+2025-06-17 06:32:22.452 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.EncryptText (SriKanth.API)'
+2025-06-17 06:32:22.453 +05:30 [INF] Route matched with {action = "EncryptText", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EncryptText(SriKanth.API.Controllers.EncryptTextRequest) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:32:22.455 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType10`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-17 06:32:22.456 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.EncryptText (SriKanth.API) in 1.9436ms
+2025-06-17 06:32:22.460 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.EncryptText (SriKanth.API)'
+2025-06-17 06:32:22.463 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/encrypt - 200 null application/json; charset=utf-8 14.4967ms
+2025-06-17 06:32:24.329 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/encrypt - application/json 24
+2025-06-17 06:32:24.334 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.EncryptText (SriKanth.API)'
+2025-06-17 06:32:24.336 +05:30 [INF] Route matched with {action = "EncryptText", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EncryptText(SriKanth.API.Controllers.EncryptTextRequest) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:32:24.340 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType10`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-17 06:32:24.342 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.EncryptText (SriKanth.API) in 3.2089ms
+2025-06-17 06:32:24.344 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.EncryptText (SriKanth.API)'
+2025-06-17 06:32:24.347 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/encrypt - 200 null application/json; charset=utf-8 17.9133ms
+2025-06-17 06:46:43.424 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - null null
+2025-06-17 06:46:43.431 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:46:43.435 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 06:46:45.447 +05:30 [INF] Getting list of users
+2025-06-17 06:46:46.706 +05:30 [INF] Executed DbCommand (218ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+2025-06-17 06:46:46.936 +05:30 [INF] Executed DbCommand (222ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:46:47.142 +05:30 [INF] Executed DbCommand (204ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:46:53.551 +05:30 [INF] Executed DbCommand (223ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:46:53.794 +05:30 [INF] Executed DbCommand (238ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:46:58.879 +05:30 [INF] Executed DbCommand (450ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:46:59.111 +05:30 [INF] Executed DbCommand (228ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:47:01.153 +05:30 [INF] Executed DbCommand (315ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:47:01.380 +05:30 [INF] Executed DbCommand (224ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:47:02.373 +05:30 [INF] Executed DbCommand (223ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:47:02.579 +05:30 [INF] Executed DbCommand (204ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:47:03.654 +05:30 [INF] Executed DbCommand (211ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:47:03.866 +05:30 [INF] Executed DbCommand (207ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:47:05.266 +05:30 [INF] Executed DbCommand (414ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 06:47:05.475 +05:30 [INF] Executed DbCommand (205ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 06:47:06.396 +05:30 [INF] Retrieved 7 users
+2025-06-17 06:47:06.626 +05:30 [INF] Executed DbCommand (227ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-06-17 06:47:06.629 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.Login_Module.DTOs.UserReturn, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-17 06:47:06.636 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API) in 23197.9491ms
+2025-06-17 06:47:06.639 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.GetAllUsers (SriKanth.API)'
+2025-06-17 06:47:06.639 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/User/GetAllUsers - 200 null application/json; charset=utf-8 23215.5371ms
+2025-06-17 08:40:51.961 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 08:40:52.398 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-17 08:40:52.400 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-17 08:40:52.588 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 08:40:52.617 +05:30 [INF] Hosting environment: Development
+2025-06-17 08:40:52.660 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-17 08:40:53.382 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-17 08:40:53.682 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 315.0051ms
+2025-06-17 08:40:53.749 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 08:40:53.767 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 17.9227ms
+2025-06-17 08:40:53.802 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-17 08:40:53.907 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 105.238ms
+2025-06-17 08:40:54.654 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-17 08:40:54.745 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 91.1612ms
+2025-06-17 08:41:48.755 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - multipart/form-data; boundary=----WebKitFormBoundaryyUHpXjlK0T60wm3n 8276826
+2025-06-17 08:41:48.861 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-17 08:41:48.868 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-17 08:41:48.869 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/Business/UploadUserDocument - 401 0 null 114.0051ms
+2025-06-17 08:41:48.878 +05:30 [INF] Connection id "0HNDD9I8N3815", Request id "0HNDD9I8N3815:00000001": the application completed without reading the entire request body.
+2025-06-17 08:44:32.695 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 08:44:32.924 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-17 08:44:32.927 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-17 08:44:32.997 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 08:44:32.999 +05:30 [INF] Hosting environment: Development
+2025-06-17 08:44:32.999 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-17 08:44:33.439 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-17 08:44:33.775 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 349.2847ms
+2025-06-17 08:44:33.861 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 08:44:33.871 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 10.3551ms
+2025-06-17 08:44:33.917 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-17 08:44:33.985 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 67.8898ms
+2025-06-17 08:44:34.632 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-17 08:44:34.672 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 39.9884ms
+2025-06-17 09:06:17.310 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 09:06:17.542 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-17 09:06:17.545 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-17 09:06:17.623 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 09:06:17.625 +05:30 [INF] Hosting environment: Development
+2025-06-17 09:06:17.627 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-17 09:06:18.572 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-17 09:06:18.808 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 261.6326ms
+2025-06-17 09:06:18.877 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 09:06:18.887 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 11.0312ms
+2025-06-17 09:06:18.937 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-17 09:06:19.029 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 92.8631ms
+2025-06-17 09:06:19.620 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-17 09:06:19.666 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.6411ms
+2025-06-17 09:16:38.414 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/User/GetListOfDocuments?userId=5 - null null
+2025-06-17 09:16:38.521 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/User/GetListOfDocuments?userId=5 - 404 0 null 106.6842ms
+2025-06-17 09:16:38.526 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7168/api/User/GetListOfDocuments, Response status code: 404
+2025-06-17 09:17:04.821 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/User/GetListOfDocument?userId=5 - null null
+2025-06-17 09:17:04.894 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-17 09:17:04.933 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-17 09:17:04.934 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/User/GetListOfDocument?userId=5 - 404 0 null 117.168ms
+2025-06-17 09:17:04.936 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7168/api/User/GetListOfDocument, Response status code: 404
+2025-06-17 09:17:28.933 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/User/GetListOfDocuments?userId=5 - null null
+2025-06-17 09:17:28.941 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-17 09:17:28.945 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-17 09:17:28.947 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/User/GetListOfDocuments?userId=5 - 404 0 null 13.3887ms
+2025-06-17 09:17:28.950 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7168/api/User/GetListOfDocuments, Response status code: 404
+2025-06-17 09:17:50.730 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-17 09:17:50.742 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-17 09:17:50.744 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-17 09:17:50.755 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-17 09:17:50.763 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-17 09:17:50.764 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 401 0 null 35.0567ms
+2025-06-17 09:18:52.500 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/login - application/json 94
+2025-06-17 09:18:52.523 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-06-17 09:18:52.595 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-06-17 09:18:53.049 +05:30 [INF] Login attempt started for the user with username or email: DinukaChathuranga.
+2025-06-17 09:18:57.269 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 09:18:57.270 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 09:18:57.274 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 09:18:57.277 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 09:18:59.871 +05:30 [INF] Executed DbCommand (271ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-06-17 09:19:00.248 +05:30 [INF] Executed DbCommand (220ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-06-17 09:19:00.599 +05:30 [INF] Executed DbCommand (231ms) [Parameters=[@p16='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [Email] = @p1, [FailedLoginCount] = @p2, [FirstName] = @p3, [IsActive] = @p4, [IsEmailVerified] = @p5, [IsLocked] = @p6, [IsPhoneNumberVerified] = @p7, [LastLoginAt] = @p8, [LastName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [RememberMe] = @p12, [SalesPersonCode] = @p13, [UserRoleId] = @p14, [Username] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+2025-06-17 09:19:00.612 +05:30 [INF] Updated the last login time for user: 10.
+2025-06-17 09:19:01.287 +05:30 [WRN] API Response: {
+  "ip": "::1",
+  "bogon": true
+}
+2025-06-17 09:19:01.667 +05:30 [INF] Executed DbCommand (225ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (Size = 50), @p4='?' (Size = 255), @p5='?' (Size = 50), @p6='?' (DbType = Boolean), @p7='?' (Size = 50), @p8='?' (DbType = DateTime2), @p9='?' (Size = 50), @p10='?' (DbType = Boolean), @p11='?' (Size = 50), @p12='?' (Size = 255), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginTrack] ([Browser], [City], [Country], [DeviceType], [FailureReason], [IPAddress], [IsSuccessful], [LoginMethod], [LoginTime], [MFAMethod], [MFAUsed], [OperatingSystem], [SessionID], [UserID])
+OUTPUT INSERTED.[LoginTrackID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2025-06-17 09:19:09.652 +05:30 [INF] Executed DbCommand (232ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-06-17 09:19:09.661 +05:30 [INF] JWT token generated and stored for user 10.
+2025-06-17 09:19:10.926 +05:30 [INF] Executed DbCommand (219ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-06-17 09:19:10.932 +05:30 [INF] Login successful without MFA for user: 10.
+2025-06-17 09:19:10.946 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-17 09:19:10.966 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 18361.484ms
+2025-06-17 09:19:10.969 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-06-17 09:19:10.990 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/login - 200 null application/json; charset=utf-8 18489.2529ms
+2025-06-17 09:19:36.782 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-17 09:19:36.849 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetUserDocuments (SriKanth.API)'
+2025-06-17 09:19:36.859 +05:30 [INF] Route matched with {action = "GetUserDocuments", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserDocuments(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-17 09:19:37.017 +05:30 [INF] Retrieving documents for user 5
+2025-06-17 09:19:37.274 +05:30 [INF] Executed DbCommand (209ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[FileSize], [u].[OriginalFileName], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 09:19:37.553 +05:30 [INF] Executed DbCommand (221ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-06-17 09:19:37.559 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[System.ValueTuple`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], SriKanth.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-17 09:19:37.567 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetUserDocuments (SriKanth.API) in 705.4834ms
+2025-06-17 09:19:37.569 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetUserDocuments (SriKanth.API)'
+2025-06-17 09:19:37.571 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 200 null application/json; charset=utf-8 788.5355ms
+2025-06-17 09:21:46.275 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/DeleteDocument?documentUrl=https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - null null
+2025-06-17 09:21:46.283 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-06-17 09:21:46.286 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-06-17 09:21:46.289 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/DeleteDocument?documentUrl=https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - 405 0 null 13.5477ms
+2025-06-17 09:22:14.290 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/DeleteDocument?documentUrl=https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - null null
+2025-06-17 09:22:14.294 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-06-17 09:22:14.295 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-06-17 09:22:14.296 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/DeleteDocument?documentUrl=https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - 405 0 null 5.4242ms
+2025-06-17 09:22:30.211 +05:30 [INF] Request starting HTTP/1.1 DELETE https://localhost:7168/api/Business/DeleteDocument?documentUrl=https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - null null
+2025-06-17 09:22:30.217 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.DeleteDocument (SriKanth.API)'
+2025-06-17 09:22:30.222 +05:30 [INF] Route matched with {action = "DeleteDocument", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteDocument(System.String) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-17 09:22:30.230 +05:30 [INF] Attempting to delete document: https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf
+2025-06-17 09:22:30.876 +05:30 [INF] Successfully deleted document: https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf
+2025-06-17 09:22:30.884 +05:30 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2025-06-17 09:22:30.887 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.DeleteDocument (SriKanth.API) in 663.2522ms
+2025-06-17 09:22:30.888 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.DeleteDocument (SriKanth.API)'
+2025-06-17 09:22:30.888 +05:30 [INF] Request finished HTTP/1.1 DELETE https://localhost:7168/api/Business/DeleteDocument?documentUrl=https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - 204 null null 677.3273ms
+2025-06-17 09:22:35.691 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - null null
+2025-06-17 09:22:35.694 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetUserDocuments (SriKanth.API)'
+2025-06-17 09:22:35.696 +05:30 [INF] Route matched with {action = "GetUserDocuments", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserDocuments(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-17 09:22:35.704 +05:30 [INF] Retrieving documents for user 5
+2025-06-17 09:22:36.004 +05:30 [INF] Executed DbCommand (227ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserDocumentStorageId], [u].[AddedDate], [u].[DocumentReference], [u].[DocumentType], [u].[FileSize], [u].[OriginalFileName], [u].[UserId]
+FROM [UserDocumentStorage] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-17 09:22:36.231 +05:30 [INF] Executed DbCommand (222ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-06-17 09:22:36.236 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[System.ValueTuple`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], SriKanth.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-17 09:22:36.238 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetUserDocuments (SriKanth.API) in 539.6516ms
+2025-06-17 09:22:36.240 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetUserDocuments (SriKanth.API)'
+2025-06-17 09:22:36.242 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetListOfDocuments?userId=5 - 200 null application/json; charset=utf-8 551.0726ms
+2025-06-17 09:23:20.638 +05:30 [INF] Request starting HTTP/1.1 DELETE https://localhost:7168/api/Business/DeleteDocument?documentUrl=https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - null null
+2025-06-17 09:23:20.644 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.DeleteDocument (SriKanth.API)'
+2025-06-17 09:23:20.645 +05:30 [INF] Route matched with {action = "DeleteDocument", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteDocument(System.String) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-17 09:23:24.326 +05:30 [INF] Attempting to delete document: https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf
+2025-06-17 09:23:38.595 +05:30 [WRN] Document not found: https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf
+2025-06-17 09:23:43.186 +05:30 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2025-06-17 09:23:43.189 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.DeleteDocument (SriKanth.API) in 22542.5761ms
+2025-06-17 09:23:43.191 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.DeleteDocument (SriKanth.API)'
+2025-06-17 09:23:43.193 +05:30 [INF] Request finished HTTP/1.1 DELETE https://localhost:7168/api/Business/DeleteDocument?documentUrl=https://sasrikanthasalesapp.blob.core.windows.net/documents/6503c61b-4cf0-454a-bffe-49e671d79d76.pdf - 204 null null 22554.6291ms
+2025-06-17 10:43:24.449 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:43:24.475 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:43:24.476 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:43:24.476 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:44:08.192 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:44:08.230 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:44:08.230 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:44:08.230 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:44:10.028 +05:30 [INF] Executed DbCommand (221ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-17 10:44:10.037 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-06-17 10:44:10.300 +05:30 [INF] Executed DbCommand (261ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-06-17 10:44:10.791 +05:30 [INF] Executed DbCommand (228ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-06-17 10:44:11.443 +05:30 [INF] Executed DbCommand (216ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-17 10:44:11.680 +05:30 [INF] Executed DbCommand (235ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-06-17 10:44:11.928 +05:30 [INF] Executed DbCommand (244ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-06-17 10:44:11.940 +05:30 [INF] Applying migration '20250617051326_changeorderstaus'.
+2025-06-17 10:44:12.236 +05:30 [INF] Executed DbCommand (277ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Order] ADD [DelivertPersonName] nvarchar(100) NULL;
+2025-06-17 10:44:12.469 +05:30 [INF] Executed DbCommand (232ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Order] ADD [DeliveryDate] datetime2 NULL;
+2025-06-17 10:44:12.695 +05:30 [INF] Executed DbCommand (226ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Order] ADD [TrackingNumber] nvarchar(100) NULL;
+2025-06-17 10:44:12.906 +05:30 [INF] Executed DbCommand (211ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250617051326_changeorderstaus', N'9.0.3');
+2025-06-17 10:44:13.355 +05:30 [INF] Executed DbCommand (230ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-06-17 10:48:08.699 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 10:48:09.039 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-17 10:48:09.042 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-17 10:48:09.345 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 10:48:09.346 +05:30 [INF] Hosting environment: Development
+2025-06-17 10:48:09.347 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-17 10:48:10.063 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-17 10:48:10.337 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 295.7755ms
+2025-06-17 10:48:10.380 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 10:48:10.404 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 24.077ms
+2025-06-17 10:48:10.484 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-17 10:48:10.572 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 87.7239ms
+2025-06-17 10:48:11.407 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-17 10:48:11.448 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 42.0195ms
+2025-06-17 10:51:04.687 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:51:04.712 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:51:04.712 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:51:04.712 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:51:22.986 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:51:23.015 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:51:23.015 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:51:23.015 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-17 10:51:24.986 +05:30 [INF] Executed DbCommand (227ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-17 10:51:24.994 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-06-17 10:51:25.247 +05:30 [INF] Executed DbCommand (251ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-06-17 10:51:25.723 +05:30 [INF] Executed DbCommand (216ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-06-17 10:51:26.364 +05:30 [INF] Executed DbCommand (214ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-17 10:51:26.593 +05:30 [INF] Executed DbCommand (229ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-06-17 10:51:26.823 +05:30 [INF] Executed DbCommand (226ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-06-17 10:51:26.835 +05:30 [INF] Applying migration '20250617052105_changeorderstausdate'.
+2025-06-17 10:51:27.149 +05:30 [INF] Executed DbCommand (293ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var sysname;
+SELECT @var = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Order]') AND [c].[name] = N'DeliveryDate');
+IF @var IS NOT NULL EXEC(N'ALTER TABLE [Order] DROP CONSTRAINT [' + @var + '];');
+ALTER TABLE [Order] ALTER COLUMN [DeliveryDate] date NULL;
+2025-06-17 10:51:27.386 +05:30 [INF] Executed DbCommand (236ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250617052105_changeorderstausdate', N'9.0.3');
+2025-06-17 10:51:27.828 +05:30 [INF] Executed DbCommand (224ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-06-17 10:54:31.366 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 10:54:31.871 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-17 10:54:31.875 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-17 10:54:32.183 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 10:54:32.247 +05:30 [INF] Hosting environment: Development
+2025-06-17 10:54:32.249 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-17 10:54:32.463 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-17 10:54:32.779 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 333.8618ms
+2025-06-17 10:54:32.844 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 10:54:32.858 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 14.9088ms
+2025-06-17 10:54:32.918 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-17 10:54:33.017 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 100.0919ms
+2025-06-17 10:54:33.661 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-17 10:54:33.705 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 44.5003ms

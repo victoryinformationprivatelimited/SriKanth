@@ -192,6 +192,7 @@ namespace SriKanth.Service.SalesModule
 			try
 			{
 				var blobClient = GetBlobClientFromUrl(documentUrl);
+				var document = await _businessData.GetUserDocumenByUrlAsync(documentUrl);
 
 				if (!await blobClient.ExistsAsync())
 				{
@@ -204,6 +205,7 @@ namespace SriKanth.Service.SalesModule
 				if (response.Status == 200 || response.Status == 202)
 				{
 					_logger.LogInformation("Successfully deleted document: {DocumentUrl}", documentUrl);
+					await _businessData.RemoveDocumentAsync(document); // Assuming this method exists to remove metadata
 					return true;
 				}
 

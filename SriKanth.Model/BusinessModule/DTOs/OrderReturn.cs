@@ -18,6 +18,9 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public string SpecialNote { get; set; }
 		public List<OrderItemReturn> Items { get; set; }
 		public string? RejectReason { get; set; }
+		public string? TrackingNumber { get; set; }
+		public string? DelivertPersonName { get; set; }
+		public DateOnly? DeliveryDate { get; set; }
 	}
 
 	public class OrderItemReturn

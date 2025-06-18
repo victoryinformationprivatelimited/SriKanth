@@ -23,6 +23,9 @@ namespace SriKanth.Model.BusinessModule.Entities
 		public string PaymentMethodCode { get; set; }
 		public string? Note { get; set; }
 		public string? RejectReason { get; set; }
+		public string? TrackingNumber { get; set; }
+		public string? DelivertPersonName { get; set; }
+		public DateOnly? DeliveryDate { get; set; }
 
 	}
 	public enum OrderStatus

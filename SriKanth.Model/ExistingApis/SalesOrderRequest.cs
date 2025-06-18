@@ -40,9 +40,8 @@ namespace SriKanth.Model.ExistingApis
 
 	public class SalesIntegrationLine
 	{
-		[Required]
-		[Range(10000, int.MaxValue, ErrorMessage = "LineNo must be at least 10000")]
-		public int lineNo { get; set; }  // Business Central typically expects line numbers in 10000 increments
+		
+		public int lineNo { get; set; }  
 
 		[Required]
 		[StringLength(20, ErrorMessage = "ItemNo cannot exceed 20 characters")]

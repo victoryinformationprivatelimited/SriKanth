@@ -185,6 +185,9 @@ namespace SriKanth.Model
 				entity.Property(e => e.PaymentMethodCode);
 				entity.Property(e => e.Note).HasMaxLength(1000);
 				entity.Property(e => e.RejectReason).HasMaxLength(1000);
+				entity.Property(e => e.TrackingNumber).HasMaxLength(100);
+				entity.Property(e => e.DelivertPersonName).HasMaxLength(100);
+				entity.Property(e => e.DeliveryDate);
 			});
 			modelBuilder.Entity<OrderItem>(entity =>
 			{

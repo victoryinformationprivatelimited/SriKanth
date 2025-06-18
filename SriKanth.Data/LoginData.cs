@@ -187,5 +187,13 @@ namespace SriKanth.Data
 								 .ToListAsync();
 		}
 
+		public async Task<string> GetUserRoleNameAsync(int userRoleId)
+		{
+			return await _context.UserRole
+								 .Where(l => l.UserRoleID == userRoleId)
+								 .Select(l => l.UserRoleName)
+								 .FirstOrDefaultAsync();
+		}
+
 	}
 }

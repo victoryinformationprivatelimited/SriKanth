@@ -38,5 +38,6 @@ namespace SriKanth.Interface.Data
 		Task<List<UserLocation>> GetUserLocationsByIdAsync(int userId);
 		Task RemoveUserLocationsByIdAsync(IEnumerable<UserLocation> userLocations);
 		Task<List<string>> GetUserLocationCodesAsync(int userId);
+		Task<string> GetUserRoleNameAsync(int userRoleId);
 	}
 }

@@ -12,7 +12,6 @@ namespace SriKanth.Model.BusinessModule.DTOs
 	{
 		public List<Location> Locations { get; set; }
 		public List<OrderCustomer> Customers{ get; set; }
-		public List<PaymentType> PaymentTypes { get; set; }
 		public List<OrderItemDetails> Items { get; set; }
 
 	}
@@ -24,6 +23,8 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public bool CreditAllowed { get; set; }
 		public Decimal CreditLimit { get; set; }
 		public Decimal BalanceCredit { get; set; }
+		public string PaymentTermCode { get; set; }
+		public string PaymentMethodCode { get; set; }
 
 	}
 	public class OrderItemDetails
@@ -39,10 +40,5 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public string ItemCode { get; set; }
 		public string ItemName { get; set; }
 		public Decimal UnitPrice { get; set; }
-	}
-	public class PaymentType
-	{
-		public string Code { get; set; }
-		public string Name { get; set; }
 	}
 }

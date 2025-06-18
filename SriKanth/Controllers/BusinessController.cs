@@ -103,7 +103,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="orderRequest">Order request details</param>
 		/// <returns>Result of the order creation</returns>
 		[HttpPost("CreateOrder")]
-		[Authorize]
+		[Authorize(Roles = "SalesPerson")]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> CreateOrder(int userId, [FromBody] OrderRequest orderRequest)
 		{
@@ -202,7 +202,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="updateOrderRequest">Order status update request</param>
 		/// <returns>Result of the status update</returns>
 		[HttpPost("ChangeStatus")]
-		[Authorize]
+		[Authorize(Roles = "SalesCoordinator,SalesPerson")]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> UpdateOrderStatus(UpdateOrderRequest updateOrderRequest)
 		{

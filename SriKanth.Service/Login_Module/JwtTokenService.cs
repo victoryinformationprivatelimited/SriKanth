@@ -52,6 +52,8 @@ namespace SriKanth.Service.Login_Module
 				string email = _encryption.DecryptData(user.Email);
 				string uname = _encryption.DecryptData(user.Username);
 				string number = _encryption.DecryptData(user.PhoneNumber);
+				string userRole = await _userData.GetUserRoleNameAsync(user.UserRoleId);
+
 				var jwtKey = _encryption.DecryptData(_configuration["Jwt:Key"]);
 				// Determine the token expiration based on the "RememberMe" flag.
 				var tokenExpiration = user.RememberMe ? DateTime.UtcNow.AddDays(07) : DateTime.UtcNow.AddHours(1);
@@ -62,6 +64,7 @@ namespace SriKanth.Service.Login_Module
 					new Claim(JwtRegisteredClaimNames.Name, uname),
 					new Claim(ClaimTypes.MobilePhone, number),
 					new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
+					new Claim(ClaimTypes.Role,userRole)
 				};
 				// Define the token descriptor with claims and signing credentials.
 				var tokenDescriptor = new SecurityTokenDescriptor

@@ -8,11 +8,14 @@ namespace SriKanth.Data
 		Task AddOrderAsync(Order order);
 		Task AddOrderItemsAsync(IEnumerable<OrderItem> orderItems);
 		Task<List<Order>> GetListOfOrdersAsync(string salesPersonCode, OrderStatus orderStatus);
+		Task<List<Order>> GetAllOrdersAsync(OrderStatus orderStatus);
 		Task<List<OrderItem>> GetOrderItemsByOrderNumbersAsync(List<int> orderNumbers);
 		Task<Order> GetOrderByIdAsync(int orderNumber);
 		Task UpdateOrderStatusAsync(Order order);
 		Task<List<OrderItem>> GetOrderItemsAsync(int orderNumber);
 		Task AddDocumentAsync(UserDocumentStorage userDocument);
 		Task<List<UserDocumentStorage>> GetUserDocumentsAsync(int userId);
+		Task<UserDocumentStorage?> GetUserDocumenByUrlAsync(string url);
+		Task RemoveDocumentAsync(UserDocumentStorage userDocument);
 	}
 }

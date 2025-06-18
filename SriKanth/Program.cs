@@ -104,8 +104,10 @@ builder.Services.AddAuthentication(options =>
 					var emailClaim = claimsIdentity?.FindFirst(JwtRegisteredClaimNames.Email)?.Value;
 					var nameClaim = claimsIdentity?.FindFirst(JwtRegisteredClaimNames.Name)?.Value;
 					var phoneNumberClaim = claimsIdentity?.FindFirst(ClaimTypes.MobilePhone)?.Value;
+					var userIdClaim = claimsIdentity?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+					var roleClaim = claimsIdentity?.FindFirst(ClaimTypes.Role)?.Value;
 
-                if (string.IsNullOrEmpty(emailClaim) || string.IsNullOrEmpty(nameClaim) || string.IsNullOrEmpty(phoneNumberClaim))
+				if (string.IsNullOrEmpty(emailClaim) || string.IsNullOrEmpty(nameClaim) || string.IsNullOrEmpty(phoneNumberClaim))
                 {
                     context.Fail("Unauthorized: Missing required claims.");
                     return Task.CompletedTask;
@@ -115,12 +117,17 @@ builder.Services.AddAuthentication(options =>
         }
     };
 });
-
+builder.Services.AddAuthorization(options =>
+{
+	options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+	options.AddPolicy("SalesPersonOnly", policy => policy.RequireRole("SalesPerson"));
+	options.AddPolicy("SalesCoordinatorOnly", policy => policy.RequireRole("SalesCoordinator"));
+});
 builder.Services.AddCors(o =>
 {
-	o.AddPolicy("corspolicy", build =>
+	o.AddPolicy("AllowSpecificOrigin", build =>
 	{
-		build.WithOrigins("http://localhost:3000", "http://207.180.217.101:3000/")
+		build.WithOrigins( "http://207.180.217.101:3000/","http://localhost:3000")
 			 .AllowAnyMethod()
 			 .AllowAnyHeader()
 			 .AllowCredentials();

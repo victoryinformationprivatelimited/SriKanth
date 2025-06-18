@@ -35,7 +35,12 @@ namespace SriKanth.Data
 				.Where(o => o.SalesPersonCode == salesPersonCode && o.Status == orderStatus)
 				.ToListAsync();
 		}
-
+		public async Task<List<Order>> GetAllOrdersAsync(OrderStatus orderStatus)
+		{
+			return await _context.Order
+				.Where(o => o.Status== orderStatus)
+				.ToListAsync();
+		}
 		public async Task<List<OrderItem>> GetOrderItemsByOrderNumbersAsync(List<int> orderNumbers)
 		{
 			return await _context.OrderItem
@@ -68,5 +73,16 @@ namespace SriKanth.Data
 				.Where(d => d.UserId == userId)
 				.ToListAsync();
 		}
+		public async Task<UserDocumentStorage?> GetUserDocumenByUrlAsync(string url)
+		{
+			return await _context.UserDocumentStorage.FirstOrDefaultAsync(m => m.DocumentReference == url);
+		}
+
+		public async Task RemoveDocumentAsync(UserDocumentStorage userDocument)
+		{
+			_context.UserDocumentStorage.Remove(userDocument);
+			await _context.SaveChangesAsync();
+		}
+
 	}
 }

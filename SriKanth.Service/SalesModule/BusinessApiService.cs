@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MailKit.Search;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SriKanth.Data;
 using SriKanth.Interface.Data;
@@ -194,15 +195,6 @@ namespace SriKanth.Service.SalesModule
 					.ToDictionary(g => g.Key, g => g.First().unitPrice)
 					?? new Dictionary<string, decimal>();
 
-				// Define available payment types
-				var paymentTypes = new List<PaymentType>
-				{
-					new PaymentType { Code = "CASH", Name = "Cash" },
-					new PaymentType { Code = "CARD", Name = "Credit Card" },
-					new PaymentType { Code = "BANK", Name = "Bank Transfer" },
-					new PaymentType { Code = "CHEQUE", Name = "Cheque" }
-				};
-
 				// Compile all order creation details
 				var details = new OrderCreationDetails
 				{
@@ -219,10 +211,10 @@ namespace SriKanth.Service.SalesModule
 						DueAmount = c.creditLimitLCY - c.balanceLCY,
 						CreditAllowed = c.creditAllowed,
 						CreditLimit = c.creditLimitLCY,
-						BalanceCredit = c.balanceLCY
+						BalanceCredit = c.balanceLCY,
+						PaymentTermCode = c.paymentTermsCode,
+						PaymentMethodCode = c.paymentMethodCode
 					}).ToList(),
-
-					PaymentTypes = paymentTypes,
 
 					Items = items.value.Select(i => new OrderItemDetails
 					{
@@ -330,14 +322,6 @@ namespace SriKanth.Service.SalesModule
 				// Get item numbers available at these locations
 				var availableItemNos = new HashSet<string>(inventoryAtLocations.Select(i => i.itemNo));
 
-				// Define available payment types
-				var paymentTypes = new List<PaymentType>
-				{
-					new PaymentType { Code = "CASH", Name = "Cash" },
-					new PaymentType { Code = "CARD", Name = "Credit Card" },
-					new PaymentType { Code = "BANK", Name = "Bank Transfer" },
-					new PaymentType { Code = "CHEQUE", Name = "Cheque" }
-				};
 
 				// Compile all filtered order creation details
 				var details = new OrderCreationDetails
@@ -355,10 +339,11 @@ namespace SriKanth.Service.SalesModule
 						DueAmount = c.balanceLCY,
 						CreditAllowed = c.creditAllowed,
 						CreditLimit = c.creditLimitLCY,
-						BalanceCredit = c.creditLimitLCY - c.balanceLCY
+						BalanceCredit = c.creditLimitLCY - c.balanceLCY,
+						PaymentTermCode = c.paymentTermsCode,
+						PaymentMethodCode = c.paymentMethodCode
 					}).ToList(),
 
-					PaymentTypes = paymentTypes,
 
 					Items = items.value
 						.Where(i => availableItemNos.Contains(i.no))
@@ -486,10 +471,26 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("User with ID {UserId} not found while retrieving orders", userId);
 					throw new ApplicationException("Failed to retrieve orders. Please try again later.");
 				}
-
+				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
+				List<Order> Orders;
 				// Get orders filtered by salesperson and status
-				var pendingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
-				var orderNumbers = pendingOrders.Select(o => o.OrderNumber).ToList();
+				if (userRole == "Admin" || userRole == "SalesCoordinator")
+				{
+					// Admins can see all orders
+					Orders = await _businessData.GetAllOrdersAsync(orderStatus);								
+				}
+				else
+				{
+					 Orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
+				}
+				
+				if (!Orders.Any())
+				{
+					_logger.LogInformation("No orders found for user {UserId} with status {OrderStatus}", userId, orderStatus);
+					return new List<OrderReturn>();
+				}
+
+				var orderNumbers = Orders.Select(o => o.OrderNumber).ToList();
 
 				// Get all items for these orders
 				var orderItems = await _businessData.GetOrderItemsByOrderNumbersAsync(orderNumbers);
@@ -512,7 +513,7 @@ namespace SriKanth.Service.SalesModule
 				var salesPersonDict = salesPeople.ToDictionary(s => s.code, s => s.name);
 
 				// Compile order return objects with all details
-				var result = pendingOrders.Select(order => new OrderReturn
+				var result = Orders.Select(order => new OrderReturn
 				{
 					OrderNumber = order.OrderNumber,
 					CustomerName = customerDict.TryGetValue(order.CustomerCode, out var custName) ? custName : string.Empty,
@@ -531,7 +532,10 @@ namespace SriKanth.Service.SalesModule
 							UnitPrice = i.UnitPrice,
 							DiscountPercent = i.DiscountPercent
 						}).ToList() : new List<OrderItemReturn>(),
-					RejectReason = order.RejectReason ?? null
+					RejectReason = order.RejectReason ?? null,
+					DeliveryDate = orderStatus == OrderStatus.Delivered ? order.DeliveryDate : null,
+					TrackingNumber = orderStatus == OrderStatus.Delivered ? order.TrackingNumber : null,
+					DelivertPersonName = orderStatus == OrderStatus.Delivered ? order.DelivertPersonName : null
 				}).ToList();
 
 				_logger.LogInformation("Retrieved {OrderCount} {OrderStatus} orders for user {UserId}",
@@ -565,7 +569,41 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("Order {OrderNumber} not found during status update", updateOrderRequest.Ordernumber);
 					return new ServiceResult { Success = false, Message = $"Order {updateOrderRequest.Ordernumber} not found." };
 				}
+				// Validate status transition
+				var isValidTransition = await ValidateStatusTransition(order.Status, updateOrderRequest.Status);
+				if (!isValidTransition)
+				{
+					_logger.LogWarning("Invalid status transition for order {OrderNumber}: {CurrentStatus} -> {NewStatus}",
+						order.OrderNumber, order.Status, updateOrderRequest.Status);
+					return new ServiceResult
+					{
+						Success = false,
+						Message = $"Invalid status transition from {order.Status} to {updateOrderRequest.Status}."
+					};
+				}
+				if (order.Status == OrderStatus.Delivered)
+				{
+					bool isInvoiced = await CheckInvoicedStatusAsync(order);
+					if(isInvoiced)
+					{
+						order.TrackingNumber = updateOrderRequest.TrackingNumber;
+						order.DelivertPersonName = updateOrderRequest.DelivertPersonName;
+						order.DeliveryDate = DateOnly.FromDateTime(updateOrderRequest.DeliveryDate.Value);
+						order.Note = updateOrderRequest.Note ?? null;
 
+						order.Status = OrderStatus.Delivered;
+						await _businessData.UpdateOrderStatusAsync(order);
+
+						_logger.LogInformation("Order {OrderNumber} marked as Delivered after invoice check.", order.OrderNumber);
+						return new ServiceResult { Success = true, Message = "Order status updated to Delivered." };
+
+					}
+					else
+					{
+						_logger.LogWarning("Order {OrderNumber} cannot be updated to Delivered status as it is not invoiced", updateOrderRequest.Ordernumber);
+						return new ServiceResult { Success = false, Message = $"Order {updateOrderRequest.Ordernumber} cannot be updated to Delivered status as it is not invoiced." };
+					}
+				}
 				// Update order status
 				order.Status = updateOrderRequest.Status;
 				order.RejectReason = updateOrderRequest.RejectReason ?? null;
@@ -585,6 +623,7 @@ namespace SriKanth.Service.SalesModule
 					// Validate customer exists
 					var customer = customers?.FirstOrDefault(c => c.no == order.CustomerCode);
 					var paymentTermCode = customer?.paymentTermsCode;
+					var paymentMethodCode = customer?.paymentMethodCode;
 
 					if (customer == null)
 					{
@@ -612,12 +651,12 @@ namespace SriKanth.Service.SalesModule
 						customerNo = order.CustomerCode,
 						orderDate = order.OrderDate.ToString("yyyy-MM-dd"),
 						salespersonCode = order.SalesPersonCode,
-						paymentMethodCode = "BNKTRNSFR", // just added fix value for testing purpose
+						paymentMethodCode = paymentMethodCode,   
 						paymentTermCode = paymentTermCode,
 						salesIntegrationLines = orderItems
 							.Select((line, index) => new SalesIntegrationLine
 							{
-								lineNo = index + 1,
+								lineNo = line.OrderItemId,
 								itemNo = line.ItemCode,
 								description = line.Description,
 								location = locationName,
@@ -731,16 +770,17 @@ namespace SriKanth.Service.SalesModule
 		{
 			try
 			{
-				// Get customer details from external API
+				// Get customer list from external API
 				var customersResponse = await _externalApiService.GetCustomersAsync();
 
+				// Validate response
 				if (customersResponse?.value == null || !customersResponse.value.Any())
 				{
 					_logger.LogWarning("Customer data not available for validation");
 					return new ServiceResult { Success = false, Message = "Customer data not available" };
 				}
 
-				// Find specific customer
+				// Find the specific customer using the provided code
 				var customer = customersResponse.value.FirstOrDefault(c => c.no == customerCode);
 
 				if (customer == null)
@@ -749,25 +789,41 @@ namespace SriKanth.Service.SalesModule
 					return new ServiceResult { Success = false, Message = $"Customer {customerCode} not found" };
 				}
 
-				// Check credit allowed
-				if (!customer.creditAllowed && orderTotal > 0)
+				// Check if credit is allowed for this customer
+				if (!customer.creditAllowed)
 				{
-					_logger.LogWarning("Customer {CustomerCode} not allowed credit purchases", customerCode);
-					return new ServiceResult { Success = false, Message = "Customer not allowed credit purchases" };
+					_logger.LogWarning("Customer {CustomerCode} is not allowed credit purchases", customerCode);
+					return new ServiceResult { Success = false, Message = "Customer is not allowed credit purchases" };
 				}
 
-				// Check credit limit
-				if (customer.creditAllowed && customer.balanceLCY + orderTotal > customer.creditLimitLCY)
+				// Calculate available credit balance
+				// Available credit = Credit Limit - Current Balance
+				var availableCredit = customer.creditLimitLCY - customer.balanceLCY;
+
+				// Check if the order total exceeds available credit
+				if (orderTotal > availableCredit)
 				{
-					_logger.LogWarning("Order exceeds credit limit for customer {CustomerCode}", customerCode);
+					_logger.LogWarning("Order exceeds available credit for customer {CustomerCode}. " +
+									 "Available: {AvailableCredit}, Order: {OrderTotal}",
+									 customerCode, availableCredit, orderTotal);
 					return new ServiceResult
 					{
 						Success = false,
-						Message = $"Order exceeds credit limit (Limit: {customer.creditLimitLCY}, Balance: {customer.balanceLCY})"
+						Message = $"Order exceeds available credit. Available credit: {availableCredit:C}, Order total: {orderTotal:C}"
 					};
 				}
 
-				_logger.LogInformation("Exiting ValidateCustomerCredit with validation success");
+				// Additional check: Ensure credit limit is positive (optional business rule)
+				if (customer.creditLimitLCY <= 0)
+				{
+					_logger.LogWarning("Customer {CustomerCode} has no credit limit set", customerCode);
+					return new ServiceResult { Success = false, Message = "Customer has no credit limit set" };
+				}
+
+				// All checks passed
+				_logger.LogInformation("Credit validation passed for customer {CustomerCode}. " +
+									 "Order: {OrderTotal}, Available Credit: {AvailableCredit}",
+									 customerCode, orderTotal, availableCredit);
 				return new ServiceResult { Success = true, Message = "Credit validation passed" };
 			}
 			catch (Exception ex)
@@ -854,5 +910,95 @@ namespace SriKanth.Service.SalesModule
 				return new ServiceResult { Success = false, Message = "Error during inventory validation" };
 			}
 		}
+
+		/// <summary>
+		/// Validates inventory availability for order items at specified location
+		/// </summary>
+		/// <param name="items">List of order items to validate</param>
+		/// <param name="locationCode">Location code to check inventory at</param>
+		/// <returns>ServiceResult indicating validation success or failure</returns>
+		private async Task<bool> CheckInvoicedStatusAsync(Order order)
+		{
+			try
+			{
+				// Get all invoices for delivery status checking
+				var invoiceResponse = await _externalApiService.GetInvoiceDetailsAsync();
+				var invoices = invoiceResponse?.value ?? new List<Invoice>();
+
+				if (!invoices.Any())
+				{
+					_logger.LogWarning("No invoices found for delivery status update");
+					return false;
+				}
+
+				var isInvoiced = invoices.Any(inv =>
+					!string.IsNullOrWhiteSpace(inv.OrderNo) &&
+					int.TryParse(inv.OrderNo.Trim(), out var orderNo) &&
+					orderNo == order.OrderNumber);
+
+				if (!isInvoiced)
+				{
+					_logger.LogWarning("Order {OrderNumber} cannot be marked as Delivered because no invoice found.", order.OrderNumber);
+					return false;
+				}
+
+				// ✅ Success path
+				return true;
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Failed to verify invoiced status for order {OrderNumber}", order.OrderNumber);
+				return false;
+			}
+		}
+
+		private Task<bool> ValidateStatusTransition(OrderStatus currentStatus, OrderStatus newStatus)
+		{
+			// Same status - no change needed
+			if (currentStatus == newStatus)
+			{
+				_logger.LogWarning("No status change: attempted to set status {Status} to the same value.", currentStatus);
+				return Task.FromResult(false);
+			}
+
+			// Check if transition is valid
+			if (!IsValidTransition(currentStatus, newStatus))
+			{
+				var allowedStatuses = GetAllowedNextStatuses(currentStatus);
+				var allowedStatusNames = string.Join(", ", allowedStatuses.Select(s => s.ToString()));
+
+				_logger.LogWarning("Invalid status transition attempted: {CurrentStatus} -> {NewStatus}. Allowed: {AllowedStatuses}",
+					currentStatus, newStatus, allowedStatusNames);
+
+				return Task.FromResult(false);
+			}
+
+			return Task.FromResult(true);
+		}
+		private bool IsValidTransition(OrderStatus currentStatus, OrderStatus newStatus)
+		{
+			var allowedStatuses = GetAllowedNextStatuses(currentStatus);
+			return allowedStatuses.Contains(newStatus);
+		}
+		private List<OrderStatus> GetAllowedNextStatuses(OrderStatus currentStatus)
+		{
+			return currentStatus switch
+			{
+				OrderStatus.Pending => new List<OrderStatus>
+			{
+				OrderStatus.Processing,
+				OrderStatus.Rejected
+			},
+				OrderStatus.Processing => new List<OrderStatus>
+			{
+				OrderStatus.Delivered,
+				OrderStatus.Rejected
+			},
+				OrderStatus.Delivered => new List<OrderStatus>(), // Terminal status - no changes allowed
+				OrderStatus.Rejected => new List<OrderStatus>(),   // Terminal status - no changes allowed
+				_ => new List<OrderStatus>()
+			};
+		}
+
 	}
 }
