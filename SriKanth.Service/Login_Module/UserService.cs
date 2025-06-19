@@ -460,7 +460,7 @@ namespace SriKanth.Service.Login_Module
 				if (usernameChanged || emailChanged)
 				{
 					var existingUser = await _userData.CheckUserByUsernameOrEmailExceptIdAsync(
-						userId, userDetails.Username, userDetails.Email);
+						userId, _encryption.EncryptData(userDetails.Username), _encryption.EncryptData(userDetails.Email));
 					if (existingUser != null)
 					{
 						_logger.LogWarning("Duplicate user details: {UserId}", userId);
