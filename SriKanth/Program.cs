@@ -50,6 +50,10 @@ builder.Services.AddScoped<IUserHistoryService, UserHistoryService>();
 builder.Services.AddScoped<UserHistoryActionFilter>();
 builder.Services.AddScoped<IAzureBlobStorageService, AzureBlobStorageService>();
 
+builder.Configuration
+	.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+	.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
+	.AddEnvironmentVariables();
 
 builder.Services.AddDbContext<SriKanthDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -143,11 +147,15 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
 {
 	app.UseSwagger();
-	app.UseSwaggerUI();
+	app.UseSwaggerUI(c =>
+	{
+		c.SwaggerEndpoint("/swagger/v1/swagger.json", "SriKanth.API V1");
+	});
 }
+
 
 app.UseHttpsRedirection();
 

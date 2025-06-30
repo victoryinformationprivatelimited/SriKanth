@@ -24,6 +24,7 @@ namespace SriKanth.Service.SalesModule
 		private string _cachedToken;
 		private DateTime _tokenExpiryTime;
 		private readonly IEncryptionService _encryption;
+		private readonly string _baseApiUrl;
 
 		/// <summary>
 		/// Initializes a new instance of the ExternalApiService class
@@ -35,8 +36,20 @@ namespace SriKanth.Service.SalesModule
 			_httpClientFactory = httpClientFactory;
 			_configuration = configuration;
 			_encryption = encryption;
+			_baseApiUrl = BuildBaseApiUrl();
 		}
 
+		private string BuildBaseApiUrl()
+		{
+			var environmentName = _configuration["BusinessCentral:EnvironmentName"];
+			var companyId = _configuration["BusinessCentral:CompanyId"];
+
+			if (string.IsNullOrEmpty(environmentName) || string.IsNullOrEmpty(companyId))
+			{
+				throw new InvalidOperationException("BusinessCentral:EnvironmentName and BusinessCentral:CompanyId must be configured");
+			}
+			return $"https://api.businesscentral.dynamics.com/v2.0/{environmentName}/api/asttrum/sales/v1.0/companies({companyId})";
+		}
 		/// <summary>
 		/// Retrieves an access token for Business Central API authentication
 		/// </summary>
@@ -177,7 +190,7 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>CustomerApiResponse containing customer data</returns>
 		public async Task<CustomerApiResponse> GetCustomersAsync()
 		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/customers";
+			string apiUrl = $"{_baseApiUrl}/customers";
 			return await GetDataFromApiAsync<CustomerApiResponse>(apiUrl);
 		}
 
@@ -187,7 +200,7 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>SalesPeopleApiResponse containing sales person data</returns>
 		public async Task<SalesPeopleApiResponse> GetSalesPeopleAsync()
 		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPeople";
+			string apiUrl = $"{_baseApiUrl}/salesPeople";
 			return await GetDataFromApiAsync<SalesPeopleApiResponse>(apiUrl);
 		}
 
@@ -197,7 +210,7 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>LocationApiResponse containing location data</returns>
 		public async Task<LocationApiResponse> GetLocationsAsync()
 		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/locations";
+			string apiUrl = $"{_baseApiUrl}/locations";
 			return await GetDataFromApiAsync<LocationApiResponse>(apiUrl);
 		}
 
@@ -207,7 +220,7 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>ItemApiResponse containing item data with substitutions</returns>
 		public async Task<ItemApiResponse> GetItemsWithSubstitutionsAsync()
 		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items?$expand=itemsubstitutions";
+			string apiUrl = $"{_baseApiUrl}/items?$expand=itemsubstitutions";
 			return await GetDataFromApiAsync<ItemApiResponse>(apiUrl);
 		}
 
@@ -218,7 +231,7 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>Base64 encoded string of the item picture</returns>
 		public async Task<string> GetItemsPictureAsync(Guid systemId)
 		{
-			string apiUrl = $"https://api.businesscentral.dynamics.com/v2.0/dev/api/v2.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items({systemId})/picture/pictureContent";
+			string apiUrl = $"{_baseApiUrl}/items({systemId})/picture/pictureContent";
 			var imageBytes = await GetDataFromApiAsync<byte[]>(apiUrl);
 			return Convert.ToBase64String(imageBytes);
 		}
@@ -229,7 +242,7 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>InventoryApiResponse containing inventory data</returns>
 		public async Task<InventoryApiResponse> GetInventoryBalanceAsync()
 		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/inventoryBalances";
+			string apiUrl = $"{_baseApiUrl}/inventoryBalances";
 			return await GetDataFromApiAsync<InventoryApiResponse>(apiUrl);
 		}
 
@@ -239,7 +252,7 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>SalesPriceApiResponse containing price data</returns>
 		public async Task<SalesPriceApiResponse> GetSalesPriceAsync()
 		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPrices";
+			string apiUrl = $"{_baseApiUrl}/salesPrices";
 			return await GetDataFromApiAsync<SalesPriceApiResponse>(apiUrl);
 		}
 
@@ -250,8 +263,7 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>SalesIntegrationResponse containing the API response</returns>
 		public async Task<SalesIntegrationResponse> PostSalesOrderAsync(SalesOrderRequest salesOrder)
 		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/" +
-							"companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesIntegrations?$expand=salesIntegrationLines";
+			string apiUrl = $"{_baseApiUrl}/salesIntegrations?$expand=salesIntegrationLines";
 
 			return await PostDataToApiAsync<SalesIntegrationResponse>(apiUrl, salesOrder);
 		}
@@ -262,11 +274,20 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>InvoiceApiResponse containing invoice data</returns>
 		public async Task<InvoiceApiResponse> GetInvoiceDetailsAsync()
 		{
-			string apiUrl = "https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/postedInvoiceLines";
+			string apiUrl = $"{_baseApiUrl}/postedInvoiceLines";
 			return await GetDataFromApiAsync<InvoiceApiResponse>(apiUrl);
 		}
 
-		
+		/// <summary>
+		/// Retrieves invoice details from Business Central
+		/// </summary>
+		/// <returns>InvoiceApiResponse containing invoice data</returns>
+		public async Task<PostedInvoiceApiResponse> GetPostedInvoiceDetailsAsync()
+		{
+			string apiUrl = $"{_baseApiUrl}/postedInvoices?$expand=postedInvoiceLines";
+			return await GetDataFromApiAsync<PostedInvoiceApiResponse>(apiUrl);
+		}
+
 		/// <summary>
 		/// Internal class for deserializing token responses from Azure AD
 		/// </summary>

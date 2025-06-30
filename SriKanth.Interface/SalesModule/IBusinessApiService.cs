@@ -18,5 +18,7 @@ namespace SriKanth.Interface.SalesModule
 		Task<List<OrderReturn>> GetOrdersListAsync(int userId, OrderStatus orderStatus);
 		Task<ServiceResult> UpdateOrderStatusAsync(UpdateOrderRequest updateOrderRequest);
 		Task<CustomerInvoiceReturn> GetCustomerInvoicesAsync(int userId);
+		Task<CustomerWiseInvoices> GetCustomerInvoiceDetailsAsync(string customerCode);
+		Task<OrderStatusSummary> GetOrderStatusSummaryByUserAsync(int userId);
 	}
 }

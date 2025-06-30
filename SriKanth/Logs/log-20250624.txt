@@ -1,0 +1,52 @@
+2025-06-24 22:24:16.367 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 22:24:16.789 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-24 22:24:16.791 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-24 22:24:17.612 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 22:24:17.615 +05:30 [INF] Hosting environment: Development
+2025-06-24 22:24:17.618 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-24 22:24:19.454 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-24 22:24:20.010 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 574.3198ms
+2025-06-24 22:24:20.016 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-24 22:24:20.093 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 77.3362ms
+2025-06-24 22:24:20.166 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-24 22:24:20.442 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 277.0882ms
+2025-06-24 22:24:21.360 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-24 22:24:21.593 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - null null
+2025-06-24 22:24:21.674 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 313.9315ms
+2025-06-24 22:24:21.675 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-24 22:24:21.684 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - 200 628 image/png 90.2853ms
+2025-06-24 22:25:04.405 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetInvoicesByCustomerDetails?customerId=1010 - null null
+2025-06-24 22:25:04.513 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetInvoicesByCustomer (SriKanth.API)'
+2025-06-24 22:25:04.793 +05:30 [INF] Route matched with {action = "GetInvoicesByCustomer", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByCustomer(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-24 22:25:04.956 +05:30 [INF] Retrieving customer-wise invoices for customerCode: 1010
+2025-06-24 22:25:08.242 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-24 22:25:08.248 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-24 22:25:08.948 +05:30 [INF] Received HTTP response headers after 696.3234ms - 200
+2025-06-24 22:25:08.954 +05:30 [INF] End processing HTTP request after 713.9542ms - 200
+2025-06-24 22:25:10.011 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/postedInvoices?$expand=postedInvoiceLines
+2025-06-24 22:25:10.013 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/postedInvoices?$expand=postedInvoiceLines
+2025-06-24 22:25:13.067 +05:30 [INF] Received HTTP response headers after 3051.6744ms - 200
+2025-06-24 22:25:13.070 +05:30 [INF] End processing HTTP request after 3059.1885ms - 200
+2025-06-24 22:25:14.490 +05:30 [ERR] Failed to retrieve customer-wise invoices for customer code: 1010
+System.FormatException: The input string 'AT_TEST_26' was not in a correct format.
+   at System.Number.ThrowFormatException[TChar](ReadOnlySpan`1 value)
+   at System.Int32.Parse(String s)
+   at SriKanth.Service.SalesModule.BusinessApiService.GetCustomerInvoiceDetailsAsync(Int32 customerCode) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\SalesModule\BusinessApiService.cs:line 890
+2025-06-24 22:25:14.633 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2025-06-24 22:25:14.641 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetInvoicesByCustomer (SriKanth.API) in 9839.5749ms
+2025-06-24 22:25:14.646 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetInvoicesByCustomer (SriKanth.API)'
+2025-06-24 22:25:14.652 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetInvoicesByCustomerDetails?customerId=1010 - 500 null text/plain; charset=utf-8 10248.0877ms
+2025-06-24 22:29:21.023 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 22:29:21.486 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-24 22:29:21.488 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-24 22:29:21.628 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 22:29:21.630 +05:30 [INF] Hosting environment: Development
+2025-06-24 22:29:21.631 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-24 22:29:22.607 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-24 22:29:23.311 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 718.8474ms
+2025-06-24 22:29:23.372 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-24 22:29:23.517 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-24 22:29:23.524 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 152.3634ms
+2025-06-24 22:29:23.640 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 123.3817ms
+2025-06-24 22:29:24.774 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-24 22:29:24.990 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 216.6364ms

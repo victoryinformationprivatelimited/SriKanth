@@ -471,26 +471,27 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("User with ID {UserId} not found while retrieving orders", userId);
 					throw new ApplicationException("Failed to retrieve orders. Please try again later.");
 				}
+
 				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
-				List<Order> Orders;
+				List<Order> orders;
+
 				// Get orders filtered by salesperson and status
 				if (userRole == "Admin" || userRole == "SalesCoordinator")
 				{
-					// Admins can see all orders
-					Orders = await _businessData.GetAllOrdersAsync(orderStatus);								
+					orders = await _businessData.GetAllOrdersAsync(orderStatus);
 				}
 				else
 				{
-					 Orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
+					orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
 				}
-				
-				if (!Orders.Any())
+
+				if (!orders.Any())
 				{
 					_logger.LogInformation("No orders found for user {UserId} with status {OrderStatus}", userId, orderStatus);
 					return new List<OrderReturn>();
 				}
 
-				var orderNumbers = Orders.Select(o => o.OrderNumber).ToList();
+				var orderNumbers = orders.Select(o => o.OrderNumber).ToList();
 
 				// Get all items for these orders
 				var orderItems = await _businessData.GetOrderItemsByOrderNumbersAsync(orderNumbers);
@@ -503,27 +504,57 @@ namespace SriKanth.Service.SalesModule
 				// Get customer and salesperson details in parallel
 				var customersTask = _externalApiService.GetCustomersAsync();
 				var salesPeopleTask = _externalApiService.GetSalesPeopleAsync();
-				await Task.WhenAll(customersTask, salesPeopleTask);
 
-				var customers = (await customersTask).value;
-				var salesPeople = (await salesPeopleTask).value;
+				// Create list of tasks to wait for
+				var tasks = new List<Task> { customersTask, salesPeopleTask };
+				Task<InvoiceApiResponse>? invoiceTask = null;
+
+				// Only fetch invoices if delivered orders are requested
+				if (orderStatus == OrderStatus.Delivered)
+				{
+					invoiceTask = _externalApiService.GetInvoiceDetailsAsync();
+					tasks.Add(invoiceTask);
+				}
+
+				await Task.WhenAll(tasks);
+
+				// Safely extract results with null checks
+				var customersResponse = await customersTask;
+				var salesPeopleResponse = await salesPeopleTask;
+
+				if (customersResponse?.value == null || salesPeopleResponse?.value == null)
+				{
+					_logger.LogError("Failed to retrieve customer or salesperson data from external API");
+					throw new ApplicationException("Failed to retrieve required data. Please try again later.");
+				}
+
+				var customers = customersResponse.value;
+				var salesPeople = salesPeopleResponse.value;
 
 				// Create lookup dictionaries for names
 				var customerDict = customers.ToDictionary(c => c.no, c => c.name);
 				var salesPersonDict = salesPeople.ToDictionary(s => s.code, s => s.name);
 
-				// Compile order return objects with all details
-				var result = Orders.Select(order => new OrderReturn
+				// Prepare invoice lookup if needed
+				var invoiceLines = new List<SriKanth.Model.ExistingApis.Invoice>();
+				if (orderStatus == OrderStatus.Delivered && invoiceTask != null)
 				{
-					OrderNumber = order.OrderNumber,
-					CustomerName = customerDict.TryGetValue(order.CustomerCode, out var custName) ? custName : string.Empty,
-					SalesPersonName = salesPersonDict.TryGetValue(order.SalesPersonCode, out var spName) ? spName : string.Empty,
-					OrderDate = order.OrderDate,
-					PaymentMethodType = order.PaymentMethodCode,
-					Status = order.Status.ToString(),
-					SpecialNote = order.Note ?? string.Empty,
-					TotalAmount = order.TotalAmount,
-					Items = itemsByOrder.TryGetValue(order.OrderNumber, out var items)
+					var invoiceResponse = await invoiceTask;
+					if (invoiceResponse?.value != null)
+					{
+						invoiceLines = invoiceResponse.value;
+					}
+					else
+					{
+						_logger.LogWarning("Invoice data not available for delivered orders");
+					}
+				}
+
+				// Compile order return objects with all details
+				var result = orders.Select(order =>
+				{
+					// Ordered items from order
+					var orderedItems = itemsByOrder.TryGetValue(order.OrderNumber, out var items)
 						? items.Select(i => new OrderItemReturn
 						{
 							ItemCode = i.ItemCode,
@@ -531,21 +562,72 @@ namespace SriKanth.Service.SalesModule
 							Quantity = i.Quantity,
 							UnitPrice = i.UnitPrice,
 							DiscountPercent = i.DiscountPercent
-						}).ToList() : new List<OrderItemReturn>(),
-					RejectReason = order.RejectReason ?? null,
-					DeliveryDate = orderStatus == OrderStatus.Delivered ? order.DeliveryDate : null,
-					TrackingNumber = orderStatus == OrderStatus.Delivered ? order.TrackingNumber : null,
-					DelivertPersonName = orderStatus == OrderStatus.Delivered ? order.DelivertPersonName : null
+						}).ToList()
+						: new List<OrderItemReturn>();
+
+					// Invoiced items: for delivered orders, from invoice lines; otherwise, null
+					List<OrderItemReturn>? invoicedItems = null;
+					if (orderStatus == OrderStatus.Delivered && invoiceLines.Any())
+					{
+						try
+						{
+							// Filter invoice lines for this order with better error handling
+							var lines = invoiceLines
+								.Where(inv =>
+									inv != null &&
+									!string.IsNullOrWhiteSpace(inv.OrderNo) &&
+									int.TryParse(inv.OrderNo.Trim(), out int orderNo) &&
+									orderNo == order.OrderNumber)
+								.Select(inv => new OrderItemReturn
+								{
+									ItemCode = inv.No ?? string.Empty,
+									Description = inv.Description ?? string.Empty,
+									Quantity = inv.Quantity,
+									UnitPrice = inv.UnitPrice,
+									DiscountPercent = inv.LineDiscount
+								})
+								.ToList();
+
+							invoicedItems = lines.Any() ? lines : null;
+						}
+						catch (Exception ex)
+						{
+							_logger.LogWarning(ex, "Failed to process invoice lines for order {OrderNumber}", order.OrderNumber);
+							invoicedItems = null;
+						}
+					}
+
+					return new OrderReturn
+					{
+						OrderNumber = order.OrderNumber,
+						CustomerName = customerDict.TryGetValue(order.CustomerCode, out var custName) ? custName : string.Empty,
+						SalesPersonName = salesPersonDict.TryGetValue(order.SalesPersonCode, out var spName) ? spName : string.Empty,
+						OrderDate = order.OrderDate,
+						PaymentMethodType = order.PaymentMethodCode,
+						Status = order.Status.ToString(),
+						SpecialNote = order.Note ?? string.Empty,
+						TotalAmount = order.TotalAmount,
+						OrderedItems = orderedItems,
+						InvoicedItems = invoicedItems,
+						RejectReason = order.RejectReason,
+						DeliveryDate = orderStatus == OrderStatus.Delivered ? order.DeliveryDate : null,
+						TrackingNumber = orderStatus == OrderStatus.Delivered ? order.TrackingNumber : null,
+						DelivertPersonName = orderStatus == OrderStatus.Delivered ? order.DelivertPersonName : null
+					};
 				}).ToList();
 
 				_logger.LogInformation("Retrieved {OrderCount} {OrderStatus} orders for user {UserId}",
 					result.Count, orderStatus, userId);
 				return result;
 			}
+			catch (ApplicationException)
+			{
+				// Re-throw application exceptions as they are already user-friendly
+				throw;
+			}
 			catch (Exception ex)
 			{
 				_logger.LogError(ex, "Failed to retrieve {OrderStatus} orders for user {UserId}", orderStatus, userId);
-				_logger.LogDebug("Exiting GetOrdersListAsync method due to exception");
 				throw new ApplicationException("Failed to retrieve orders. Please try again later.", ex);
 			}
 		}
@@ -633,7 +715,7 @@ namespace SriKanth.Service.SalesModule
 
 					// Validate location exists
 					var location = locations?.FirstOrDefault(l => l.code == order.LocationCode);
-					var locationName = location?.name;
+					var locationCode = location?.code;
 
 					if (location == null)
 					{
@@ -659,7 +741,7 @@ namespace SriKanth.Service.SalesModule
 								lineNo = line.OrderItemId,
 								itemNo = line.ItemCode,
 								description = line.Description,
-								location = locationName,
+								location = locationCode,
 								quantity = line.Quantity,
 								unitPrice = line.UnitPrice,
 								lineDiscount = line.DiscountPercent
@@ -713,40 +795,74 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("User with ID {UserId} not found while retrieving invoices", userId);
 					throw new ApplicationException("Failed to retrieve invoices. Please try again later.");
 				}
-
+				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
 				// 1. Get all customers
 				var customerResponse = await _externalApiService.GetCustomersAsync();
 				var customers = customerResponse?.value ?? new List<Customer>();
 
+				var filteredCustomers = new List<Customer>();
+				if (userRole == "Admin" || userRole == "SalesCoordinator")
+				{
+					filteredCustomers = customers.ToList(); // Admin can see all customers
+				}
 				// 2. Filter customers by salesperson code
-				var filteredCustomers = customers
+				else if (userRole == "SalesPerson")
+				{
+					filteredCustomers = customers
 					.Where(c => c.salespersonCode == user.SalesPersonCode)
 					.ToList();
+				}
 
 				if (!filteredCustomers.Any())
 					return new CustomerInvoiceReturn { TotalDueAmount = 0, CustomerInvoices = new List<CustomerInvoice>() };
 
-				// 3. Get all invoices
-				var invoiceResponse = await _externalApiService.GetInvoiceDetailsAsync();
-				var invoices = invoiceResponse?.value ?? new List<Invoice>();
+				// 3. Get all customer-wise invoices
+				var customerWiseInvoicesList = await GetCustomerWiseInvoicesAsync();
 
-				// 4. Filter invoices for the filtered customers
+				// 4. Filter to only customers the user has permission for
 				var customerCodes = filteredCustomers.Select(c => c.no).ToHashSet();
 
-				var customerInvoices = invoices
-					.Where(inv => customerCodes.Contains(inv.CustomerNo))
-					.Select(inv => new CustomerInvoice
-					{
-						CustomerCode = inv.CustomerNo,
-						CustomerName = filteredCustomers.FirstOrDefault(c => c.no == inv.CustomerNo)?.name ?? "",
-						InvoiceDate = null,
-						InvoicedAmount = inv.Amount,
-						DueAmount = null
-					})
-					.ToList();
+				var customerInvoices = new List<CustomerInvoice>();
 
-				var totalDue = customerInvoices.Sum(ci => ci.DueAmount);
-				_logger.LogInformation("Successfully retrived customer invoice details for user{userId}", userId);
+				foreach (var customerWise in customerWiseInvoicesList.Where(cwi => customerCodes.Contains(cwi.CustomerNo)))
+				{
+					var customerName = filteredCustomers.FirstOrDefault(c => c.no == customerWise.CustomerNo)?.name ?? "";
+
+					foreach (var invoice in customerWise.Invoices)
+					{
+						DateTime? invoiceDate;
+						if (!string.IsNullOrWhiteSpace(invoice.OrderNo))
+						{
+							if (int.TryParse(invoice.OrderNo, out int orderNumber))
+							{
+								var order = await _businessData.GetOrderByIdAsync(orderNumber);
+								invoiceDate = order?.OrderDate ?? DateTime.Today; // fallback if order is null
+							}
+							else
+							{
+								// Invalid format, fallback date
+								invoiceDate = DateTime.Today;
+							}
+						}
+						else
+						{
+							invoiceDate = null;
+						}
+						customerInvoices.Add(new CustomerInvoice
+						{
+							CustomerCode = customerWise.CustomerNo,
+							CustomerName = customerName,
+							InvoiceDocumentNo = invoice.InvoiceNo,
+							InvoiceDate = invoiceDate,
+							InvoicedAmount = invoice.TotalAmount,
+							DueAmount = invoice.DueAmount
+						});
+					}
+				}
+
+				var totalDue = customerInvoices.Sum(ci => ci.DueAmount ?? 0);
+
+				_logger.LogInformation("Successfully retrieved customer invoice details for user {UserId}", userId);
 				return new CustomerInvoiceReturn
 				{
 					TotalDueAmount = totalDue,
@@ -759,7 +875,213 @@ namespace SriKanth.Service.SalesModule
 				throw new ApplicationException("Failed to retrieve invoices. Please try again later.", ex);
 			}
 		}
+		/// <summary>
+		/// Retrieves detailed invoice information for a specific customer, including order dates mapped from database records.
+		/// </summary>
+		/// <param name="customerCode">The unique identifier code for the customer whose invoices are to be retrieved</param>
+		/// <returns>CustomerWiseInvoices object containing all invoice details for the specified customer, or null if no invoices are found</returns>
+		public async Task<CustomerWiseInvoices> GetCustomerInvoiceDetailsAsync(string customerCode)
+		{
+			// Log the start of invoice retrieval process
+			_logger.LogInformation("Starting invoice retrieval process for customer code: {CustomerCode}", customerCode);
 
+			try
+			{
+				// Step 1: Retrieve all customer-wise invoices from external API
+				var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
+
+				// Validate that invoice data was successfully retrieved
+				if (customerWiseInvoices == null || !customerWiseInvoices.Any())
+				{
+					_logger.LogWarning("No customer-wise invoices found in external API response");
+					return null;
+				}
+				// Step 2: Convert customer code to string for comparison (defensive programming)
+				var customerCodeStr = customerCode.ToString();
+
+				// Step 3: Find invoices for the specific customer
+				var customerInvoice = customerWiseInvoices
+					.FirstOrDefault(c => c.CustomerNo == customerCodeStr);
+
+				// Validate that customer was found in the invoice data
+				if (customerInvoice == null)
+				{
+					_logger.LogWarning("No invoices found for customer code: {CustomerCode}. Customer may not have any invoices or code may be invalid", customerCode);
+					return null;
+				}
+
+				_logger.LogInformation("Found {InvoiceCount} invoices for customer code: {CustomerCode}",
+					customerInvoice.Invoices?.Count ?? 0, customerCode);
+
+				// Step 4: Process each invoice to map order dates from database
+				var processedInvoices = 0;
+				var failedInvoices = 0;
+
+				foreach (var invoice in customerInvoice.Invoices)
+				{
+					try
+					{
+						// Check if order number is available and valid
+						if (!string.IsNullOrWhiteSpace(invoice.OrderNo))
+						{
+							// Attempt to parse order number to integer
+							if (int.TryParse(invoice.OrderNo, out int orderNumber))
+							{
+								try
+								{
+									// Retrieve order details from database
+									var order = await _businessData.GetOrderByIdAsync(orderNumber);
+
+									if (order != null)
+									{
+										// Successfully retrieved order, use actual order date
+										invoice.InvoiceDate = order.OrderDate;
+									}
+									else
+									{
+										// Order not found in database, use fallback date
+										invoice.InvoiceDate = DateTime.Today;
+										_logger.LogWarning("Order {OrderNumber} not found in database, using fallback date: {FallbackDate}",
+											orderNumber, DateTime.Today);
+										failedInvoices++;
+									}
+								}
+								catch (Exception orderEx)
+								{
+									// Database error while retrieving order, use fallback date
+									invoice.InvoiceDate = DateTime.Today;
+									_logger.LogError(orderEx, "Database error while retrieving order {OrderNumber}, using fallback date: {FallbackDate}",
+										orderNumber, DateTime.Today);
+									failedInvoices++;
+								}
+							}
+							else
+							{
+								// Invalid order number format, use fallback date
+								invoice.InvoiceDate = DateTime.Today;
+								_logger.LogWarning("Invalid order number format '{OrderNo}' for invoice, using fallback date: {FallbackDate}",
+									invoice.OrderNo, DateTime.Today);
+								failedInvoices++;
+							}
+						}
+						else
+						{
+							// No order number available, set invoice date to null
+							invoice.InvoiceDate = null;
+						}
+
+						processedInvoices++;
+					}
+					catch (Exception invoiceEx)
+					{
+						// Error processing individual invoice, log and continue
+						_logger.LogError(invoiceEx, "Error processing invoice with order number: {OrderNo}", invoice.OrderNo ?? "N/A");
+						failedInvoices++;
+					}
+				}
+
+				_logger.LogInformation("Successfully retrieved and processed invoice summary for customer code: {CustomerCode}", customerCode);
+				return customerInvoice;
+			}
+			catch (Exception ex)
+			{
+				// Log detailed error information
+				_logger.LogError(ex, "Critical error occurred while retrieving customer-wise invoices for customer code: {CustomerCode}. Error: {ErrorMessage}",
+					customerCode, ex.Message);
+
+				// Throw user-friendly exception
+				throw new ApplicationException($"Failed to retrieve customer-wise invoices for customer {customerCode}. Please try again later.", ex);
+			}
+		}
+
+		/// <summary>
+		/// Retrieves a summary of order counts grouped by status for a specific user.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the user whose order status summary is to be retrieved</param>
+		/// <returns>OrderStatusSummary object containing counts of pending, delivered, and rejected orders</returns>
+		public async Task<OrderStatusSummary> GetOrderStatusSummaryByUserAsync(int userId)
+		{
+			// Log the start of order status summary retrieval
+			_logger.LogInformation("Starting order status summary retrieval for user ID: {UserId}", userId);
+
+			try
+			{
+				// Step 1: Validate user existence and retrieve user details
+				var user = await _loginData.GetUserByIdAsync(userId);
+
+				if (user == null)
+				{
+					_logger.LogWarning("User with ID {UserId} not found while retrieving order status summary", userId);
+					throw new ApplicationException($"User with ID {userId} not found.");
+				}
+				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
+
+				try
+				{
+					List<Order> pendingTask;
+					List<Order> deliveredTask;
+					List<Order> rejectedTask;
+
+					// Step 3: Create tasks for parallel execution based on user role
+					if (userRole == "Admin" || userRole == "SalesCoordinator")
+					{
+						pendingTask = await _businessData.GetAllOrdersAsync(OrderStatus.Pending);
+						deliveredTask = await _businessData.GetAllOrdersAsync(OrderStatus.Delivered);
+						rejectedTask = await _businessData.GetAllOrdersAsync(OrderStatus.Rejected);
+					}
+					else
+					{
+						pendingTask = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Pending);
+						deliveredTask = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Delivered);
+						rejectedTask = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Rejected);
+					}
+
+					// Retrieve results from completed tasks
+					var pendingOrders =  pendingTask;
+					var deliveredOrders =  deliveredTask;
+					var rejectedOrders =  rejectedTask;
+
+					// Calculate counts with null safety
+					var pendingCount = pendingOrders?.Count ?? 0;
+					var deliveredCount = deliveredOrders?.Count ?? 0;
+					var rejectedCount = rejectedOrders?.Count ?? 0;
+
+					// Create and return the summary object
+					var summary = new OrderStatusSummary
+					{
+						PendingCount = pendingCount,
+						DeliveredCount = deliveredCount,
+						RejectedCount = rejectedCount
+					};
+
+					_logger.LogInformation("Successfully retrieved order status summary for user {UserId} ({UserRole}). Total orders: {TotalOrders}",
+						userId, userRole, pendingCount + deliveredCount + rejectedCount);
+
+					return summary;
+				}
+				catch (Exception dataEx)
+				{
+					// Error retrieving order data from business layer
+					_logger.LogError(dataEx, "Error retrieving order data for user {UserId} with sales person code {SalesPersonCode}. Error: {ErrorMessage}",
+						userId, user.SalesPersonCode, dataEx.Message);
+					throw new ApplicationException($"Failed to retrieve order status data for user {userId}. Please try again later.", dataEx);
+				}
+			}
+			catch (ApplicationException)
+			{
+				// Re-throw application exceptions as they are already user-friendly
+				throw;
+			}
+			catch (Exception ex)
+			{
+				// Log unexpected errors
+				_logger.LogError(ex, "Unexpected error occurred while retrieving order status summary for user {UserId}. Error: {ErrorMessage}",
+					userId, ex.Message);
+
+				// Throw user-friendly exception
+				throw new ApplicationException($"Failed to retrieve order status summary for user {userId}. Please try again later.", ex);
+			}
+		}
 		/// <summary>
 		/// Validates customer credit status against order total
 		/// </summary>
@@ -942,7 +1264,7 @@ namespace SriKanth.Service.SalesModule
 					return false;
 				}
 
-				// ✅ Success path
+				// Success path
 				return true;
 			}
 			catch (Exception ex)
@@ -998,6 +1320,49 @@ namespace SriKanth.Service.SalesModule
 				OrderStatus.Rejected => new List<OrderStatus>(),   // Terminal status - no changes allowed
 				_ => new List<OrderStatus>()
 			};
+		}
+		
+
+
+		private async Task<List<CustomerWiseInvoices>> GetCustomerWiseInvoicesAsync()
+		{
+			var postedInvoiceResponse = await _externalApiService.GetPostedInvoiceDetailsAsync();
+			var invoices = postedInvoiceResponse.value;
+
+			// Group by customer
+			var customerGroups = invoices
+				.GroupBy(inv => inv.CustomerNo)
+				.Select(g =>
+				{
+					var invoiceSummaries = g.Select(inv =>
+					{
+						// Calculate total amount from all lines in this invoice
+						decimal totalAmount = inv.Lines?.Sum(line => line.Amount) ?? 0;
+						// Adjust these fields if your model uses different names for PDC/Due
+						decimal pdcAmount = inv.PdcAmount; // Replace with actual property if needed
+						decimal dueAmount = inv.RemainingAmount; // Replace with actual property if needed
+
+						return new InvoiceSummary
+						{
+							InvoiceNo = inv.DocumentNo, // Replace with actual invoice number property
+							OrderNo = inv.OrderNo, // Replace with actual order number property
+							PdcAmount = pdcAmount,
+							DueAmount = dueAmount,
+							TotalAmount = totalAmount
+						};
+					}).ToList();
+
+					return new CustomerWiseInvoices
+					{
+						CustomerNo = g.Key,
+						TotalDueAmount = invoiceSummaries.Sum(i => i.DueAmount),
+						TotalPdcAmount = invoiceSummaries.Sum(i => i.PdcAmount),
+						Invoices = invoiceSummaries
+					};
+				})
+				.ToList();
+
+			return customerGroups;
 		}
 
 	}

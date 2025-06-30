@@ -16,7 +16,8 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public decimal TotalAmount { get; set; }
 		public string Status { get; set; } // Pending, Completed, Rejected
 		public string SpecialNote { get; set; }
-		public List<OrderItemReturn> Items { get; set; }
+		public List<OrderItemReturn> OrderedItems { get; set; }
+		public List<OrderItemReturn>? InvoicedItems { get; set; }
 		public string? RejectReason { get; set; }
 		public string? TrackingNumber { get; set; }
 		public string? DelivertPersonName { get; set; }

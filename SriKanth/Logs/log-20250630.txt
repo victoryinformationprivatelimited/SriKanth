@@ -1,0 +1,225 @@
+2025-06-30 17:37:33.187 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 17:37:33.531 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-30 17:37:33.533 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-30 17:37:33.641 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 17:37:33.643 +05:30 [INF] Hosting environment: Development
+2025-06-30 17:37:33.645 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-30 17:37:36.203 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-30 17:37:36.750 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 565.2602ms
+2025-06-30 17:37:37.122 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-30 17:37:37.122 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-30 17:37:37.159 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 36.906ms
+2025-06-30 17:37:37.300 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 178.1853ms
+2025-06-30 17:37:38.093 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-30 17:37:38.152 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 58.4943ms
+2025-06-30 17:38:18.746 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetOrderCreationDetailsByUser?userId=10 - null null
+2025-06-30 17:38:18.821 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetOrderCreationDetailsByUser (SriKanth.API)'
+2025-06-30 17:38:19.008 +05:30 [INF] Route matched with {action = "GetOrderCreationDetailsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCreationDetailsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-30 17:38:25.411 +05:30 [INF] Beginning to retrieve filtered order details for user 10
+2025-06-30 17:38:26.967 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 17:38:26.970 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 17:38:26.971 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 17:38:26.973 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 17:38:29.131 +05:30 [INF] Executed DbCommand (261ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-06-30 17:38:29.466 +05:30 [INF] Executed DbCommand (220ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-06-30 17:38:33.273 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:33.278 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:45.320 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:45.322 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:46.776 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:46.785 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:49.239 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:49.244 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:50.512 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:50.539 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-06-30 17:38:50.686 +05:30 [INF] Received HTTP response headers after 5360.9811ms - 200
+2025-06-30 17:38:50.690 +05:30 [INF] End processing HTTP request after 5369.4221ms - 200
+2025-06-30 17:38:50.706 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/customers
+2025-06-30 17:38:50.709 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/customers
+2025-06-30 17:38:50.828 +05:30 [INF] Received HTTP response headers after 17549.1066ms - 200
+2025-06-30 17:38:50.831 +05:30 [INF] End processing HTTP request after 17559.5197ms - 200
+2025-06-30 17:38:50.834 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/locations
+2025-06-30 17:38:50.835 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/locations
+2025-06-30 17:38:50.933 +05:30 [INF] Received HTTP response headers after 1687.0802ms - 200
+2025-06-30 17:38:50.938 +05:30 [INF] End processing HTTP request after 1698.9779ms - 200
+2025-06-30 17:38:50.943 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPrices
+2025-06-30 17:38:50.945 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/salesPrices
+2025-06-30 17:38:50.975 +05:30 [INF] Received HTTP response headers after 4187.1334ms - 200
+2025-06-30 17:38:50.979 +05:30 [INF] End processing HTTP request after 4203.1526ms - 200
+2025-06-30 17:38:50.980 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items?$expand=itemsubstitutions
+2025-06-30 17:38:50.980 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/items?$expand=itemsubstitutions
+2025-06-30 17:38:51.035 +05:30 [INF] Received HTTP response headers after 492.9764ms - 200
+2025-06-30 17:38:51.037 +05:30 [INF] End processing HTTP request after 525.7366ms - 200
+2025-06-30 17:38:51.038 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/inventoryBalances
+2025-06-30 17:38:51.039 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/dev/api/asttrum/sales/v1.0/companies(b4dd4bba-0a23-f011-9af7-000d3a087c80)/inventoryBalances
+2025-06-30 17:38:51.931 +05:30 [INF] Received HTTP response headers after 1094.6582ms - 200
+2025-06-30 17:38:51.937 +05:30 [INF] End processing HTTP request after 1103.2874ms - 200
+2025-06-30 17:38:51.958 +05:30 [INF] Received HTTP response headers after 918.2287ms - 200
+2025-06-30 17:38:51.960 +05:30 [INF] End processing HTTP request after 921.9589ms - 200
+2025-06-30 17:38:51.979 +05:30 [INF] Received HTTP response headers after 1032.632ms - 200
+2025-06-30 17:38:51.982 +05:30 [INF] End processing HTTP request after 1038.8702ms - 200
+2025-06-30 17:38:52.243 +05:30 [INF] Received HTTP response headers after 1261.2424ms - 200
+2025-06-30 17:38:52.246 +05:30 [INF] End processing HTTP request after 1266.5397ms - 200
+2025-06-30 17:38:52.565 +05:30 [INF] Received HTTP response headers after 1854.567ms - 200
+2025-06-30 17:38:52.569 +05:30 [INF] End processing HTTP request after 1863.4101ms - 200
+2025-06-30 17:38:53.868 +05:30 [INF] Retrieved filtered order details for user 10 with 1 locations, 262 customers, and 5 items
+2025-06-30 17:38:53.880 +05:30 [INF] Executing OkObjectResult, writing value of type 'SriKanth.Model.BusinessModule.DTOs.OrderCreationDetails'.
+2025-06-30 17:38:53.902 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetOrderCreationDetailsByUser (SriKanth.API) in 34885.4562ms
+2025-06-30 17:38:53.905 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetOrderCreationDetailsByUser (SriKanth.API)'
+2025-06-30 17:38:53.915 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetOrderCreationDetailsByUser?userId=10 - 200 null application/json; charset=utf-8 35169.3964ms
+2025-06-30 18:24:29.127 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 18:24:29.153 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 18:24:29.153 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 18:24:29.153 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 18:24:56.920 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 18:24:56.953 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 18:24:56.954 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 18:24:56.954 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 18:24:58.591 +05:30 [INF] Executed DbCommand (226ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-30 18:24:58.600 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-06-30 18:24:58.833 +05:30 [INF] Executed DbCommand (231ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-06-30 18:24:59.308 +05:30 [INF] Executed DbCommand (217ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-06-30 18:24:59.947 +05:30 [INF] Executed DbCommand (205ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-30 18:25:00.172 +05:30 [INF] Executed DbCommand (224ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-06-30 18:25:00.399 +05:30 [INF] Executed DbCommand (222ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-06-30 18:25:00.414 +05:30 [INF] Applying migration '20250630125432_appconfigtable'.
+2025-06-30 18:25:00.704 +05:30 [INF] Executed DbCommand (271ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AppEnvironmentConfig] (
+    [Id] int NOT NULL IDENTITY,
+    [EnvironmentName] nvarchar(max) NOT NULL,
+    [CompanyId] nvarchar(max) NOT NULL,
+    [DbConnectionString] nvarchar(max) NOT NULL,
+    [IsActive] bit NOT NULL,
+    CONSTRAINT [PK_AppEnvironmentConfig] PRIMARY KEY ([Id])
+);
+2025-06-30 18:25:00.916 +05:30 [INF] Executed DbCommand (212ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250630125432_appconfigtable', N'9.0.3');
+2025-06-30 18:25:01.349 +05:30 [INF] Executed DbCommand (218ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-06-30 20:08:57.378 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 20:08:57.682 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-30 20:08:57.685 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-30 20:08:57.799 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 20:08:57.800 +05:30 [INF] Hosting environment: Test
+2025-06-30 20:08:57.801 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-30 20:08:59.016 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-30 20:08:59.421 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 404 0 null 419.0042ms
+2025-06-30 20:08:59.430 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7168/swagger/index.html, Response status code: 404
+2025-06-30 20:09:11.749 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-30 20:09:11.765 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 404 0 null 16.2815ms
+2025-06-30 20:09:11.783 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7168/swagger/index.html, Response status code: 404
+2025-06-30 20:12:01.617 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 20:12:01.862 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-30 20:12:01.865 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-30 20:12:01.963 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 20:12:01.965 +05:30 [INF] Hosting environment: Test
+2025-06-30 20:12:01.966 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-30 20:12:02.633 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-30 20:12:02.918 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 404 0 null 304.581ms
+2025-06-30 20:12:02.928 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7168/swagger/index.html, Response status code: 404
+2025-06-30 20:15:44.120 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 20:15:44.358 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-30 20:15:44.361 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-30 20:15:44.462 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 20:15:44.463 +05:30 [INF] Hosting environment: Test
+2025-06-30 20:15:44.464 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-30 20:15:44.903 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-30 20:15:45.219 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 331.8846ms
+2025-06-30 20:15:45.269 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-30 20:15:45.293 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 23.1907ms
+2025-06-30 20:15:45.368 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-30 20:15:45.574 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 205.5738ms
+2025-06-30 20:15:46.389 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-30 20:15:46.438 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - null null
+2025-06-30 20:15:46.508 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 119.4873ms
+2025-06-30 20:15:46.552 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-30 20:15:46.554 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - 200 628 image/png 115.824ms
+2025-06-30 20:15:52.918 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/check-environment - null null
+2025-06-30 20:15:53.003 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.CheckEnvironment (SriKanth.API)'
+2025-06-30 20:15:53.034 +05:30 [INF] Route matched with {action = "CheckEnvironment", controller = "Business"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CheckEnvironment(Microsoft.Extensions.Configuration.IConfiguration) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-06-30 20:16:08.240 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 20:16:08.252 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.CheckEnvironment (SriKanth.API) in 15211.7902ms
+2025-06-30 20:16:08.254 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.CheckEnvironment (SriKanth.API)'
+2025-06-30 20:16:08.260 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/check-environment - 200 null application/json; charset=utf-8 15342.5239ms
+2025-06-30 20:22:15.894 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 20:22:16.256 +05:30 [INF] Now listening on: https://localhost:7168
+2025-06-30 20:22:16.258 +05:30 [INF] Now listening on: http://localhost:5076
+2025-06-30 20:22:16.540 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 20:22:16.541 +05:30 [INF] Hosting environment: Development
+2025-06-30 20:22:16.542 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-06-30 20:22:16.937 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-06-30 20:22:17.238 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 317.8326ms
+2025-06-30 20:22:17.302 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-30 20:22:17.319 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 17.468ms
+2025-06-30 20:22:17.380 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-06-30 20:22:17.459 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 78.8883ms
+2025-06-30 20:22:18.182 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-06-30 20:22:18.217 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 35.5059ms
+2025-06-30 20:25:46.027 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 20:25:46.058 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 20:25:46.058 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 20:25:46.058 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 20:26:13.355 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 20:26:13.394 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 20:26:13.394 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 20:26:13.395 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-30 20:26:15.269 +05:30 [INF] Executed DbCommand (251ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-30 20:26:15.278 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-06-30 20:26:15.536 +05:30 [INF] Executed DbCommand (256ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-06-30 20:26:16.067 +05:30 [INF] Executed DbCommand (257ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-06-30 20:26:17.121 +05:30 [INF] Executed DbCommand (253ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-30 20:26:17.372 +05:30 [INF] Executed DbCommand (250ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-06-30 20:26:17.862 +05:30 [INF] Executed DbCommand (486ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-06-30 20:26:17.874 +05:30 [INF] Applying migration '20250630145546_removeconfig'.
+2025-06-30 20:26:18.152 +05:30 [INF] Executed DbCommand (260ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [AppEnvironmentConfig];
+2025-06-30 20:26:18.387 +05:30 [INF] Executed DbCommand (234ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250630145546_removeconfig', N'9.0.3');
+2025-06-30 20:26:18.877 +05:30 [INF] Executed DbCommand (244ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result

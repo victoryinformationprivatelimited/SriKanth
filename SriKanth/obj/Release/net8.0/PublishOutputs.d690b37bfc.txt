@@ -1,6 +1,8 @@
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\SriKanth.API.exe
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\appsettings.Production.json
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\appsettings.Test.json
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\SriKanth.API.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\SriKanth.API.runtimeconfig.json
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\SriKanth.API.pdb

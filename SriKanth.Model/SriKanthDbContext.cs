@@ -41,7 +41,6 @@ namespace SriKanth.Model
 		public virtual DbSet<UserHistory> UserHistory { get; set; }
 		public virtual DbSet<UserDocumentStorage> UserDocumentStorage { get; set; }
 		public virtual DbSet<UserLocation> UserLocation { get; set; }
-		
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

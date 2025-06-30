@@ -21,5 +21,6 @@ namespace SriKanth.Interface.SalesModule
 		Task<SalesPriceApiResponse> GetSalesPriceAsync();
 		Task<SalesIntegrationResponse> PostSalesOrderAsync(SalesOrderRequest salesOrder);
 		Task<InvoiceApiResponse> GetInvoiceDetailsAsync();
+		Task<PostedInvoiceApiResponse> GetPostedInvoiceDetailsAsync();
 	}
 }

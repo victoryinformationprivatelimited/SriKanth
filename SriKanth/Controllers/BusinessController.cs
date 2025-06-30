@@ -84,6 +84,11 @@ namespace SriKanth.API.Controllers
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetOrderCreationDetailsByUser(int userId)
 		{
+			// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
 			try
 			{
 				// Get filtered order creation details for the specified user
@@ -107,6 +112,11 @@ namespace SriKanth.API.Controllers
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> CreateOrder(int userId, [FromBody] OrderRequest orderRequest)
 		{
+			// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
 			try
 			{
 				// Validate the model state
@@ -140,6 +150,11 @@ namespace SriKanth.API.Controllers
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetPendingOrdersByUser(int userId)
 		{
+			// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
 			try
 			{
 				// Get pending orders for the specified user
@@ -162,6 +177,11 @@ namespace SriKanth.API.Controllers
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetDeliveredOrdersByUser(int userId)
 		{
+			// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
 			try
 			{
 				// Get delivered orders for the specified user
@@ -183,7 +203,11 @@ namespace SriKanth.API.Controllers
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetRejectedOrdersByUser(int userId)
-		{
+		{// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
 			try
 			{
 				// Get rejected orders for the specified user
@@ -238,7 +262,11 @@ namespace SriKanth.API.Controllers
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetInvoicedByUser(int userId)
-		{
+		{// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
 			try
 			{
 				// Get invoice details for the specified user
@@ -251,6 +279,47 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		[HttpGet("GetInvoicesByCustomer")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetInvoicesByCustomer(string customerId)
+		{
+			if (!IsValidCustomerCode(customerId))
+			{
+				return BadRequest(new { message = "Invalid or missing customerId. CustomerId cannot be null or empty." });
+			}
+			try
+			{
+				// Get invoice details for the specified user
+				var invoices = await _businessApiService.GetCustomerInvoiceDetailsAsync(customerId);
+				return Ok(invoices);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+
+		[HttpGet("GetOrdersCount")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetOrdersCount(int userId)
+		{// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
+			try
+			{
+				// Get invoice details for the specified user
+				var orderCounts = await _businessApiService.GetOrderStatusSummaryByUserAsync(userId);
+				return Ok(orderCounts);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
 		/// <summary>
 		/// Uploads a document for a user to Azure Blob Storage
 		/// </summary>
@@ -294,7 +363,11 @@ namespace SriKanth.API.Controllers
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> GetUserDocuments(int userId)
-		{
+		{// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
 			try
 			{
 				// Get list of documents for the specified user
@@ -358,6 +431,24 @@ namespace SriKanth.API.Controllers
 			{
 				return StatusCode(500, "Error deleting document");
 			}
+		}
+
+		[HttpGet("check-environment")]
+		public IActionResult CheckEnvironment([FromServices] IConfiguration config)
+		{
+			var envName = config["BusinessCentral:EnvironmentName"];
+			var companyId = config["BusinessCentral:CompanyId"];
+			return Ok(new { Environment = envName, CompanyId = companyId });
+		}
+
+
+		private bool IsValidUserId(int userId)
+		{
+			return userId > 0;
+		}
+		private bool IsValidCustomerCode(string customerCode)
+		{
+			return !string.IsNullOrWhiteSpace(customerCode);
 		}
 	}
 }
