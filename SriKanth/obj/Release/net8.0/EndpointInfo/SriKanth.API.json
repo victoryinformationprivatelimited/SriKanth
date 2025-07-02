@@ -17,6 +17,28 @@
         }
       }
     },
+    "/api/Business/item-image/{itemNo}": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "itemNo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Business/GetListOfOrderCreationDetails": {
       "get": {
         "tags": [
@@ -211,6 +233,49 @@
         }
       }
     },
+    "/api/Business/GetInvoicesByCustomer": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Business/GetOrdersCount": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Business/UploadUserDocument": {
       "post": {
         "tags": [
@@ -311,6 +376,18 @@
               "type": "string"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Business/check-environment": {
+      "get": {
+        "tags": [
+          "Business"
         ],
         "responses": {
           "200": {
@@ -833,6 +910,23 @@
           "rejectReason": {
             "maxLength": 500,
             "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "trackingNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "delivertPersonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "note": {
             "type": "string",
             "nullable": true
           }

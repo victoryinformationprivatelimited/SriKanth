@@ -17,6 +17,16 @@
   },
   {
     "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "CheckEnvironment",
+    "RelativePath": "api/Business/check-environment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
     "Method": "CreateOrder",
     "RelativePath": "api/Business/CreateOrder",
     "HttpMethod": "POST",
@@ -102,6 +112,22 @@
   },
   {
     "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetInvoicesByCustomer",
+    "RelativePath": "api/Business/GetInvoicesByCustomer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
     "Method": "GetUserDocuments",
     "RelativePath": "api/Business/GetListOfDocuments",
     "HttpMethod": "GET",
@@ -130,6 +156,22 @@
     "ContainingType": "SriKanth.API.Controllers.BusinessController",
     "Method": "GetOrderCreationDetailsByUser",
     "RelativePath": "api/Business/GetOrderCreationDetailsByUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetOrdersCount",
+    "RelativePath": "api/Business/GetOrdersCount",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -182,6 +224,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetImageByItemNo",
+    "RelativePath": "api/Business/item-image/{itemNo}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemNo",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

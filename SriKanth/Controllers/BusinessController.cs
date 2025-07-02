@@ -18,6 +18,8 @@ namespace SriKanth.API.Controllers
 		private readonly IConfiguration _configuration;
 		private readonly IBusinessApiService _businessApiService;
 		private readonly IAzureBlobStorageService _azureBlobStorage;
+		private readonly IOrderDetailsApiService _orderDetailsApiService;
+
 
 		/// <summary>
 		/// Initializes a new instance of the BusinessController class
@@ -25,11 +27,12 @@ namespace SriKanth.API.Controllers
 		/// <param name="configuration">Application configuration</param>
 		/// <param name="businessApiService">Business API service</param>
 		/// <param name="azureBlobStorage">Azure Blob Storage service</param>
-		public BusinessController(IConfiguration configuration, IBusinessApiService businessApiService, IAzureBlobStorageService azureBlobStorage)
+		public BusinessController(IConfiguration configuration, IBusinessApiService businessApiService, IAzureBlobStorageService azureBlobStorage, IOrderDetailsApiService orderDetailsApiService)
 		{
 			_configuration = configuration;
 			_businessApiService = businessApiService;
 			_azureBlobStorage = azureBlobStorage;
+			_orderDetailsApiService = orderDetailsApiService;
 		}
 
 		/// <summary>
@@ -52,7 +55,22 @@ namespace SriKanth.API.Controllers
 				return StatusCode(500, $"Error: {ex.Message}");
 			}
 		}
-
+		[HttpGet("item-image")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetImageByItemNo(string itemNo)
+		{
+			try
+			{
+				// Get stock data from the business service
+				var itemImage = await _businessApiService.GetImageByItemNo(itemNo);
+				return Ok(itemImage);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
 		/// <summary>
 		/// Retrieves order creation details for all users
 		/// </summary>
@@ -101,6 +119,72 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		[HttpGet("GetLocationDetailsByUser")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetLocationDetailsByUser(int userId)
+		{
+			// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
+			try
+			{
+				// Get filtered order creation details for the specified user
+				var locations = await _businessApiService.GetFilteredLocationsAsync(userId);
+				return Ok(locations);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+
+		[HttpGet("GetCustomersDetailsByUser")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetCustomersDetailsByUser(int userId)
+		{
+			// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
+			try
+			{
+				// Get filtered order creation details for the specified user
+				var customers = await _businessApiService.GetFilteredCustomersAsync(userId);
+				return Ok(customers);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+
+		[HttpGet("GetItemsDetailsByUser")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetItemsDetailsByUser(int userId)
+		{
+			// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
+			try
+			{
+				// Get filtered order creation details for the specified user
+				var locations = await _businessApiService.GetFilteredItemsAsync(userId);
+				return Ok(locations);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+
 		/// <summary>
 		/// Creates a new order for a user
 		/// </summary>
@@ -126,7 +210,7 @@ namespace SriKanth.API.Controllers
 				}
 
 				// Submit the order to the business service
-				var result = await _businessApiService.SubmitOrderAsync(userId, orderRequest);
+				var result = await _orderDetailsApiService.SubmitOrderAsync(userId, orderRequest);
 
 				if (!result.Success)
 				{
@@ -158,7 +242,7 @@ namespace SriKanth.API.Controllers
 			try
 			{
 				// Get pending orders for the specified user
-				var stockData = await _businessApiService.GetOrdersListAsync(userId, OrderStatus.Pending);
+				var stockData = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Pending);
 				return Ok(stockData);
 			}
 			catch (Exception ex)
@@ -185,7 +269,7 @@ namespace SriKanth.API.Controllers
 			try
 			{
 				// Get delivered orders for the specified user
-				var stockData = await _businessApiService.GetOrdersListAsync(userId, OrderStatus.Delivered);
+				var stockData = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Delivered);
 				return Ok(stockData);
 			}
 			catch (Exception ex)
@@ -211,7 +295,7 @@ namespace SriKanth.API.Controllers
 			try
 			{
 				// Get rejected orders for the specified user
-				var stockData = await _businessApiService.GetOrdersListAsync(userId, OrderStatus.Rejected);
+				var stockData = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Rejected);
 				return Ok(stockData);
 			}
 			catch (Exception ex)
@@ -239,7 +323,7 @@ namespace SriKanth.API.Controllers
 				}
 
 				// Update the order status through the business service
-				var result = await _businessApiService.UpdateOrderStatusAsync(updateOrderRequest);
+				var result = await _orderDetailsApiService.UpdateOrderStatusAsync(updateOrderRequest);
 
 				if (!result.Success)
 				{
@@ -312,7 +396,7 @@ namespace SriKanth.API.Controllers
 			try
 			{
 				// Get invoice details for the specified user
-				var orderCounts = await _businessApiService.GetOrderStatusSummaryByUserAsync(userId);
+				var orderCounts = await _orderDetailsApiService.GetOrderStatusSummaryByUserAsync(userId);
 				return Ok(orderCounts);
 			}
 			catch (Exception ex)

@@ -1,0 +1,283 @@
+2025-07-02 16:22:16.136 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 16:22:16.560 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 16:22:16.563 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 16:22:16.707 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 16:22:16.711 +05:30 [INF] Hosting environment: Test
+2025-07-02 16:22:16.712 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 16:22:18.490 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 16:22:18.940 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 463.4062ms
+2025-07-02 16:22:18.985 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 16:22:19.001 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 16.4052ms
+2025-07-02 16:22:19.084 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 16:22:19.187 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 102.2179ms
+2025-07-02 16:22:19.905 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 16:22:20.077 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 172.0429ms
+2025-07-02 18:06:52.231 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 18:06:52.556 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 18:06:52.558 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 18:06:52.752 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 18:06:52.758 +05:30 [INF] Hosting environment: Test
+2025-07-02 18:06:52.760 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 18:06:53.240 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 18:06:54.514 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 1286.9972ms
+2025-07-02 18:06:54.569 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 18:06:54.628 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 58.2532ms
+2025-07-02 18:06:54.672 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 18:06:54.749 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 77.1225ms
+2025-07-02 18:06:55.920 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 18:06:55.946 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.319ms
+2025-07-02 18:14:30.927 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetLocationDetailsByUser?userId=11 - null null
+2025-07-02 18:14:34.002 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetLocationDetailsByUser (SriKanth.API)'
+2025-07-02 18:14:35.652 +05:30 [INF] Route matched with {action = "GetLocationDetailsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLocationDetailsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-02 18:14:39.926 +05:30 [INF] Retrieving filtered locations for user 11
+2025-07-02 18:14:45.065 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-02 18:14:45.068 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-02 18:14:45.070 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-02 18:14:45.071 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-02 18:14:48.913 +05:30 [INF] Executed DbCommand (362ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-02 18:14:49.326 +05:30 [INF] Executed DbCommand (234ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-07-02 18:14:49.360 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 18:14:49.371 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 18:14:49.940 +05:30 [INF] Received HTTP response headers after 561.4015ms - 200
+2025-07-02 18:14:49.945 +05:30 [INF] End processing HTTP request after 589.3697ms - 200
+2025-07-02 18:14:49.966 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/locations
+2025-07-02 18:14:49.972 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/locations
+2025-07-02 18:14:51.216 +05:30 [INF] Received HTTP response headers after 1239.1544ms - 200
+2025-07-02 18:14:51.220 +05:30 [INF] End processing HTTP request after 1254.8844ms - 200
+2025-07-02 18:14:51.493 +05:30 [INF] Executed DbCommand (235ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-07-02 18:14:51.769 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.Login_Module.DTOs.Location, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-02 18:14:51.800 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetLocationDetailsByUser (SriKanth.API) in 16127.3869ms
+2025-07-02 18:14:51.822 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetLocationDetailsByUser (SriKanth.API)'
+2025-07-02 18:14:51.846 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetLocationDetailsByUser?userId=11 - 200 null application/json; charset=utf-8 20919.2664ms
+2025-07-02 18:15:10.640 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetCustomersDetailsByUser?userId=11 - null null
+2025-07-02 18:15:10.676 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API)'
+2025-07-02 18:15:10.692 +05:30 [INF] Route matched with {action = "GetCustomersDetailsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomersDetailsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-02 18:15:15.804 +05:30 [INF] Retrieving filtered customers for user 11
+2025-07-02 18:15:16.993 +05:30 [INF] Executed DbCommand (230ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-02 18:15:17.244 +05:30 [INF] Executed DbCommand (233ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-07-02 18:15:22.286 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 18:15:22.290 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 18:15:22.476 +05:30 [INF] Received HTTP response headers after 182.6422ms - 200
+2025-07-02 18:15:22.482 +05:30 [INF] End processing HTTP request after 196.1968ms - 200
+2025-07-02 18:15:22.492 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/customers
+2025-07-02 18:15:22.500 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/customers
+2025-07-02 18:15:23.885 +05:30 [INF] Received HTTP response headers after 1376.908ms - 200
+2025-07-02 18:15:23.894 +05:30 [INF] End processing HTTP request after 1401.5396ms - 200
+2025-07-02 18:15:28.249 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.BusinessModule.DTOs.OrderCustomer, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-02 18:15:28.266 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API) in 17566.2205ms
+2025-07-02 18:15:28.268 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API)'
+2025-07-02 18:15:28.270 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetCustomersDetailsByUser?userId=11 - 200 null application/json; charset=utf-8 17629.863ms
+2025-07-02 18:16:03.429 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetItemsDetailsByUser?userId=11 - null null
+2025-07-02 18:16:03.476 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetItemsDetailsByUser (SriKanth.API)'
+2025-07-02 18:16:03.509 +05:30 [INF] Route matched with {action = "GetItemsDetailsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetItemsDetailsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-02 18:16:08.671 +05:30 [INF] Retrieving filtered items for user 11
+2025-07-02 18:16:10.548 +05:30 [INF] Executed DbCommand (534ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-02 18:16:10.895 +05:30 [INF] Executed DbCommand (337ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-07-02 18:16:12.222 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 18:16:12.227 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 18:16:13.173 +05:30 [INF] Received HTTP response headers after 943.1686ms - 200
+2025-07-02 18:16:13.178 +05:30 [INF] End processing HTTP request after 955.558ms - 200
+2025-07-02 18:16:13.173 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 18:16:13.180 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/items?$expand=itemsubstitutions
+2025-07-02 18:16:13.184 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 18:16:13.186 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/items?$expand=itemsubstitutions
+2025-07-02 18:16:14.350 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/inventoryBalances
+2025-07-02 18:16:14.350 +05:30 [INF] Received HTTP response headers after 1162.4936ms - 200
+2025-07-02 18:16:14.352 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/inventoryBalances
+2025-07-02 18:16:14.353 +05:30 [INF] End processing HTTP request after 1180.1368ms - 200
+2025-07-02 18:16:14.362 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/salesPrices
+2025-07-02 18:16:14.365 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/salesPrices
+2025-07-02 18:16:16.114 +05:30 [INF] Received HTTP response headers after 1754.6284ms - 200
+2025-07-02 18:16:16.120 +05:30 [INF] End processing HTTP request after 1769.5553ms - 200
+2025-07-02 18:16:16.385 +05:30 [INF] Received HTTP response headers after 2018.9886ms - 200
+2025-07-02 18:16:16.388 +05:30 [INF] End processing HTTP request after 2025.6923ms - 200
+2025-07-02 18:16:18.305 +05:30 [INF] Received HTTP response headers after 5115.0458ms - 200
+2025-07-02 18:16:18.310 +05:30 [INF] End processing HTTP request after 5129.6671ms - 200
+2025-07-02 18:16:24.771 +05:30 [INF] Executed DbCommand (235ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[LocationCode]
+FROM [UserLocation] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2025-07-02 18:16:24.948 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.BusinessModule.DTOs.OrderItemDetails, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-02 18:16:24.957 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetItemsDetailsByUser (SriKanth.API) in 21441.8106ms
+2025-07-02 18:16:24.963 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetItemsDetailsByUser (SriKanth.API)'
+2025-07-02 18:16:24.966 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetItemsDetailsByUser?userId=11 - 200 null application/json; charset=utf-8 21538.1688ms
+2025-07-02 18:21:49.184 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 18:21:49.722 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 18:21:49.726 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 18:21:50.025 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 18:21:50.054 +05:30 [INF] Hosting environment: Test
+2025-07-02 18:21:50.079 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 18:21:50.865 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 18:21:51.176 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 315.6473ms
+2025-07-02 18:21:51.518 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 18:21:51.518 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 18:21:51.544 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 25.2134ms
+2025-07-02 18:21:51.688 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 169.5331ms
+2025-07-02 18:21:52.379 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 18:21:52.418 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 38.6796ms
+2025-07-02 19:05:07.040 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 19:05:07.281 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 19:05:07.285 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 19:05:07.540 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 19:05:07.542 +05:30 [INF] Hosting environment: Test
+2025-07-02 19:05:07.544 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 19:05:08.054 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 19:05:08.516 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 473.885ms
+2025-07-02 19:05:08.713 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 19:05:08.713 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 19:05:08.733 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 21.4963ms
+2025-07-02 19:05:08.835 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 121.9465ms
+2025-07-02 19:05:09.636 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 19:05:09.682 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.6644ms
+2025-07-02 19:44:59.793 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 19:45:00.036 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 19:45:00.040 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 19:45:00.123 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 19:45:00.125 +05:30 [INF] Hosting environment: Test
+2025-07-02 19:45:00.127 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 19:45:01.239 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 19:45:01.571 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 347.8218ms
+2025-07-02 19:45:01.640 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 19:45:01.660 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 20.1192ms
+2025-07-02 19:45:01.738 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 19:45:01.867 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 128.8753ms
+2025-07-02 19:45:02.663 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 19:45:02.705 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 41.6527ms
+2025-07-02 19:49:32.581 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 19:49:32.909 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 19:49:32.911 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 19:49:33.023 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 19:49:33.025 +05:30 [INF] Hosting environment: Test
+2025-07-02 19:49:33.027 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 19:49:33.604 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 19:49:34.088 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 497.6425ms
+2025-07-02 19:49:34.316 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 19:49:34.316 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 19:49:34.338 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 21.9562ms
+2025-07-02 19:49:34.405 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 89.5043ms
+2025-07-02 19:49:35.164 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 19:49:35.216 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 52.4831ms
+2025-07-02 19:49:38.799 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetStockDetails - null null
+2025-07-02 19:49:38.936 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetStockDetails (SriKanth.API)'
+2025-07-02 19:49:39.260 +05:30 [INF] Route matched with {action = "GetStockDetails", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStockDetails() on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-02 19:49:41.448 +05:30 [INF] Beginning to retrieve sales stock details
+2025-07-02 19:49:42.491 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 19:49:42.498 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 19:49:43.295 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 19:49:43.298 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 19:49:44.026 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 19:49:44.028 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 19:49:44.037 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 19:49:44.041 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-02 19:49:44.468 +05:30 [INF] Received HTTP response headers after 1966.7191ms - 200
+2025-07-02 19:49:44.471 +05:30 [INF] End processing HTTP request after 1988.9874ms - 200
+2025-07-02 19:49:44.483 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/inventoryBalances
+2025-07-02 19:49:44.487 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/inventoryBalances
+2025-07-02 19:49:44.514 +05:30 [INF] Received HTTP response headers after 481.9469ms - 200
+2025-07-02 19:49:44.516 +05:30 [INF] End processing HTTP request after 490.1107ms - 200
+2025-07-02 19:49:44.518 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/salesPrices
+2025-07-02 19:49:44.519 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/salesPrices
+2025-07-02 19:49:44.651 +05:30 [INF] Received HTTP response headers after 608.5104ms - 200
+2025-07-02 19:49:44.654 +05:30 [INF] End processing HTTP request after 616.3402ms - 200
+2025-07-02 19:49:44.656 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/locations
+2025-07-02 19:49:44.659 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/locations
+2025-07-02 19:49:44.699 +05:30 [INF] Received HTTP response headers after 1398.9011ms - 200
+2025-07-02 19:49:44.702 +05:30 [INF] End processing HTTP request after 1406.5244ms - 200
+2025-07-02 19:49:44.704 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/items?$expand=itemsubstitutions
+2025-07-02 19:49:44.707 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/UAT/api/asttrum/sales/v1.0/companies(af773735-4626-f011-9af7-0022485721aa)/items?$expand=itemsubstitutions
+2025-07-02 19:49:45.634 +05:30 [INF] Received HTTP response headers after 968.7292ms - 200
+2025-07-02 19:49:45.634 +05:30 [INF] Received HTTP response headers after 1146.4779ms - 200
+2025-07-02 19:49:45.636 +05:30 [INF] End processing HTTP request after 980.3569ms - 200
+2025-07-02 19:49:45.637 +05:30 [INF] End processing HTTP request after 1153.5412ms - 200
+2025-07-02 19:49:46.130 +05:30 [INF] Received HTTP response headers after 1610.076ms - 200
+2025-07-02 19:49:46.131 +05:30 [INF] End processing HTTP request after 1613.3371ms - 200
+2025-07-02 19:49:48.595 +05:30 [INF] Received HTTP response headers after 3885.1757ms - 200
+2025-07-02 19:49:48.597 +05:30 [INF] End processing HTTP request after 3892.9482ms - 200
+2025-07-02 19:50:01.904 +05:30 [INF] Successfully retrieved 69 stock items
+2025-07-02 19:50:01.917 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.BusinessModule.DTOs.StockItem, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-02 19:50:01.934 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetStockDetails (SriKanth.API) in 22668.7396ms
+2025-07-02 19:50:01.938 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetStockDetails (SriKanth.API)'
+2025-07-02 19:50:01.940 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/api/Business/GetStockDetails - 200 null application/json; charset=utf-8 23141.5426ms
+2025-07-02 20:05:59.776 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 20:06:00.385 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 20:06:00.388 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 20:06:00.625 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 20:06:00.807 +05:30 [INF] Hosting environment: Test
+2025-07-02 20:06:00.815 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 20:06:01.024 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 20:06:01.459 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 442.9991ms
+2025-07-02 20:06:01.506 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 20:06:01.565 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 59.2074ms
+2025-07-02 20:06:01.638 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 20:06:01.733 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 95.3581ms
+2025-07-02 20:06:02.583 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 20:06:02.861 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 277.7848ms
+2025-07-02 20:06:44.044 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 20:06:44.309 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 20:06:44.312 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 20:06:44.580 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 20:06:44.582 +05:30 [INF] Hosting environment: Test
+2025-07-02 20:06:44.583 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 20:06:45.146 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 20:06:45.404 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 277.3307ms
+2025-07-02 20:06:45.526 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 20:06:45.575 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 49.3217ms
+2025-07-02 20:06:45.639 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 20:06:45.757 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 118.0866ms
+2025-07-02 20:06:46.498 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 20:06:46.550 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 52.0375ms
+2025-07-02 20:06:59.539 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetPendingOrders?userId=11 - null null
+2025-07-02 20:06:59.609 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetPendingOrdersByUser (SriKanth.API)'
+2025-07-02 20:06:59.759 +05:30 [INF] Route matched with {action = "GetPendingOrdersByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingOrdersByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-02 20:08:47.311 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 20:08:47.751 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 20:08:47.754 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 20:08:47.884 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 20:08:47.886 +05:30 [INF] Hosting environment: Test
+2025-07-02 20:08:47.887 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 20:08:48.571 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 20:08:48.993 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 451.9962ms
+2025-07-02 20:08:49.219 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 20:08:49.219 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 20:08:49.252 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 32.4957ms
+2025-07-02 20:08:49.321 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 102.9959ms
+2025-07-02 20:08:50.216 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 20:08:50.324 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 108.3091ms
+2025-07-02 20:09:08.115 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/api/Business/GetPendingOrders?userId=11 - null null
+2025-07-02 20:09:08.186 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetPendingOrdersByUser (SriKanth.API)'
+2025-07-02 20:09:08.336 +05:30 [INF] Route matched with {action = "GetPendingOrdersByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingOrdersByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-02 20:10:19.062 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-02 20:10:19.535 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-02 20:10:19.539 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-02 20:10:19.709 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-02 20:10:19.714 +05:30 [INF] Hosting environment: Test
+2025-07-02 20:10:19.715 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-02 20:10:20.320 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-02 20:10:20.643 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 338.4689ms
+2025-07-02 20:10:20.708 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-02 20:10:20.728 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 19.7129ms
+2025-07-02 20:10:20.804 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-02 20:10:20.911 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 107.334ms
+2025-07-02 20:10:21.778 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-02 20:10:21.812 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.4349ms

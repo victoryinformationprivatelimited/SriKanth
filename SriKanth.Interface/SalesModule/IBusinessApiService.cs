@@ -12,13 +12,13 @@ namespace SriKanth.Interface.SalesModule
 	public interface IBusinessApiService
 	{
 		Task<List<StockItem>> GetSalesStockDetails();
+		Task<string> GetImageByItemNo(string itemNo);
 		Task<OrderCreationDetails> GetOrderCreationDetailsAsync();
 		Task<OrderCreationDetails> GetFilteredOrderCreationDetailsAsync(int userId);
-		Task<ServiceResult> SubmitOrderAsync(int userId, OrderRequest request);
-		Task<List<OrderReturn>> GetOrdersListAsync(int userId, OrderStatus orderStatus);
-		Task<ServiceResult> UpdateOrderStatusAsync(UpdateOrderRequest updateOrderRequest);
+		Task<List<Location>> GetFilteredLocationsAsync(int userId);
+		Task<List<OrderCustomer>> GetFilteredCustomersAsync(int userId);
+		Task<List<OrderItemDetails>> GetFilteredItemsAsync(int userId);
 		Task<CustomerInvoiceReturn> GetCustomerInvoicesAsync(int userId);
 		Task<CustomerWiseInvoices> GetCustomerInvoiceDetailsAsync(string customerCode);
-		Task<OrderStatusSummary> GetOrderStatusSummaryByUserAsync(int userId);
 	}
 }

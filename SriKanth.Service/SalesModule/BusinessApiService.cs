@@ -1,4 +1,6 @@
 ﻿using MailKit.Search;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.CSharp.RuntimeBinder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SriKanth.Data;
@@ -47,12 +49,12 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>List of stock items with comprehensive details</returns>
 		public async Task<List<StockItem>> GetSalesStockDetails()
 		{
-			_logger.LogDebug("Entering GetSalesStockDetails method");
+			
 			try
 			{
 				_logger.LogInformation("Beginning to retrieve sales stock details");
 
-				// Execute all API calls in parallel for better performance
+				// Execute all API calls in parallel
 				var inventoryTask = _externalApiService.GetInventoryBalanceAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
 				var salesPricesTask = _externalApiService.GetSalesPriceAsync();
@@ -60,7 +62,6 @@ namespace SriKanth.Service.SalesModule
 
 				await Task.WhenAll(inventoryTask, itemsTask, salesPricesTask, locationsTask);
 
-				// Retrieve results from completed tasks
 				var inventory = await inventoryTask;
 				var items = await itemsTask;
 				var salesPrices = await salesPricesTask;
@@ -74,17 +75,7 @@ namespace SriKanth.Service.SalesModule
 					throw new ApplicationException("Required data not available from APIs");
 				}
 
-				// Fetch item pictures in parallel
-				var pictureTasks = items.value
-					.Where(i => i?.no != null && i.systemId != Guid.Empty)
-					.ToDictionary(
-						item => item.no,
-						item => _externalApiService.GetItemsPictureAsync(item.systemId)
-					);
-
-				await Task.WhenAll(pictureTasks.Values);
-
-				// Create lookup dictionaries for efficient data access
+				// Create lookup dictionaries
 				var inventoryLookup = inventory.value
 					.Where(i => i?.itemNo != null && i?.locationCode != null)
 					.ToDictionary(i => (i.itemNo, i.locationCode), i => i);
@@ -94,47 +85,29 @@ namespace SriKanth.Service.SalesModule
 					.GroupBy(p => p.itemNo)
 					.ToDictionary(g => g.Key, g => g.First().unitPrice);
 
-				var locationLookup = locations.value
-					.Where(l => l?.code != null)
-					.ToDictionary(l => l.code, l => l.name);
-
-				var stockList = new List<StockItem>();
-
-				// Process each item and location combination
-				foreach (var item in items.value.Where(i => i?.no != null))
-				{
-					foreach (var location in locations.value.Where(l => l?.code != null))
-					{
-						var key = (item.no, location.code);
-						if (!inventoryLookup.TryGetValue(key, out var inv))
-							continue; // Skip items with no inventory at this location
-
-						priceLookup.TryGetValue(item.no, out var itemPrice);
-
-						// Retrieve item picture if available
-						var picture = pictureTasks.TryGetValue(item.no, out var task) && task.IsCompletedSuccessfully
-							? task.Result
-							: null;
-
-						stockList.Add(new StockItem
-						{
-							ItemCode = item.no,
-							ItemName = item.description ?? string.Empty,
-							Location = location.name ?? location.code ?? "Unknown",
-							Stock = inv.inventory > 40 ? "40+" : inv.inventory.ToString(),
-							UnitPrice = itemPrice,
-							ItemCategory = item.itemCategoryCode ?? string.Empty,
-							Category = item.parentCategoryCode ?? string.Empty,
-							SubCategory = item.childCategoryCode ?? string.Empty,
-							Description = item.description ?? string.Empty,
-							Description2 = item.description2 ?? string.Empty,
-							UnitOfMeasure = item.unitOfMeasure ?? string.Empty,
-							Size = item.size ?? string.Empty,
-							ReorderQuantity = item.reorderQuantity,
-							Image = picture
-						});
-					}
-				}
+				// Generate stock items using LINQ (much faster than nested loops)
+				var stockList = (from item in items.value.Where(i => i?.no != null)
+								 from location in locations.value.Where(l => l?.code != null)
+								 let key = (item.no, location.code)
+								 where inventoryLookup.ContainsKey(key)
+								 let inv = inventoryLookup[key]
+								 select new StockItem
+								 {
+									 ItemCode = item.no,
+									 ItemName = item.description ?? string.Empty,
+									 Location = location.name ?? location.code ?? "Unknown",
+									 Stock = item.reorderPoint == 0 ? inv.inventory.ToString() : inv.inventory > item.reorderPoint ? $"{item.reorderPoint}+": inv.inventory.ToString(),
+									 UnitPrice = priceLookup.GetValueOrDefault(item.no),
+									 ItemCategory = item.itemCategoryCode ?? string.Empty,
+									 Category = item.parentCategoryCode ?? string.Empty,
+									 SubCategory = item.childCategoryCode ?? string.Empty,
+									 Description = item.description ?? string.Empty,
+									 Description2 = item.description2 ?? string.Empty,
+									 UnitOfMeasure = item.unitOfMeasure ?? string.Empty,
+									 Size = item.size ?? string.Empty,
+									 ReorderQuantity = item.reorderQuantity,
+									 Image = null // Load separately if needed
+								 }).ToList();
 
 				_logger.LogInformation("Successfully retrieved {StockItemCount} stock items", stockList.Count);
 				return stockList;
@@ -146,10 +119,34 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
-		/// <summary>
-		/// Retrieves all necessary details for creating a new order
-		/// </summary>
-		/// <returns>OrderCreationDetails containing locations, customers, payment types and items</returns>
+		public async Task<string> GetImageByItemNo(string itemNo)
+		{
+			try
+			{
+				if (string.IsNullOrWhiteSpace(itemNo))
+				{
+					return null;
+				}
+
+				var items = await _externalApiService.GetItemsWithSubstitutionsAsync();
+				var item = items?.value?.FirstOrDefault(i => i.no == itemNo);
+
+				if (item == null || item.systemId == Guid.Empty)
+				{
+					return null; // Item not found
+				}
+
+				var image = await _externalApiService.GetItemsPictureAsync(item.systemId);
+
+				return image; // Will be null or empty if not available
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Failed to get image for item {ItemNo}", itemNo);
+				return null;
+			}
+		}
+
 		public async Task<OrderCreationDetails> GetOrderCreationDetailsAsync()
 		{
 			try
@@ -164,91 +161,47 @@ namespace SriKanth.Service.SalesModule
 
 				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask);
 
-				// Process locations data
+				// Get results
 				var locations = await locationsTask;
-				if (locations?.value == null || !locations.value.Any())
-				{
-					_logger.LogWarning("Location data not available");
-					throw new InvalidOperationException("No location data found.");
-				}
-
-				// Process customers data
 				var customers = await customersTask;
-				if (customers?.value == null || !customers.value.Any())
-				{
-					_logger.LogWarning("Customer data not available");
-					throw new InvalidOperationException("No Customer data found.");
-				}
-
-				// Process items data
 				var items = await itemsTask;
-				if (items?.value == null || !items.value.Any())
-				{
-					_logger.LogWarning("Item data not available");
-					throw new InvalidOperationException("No Items data found.");
-				}
-
-				// Create price lookup dictionary
 				var salesPrices = await salesPriceTask;
-				var priceLookup = salesPrices?.value?
-					.GroupBy(p => p.itemNo)
-					.ToDictionary(g => g.Key, g => g.First().unitPrice)
-					?? new Dictionary<string, decimal>();
+				// Validate data existence early (type-safe)
+				ValidateApiData(locations?.value, "location");
+				ValidateApiData(customers?.value, "customer");
+				ValidateApiData(items?.value, "item");
 
-				// Compile all order creation details
+				// Create price lookup dictionary with better performance
+				var priceLookup = CreatePriceLookupDictionary(salesPrices?.value);
+				var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
+				var dueAmountLookup = customerWiseInvoices.ToDictionary(
+					cwi => cwi.CustomerNo,
+					cwi => cwi.TotalDueAmount
+				);
+				// Process data in parallel using PLINQ for large datasets
+				var locationDtos = ProcessLocationsInParallel(locations.value);
+				var customerDtos = ProcessCustomersInParallel(customers.value,dueAmountLookup);
+				var itemDtos = ProcessItemsInParallel(items.value, priceLookup);
+
 				var details = new OrderCreationDetails
 				{
-					Locations = locations.value.Select(l => new Model.Login_Module.DTOs.Location
-					{
-						LocationCode = l.code,
-						LocationName = l.name
-					}).ToList(),
-
-					Customers = customers.value.Select(c => new OrderCustomer
-					{
-						CustomerCode = c.no,
-						CustomerName = c.name,
-						DueAmount = c.creditLimitLCY - c.balanceLCY,
-						CreditAllowed = c.creditAllowed,
-						CreditLimit = c.creditLimitLCY,
-						BalanceCredit = c.balanceLCY,
-						PaymentTermCode = c.paymentTermsCode,
-						PaymentMethodCode = c.paymentMethodCode
-					}).ToList(),
-
-					Items = items.value.Select(i => new OrderItemDetails
-					{
-						ItemCode = i.no,
-						ItemName = i.description,
-						Unitprice = priceLookup.TryGetValue(i.no, out var price) ? price.ToString() : "0",
-						SubstituteItems = i.itemsubstitutions?.FirstOrDefault() == null ? null : new SubstituteItem
-						{
-							ItemCode = i.itemsubstitutions.First().substituteNo,
-							ItemName = i.itemsubstitutions.First().description,
-							UnitPrice = priceLookup.TryGetValue(i.itemsubstitutions.First().substituteNo, out var subPrice)
-								? subPrice
-								: 0
-						}
-					}).ToList()
+					Locations = locationDtos,
+					Customers = customerDtos,
+					Items = itemDtos
 				};
 
 				_logger.LogInformation("Retrieved order creation details with {LocationCount} locations, {CustomerCount} customers, and {ItemCount} items",
 					details.Locations.Count, details.Customers.Count, details.Items.Count);
+
 				return details;
 			}
 			catch (Exception ex)
 			{
 				_logger.LogError(ex, "Failed to retrieve order creation details");
-				_logger.LogDebug("Exiting GetOrderCreationDetailsAsync method due to exception");
 				throw new InvalidOperationException("Error while retrieving order creation details", ex);
 			}
 		}
 
-		/// <summary>
-		/// Retrieves filtered order creation details based on user permissions and assigned locations
-		/// </summary>
-		/// <param name="userId">ID of the user making the request</param>
-		/// <returns>Filtered OrderCreationDetails specific to the user</returns>
 		public async Task<OrderCreationDetails> GetFilteredOrderCreationDetailsAsync(int userId)
 		{
 			try
@@ -280,11 +233,22 @@ namespace SriKanth.Service.SalesModule
 
 				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask, inventoryTask);
 
-				// Filter locations to only those assigned to the user
+				// Get results
 				var locations = await locationsTask;
-				var filteredLocations = locations?.value?
-					 .Where(l => userLocations.Contains(l.code))
-					.ToList() ?? new List<LocationDetail>();
+				var customers = await customersTask;
+				var items = await itemsTask;
+				var salesPrices = await salesPriceTask;
+				var inventory = await inventoryTask;
+
+				// Validate data existence early (type-safe)
+				ValidateApiData(locations?.value, "location");
+				ValidateApiData(customers?.value, "customer");
+				ValidateApiData(items?.value, "item");
+
+				// Filter locations to only those assigned to the user
+				var filteredLocations = locations.value
+					.Where(l => userLocations.Contains(l.code))
+					.ToList();
 
 				if (!filteredLocations.Any())
 				{
@@ -293,78 +257,40 @@ namespace SriKanth.Service.SalesModule
 				}
 
 				// Filter customers by salesperson code
-				var customers = await customersTask;
-				var filteredCustomers = customers?.value?
+				var filteredCustomers = customers.value
 					.Where(c => c.salespersonCode == user.SalesPersonCode)
-					.ToList() ?? new List<Customer>();
-
-				// Process items data
-				var items = await itemsTask;
-				if (items?.value == null || !items.value.Any())
-				{
-					_logger.LogWarning("No items data available");
-					throw new InvalidOperationException("No Items data found.");
-				}
-
-				// Create price lookup dictionary
-				var salesPrices = await salesPriceTask;
-				var priceLookup = salesPrices?.value?
-					.GroupBy(p => p.itemNo)
-					.ToDictionary(g => g.Key, g => g.First().unitPrice)
-					?? new Dictionary<string, decimal>();
+					.ToList();
 
 				// Filter inventory to only user's locations with stock
-				var inventory = await inventoryTask;
-				var inventoryAtLocations = inventory?.value?
+				var inventoryAtLocations = inventory.value
 					.Where(i => userLocations.Contains(i.locationCode) && i.inventory > 0)
-					.ToList() ?? new List<InventoryBalance>();
+					.ToList();
 
 				// Get item numbers available at these locations
 				var availableItemNos = new HashSet<string>(inventoryAtLocations.Select(i => i.itemNo));
 
+				// Create price lookup dictionary
+				var priceLookup = CreatePriceLookupDictionary(salesPrices?.value);
+				var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
+				var dueAmountLookup = customerWiseInvoices.ToDictionary(
+					cwi => cwi.CustomerNo,
+					cwi => cwi.TotalDueAmount
+				);
+				// Process data in parallel using PLINQ for large datasets
+				var locationDtos = ProcessLocationsInParallel(filteredLocations);
+				var customerDtos = ProcessCustomersInParallel(filteredCustomers,dueAmountLookup);
+				var itemDtos = ProcessItemsInParallel(items.value.Where(i => availableItemNos.Contains(i.no)), priceLookup);
 
-				// Compile all filtered order creation details
 				var details = new OrderCreationDetails
 				{
-					Locations = filteredLocations.Select(l => new Model.Login_Module.DTOs.Location
-					{
-						LocationCode = l.code,
-						LocationName = l.name
-					}).ToList(),
-
-					Customers = filteredCustomers.Select(c => new OrderCustomer
-					{
-						CustomerCode = c.no,
-						CustomerName = c.name,
-						DueAmount = c.balanceLCY,
-						CreditAllowed = c.creditAllowed,
-						CreditLimit = c.creditLimitLCY,
-						BalanceCredit = c.creditLimitLCY - c.balanceLCY,
-						PaymentTermCode = c.paymentTermsCode,
-						PaymentMethodCode = c.paymentMethodCode
-					}).ToList(),
-
-
-					Items = items.value
-						.Where(i => availableItemNos.Contains(i.no))
-						.Select(i => new OrderItemDetails
-						{
-							ItemCode = i.no,
-							ItemName = i.description,
-							Unitprice = priceLookup.TryGetValue(i.no, out var price) ? price.ToString() : "0",
-							SubstituteItems = i.itemsubstitutions?.FirstOrDefault() == null ? null : new SubstituteItem
-							{
-								ItemCode = i.itemsubstitutions.First().substituteNo,
-								ItemName = i.itemsubstitutions.First().description,
-								UnitPrice = priceLookup.TryGetValue(i.itemsubstitutions.First().substituteNo, out var subPrice)
-									? subPrice
-									: 0
-							}
-						}).ToList()
+					Locations = locationDtos,
+					Customers = customerDtos,
+					Items = itemDtos
 				};
 
 				_logger.LogInformation("Retrieved filtered order details for user {UserId} with {LocationCount} locations, {CustomerCount} customers, and {ItemCount} items",
 					userId, details.Locations.Count, details.Customers.Count, details.Items.Count);
+
 				return details;
 			}
 			catch (Exception ex)
@@ -374,407 +300,126 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
-		/// <summary>
-		/// Submits a new order after validating customer credit and inventory availability
-		/// </summary>
-		/// <param name="userId">ID of the user submitting the order</param>
-		/// <param name="request">Order details including items and customer information</param>
-		/// <returns>ServiceResult indicating success or failure</returns>
-		public async Task<ServiceResult> SubmitOrderAsync(int userId, OrderRequest request)
+		public async Task<List<Location>> GetFilteredLocationsAsync(int userId)
 		{
-			_logger.LogDebug("Entering SubmitOrderAsync method for user {UserId}", userId);
-			try
+			_logger.LogInformation("Retrieving filtered locations for user {UserId}", userId);
+
+			var user = await _loginData.GetUserByIdAsync(userId)
+				?? throw new InvalidOperationException("User Not found");
+
+			// Get user role to determine filtering logic
+			string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
+
+			// Get all locations from external API
+			var locationsResponse = await _externalApiService.GetLocationsAsync();
+			ValidateApiData(locationsResponse?.value, "location");
+
+			List<LocationDetail> filteredLocationDetails;
+
+			// Admin can see all locations
+			if (userRole == "Admin")
 			{
-				_logger.LogInformation("Beginning order submission for user {UserId}, customer {CustomerCode}, location {LocationCode}",
-					userId, request.CustomerCode, request.LocationCode);
-
-				// Validate user exists
-				var user = await _loginData.GetUserByIdAsync(userId);
-				if (user == null)
-				{
-					_logger.LogWarning("User with ID {UserId} not found during order submission", userId);
-					return new ServiceResult { Success = false, Message = "User not found" };
-				}
-
-				// Validate customer credit
-				var creditValidation = await ValidateCustomerCredit(request.CustomerCode, request.TotalAmount);
-				if (!creditValidation.Success)
-				{
-					_logger.LogWarning("Credit validation failed for customer {CustomerCode}", request.CustomerCode);
-					return creditValidation;
-				}
-
-				// Validate inventory availability
-				var inventoryValidation = await ValidateInventory(request.Items, request.LocationCode);
-				if (!inventoryValidation.Success)
-				{
-					_logger.LogWarning("Inventory validation failed for location {LocationCode}", request.LocationCode);
-					return inventoryValidation;
-				}
-
-				// Create order record
-				var order = new Order
-				{
-					CustomerCode = request.CustomerCode,
-					LocationCode = request.LocationCode,
-					OrderDate = DateTime.UtcNow,
-					Status = OrderStatus.Pending,
-					TotalAmount = request.TotalAmount,
-					SalesPersonCode = user.SalesPersonCode,
-					PaymentMethodCode = request.PaymentMethodCode,
-					Note = request.SpecialNote
-				};
-
-				await _businessData.AddOrderAsync(order);
-
-				// Create order items
-				var orderItems = request.Items.Select(item => new OrderItem
-				{
-					ItemCode = item.ItemCode,
-					OrderNumber = order.OrderNumber,
-					Description = item.Description,
-					Quantity = item.Quantity,
-					UnitPrice = item.UnitPrice,
-					DiscountPercent = item.DiscountPercent
-				}).ToList();
-
-				await _businessData.AddOrderItemsAsync(orderItems);
-
-				_logger.LogInformation("Successfully submitted order {OrderNumber} for customer {CustomerCode} by user {UserId}",
-					order.OrderNumber, request.CustomerCode, userId);
-				return new ServiceResult { Success = true, Message = "Order submitted successfully" };
+				_logger.LogInformation("Admin user {UserId} accessing all locations", userId);
+				filteredLocationDetails = locationsResponse.value.ToList();
 			}
-			catch (Exception ex)
+			else
 			{
-				_logger.LogError(ex, "Failed to submit order for user {UserId}", userId);
-				return new ServiceResult { Success = false, Message = "Order submission failed. Please try again." };
+				// Non-admin users see only their assigned locations
+				var userLocations = await _loginData.GetUserLocationCodesAsync(userId);
+				if (userLocations == null || !userLocations.Any())
+					throw new InvalidOperationException("User has no locations assigned.");
+
+				filteredLocationDetails = locationsResponse.value
+					.Where(l => userLocations.Contains(l.code))
+					.ToList();
+
+				if (!filteredLocationDetails.Any())
+					throw new InvalidOperationException("No valid location data found for user.");
 			}
+
+			// Process and convert LocationDetail to Location
+			return ProcessLocationsInParallel(filteredLocationDetails);
 		}
 
-		/// <summary>
-		/// Retrieves a list of orders filtered by status and user's salesperson code
-		/// </summary>
-		/// <param name="userId">ID of the user making the request</param>
-		/// <param name="orderStatus">Status of orders to retrieve</param>
-		/// <returns>List of orders with detailed information</returns>
-		public async Task<List<OrderReturn>> GetOrdersListAsync(int userId, OrderStatus orderStatus)
+		public async Task<List<OrderCustomer>> GetFilteredCustomersAsync(int userId)
 		{
-			try
+			_logger.LogInformation("Retrieving filtered customers for user {UserId}", userId);
+
+			var user = await _loginData.GetUserByIdAsync(userId)
+				?? throw new InvalidOperationException("User Not found");
+
+			string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
+
+			var customersResponse = await _externalApiService.GetCustomersAsync();
+			ValidateApiData(customersResponse?.value, "customer");
+
+			List<Customer> filteredCustomers;
+			if (userRole == "Admin")
 			{
-				_logger.LogInformation("Beginning to retrieve orders for user {UserId} with status {OrderStatus}",
-					userId, orderStatus);
-
-				// Validate user exists
-				var user = await _loginData.GetUserByIdAsync(userId);
-				if (user == null)
-				{
-					_logger.LogWarning("User with ID {UserId} not found while retrieving orders", userId);
-					throw new ApplicationException("Failed to retrieve orders. Please try again later.");
-				}
-
-				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
-				List<Order> orders;
-
-				// Get orders filtered by salesperson and status
-				if (userRole == "Admin" || userRole == "SalesCoordinator")
-				{
-					orders = await _businessData.GetAllOrdersAsync(orderStatus);
-				}
-				else
-				{
-					orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
-				}
-
-				if (!orders.Any())
-				{
-					_logger.LogInformation("No orders found for user {UserId} with status {OrderStatus}", userId, orderStatus);
-					return new List<OrderReturn>();
-				}
-
-				var orderNumbers = orders.Select(o => o.OrderNumber).ToList();
-
-				// Get all items for these orders
-				var orderItems = await _businessData.GetOrderItemsByOrderNumbersAsync(orderNumbers);
-
-				// Group items by order number for efficient lookup
-				var itemsByOrder = orderItems
-					.GroupBy(i => i.OrderNumber)
-					.ToDictionary(g => g.Key, g => g.ToList());
-
-				// Get customer and salesperson details in parallel
-				var customersTask = _externalApiService.GetCustomersAsync();
-				var salesPeopleTask = _externalApiService.GetSalesPeopleAsync();
-
-				// Create list of tasks to wait for
-				var tasks = new List<Task> { customersTask, salesPeopleTask };
-				Task<InvoiceApiResponse>? invoiceTask = null;
-
-				// Only fetch invoices if delivered orders are requested
-				if (orderStatus == OrderStatus.Delivered)
-				{
-					invoiceTask = _externalApiService.GetInvoiceDetailsAsync();
-					tasks.Add(invoiceTask);
-				}
-
-				await Task.WhenAll(tasks);
-
-				// Safely extract results with null checks
-				var customersResponse = await customersTask;
-				var salesPeopleResponse = await salesPeopleTask;
-
-				if (customersResponse?.value == null || salesPeopleResponse?.value == null)
-				{
-					_logger.LogError("Failed to retrieve customer or salesperson data from external API");
-					throw new ApplicationException("Failed to retrieve required data. Please try again later.");
-				}
-
-				var customers = customersResponse.value;
-				var salesPeople = salesPeopleResponse.value;
-
-				// Create lookup dictionaries for names
-				var customerDict = customers.ToDictionary(c => c.no, c => c.name);
-				var salesPersonDict = salesPeople.ToDictionary(s => s.code, s => s.name);
-
-				// Prepare invoice lookup if needed
-				var invoiceLines = new List<SriKanth.Model.ExistingApis.Invoice>();
-				if (orderStatus == OrderStatus.Delivered && invoiceTask != null)
-				{
-					var invoiceResponse = await invoiceTask;
-					if (invoiceResponse?.value != null)
-					{
-						invoiceLines = invoiceResponse.value;
-					}
-					else
-					{
-						_logger.LogWarning("Invoice data not available for delivered orders");
-					}
-				}
-
-				// Compile order return objects with all details
-				var result = orders.Select(order =>
-				{
-					// Ordered items from order
-					var orderedItems = itemsByOrder.TryGetValue(order.OrderNumber, out var items)
-						? items.Select(i => new OrderItemReturn
-						{
-							ItemCode = i.ItemCode,
-							Description = i.Description,
-							Quantity = i.Quantity,
-							UnitPrice = i.UnitPrice,
-							DiscountPercent = i.DiscountPercent
-						}).ToList()
-						: new List<OrderItemReturn>();
-
-					// Invoiced items: for delivered orders, from invoice lines; otherwise, null
-					List<OrderItemReturn>? invoicedItems = null;
-					if (orderStatus == OrderStatus.Delivered && invoiceLines.Any())
-					{
-						try
-						{
-							// Filter invoice lines for this order with better error handling
-							var lines = invoiceLines
-								.Where(inv =>
-									inv != null &&
-									!string.IsNullOrWhiteSpace(inv.OrderNo) &&
-									int.TryParse(inv.OrderNo.Trim(), out int orderNo) &&
-									orderNo == order.OrderNumber)
-								.Select(inv => new OrderItemReturn
-								{
-									ItemCode = inv.No ?? string.Empty,
-									Description = inv.Description ?? string.Empty,
-									Quantity = inv.Quantity,
-									UnitPrice = inv.UnitPrice,
-									DiscountPercent = inv.LineDiscount
-								})
-								.ToList();
-
-							invoicedItems = lines.Any() ? lines : null;
-						}
-						catch (Exception ex)
-						{
-							_logger.LogWarning(ex, "Failed to process invoice lines for order {OrderNumber}", order.OrderNumber);
-							invoicedItems = null;
-						}
-					}
-
-					return new OrderReturn
-					{
-						OrderNumber = order.OrderNumber,
-						CustomerName = customerDict.TryGetValue(order.CustomerCode, out var custName) ? custName : string.Empty,
-						SalesPersonName = salesPersonDict.TryGetValue(order.SalesPersonCode, out var spName) ? spName : string.Empty,
-						OrderDate = order.OrderDate,
-						PaymentMethodType = order.PaymentMethodCode,
-						Status = order.Status.ToString(),
-						SpecialNote = order.Note ?? string.Empty,
-						TotalAmount = order.TotalAmount,
-						OrderedItems = orderedItems,
-						InvoicedItems = invoicedItems,
-						RejectReason = order.RejectReason,
-						DeliveryDate = orderStatus == OrderStatus.Delivered ? order.DeliveryDate : null,
-						TrackingNumber = orderStatus == OrderStatus.Delivered ? order.TrackingNumber : null,
-						DelivertPersonName = orderStatus == OrderStatus.Delivered ? order.DelivertPersonName : null
-					};
-				}).ToList();
-
-				_logger.LogInformation("Retrieved {OrderCount} {OrderStatus} orders for user {UserId}",
-					result.Count, orderStatus, userId);
-				return result;
+				_logger.LogInformation("Admin user {UserId} accessing all customers", userId);
+				filteredCustomers = customersResponse.value.ToList();
 			}
-			catch (ApplicationException)
+			else
 			{
-				// Re-throw application exceptions as they are already user-friendly
-				throw;
+				filteredCustomers = customersResponse.value
+					.Where(c => c.salespersonCode == user.SalesPersonCode)
+					.ToList();
 			}
-			catch (Exception ex)
-			{
-				_logger.LogError(ex, "Failed to retrieve {OrderStatus} orders for user {UserId}", orderStatus, userId);
-				throw new ApplicationException("Failed to retrieve orders. Please try again later.", ex);
-			}
+
+			// Fetch due amounts
+			var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
+			var dueAmountLookup = customerWiseInvoices.ToDictionary(
+				cwi => cwi.CustomerNo,
+				cwi => cwi.TotalDueAmount
+			);
+
+			return ProcessCustomersInParallel(filteredCustomers, dueAmountLookup);
 		}
 
-		/// <summary>
-		/// Updates the status of an order and performs related business logic
-		/// </summary>
-		/// <param name="updateOrderRequest">Request containing order number and new status</param>
-		/// <returns>ServiceResult indicating success or failure</returns>
-		public async Task<ServiceResult> UpdateOrderStatusAsync(UpdateOrderRequest updateOrderRequest)
+		public async Task<List<OrderItemDetails>> GetFilteredItemsAsync(int userId)
 		{
-			try
+			_logger.LogInformation("Retrieving filtered items for user {UserId}", userId);
+
+			var user = await _loginData.GetUserByIdAsync(userId)
+				?? throw new InvalidOperationException("User Not found");
+
+			string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
+
+			var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
+			var salesPriceTask = _externalApiService.GetSalesPriceAsync();
+			var inventoryTask = _externalApiService.GetInventoryBalanceAsync();
+
+			await Task.WhenAll(itemsTask, salesPriceTask, inventoryTask);
+
+			var items = (await itemsTask)?.value;
+			var salesPrices = (await salesPriceTask)?.value;
+			var inventory = (await inventoryTask)?.value;
+
+			ValidateApiData(items, "item");
+
+			List<Item> filteredItems;
+			if (userRole == "Admin")
 			{
-				_logger.LogInformation("Beginning status update for order {OrderNumber} to status {OrderStatus}",
-					updateOrderRequest.Ordernumber, updateOrderRequest.Status);
-
-				// Get the order to update
-				var order = await _businessData.GetOrderByIdAsync(updateOrderRequest.Ordernumber);
-				if (order == null)
-				{
-					_logger.LogWarning("Order {OrderNumber} not found during status update", updateOrderRequest.Ordernumber);
-					return new ServiceResult { Success = false, Message = $"Order {updateOrderRequest.Ordernumber} not found." };
-				}
-				// Validate status transition
-				var isValidTransition = await ValidateStatusTransition(order.Status, updateOrderRequest.Status);
-				if (!isValidTransition)
-				{
-					_logger.LogWarning("Invalid status transition for order {OrderNumber}: {CurrentStatus} -> {NewStatus}",
-						order.OrderNumber, order.Status, updateOrderRequest.Status);
-					return new ServiceResult
-					{
-						Success = false,
-						Message = $"Invalid status transition from {order.Status} to {updateOrderRequest.Status}."
-					};
-				}
-				if (order.Status == OrderStatus.Delivered)
-				{
-					bool isInvoiced = await CheckInvoicedStatusAsync(order);
-					if(isInvoiced)
-					{
-						order.TrackingNumber = updateOrderRequest.TrackingNumber;
-						order.DelivertPersonName = updateOrderRequest.DelivertPersonName;
-						order.DeliveryDate = DateOnly.FromDateTime(updateOrderRequest.DeliveryDate.Value);
-						order.Note = updateOrderRequest.Note ?? null;
-
-						order.Status = OrderStatus.Delivered;
-						await _businessData.UpdateOrderStatusAsync(order);
-
-						_logger.LogInformation("Order {OrderNumber} marked as Delivered after invoice check.", order.OrderNumber);
-						return new ServiceResult { Success = true, Message = "Order status updated to Delivered." };
-
-					}
-					else
-					{
-						_logger.LogWarning("Order {OrderNumber} cannot be updated to Delivered status as it is not invoiced", updateOrderRequest.Ordernumber);
-						return new ServiceResult { Success = false, Message = $"Order {updateOrderRequest.Ordernumber} cannot be updated to Delivered status as it is not invoiced." };
-					}
-				}
-				// Update order status
-				order.Status = updateOrderRequest.Status;
-				order.RejectReason = updateOrderRequest.RejectReason ?? null;
-				await _businessData.UpdateOrderStatusAsync(order);
-
-				// Additional processing for orders moving to Processing status
-				if (updateOrderRequest.Status == OrderStatus.Processing)
-				{
-					// Get customer and location details in parallel
-					var customersTask = _externalApiService.GetCustomersAsync();
-					var locationsTask = _externalApiService.GetLocationsAsync();
-					await Task.WhenAll(customersTask, locationsTask);
-
-					var customers = (await customersTask).value;
-					var locations = (await locationsTask).value;
-
-					// Validate customer exists
-					var customer = customers?.FirstOrDefault(c => c.no == order.CustomerCode);
-					var paymentTermCode = customer?.paymentTermsCode;
-					var paymentMethodCode = customer?.paymentMethodCode;
-
-					if (customer == null)
-					{
-						_logger.LogWarning("Customer {CustomerCode} not found in external API during order processing", order.CustomerCode);
-						return new ServiceResult { Success = false, Message = $"Customer {order.CustomerCode} not found in external API." };
-					}
-
-					// Validate location exists
-					var location = locations?.FirstOrDefault(l => l.code == order.LocationCode);
-					var locationCode = location?.code;
-
-					if (location == null)
-					{
-						_logger.LogWarning("Location {LocationCode} not found in external API during order processing", order.LocationCode);
-						return new ServiceResult { Success = false, Message = $"Location {order.LocationCode} not found in external API." };
-					}
-
-					// Get order items
-					var orderItems = await _businessData.GetOrderItemsAsync(updateOrderRequest.Ordernumber);
-
-					// Prepare sales order request for external API
-					var salesOrderRequest = new SalesOrderRequest
-					{
-						orderNo = order.OrderNumber.ToString(),
-						customerNo = order.CustomerCode,
-						orderDate = order.OrderDate.ToString("yyyy-MM-dd"),
-						salespersonCode = order.SalesPersonCode,
-						paymentMethodCode = paymentMethodCode,   
-						paymentTermCode = paymentTermCode,
-						salesIntegrationLines = orderItems
-							.Select((line, index) => new SalesIntegrationLine
-							{
-								lineNo = line.OrderItemId,
-								itemNo = line.ItemCode,
-								description = line.Description,
-								location = locationCode,
-								quantity = line.Quantity,
-								unitPrice = line.UnitPrice,
-								lineDiscount = line.DiscountPercent
-							})
-							.ToList()
-					};
-
-					try
-					{
-						// Submit to external API
-						await _externalApiService.PostSalesOrderAsync(salesOrderRequest);
-						_logger.LogInformation("Successfully posted order {OrderNumber} to external API", updateOrderRequest.Ordernumber);
-					}
-					catch (Exception ex)
-					{
-						_logger.LogError(ex, "Failed to send order {OrderNumber} to external API", updateOrderRequest.Ordernumber);
-						return new ServiceResult
-						{
-							Success = false,
-							Message = $"Failed to send Order {updateOrderRequest.Ordernumber} to external API."
-						};
-					}
-				}
-
-				_logger.LogInformation("Successfully updated status of order {OrderNumber} to {OrderStatus}",
-					updateOrderRequest.Ordernumber, updateOrderRequest.Status);
-				return new ServiceResult { Success = true, Message = "Order status updated successfully." };
+				_logger.LogInformation("Admin user {UserId} accessing all items", userId);
+				filteredItems = items.ToList();
 			}
-			catch (Exception ex)
+			else
 			{
-				_logger.LogError(ex, "Failed to update status for order {OrderNumber}", updateOrderRequest.Ordernumber);
-				return new ServiceResult { Success = false, Message = "Unexpected error updating order status." };
+				var userLocations = await _loginData.GetUserLocationCodesAsync(userId);
+				if (userLocations == null || !userLocations.Any())
+					throw new InvalidOperationException("User has no locations assigned.");
+
+				var inventoryAtLocations = inventory
+					.Where(i => userLocations.Contains(i.locationCode) && i.inventory > 0)
+					.ToList();
+
+				var availableItemNos = new HashSet<string>(inventoryAtLocations.Select(i => i.itemNo));
+				filteredItems = items.Where(i => availableItemNos.Contains(i.no)).ToList();
 			}
+
+			var priceLookup = CreatePriceLookupDictionary(salesPrices);
+
+			return ProcessItemsInParallel(filteredItems, priceLookup);
 		}
 
 		/// <summary>
@@ -795,74 +440,52 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("User with ID {UserId} not found while retrieving invoices", userId);
 					throw new ApplicationException("Failed to retrieve invoices. Please try again later.");
 				}
-				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
-				// 1. Get all customers
-				var customerResponse = await _externalApiService.GetCustomersAsync();
-				var customers = customerResponse?.value ?? new List<Customer>();
 
-				var filteredCustomers = new List<Customer>();
-				if (userRole == "Admin" || userRole == "SalesCoordinator")
-				{
-					filteredCustomers = customers.ToList(); // Admin can see all customers
-				}
-				// 2. Filter customers by salesperson code
-				else if (userRole == "SalesPerson")
-				{
-					filteredCustomers = customers
-					.Where(c => c.salespersonCode == user.SalesPersonCode)
-					.ToList();
-				}
+				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
+
+				var customerTask = _externalApiService.GetCustomersAsync();
+				var invoiceTask = _externalApiService.GetPostedInvoiceDetailsAsync();
+
+				await Task.WhenAll(customerTask, invoiceTask);
+
+				var customerResponse = await customerTask;
+				var invoiceResponse = await invoiceTask;
+
+				var customers = customerResponse?.value ?? new List<Customer>();
+				var invoices = invoiceResponse?.value ?? new List<PostedInvoice>();
+
+				// OPTIMIZATION 2: Filter customers early and create lookup dictionary
+				var filteredCustomers = FilterCustomersByRole(customers, userRole, user.SalesPersonCode);
 
 				if (!filteredCustomers.Any())
 					return new CustomerInvoiceReturn { TotalDueAmount = 0, CustomerInvoices = new List<CustomerInvoice>() };
 
-				// 3. Get all customer-wise invoices
-				var customerWiseInvoicesList = await GetCustomerWiseInvoicesAsync();
+				// Create customer lookup dictionary for O(1) access
+				var customerLookup = filteredCustomers.ToDictionary(c => c.no, c => c.name);
+				var allowedCustomerCodes = customerLookup.Keys.ToHashSet();
 
-				// 4. Filter to only customers the user has permission for
-				var customerCodes = filteredCustomers.Select(c => c.no).ToHashSet();
+				// OPTIMIZATION 3: Filter invoices early and process in memory
+				var relevantInvoices = invoices
+					.Where(inv => allowedCustomerCodes.Contains(inv.CustomerNo))
+					.ToList();
 
-				var customerInvoices = new List<CustomerInvoice>();
+				// OPTIMIZATION 4: Batch database queries for orders
+				var orderNumbers = relevantInvoices
+					.Where(inv => !string.IsNullOrWhiteSpace(inv.OrderNo) && int.TryParse(inv.OrderNo, out _))
+					.Select(inv => int.Parse(inv.OrderNo))
+					.Distinct()
+					.ToList();
 
-				foreach (var customerWise in customerWiseInvoicesList.Where(cwi => customerCodes.Contains(cwi.CustomerNo)))
-				{
-					var customerName = filteredCustomers.FirstOrDefault(c => c.no == customerWise.CustomerNo)?.name ?? "";
+				// Get all orders in one query instead of individual queries
+				var orderLookup = await GetOrderLookupAsync(orderNumbers);
 
-					foreach (var invoice in customerWise.Invoices)
-					{
-						DateTime? invoiceDate;
-						if (!string.IsNullOrWhiteSpace(invoice.OrderNo))
-						{
-							if (int.TryParse(invoice.OrderNo, out int orderNumber))
-							{
-								var order = await _businessData.GetOrderByIdAsync(orderNumber);
-								invoiceDate = order?.OrderDate ?? DateTime.Today; // fallback if order is null
-							}
-							else
-							{
-								// Invalid format, fallback date
-								invoiceDate = DateTime.Today;
-							}
-						}
-						else
-						{
-							invoiceDate = null;
-						}
-						customerInvoices.Add(new CustomerInvoice
-						{
-							CustomerCode = customerWise.CustomerNo,
-							CustomerName = customerName,
-							InvoiceDocumentNo = invoice.InvoiceNo,
-							InvoiceDate = invoiceDate,
-							InvoicedAmount = invoice.TotalAmount,
-							DueAmount = invoice.DueAmount
-						});
-					}
-				}
+				// OPTIMIZATION 5: Process invoices efficiently
+				var customerInvoices = ProcessInvoicesEfficiently(relevantInvoices, customerLookup, orderLookup);
 
 				var totalDue = customerInvoices.Sum(ci => ci.DueAmount ?? 0);
 
 				_logger.LogInformation("Successfully retrieved customer invoice details for user {UserId}", userId);
+
 				return new CustomerInvoiceReturn
 				{
 					TotalDueAmount = totalDue,
@@ -994,333 +617,6 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
-		/// <summary>
-		/// Retrieves a summary of order counts grouped by status for a specific user.
-		/// </summary>
-		/// <param name="userId">The unique identifier of the user whose order status summary is to be retrieved</param>
-		/// <returns>OrderStatusSummary object containing counts of pending, delivered, and rejected orders</returns>
-		public async Task<OrderStatusSummary> GetOrderStatusSummaryByUserAsync(int userId)
-		{
-			// Log the start of order status summary retrieval
-			_logger.LogInformation("Starting order status summary retrieval for user ID: {UserId}", userId);
-
-			try
-			{
-				// Step 1: Validate user existence and retrieve user details
-				var user = await _loginData.GetUserByIdAsync(userId);
-
-				if (user == null)
-				{
-					_logger.LogWarning("User with ID {UserId} not found while retrieving order status summary", userId);
-					throw new ApplicationException($"User with ID {userId} not found.");
-				}
-				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
-
-				try
-				{
-					List<Order> pendingTask;
-					List<Order> deliveredTask;
-					List<Order> rejectedTask;
-
-					// Step 3: Create tasks for parallel execution based on user role
-					if (userRole == "Admin" || userRole == "SalesCoordinator")
-					{
-						pendingTask = await _businessData.GetAllOrdersAsync(OrderStatus.Pending);
-						deliveredTask = await _businessData.GetAllOrdersAsync(OrderStatus.Delivered);
-						rejectedTask = await _businessData.GetAllOrdersAsync(OrderStatus.Rejected);
-					}
-					else
-					{
-						pendingTask = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Pending);
-						deliveredTask = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Delivered);
-						rejectedTask = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Rejected);
-					}
-
-					// Retrieve results from completed tasks
-					var pendingOrders =  pendingTask;
-					var deliveredOrders =  deliveredTask;
-					var rejectedOrders =  rejectedTask;
-
-					// Calculate counts with null safety
-					var pendingCount = pendingOrders?.Count ?? 0;
-					var deliveredCount = deliveredOrders?.Count ?? 0;
-					var rejectedCount = rejectedOrders?.Count ?? 0;
-
-					// Create and return the summary object
-					var summary = new OrderStatusSummary
-					{
-						PendingCount = pendingCount,
-						DeliveredCount = deliveredCount,
-						RejectedCount = rejectedCount
-					};
-
-					_logger.LogInformation("Successfully retrieved order status summary for user {UserId} ({UserRole}). Total orders: {TotalOrders}",
-						userId, userRole, pendingCount + deliveredCount + rejectedCount);
-
-					return summary;
-				}
-				catch (Exception dataEx)
-				{
-					// Error retrieving order data from business layer
-					_logger.LogError(dataEx, "Error retrieving order data for user {UserId} with sales person code {SalesPersonCode}. Error: {ErrorMessage}",
-						userId, user.SalesPersonCode, dataEx.Message);
-					throw new ApplicationException($"Failed to retrieve order status data for user {userId}. Please try again later.", dataEx);
-				}
-			}
-			catch (ApplicationException)
-			{
-				// Re-throw application exceptions as they are already user-friendly
-				throw;
-			}
-			catch (Exception ex)
-			{
-				// Log unexpected errors
-				_logger.LogError(ex, "Unexpected error occurred while retrieving order status summary for user {UserId}. Error: {ErrorMessage}",
-					userId, ex.Message);
-
-				// Throw user-friendly exception
-				throw new ApplicationException($"Failed to retrieve order status summary for user {userId}. Please try again later.", ex);
-			}
-		}
-		/// <summary>
-		/// Validates customer credit status against order total
-		/// </summary>
-		/// <param name="customerCode">Customer code to validate</param>
-		/// <param name="orderTotal">Total amount of the order</param>
-		/// <returns>ServiceResult indicating validation success or failure</returns>
-		private async Task<ServiceResult> ValidateCustomerCredit(string customerCode, decimal orderTotal)
-		{
-			try
-			{
-				// Get customer list from external API
-				var customersResponse = await _externalApiService.GetCustomersAsync();
-
-				// Validate response
-				if (customersResponse?.value == null || !customersResponse.value.Any())
-				{
-					_logger.LogWarning("Customer data not available for validation");
-					return new ServiceResult { Success = false, Message = "Customer data not available" };
-				}
-
-				// Find the specific customer using the provided code
-				var customer = customersResponse.value.FirstOrDefault(c => c.no == customerCode);
-
-				if (customer == null)
-				{
-					_logger.LogWarning("Customer {CustomerCode} not found for validation", customerCode);
-					return new ServiceResult { Success = false, Message = $"Customer {customerCode} not found" };
-				}
-
-				// Check if credit is allowed for this customer
-				if (!customer.creditAllowed)
-				{
-					_logger.LogWarning("Customer {CustomerCode} is not allowed credit purchases", customerCode);
-					return new ServiceResult { Success = false, Message = "Customer is not allowed credit purchases" };
-				}
-
-				// Calculate available credit balance
-				// Available credit = Credit Limit - Current Balance
-				var availableCredit = customer.creditLimitLCY - customer.balanceLCY;
-
-				// Check if the order total exceeds available credit
-				if (orderTotal > availableCredit)
-				{
-					_logger.LogWarning("Order exceeds available credit for customer {CustomerCode}. " +
-									 "Available: {AvailableCredit}, Order: {OrderTotal}",
-									 customerCode, availableCredit, orderTotal);
-					return new ServiceResult
-					{
-						Success = false,
-						Message = $"Order exceeds available credit. Available credit: {availableCredit:C}, Order total: {orderTotal:C}"
-					};
-				}
-
-				// Additional check: Ensure credit limit is positive (optional business rule)
-				if (customer.creditLimitLCY <= 0)
-				{
-					_logger.LogWarning("Customer {CustomerCode} has no credit limit set", customerCode);
-					return new ServiceResult { Success = false, Message = "Customer has no credit limit set" };
-				}
-
-				// All checks passed
-				_logger.LogInformation("Credit validation passed for customer {CustomerCode}. " +
-									 "Order: {OrderTotal}, Available Credit: {AvailableCredit}",
-									 customerCode, orderTotal, availableCredit);
-				return new ServiceResult { Success = true, Message = "Credit validation passed" };
-			}
-			catch (Exception ex)
-			{
-				_logger.LogError(ex, "Error during credit validation for customer {CustomerCode}", customerCode);
-				return new ServiceResult { Success = false, Message = "Error during credit validation" };
-			}
-		}
-
-		/// <summary>
-		/// Validates inventory availability for order items at specified location
-		/// </summary>
-		/// <param name="items">List of order items to validate</param>
-		/// <param name="locationCode">Location code to check inventory at</param>
-		/// <returns>ServiceResult indicating validation success or failure</returns>
-		private async Task<ServiceResult> ValidateInventory(List<OrderItemRequest> items, string locationCode)
-		{
-			_logger.LogInformation("Entering ValidateInventory for location {LocationCode}", locationCode);
-			try
-			{
-				// Get inventory data from external API
-				var inventoryResponse = await _externalApiService.GetInventoryBalanceAsync();
-
-				if (inventoryResponse?.value == null || !inventoryResponse.value.Any())
-				{
-					_logger.LogWarning("Inventory data not available for validation");
-					return new ServiceResult { Success = false, Message = "Inventory data not available" };
-				}
-
-				// Filter inventory for specific location
-				var filteredInventory = inventoryResponse.value
-					.Where(i => i.locationCode == locationCode)
-					.ToList();
-
-				if (!filteredInventory.Any())
-				{
-					_logger.LogWarning("No inventory data found for location {LocationCode}", locationCode);
-					return new ServiceResult
-					{
-						Success = false,
-						Message = $"No inventory data found for location: {locationCode}"
-					};
-				}
-
-				// Create lookup dictionary for inventory items
-				var inventoryLookup = filteredInventory.ToDictionary(i => i.itemNo);
-
-				// Validate each item in the order
-				foreach (var item in items)
-				{
-					// Check item exists at location
-					if (!inventoryLookup.TryGetValue(item.ItemCode, out var inventoryItem))
-					{
-						_logger.LogWarning("Item {ItemCode} not found in inventory at location {LocationCode}",
-							item.ItemCode, locationCode);
-						_logger.LogDebug("Exiting ValidateInventory with validation failure");
-						return new ServiceResult
-						{
-							Success = false,
-							Message = $"Item {item.ItemCode} not found in inventory at location {locationCode}"
-						};
-					}
-
-					// Check sufficient quantity available
-					if (inventoryItem.inventory < item.Quantity)
-					{
-						_logger.LogWarning("Insufficient stock for item {ItemCode} (Available: {Available}, Requested: {Requested})",
-							item.ItemCode, inventoryItem.inventory, item.Quantity);
-						_logger.LogDebug("Exiting ValidateInventory with validation failure");
-						return new ServiceResult
-						{
-							Success = false,
-							Message = $"Insufficient stock for item {item.ItemCode} (Available: {inventoryItem.inventory}, Requested: {item.Quantity})"
-						};
-					}
-				}
-
-				_logger.LogInformation("Exiting ValidateInventory with validation success");
-				return new ServiceResult { Success = true, Message = "Inventory validation passed" };
-			}
-			catch (Exception ex)
-			{
-				_logger.LogError(ex, "Error during inventory validation for location {LocationCode}", locationCode);
-				return new ServiceResult { Success = false, Message = "Error during inventory validation" };
-			}
-		}
-
-		/// <summary>
-		/// Validates inventory availability for order items at specified location
-		/// </summary>
-		/// <param name="items">List of order items to validate</param>
-		/// <param name="locationCode">Location code to check inventory at</param>
-		/// <returns>ServiceResult indicating validation success or failure</returns>
-		private async Task<bool> CheckInvoicedStatusAsync(Order order)
-		{
-			try
-			{
-				// Get all invoices for delivery status checking
-				var invoiceResponse = await _externalApiService.GetInvoiceDetailsAsync();
-				var invoices = invoiceResponse?.value ?? new List<Invoice>();
-
-				if (!invoices.Any())
-				{
-					_logger.LogWarning("No invoices found for delivery status update");
-					return false;
-				}
-
-				var isInvoiced = invoices.Any(inv =>
-					!string.IsNullOrWhiteSpace(inv.OrderNo) &&
-					int.TryParse(inv.OrderNo.Trim(), out var orderNo) &&
-					orderNo == order.OrderNumber);
-
-				if (!isInvoiced)
-				{
-					_logger.LogWarning("Order {OrderNumber} cannot be marked as Delivered because no invoice found.", order.OrderNumber);
-					return false;
-				}
-
-				// Success path
-				return true;
-			}
-			catch (Exception ex)
-			{
-				_logger.LogError(ex, "Failed to verify invoiced status for order {OrderNumber}", order.OrderNumber);
-				return false;
-			}
-		}
-
-		private Task<bool> ValidateStatusTransition(OrderStatus currentStatus, OrderStatus newStatus)
-		{
-			// Same status - no change needed
-			if (currentStatus == newStatus)
-			{
-				_logger.LogWarning("No status change: attempted to set status {Status} to the same value.", currentStatus);
-				return Task.FromResult(false);
-			}
-
-			// Check if transition is valid
-			if (!IsValidTransition(currentStatus, newStatus))
-			{
-				var allowedStatuses = GetAllowedNextStatuses(currentStatus);
-				var allowedStatusNames = string.Join(", ", allowedStatuses.Select(s => s.ToString()));
-
-				_logger.LogWarning("Invalid status transition attempted: {CurrentStatus} -> {NewStatus}. Allowed: {AllowedStatuses}",
-					currentStatus, newStatus, allowedStatusNames);
-
-				return Task.FromResult(false);
-			}
-
-			return Task.FromResult(true);
-		}
-		private bool IsValidTransition(OrderStatus currentStatus, OrderStatus newStatus)
-		{
-			var allowedStatuses = GetAllowedNextStatuses(currentStatus);
-			return allowedStatuses.Contains(newStatus);
-		}
-		private List<OrderStatus> GetAllowedNextStatuses(OrderStatus currentStatus)
-		{
-			return currentStatus switch
-			{
-				OrderStatus.Pending => new List<OrderStatus>
-			{
-				OrderStatus.Processing,
-				OrderStatus.Rejected
-			},
-				OrderStatus.Processing => new List<OrderStatus>
-			{
-				OrderStatus.Delivered,
-				OrderStatus.Rejected
-			},
-				OrderStatus.Delivered => new List<OrderStatus>(), // Terminal status - no changes allowed
-				OrderStatus.Rejected => new List<OrderStatus>(),   // Terminal status - no changes allowed
-				_ => new List<OrderStatus>()
-			};
-		}
 		
 
 
@@ -1363,6 +659,192 @@ namespace SriKanth.Service.SalesModule
 				.ToList();
 
 			return customerGroups;
+		}
+		private List<CustomerWiseInvoices> GetCustomerWiseInvoicesOptimized(List<PostedInvoice> invoices, HashSet<string> allowedCustomerCodes)
+		{
+			return invoices
+				.Where(inv => allowedCustomerCodes.Contains(inv.CustomerNo))
+				.GroupBy(inv => inv.CustomerNo)
+				.AsParallel() // Use parallel processing for large datasets
+				.Select(g =>
+				{
+					var invoiceSummaries = g.Select(inv => new InvoiceSummary
+					{
+						InvoiceNo = inv.DocumentNo,
+						OrderNo = inv.OrderNo,
+						PdcAmount = inv.PdcAmount,
+						DueAmount = inv.RemainingAmount,
+						TotalAmount = inv.Lines?.Sum(line => line.Amount) ?? 0
+					}).ToList();
+
+					return new CustomerWiseInvoices
+					{
+						CustomerNo = g.Key,
+						TotalDueAmount = invoiceSummaries.Sum(i => i.DueAmount),
+						TotalPdcAmount = invoiceSummaries.Sum(i => i.PdcAmount),
+						Invoices = invoiceSummaries
+					};
+				})
+				.ToList();
+		}
+		private List<Customer> FilterCustomersByRole(List<Customer> customers, string userRole, string salesPersonCode)
+		{
+			return userRole switch
+			{
+				"Admin" or "SalesCoordinator" => customers,
+				"SalesPerson" => customers.Where(c => c.salespersonCode == salesPersonCode).ToList(),
+				_ => new List<Customer>()
+			};
+		}
+
+		private async Task<Dictionary<int, DateTime?>> GetOrderLookupAsync(List<int> orderNumbers)
+		{
+			if (!orderNumbers.Any())
+				return new Dictionary<int, DateTime?>();
+
+			// Assuming you have a method to get multiple orders at once
+			// If not, you'll need to create one in your business data layer
+			var orders = await _businessData.GetListOfOrdersByOrderNumbersAsync(orderNumbers);
+			return orders.ToDictionary(o => o.OrderNumber, o => (DateTime?)o.OrderDate);
+		}
+
+		private List<CustomerInvoice> ProcessInvoicesEfficiently(List<PostedInvoice> invoices,Dictionary<string, string> customerLookup,Dictionary<int, DateTime?> orderLookup)
+		{
+			var customerInvoices = new List<CustomerInvoice>();
+
+			foreach (var invoice in invoices)
+			{
+				var customerName = customerLookup.GetValueOrDefault(invoice.CustomerNo, "");
+				var totalAmount = invoice.Lines?.Sum(line => line.Amount) ?? 0;
+
+				DateTime? invoiceDate = null;
+				if (!string.IsNullOrWhiteSpace(invoice.OrderNo) && int.TryParse(invoice.OrderNo, out int orderNumber))
+				{
+					invoiceDate = orderLookup.GetValueOrDefault(orderNumber, DateTime.Today);
+				}
+
+				customerInvoices.Add(new CustomerInvoice
+				{
+					CustomerCode = invoice.CustomerNo,
+					CustomerName = customerName,
+					InvoiceDocumentNo = invoice.DocumentNo,
+					InvoiceDate = invoiceDate,
+					InvoicedAmount = totalAmount,
+					DueAmount = invoice.RemainingAmount
+				});
+			}
+
+			return customerInvoices;
+		}
+
+		private void ValidateApiData<T>(IEnumerable<T> data, string dataType)
+		{
+			if (data == null || !data.Any())
+			{
+				_logger.LogWarning("{DataType} data not available", dataType);
+				throw new InvalidOperationException($"No {dataType} data found.");
+			}
+		}
+
+		private Dictionary<string, decimal> CreatePriceLookupDictionary(IEnumerable<dynamic> salesPrices)
+		{
+			if (salesPrices == null) return new Dictionary<string, decimal>();
+
+			// Use concurrent dictionary for thread-safe operations if needed
+			// and pre-size the dictionary if you know approximate count
+			var priceLookup = new Dictionary<string, decimal>();
+
+			// Process in batches for very large datasets
+			const int batchSize = 10000;
+			var batches = salesPrices.Batch(batchSize);
+
+			foreach (var batch in batches)
+			{
+				var batchLookup = batch
+					.GroupBy(p => p.itemNo)
+					.ToDictionary(g => g.Key, g => g.First().unitPrice);
+
+				foreach (var kvp in batchLookup)
+				{
+					priceLookup[kvp.Key] = kvp.Value;
+				}
+			}
+
+			return priceLookup;
+		}
+
+		private List<Model.Login_Module.DTOs.Location> ProcessLocationsInParallel(IEnumerable<dynamic> locations)
+		{
+			// Define the codes to skip
+			var codesToSkip = new HashSet<string> { "SEDAW-SNS", "SEDAW-SKM" };
+
+			// Use PLINQ for parallel processing with filtering
+			return locations.AsParallel()
+				.WithDegreeOfParallelism(Environment.ProcessorCount)
+				.Where(l =>
+				{
+					try
+					{
+						string code = l.code; // Access the dynamic property
+						return !codesToSkip.Contains(code); // Skip if in the exclusion list
+					}
+					catch (RuntimeBinderException)
+					{
+						// Handle cases where 'code' property doesn't exist
+						return false; // Skip invalid entries
+					}
+				})
+				.Select(l => new Model.Login_Module.DTOs.Location
+				{
+					LocationCode = l.code,
+					LocationName = l.name
+				})
+				.ToList();
+		}
+
+		private List<OrderCustomer> ProcessCustomersInParallel(IEnumerable<dynamic> customers, Dictionary<string, decimal> dueAmountLookup)
+		{
+			return customers.AsParallel()
+				.WithDegreeOfParallelism(Environment.ProcessorCount)
+				.Select(c => new OrderCustomer
+				{
+					CustomerCode = c.no,
+					CustomerName = c.name,
+					DueAmount = dueAmountLookup.TryGetValue(c.no, out decimal due) ? due : 0,
+					CreditAllowed = c.creditAllowed,
+					CreditLimit = c.creditLimitLCY,
+					BalanceCredit = c.balanceLCY,
+					PaymentTermCode = c.paymentTermsCode,
+					PaymentMethodCode = c.paymentMethodCode
+				})
+				.ToList();
+		}
+
+		private List<OrderItemDetails> ProcessItemsInParallel(IEnumerable<dynamic> items, Dictionary<string, decimal> priceLookup)
+		{
+			return items.AsParallel()
+				.WithDegreeOfParallelism(Environment.ProcessorCount)
+				.Select(i => new OrderItemDetails
+				{
+					ItemCode = i.no,
+					ItemName = i.description,
+					Unitprice = priceLookup.TryGetValue(i.no, out decimal price) ? price.ToString() : "0",
+					SubstituteItems = CreateSubstituteItem(i.itemsubstitutions, priceLookup)
+				})
+				.ToList();
+		}
+
+		private SubstituteItem CreateSubstituteItem(IEnumerable<ItemSubstitution> itemSubstitutions, Dictionary<string, decimal> priceLookup)
+		{
+			var firstSubstitution = itemSubstitutions?.FirstOrDefault();
+			if (firstSubstitution == null) return null;
+
+			return new SubstituteItem
+			{
+				ItemCode = firstSubstitution.substituteNo,
+				ItemName = firstSubstitution.description,
+				UnitPrice = priceLookup.TryGetValue(firstSubstitution.substituteNo, out decimal subPrice) ? subPrice : 0
+			};
 		}
 
 	}

@@ -47,6 +47,18 @@ namespace SriKanth.Data
 				.Where(oi => orderNumbers.Contains(oi.OrderNumber))
 				.ToListAsync();
 		}
+		public async Task<List<Order>> GetListOfOrdersByOrderNumbersAsync(List<int> orderNumbers)
+		{
+			if (orderNumbers == null || !orderNumbers.Any())
+			{
+				return new List<Order>();
+			}
+
+			return await _context.Order
+				.Where(o => orderNumbers.Contains(o.OrderNumber))
+				.ToListAsync();
+		}
+
 		public async Task<Order> GetOrderByIdAsync(int orderNumber)
 		{
 			return await _context.Order.FirstOrDefaultAsync(m => m.OrderNumber == orderNumber);

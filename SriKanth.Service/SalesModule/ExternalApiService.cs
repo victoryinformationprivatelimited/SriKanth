@@ -193,6 +193,19 @@ namespace SriKanth.Service.SalesModule
 			string apiUrl = $"{_baseApiUrl}/customers";
 			return await GetDataFromApiAsync<CustomerApiResponse>(apiUrl);
 		}
+		public async Task<CustomerApiResponse> GetCustomersFilterAsync(string? filterField = null, string? filterValue = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/customers";
+
+			if (!string.IsNullOrEmpty(filterField) && !string.IsNullOrEmpty(filterValue))
+			{
+				// URL encode the filter value to handle spaces and special characters
+				string encodedValue = Uri.EscapeDataString($"'{filterValue}'");
+				apiUrl += $"?$filter={filterField} eq {encodedValue}";
+			}
+
+			return await GetDataFromApiAsync<CustomerApiResponse>(apiUrl);
+		}
 
 		/// <summary>
 		/// Retrieves a list of sales people from Business Central
@@ -203,6 +216,19 @@ namespace SriKanth.Service.SalesModule
 			string apiUrl = $"{_baseApiUrl}/salesPeople";
 			return await GetDataFromApiAsync<SalesPeopleApiResponse>(apiUrl);
 		}
+		public async Task<SalesPeopleApiResponse> GetSalesPeopleFilterAsync(string? filterField = null, string? filterValue = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/salesPeople";
+
+			if (!string.IsNullOrWhiteSpace(filterField) && !string.IsNullOrWhiteSpace(filterValue))
+			{
+				string encodedValue = Uri.EscapeDataString($"'{filterValue}'");
+				apiUrl += $"?$filter={filterField} eq {encodedValue}";
+			}
+
+			return await GetDataFromApiAsync<SalesPeopleApiResponse>(apiUrl);
+		}
+
 
 		/// <summary>
 		/// Retrieves a list of locations from Business Central
@@ -211,6 +237,19 @@ namespace SriKanth.Service.SalesModule
 		public async Task<LocationApiResponse> GetLocationsAsync()
 		{
 			string apiUrl = $"{_baseApiUrl}/locations";
+			return await GetDataFromApiAsync<LocationApiResponse>(apiUrl);
+		}
+
+		public async Task<LocationApiResponse> GetLocationsFilterAsync(string? filterField = null, string? filterValue = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/locations";
+
+			if (!string.IsNullOrWhiteSpace(filterField) && !string.IsNullOrWhiteSpace(filterValue))
+			{
+				string encodedValue = Uri.EscapeDataString($"'{filterValue}'");
+				apiUrl += $"?$filter={filterField} eq {encodedValue}";
+			}
+
 			return await GetDataFromApiAsync<LocationApiResponse>(apiUrl);
 		}
 
@@ -224,16 +263,38 @@ namespace SriKanth.Service.SalesModule
 			return await GetDataFromApiAsync<ItemApiResponse>(apiUrl);
 		}
 
+		public async Task<ItemApiResponse> GetItemsWithSubstitutionsFilterAsync(string? filterField = null, string? filterValue = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/items?$expand=itemsubstitutions";
+
+			if (!string.IsNullOrWhiteSpace(filterField) && !string.IsNullOrWhiteSpace(filterValue))
+			{
+				string encodedValue = Uri.EscapeDataString($"'{filterValue}'");
+				apiUrl += $"&$filter={filterField} eq {encodedValue}";
+			}
+
+			return await GetDataFromApiAsync<ItemApiResponse>(apiUrl);
+		}
+
 		/// <summary>
 		/// Retrieves an item's picture from Business Central
 		/// </summary>
 		/// <param name="systemId">GUID of the item</param>
 		/// <returns>Base64 encoded string of the item picture</returns>
-		public async Task<string> GetItemsPictureAsync(Guid systemId)
+		public async Task<string?> GetItemsPictureAsync(Guid systemId)
 		{
-			string apiUrl = $"{_baseApiUrl}/items({systemId})/picture/pictureContent";
-			var imageBytes = await GetDataFromApiAsync<byte[]>(apiUrl);
-			return Convert.ToBase64String(imageBytes);
+			try
+			{
+				string apiUrl = $"{_baseApiUrl}/items({systemId})/picture/pictureContent";
+				var imageBytes = await GetDataFromApiAsync<byte[]>(apiUrl);
+				return Convert.ToBase64String(imageBytes);
+			}
+			catch (Exception ex)
+			{
+				// Optionally log the error here if you have a logger
+				// _logger.LogWarning(ex, "Failed to fetch picture for item {SystemId}", systemId);
+				return null;
+			}
 		}
 
 		/// <summary>
@@ -245,6 +306,18 @@ namespace SriKanth.Service.SalesModule
 			string apiUrl = $"{_baseApiUrl}/inventoryBalances";
 			return await GetDataFromApiAsync<InventoryApiResponse>(apiUrl);
 		}
+		public async Task<InventoryApiResponse> GetInventoryBalanceFilterAsync(string? filterField = null, string? filterValue = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/inventoryBalances";
+
+			if (!string.IsNullOrWhiteSpace(filterField) && !string.IsNullOrWhiteSpace(filterValue))
+			{
+				string encodedValue = Uri.EscapeDataString($"'{filterValue}'");
+				apiUrl += $"?$filter={filterField} eq {encodedValue}";
+			}
+
+			return await GetDataFromApiAsync<InventoryApiResponse>(apiUrl);
+		}
 
 		/// <summary>
 		/// Retrieves sales price information from Business Central
@@ -253,6 +326,19 @@ namespace SriKanth.Service.SalesModule
 		public async Task<SalesPriceApiResponse> GetSalesPriceAsync()
 		{
 			string apiUrl = $"{_baseApiUrl}/salesPrices";
+			return await GetDataFromApiAsync<SalesPriceApiResponse>(apiUrl);
+		}
+
+		public async Task<SalesPriceApiResponse> GetSalesPriceFilterAsync(string? filterField = null, string? filterValue = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/salesPrices";
+
+			if (!string.IsNullOrWhiteSpace(filterField) && !string.IsNullOrWhiteSpace(filterValue))
+			{
+				string encodedValue = Uri.EscapeDataString($"'{filterValue}'");
+				apiUrl += $"?$filter={filterField} eq {encodedValue}";
+			}
+
 			return await GetDataFromApiAsync<SalesPriceApiResponse>(apiUrl);
 		}
 
@@ -277,6 +363,18 @@ namespace SriKanth.Service.SalesModule
 			string apiUrl = $"{_baseApiUrl}/postedInvoiceLines";
 			return await GetDataFromApiAsync<InvoiceApiResponse>(apiUrl);
 		}
+		public async Task<InvoiceApiResponse> GetInvoiceDetailsFilterAsync(string? filterField = null, string? filterValue = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/postedInvoiceLines";
+
+			if (!string.IsNullOrWhiteSpace(filterField) && !string.IsNullOrWhiteSpace(filterValue))
+			{
+				string encodedValue = Uri.EscapeDataString($"'{filterValue}'");
+				apiUrl += $"?$filter={filterField} eq {encodedValue}";
+			}
+
+			return await GetDataFromApiAsync<InvoiceApiResponse>(apiUrl);
+		}
 
 		/// <summary>
 		/// Retrieves invoice details from Business Central
@@ -285,6 +383,19 @@ namespace SriKanth.Service.SalesModule
 		public async Task<PostedInvoiceApiResponse> GetPostedInvoiceDetailsAsync()
 		{
 			string apiUrl = $"{_baseApiUrl}/postedInvoices?$expand=postedInvoiceLines";
+			return await GetDataFromApiAsync<PostedInvoiceApiResponse>(apiUrl);
+		}
+
+		public async Task<PostedInvoiceApiResponse> GetPostedInvoiceDetailsFilterAsync(string? filterField = null, string? filterValue = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/postedInvoices?$expand=postedInvoiceLines";
+
+			if (!string.IsNullOrWhiteSpace(filterField) && !string.IsNullOrWhiteSpace(filterValue))
+			{
+				string encodedValue = Uri.EscapeDataString($"'{filterValue}'");
+				apiUrl += $"&$filter={filterField} eq {encodedValue}";
+			}
+
 			return await GetDataFromApiAsync<PostedInvoiceApiResponse>(apiUrl);
 		}
 
