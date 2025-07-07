@@ -369,8 +369,7 @@
               "RelativeToolTip": "Controllers\\BusinessController.cs",
               "ViewState": "AgIAAAMCAAAAAAAAAAAgwAwCAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T01:49:30.379Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T01:49:30.379Z"
             },
             {
               "$type": "Document",
@@ -382,8 +381,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\MessageService.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAYwEIAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:14:01.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:14:01.333Z"
             },
             {
               "$type": "Document",
@@ -395,8 +393,7 @@
               "RelativeToolTip": "Controllers\\UserController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAA1wMUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T00:03:08.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T00:03:08.772Z"
             },
             {
               "$type": "Document",
@@ -408,8 +405,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAtwDIAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:21:35.234Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T02:21:35.234Z"
             },
             {
               "$type": "Document",
@@ -421,8 +417,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\Login_Module\\UserService.cs",
               "ViewState": "AgIAAEsBAAAAAAAAAAAtwFoBAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:39:28.517Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T04:39:28.517Z"
             },
             {
               "$type": "Document",
@@ -434,8 +429,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\EncryptionService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:10:42.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T04:10:42.338Z"
             },
             {
               "$type": "Document",
@@ -445,7 +439,7 @@
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\appsettings.json*",
               "RelativeToolTip": "appsettings.json*",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-05-27T17:07:31.218Z",
               "EditorCaption": ""
@@ -460,8 +454,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
               "ViewState": "AgIAAO4CAAAAAAAAAAAAwDYBAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T14:44:06.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-01T14:44:06.079Z"
             },
             {
               "$type": "Document",
@@ -473,8 +466,7 @@
               "RelativeToolTip": "..\\SriKanth.Model\\SriKanthDbContext.cs",
               "ViewState": "AgIAAOwAAAAAAAAAAAAtwPcAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:46:42.899Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T02:46:42.899Z"
             },
             {
               "$type": "Document",
@@ -486,8 +478,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAGMAAAAAAAAAAAAgwDMAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T06:38:28.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T06:38:28.098Z"
             },
             {
               "$type": "Document",
@@ -499,8 +490,7 @@
               "RelativeToolTip": "..\\SriKanth.Model\\Migrations\\20250707083703_addnewdb.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-07T08:37:50.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-07T08:37:50.57Z"
             },
             {
               "$type": "Document",
@@ -584,8 +574,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
               "ViewState": "AgIAAC4BAAAAAAAAAAApwK4CAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T17:27:48.834Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T17:27:48.834Z"
             },
             {
               "$type": "Document",
@@ -885,8 +874,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\Login_Module\\JwtTokenService.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAIwDgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T05:27:03.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T05:27:03.895Z"
             },
             {
               "$type": "Document",
@@ -982,8 +970,7 @@
               "RelativeToolTip": "Infrastructure\\UserHistoryActionFilter.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAArwBcAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T08:53:04.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T08:53:04.393Z"
             },
             {
               "$type": "Document",
