@@ -32,9 +32,16 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public string ItemCode { get; set; }
 		public string ItemName { get; set; }
 		public string Unitprice {  get; set; }
-		public SubstituteItem SubstituteItems { get; set; }
+		public List<LocationByItemInventory> LocationWiseInventory { get; set; }
+		public List<SubstituteItem> SubstituteItems { get; set; }
 
 	}
+	public class LocationByItemInventory
+	{ 
+		public string LocationCode { get; set; }
+		public Decimal Inventory { get; set; }
+	}
+
 	public class SubstituteItem
 	{
 		public string ItemCode { get; set; }

@@ -141,14 +141,32 @@ namespace SriKanth.Service.SalesModule
 				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
 				List<Order> orders;
 
-				// Get orders filtered by salesperson and status
-				if (userRole == "Admin" || userRole == "SalesCoordinator")
+				// If status is Pending, fetch both Pending and Processing
+				if (orderStatus == OrderStatus.Pending)
 				{
-					orders = await _businessData.GetAllOrdersAsync(orderStatus);
+					List<Order> pendingOrders, processingOrders;
+					if (userRole == "Admin" || userRole == "SalesCoordinator")
+					{
+						pendingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Pending);
+						processingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Processing);
+					}
+					else
+					{
+						pendingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Pending);
+						processingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Processing);
+					}
+					orders = pendingOrders.Concat(processingOrders).ToList();
 				}
 				else
 				{
-					orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
+					if (userRole == "Admin" || userRole == "SalesCoordinator")
+					{
+						orders = await _businessData.GetAllOrdersAsync(orderStatus);
+					}
+					else
+					{
+						orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
+					}
 				}
 
 				if (!orders.Any())
@@ -569,7 +587,7 @@ namespace SriKanth.Service.SalesModule
 				}
 
 				// Check if the order total exceeds available credit
-				if (orderTotal > customer.balanceLCY)
+				/*if (orderTotal > customer.balanceLCY)
 				{
 					_logger.LogWarning("Order exceeds available credit for customer {CustomerCode}. " +
 									 "Available: {AvailableCredit}, Order: {OrderTotal}",
@@ -587,7 +605,7 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("Customer {CustomerCode} has no credit limit set", customerCode);
 					return new ServiceResult { Success = false, Message = "Customer has no credit limit set" };
 				}
-
+				*/
 				// All checks passed
 				_logger.LogInformation("Credit validation passed for customer {CustomerCode}. " +
 									 "Order: {OrderTotal}, Available Credit: {AvailableCredit}",
@@ -656,7 +674,7 @@ namespace SriKanth.Service.SalesModule
 					}
 
 					// Check sufficient quantity available
-					if (inventoryItem.inventory < item.Quantity)
+					/*if (inventoryItem.inventory < item.Quantity)
 					{
 						_logger.LogWarning("Insufficient stock for item {ItemCode} (Available: {Available}, Requested: {Requested})",
 							item.ItemCode, inventoryItem.inventory, item.Quantity);
@@ -666,7 +684,7 @@ namespace SriKanth.Service.SalesModule
 							Success = false,
 							Message = $"Insufficient stock for item {item.ItemCode} (Available: {inventoryItem.inventory}, Requested: {item.Quantity})"
 						};
-					}
+					}*/
 				}
 
 				_logger.LogInformation("Exiting ValidateInventory with validation success");

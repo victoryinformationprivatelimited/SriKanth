@@ -74,6 +74,8 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("One or more required API responses returned null data");
 					throw new ApplicationException("Required data not available from APIs");
 				}
+				// Codes to skip
+				var codesToSkip = new HashSet<string> { "SEDAW-SNS", "SEDAW-SKM" };
 
 				// Create lookup dictionaries
 				var inventoryLookup = inventory.value
@@ -87,7 +89,7 @@ namespace SriKanth.Service.SalesModule
 
 				// Generate stock items using LINQ (much faster than nested loops)
 				var stockList = (from item in items.value.Where(i => i?.no != null)
-								 from location in locations.value.Where(l => l?.code != null)
+								 from location in locations.value.Where(l => l?.code != null && !codesToSkip.Contains(l.code))
 								 let key = (item.no, location.code)
 								 where inventoryLookup.ContainsKey(key)
 								 let inv = inventoryLookup[key]
@@ -158,14 +160,16 @@ namespace SriKanth.Service.SalesModule
 				var customersTask = _externalApiService.GetCustomersAsync();
 				var itemsTask = _externalApiService.GetItemsWithSubstitutionsAsync();
 				var salesPriceTask = _externalApiService.GetSalesPriceAsync();
+				var inventoryTask = _externalApiService.GetInventoryBalanceAsync();
 
-				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask);
+				await Task.WhenAll(locationsTask, customersTask, itemsTask, salesPriceTask, inventoryTask);
 
 				// Get results
 				var locations = await locationsTask;
 				var customers = await customersTask;
 				var items = await itemsTask;
 				var salesPrices = await salesPriceTask;
+				var inventory = await inventoryTask;
 				// Validate data existence early (type-safe)
 				ValidateApiData(locations?.value, "location");
 				ValidateApiData(customers?.value, "customer");
@@ -181,7 +185,7 @@ namespace SriKanth.Service.SalesModule
 				// Process data in parallel using PLINQ for large datasets
 				var locationDtos = ProcessLocationsInParallel(locations.value);
 				var customerDtos = ProcessCustomersInParallel(customers.value,dueAmountLookup);
-				var itemDtos = ProcessItemsInParallel(items.value, priceLookup);
+				var itemDtos = ProcessItemsInParallel(items.value, priceLookup,inventory.value);
 
 				var details = new OrderCreationDetails
 				{
@@ -279,7 +283,7 @@ namespace SriKanth.Service.SalesModule
 				// Process data in parallel using PLINQ for large datasets
 				var locationDtos = ProcessLocationsInParallel(filteredLocations);
 				var customerDtos = ProcessCustomersInParallel(filteredCustomers,dueAmountLookup);
-				var itemDtos = ProcessItemsInParallel(items.value.Where(i => availableItemNos.Contains(i.no)), priceLookup);
+				var itemDtos = ProcessItemsInParallel(items.value.Where(i => availableItemNos.Contains(i.no)), priceLookup,inventoryAtLocations);
 
 				var details = new OrderCreationDetails
 				{
@@ -415,11 +419,14 @@ namespace SriKanth.Service.SalesModule
 
 				var availableItemNos = new HashSet<string>(inventoryAtLocations.Select(i => i.itemNo));
 				filteredItems = items.Where(i => availableItemNos.Contains(i.no)).ToList();
+				// Optionally, you can also filter inventory to only user locations if needed
+				inventory = inventoryAtLocations;
 			}
 
 			var priceLookup = CreatePriceLookupDictionary(salesPrices);
 
-			return ProcessItemsInParallel(filteredItems, priceLookup);
+			// Pass inventory to ProcessItemsInParallel
+			return ProcessItemsInParallel(filteredItems, priceLookup, inventory);
 		}
 
 		/// <summary>
@@ -505,12 +512,11 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>CustomerWiseInvoices object containing all invoice details for the specified customer, or null if no invoices are found</returns>
 		public async Task<CustomerWiseInvoices> GetCustomerInvoiceDetailsAsync(string customerCode)
 		{
-			// Log the start of invoice retrieval process
 			_logger.LogInformation("Starting invoice retrieval process for customer code: {CustomerCode}", customerCode);
 
 			try
 			{
-				// Step 1: Retrieve all customer-wise invoices from external API
+				//Retrieve all customer-wise invoices from external API
 				var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
 
 				// Validate that invoice data was successfully retrieved
@@ -519,107 +525,75 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("No customer-wise invoices found in external API response");
 					return null;
 				}
-				// Step 2: Convert customer code to string for comparison (defensive programming)
+
 				var customerCodeStr = customerCode.ToString();
 
-				// Step 3: Find invoices for the specific customer
+				// Find invoices for the specific customer
 				var customerInvoice = customerWiseInvoices
 					.FirstOrDefault(c => c.CustomerNo == customerCodeStr);
 
-				// Validate that customer was found in the invoice data
 				if (customerInvoice == null)
 				{
 					_logger.LogWarning("No invoices found for customer code: {CustomerCode}. Customer may not have any invoices or code may be invalid", customerCode);
 					return null;
 				}
 
-				_logger.LogInformation("Found {InvoiceCount} invoices for customer code: {CustomerCode}",
-					customerInvoice.Invoices?.Count ?? 0, customerCode);
+				// Filter out invoices with DueAmount == 0
+				var filteredInvoices = customerInvoice.Invoices
+					.Where(inv => inv.DueAmount > 0)
+					.ToList();
 
-				// Step 4: Process each invoice to map order dates from database
-				var processedInvoices = 0;
-				var failedInvoices = 0;
-
-				foreach (var invoice in customerInvoice.Invoices)
+				// Process each invoice to map order dates from database
+				foreach (var invoice in filteredInvoices)
 				{
 					try
 					{
-						// Check if order number is available and valid
 						if (!string.IsNullOrWhiteSpace(invoice.OrderNo))
 						{
-							// Attempt to parse order number to integer
 							if (int.TryParse(invoice.OrderNo, out int orderNumber))
 							{
 								try
 								{
-									// Retrieve order details from database
 									var order = await _businessData.GetOrderByIdAsync(orderNumber);
-
-									if (order != null)
-									{
-										// Successfully retrieved order, use actual order date
-										invoice.InvoiceDate = order.OrderDate;
-									}
-									else
-									{
-										// Order not found in database, use fallback date
-										invoice.InvoiceDate = DateTime.Today;
-										_logger.LogWarning("Order {OrderNumber} not found in database, using fallback date: {FallbackDate}",
-											orderNumber, DateTime.Today);
-										failedInvoices++;
-									}
+									invoice.InvoiceDate = order != null ? order.OrderDate : DateTime.Today;
 								}
-								catch (Exception orderEx)
+								catch
 								{
-									// Database error while retrieving order, use fallback date
 									invoice.InvoiceDate = DateTime.Today;
-									_logger.LogError(orderEx, "Database error while retrieving order {OrderNumber}, using fallback date: {FallbackDate}",
-										orderNumber, DateTime.Today);
-									failedInvoices++;
 								}
 							}
 							else
 							{
-								// Invalid order number format, use fallback date
 								invoice.InvoiceDate = DateTime.Today;
-								_logger.LogWarning("Invalid order number format '{OrderNo}' for invoice, using fallback date: {FallbackDate}",
-									invoice.OrderNo, DateTime.Today);
-								failedInvoices++;
 							}
 						}
 						else
 						{
-							// No order number available, set invoice date to null
 							invoice.InvoiceDate = null;
 						}
-
-						processedInvoices++;
 					}
-					catch (Exception invoiceEx)
+					catch
 					{
-						// Error processing individual invoice, log and continue
-						_logger.LogError(invoiceEx, "Error processing invoice with order number: {OrderNo}", invoice.OrderNo ?? "N/A");
-						failedInvoices++;
+						invoice.InvoiceDate = null;
 					}
 				}
+
+				// Recalculate totals based on filtered invoices
+				customerInvoice.Invoices = filteredInvoices;
+				customerInvoice.TotalDueAmount = filteredInvoices.Sum(i => i.DueAmount);
+				customerInvoice.TotalPdcAmount = filteredInvoices.Sum(i => i.PdcAmount);
 
 				_logger.LogInformation("Successfully retrieved and processed invoice summary for customer code: {CustomerCode}", customerCode);
 				return customerInvoice;
 			}
 			catch (Exception ex)
 			{
-				// Log detailed error information
 				_logger.LogError(ex, "Critical error occurred while retrieving customer-wise invoices for customer code: {CustomerCode}. Error: {ErrorMessage}",
 					customerCode, ex.Message);
 
-				// Throw user-friendly exception
 				throw new ApplicationException($"Failed to retrieve customer-wise invoices for customer {customerCode}. Please try again later.", ex);
 			}
 		}
-
-		
-
-
 		private async Task<List<CustomerWiseInvoices>> GetCustomerWiseInvoicesAsync()
 		{
 			var postedInvoiceResponse = await _externalApiService.GetPostedInvoiceDetailsAsync();
@@ -633,7 +607,7 @@ namespace SriKanth.Service.SalesModule
 					var invoiceSummaries = g.Select(inv =>
 					{
 						// Calculate total amount from all lines in this invoice
-						decimal totalAmount = inv.Lines?.Sum(line => line.Amount) ?? 0;
+						decimal totalAmount = inv.Amount;
 						// Adjust these fields if your model uses different names for PDC/Due
 						decimal pdcAmount = inv.PdcAmount; // Replace with actual property if needed
 						decimal dueAmount = inv.RemainingAmount; // Replace with actual property if needed
@@ -674,7 +648,7 @@ namespace SriKanth.Service.SalesModule
 						OrderNo = inv.OrderNo,
 						PdcAmount = inv.PdcAmount,
 						DueAmount = inv.RemainingAmount,
-						TotalAmount = inv.Lines?.Sum(line => line.Amount) ?? 0
+						TotalAmount = inv.Amount
 					}).ToList();
 
 					return new CustomerWiseInvoices
@@ -715,7 +689,6 @@ namespace SriKanth.Service.SalesModule
 			foreach (var invoice in invoices)
 			{
 				var customerName = customerLookup.GetValueOrDefault(invoice.CustomerNo, "");
-				var totalAmount = invoice.Lines?.Sum(line => line.Amount) ?? 0;
 
 				DateTime? invoiceDate = null;
 				if (!string.IsNullOrWhiteSpace(invoice.OrderNo) && int.TryParse(invoice.OrderNo, out int orderNumber))
@@ -729,7 +702,7 @@ namespace SriKanth.Service.SalesModule
 					CustomerName = customerName,
 					InvoiceDocumentNo = invoice.DocumentNo,
 					InvoiceDate = invoiceDate,
-					InvoicedAmount = totalAmount,
+					InvoicedAmount = invoice.Amount,
 					DueAmount = invoice.RemainingAmount
 				});
 			}
@@ -820,16 +793,34 @@ namespace SriKanth.Service.SalesModule
 				.ToList();
 		}
 
-		private List<OrderItemDetails> ProcessItemsInParallel(IEnumerable<dynamic> items, Dictionary<string, decimal> priceLookup)
+		private List<OrderItemDetails> ProcessItemsInParallel(IEnumerable<dynamic> items,Dictionary<string, decimal> priceLookup,IEnumerable<dynamic> inventory) // Pass inventory data here)
 		{
+			// Group inventory by itemNo for quick lookup
+			var inventoryLookup = inventory
+				.GroupBy(inv => inv.itemNo)
+				.ToDictionary(g => g.Key, g => g.ToList());
+
 			return items.AsParallel()
 				.WithDegreeOfParallelism(Environment.ProcessorCount)
-				.Select(i => new OrderItemDetails
+				.Select(i =>
 				{
-					ItemCode = i.no,
-					ItemName = i.description,
-					Unitprice = priceLookup.TryGetValue(i.no, out decimal price) ? price.ToString() : "0",
-					SubstituteItems = CreateSubstituteItem(i.itemsubstitutions, priceLookup)
+					// Build location-wise inventory for this item
+					var locationInventories = inventoryLookup.TryGetValue(i.no, out List<dynamic> invList)
+						? invList.Select(inv => new LocationByItemInventory
+						{
+							LocationCode = inv.locationCode,
+							Inventory = inv.inventory
+						}).ToList()
+						: new List<LocationByItemInventory>();
+
+					return new OrderItemDetails
+					{
+						ItemCode = i.no,
+						ItemName = i.description,
+						Unitprice = priceLookup.TryGetValue(i.no, out decimal price) ? price.ToString() : "0",
+						SubstituteItems = CreateSubstituteItem(i.itemsubstitutions, priceLookup),
+						LocationWiseInventory = locationInventories
+					};
 				})
 				.ToList();
 		}

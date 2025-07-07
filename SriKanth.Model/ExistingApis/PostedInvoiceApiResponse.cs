@@ -29,6 +29,9 @@ namespace SriKanth.Model.ExistingApis
 		[JsonPropertyName("sellToCustomerNo")]
 		public string CustomerNo { get; set; }
 
+		[JsonPropertyName("amount")]
+		public decimal Amount { get; set; }
+
 		[JsonPropertyName("remainingAmount")]
 		public decimal RemainingAmount { get; set; }
 

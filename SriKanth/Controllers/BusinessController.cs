@@ -310,7 +310,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="updateOrderRequest">Order status update request</param>
 		/// <returns>Result of the status update</returns>
 		[HttpPost("ChangeStatus")]
-		[Authorize(Roles = "SalesCoordinator,SalesPerson")]
+		[Authorize(Roles = "SalesCoordinator")]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> UpdateOrderStatus(UpdateOrderRequest updateOrderRequest)
 		{

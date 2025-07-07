@@ -567,6 +567,18 @@ namespace SriKanth.Service.Login_Module
 					throw new InvalidOperationException("No role data found.");
 				}
 
+				var codesToSkip = new HashSet<string> { "SEDAW-SNS", "SEDAW-SKM" };
+
+				// Filter out locations with codes in codesToSkip
+				var filteredLocations = locations.value
+					.Where(loc => !codesToSkip.Contains(loc.code))
+					.Select(loc => new Model.Login_Module.DTOs.Location
+					{
+						LocationCode = loc.code,
+						LocationName = loc.name
+					})
+					.ToList();
+
 				// Map to response model
 				var details = new UserCreationDetails
 				{
@@ -578,12 +590,7 @@ namespace SriKanth.Service.Login_Module
 						Phone = sp.phoneNo
 					}).ToList(),
 
-					Locations = locations.value.Select(loc => new Model.Login_Module.DTOs.Location
-					{
-						LocationCode = loc.code,
-						LocationName = loc.name
-					}).ToList(),
-
+					Locations = filteredLocations,
 					Roles = roles
 				};
 
