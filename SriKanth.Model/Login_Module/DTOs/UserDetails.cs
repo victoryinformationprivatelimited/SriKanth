@@ -45,7 +45,7 @@ namespace SriKanth.Model.Login_Module.DTOs
 		public int UserRoleId { get; set; }
 
 		[StringLength(20, ErrorMessage = "Sales person code must be less than {1} characters.")]
-		public string SalesPersonCode { get; set; }
+		public string? SalesPersonCode { get; set; }
 
 		[Required(ErrorMessage = "At least one location must be selected.")]
 		[MinLength(1, ErrorMessage = "At least one location must be selected.")]

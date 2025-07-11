@@ -6,11 +6,7 @@ using SriKanth.Model.BusinessModule.DTOs;
 using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.ExistingApis;
 using SriKanth.Model.Login_Module.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace SriKanth.Service.SalesModule
 {
@@ -145,12 +141,18 @@ namespace SriKanth.Service.SalesModule
 				if (orderStatus == OrderStatus.Pending)
 				{
 					List<Order> pendingOrders, processingOrders;
-					if (userRole == "Admin" || userRole == "SalesCoordinator")
+					if (userRole == "Admin")
 					{
 						pendingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Pending);
 						processingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Processing);
 					}
-					else
+					else if (userRole == "SalesCoordinator")
+					{
+						var locations = await _loginData.GetUserLocationCodesAsync(userId);
+						pendingOrders = await _businessData.GetAllOrdersByLocationsAsync(locations,OrderStatus.Pending);
+						processingOrders = await _businessData.GetAllOrdersByLocationsAsync(locations, OrderStatus.Processing);
+					}
+					else 
 					{
 						pendingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Pending);
 						processingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Processing);
@@ -159,9 +161,14 @@ namespace SriKanth.Service.SalesModule
 				}
 				else
 				{
-					if (userRole == "Admin" || userRole == "SalesCoordinator")
+					if (userRole == "Admin")
 					{
 						orders = await _businessData.GetAllOrdersAsync(orderStatus);
+					}
+					else if (userRole == "SalesCoordinator")
+					{
+						var locations = await _loginData.GetUserLocationCodesAsync(userId);
+						orders = await _businessData.GetAllOrdersByLocationsAsync(locations, orderStatus);						
 					}
 					else
 					{
@@ -347,7 +354,7 @@ namespace SriKanth.Service.SalesModule
 						Message = $"Invalid status transition from {order.Status} to {updateOrderRequest.Status}."
 					};
 				}
-				if (order.Status == OrderStatus.Delivered)
+				if (updateOrderRequest.Status == OrderStatus.Delivered)
 				{
 					bool isInvoiced = await CheckInvoicedStatusAsync(order);
 					if (isInvoiced)
@@ -370,12 +377,8 @@ namespace SriKanth.Service.SalesModule
 						return new ServiceResult { Success = false, Message = $"Order {updateOrderRequest.Ordernumber} cannot be updated to Delivered status as it is not invoiced." };
 					}
 				}
-				// Update order status
-				order.Status = updateOrderRequest.Status;
-				order.RejectReason = updateOrderRequest.RejectReason ?? null;
-				await _businessData.UpdateOrderStatusAsync(order);
 
-				// Additional processing for orders moving to Processing status
+				// Handle Processing status: send to external API first, then update DB if successful
 				if (updateOrderRequest.Status == OrderStatus.Processing)
 				{
 					// Get customer and location details in parallel
@@ -438,6 +441,15 @@ namespace SriKanth.Service.SalesModule
 						// Submit to external API
 						await _externalApiService.PostSalesOrderAsync(salesOrderRequest);
 						_logger.LogInformation("Successfully posted order {OrderNumber} to external API", updateOrderRequest.Ordernumber);
+
+						// Only update DB if external API call succeeded
+						order.Status = updateOrderRequest.Status;
+						order.RejectReason = updateOrderRequest.RejectReason ?? null;
+						await _businessData.UpdateOrderStatusAsync(order);
+
+						_logger.LogInformation("Successfully updated status of order {OrderNumber} to {OrderStatus}",
+							updateOrderRequest.Ordernumber, updateOrderRequest.Status);
+						return new ServiceResult { Success = true, Message = "Order status updated successfully." };
 					}
 					catch (Exception ex)
 					{
@@ -448,6 +460,17 @@ namespace SriKanth.Service.SalesModule
 							Message = $"Failed to send Order {updateOrderRequest.Ordernumber} to external API."
 						};
 					}
+				}
+
+				// Handle Rejected status: update DB immediately, no external API call
+				if (updateOrderRequest.Status == OrderStatus.Rejected)
+				{
+					order.Status = updateOrderRequest.Status;
+					order.RejectReason = updateOrderRequest.RejectReason ?? null;
+					await _businessData.UpdateOrderStatusAsync(order);
+
+					_logger.LogInformation("Order {OrderNumber} marked as Rejected.", order.OrderNumber);
+					return new ServiceResult { Success = true, Message = "Order status updated to Rejected." };
 				}
 
 				_logger.LogInformation("Successfully updated status of order {OrderNumber} to {OrderStatus}",
@@ -491,11 +514,18 @@ namespace SriKanth.Service.SalesModule
 					List<Order> rejectedTask;
 
 					// Step 3: Create tasks for parallel execution based on user role
-					if (userRole == "Admin" || userRole == "SalesCoordinator")
+					if (userRole == "Admin")
 					{
 						pendingTask = await _businessData.GetAllOrdersAsync(OrderStatus.Pending);
 						deliveredTask = await _businessData.GetAllOrdersAsync(OrderStatus.Delivered);
 						rejectedTask = await _businessData.GetAllOrdersAsync(OrderStatus.Rejected);
+					}
+					else if (userRole == "SalesCoordinator")
+					{
+						var locations = await _loginData.GetUserLocationCodesAsync(userId);
+						pendingTask = await _businessData.GetAllOrdersByLocationsAsync(locations, OrderStatus.Pending);
+						deliveredTask = await _businessData.GetAllOrdersByLocationsAsync(locations, OrderStatus.Processing);
+						rejectedTask = await _businessData.GetAllOrdersByLocationsAsync(locations, OrderStatus.Rejected);
 					}
 					else
 					{

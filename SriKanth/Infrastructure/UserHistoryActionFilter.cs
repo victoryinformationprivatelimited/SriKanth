@@ -52,20 +52,16 @@ namespace HRIS.API.Infrastructure.Helpers
             };
         }
 
-        private string GetEntityTypeFromController(object controller)
-        {
-            var controllerName = controller.GetType().Name.Replace("Controller", "");
-            return controllerName switch
-            {
-                "Employee" => "Employee",
-                "Organization" => "Organization",
-                "RBAC" => "Role Based Access",
-                "Subscription" => "Subscription",
-                "User" => "User",
-                "OrganizationHierarchy" => "OrganizationHierarchy",
-                "Notification" => "Notification",
-                _ => "General"
-            };
-        }
-    }
+		private string GetEntityTypeFromController(object controller)
+		{
+			var controllerName = controller.GetType().Name.Replace("Controller", "");
+
+			return controllerName switch
+			{
+				"Business" => "Business",
+				"User" => "User",
+				_ => "General"
+			};
+		}
+	}
 }

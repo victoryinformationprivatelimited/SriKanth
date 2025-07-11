@@ -49,7 +49,6 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>List of stock items with comprehensive details</returns>
 		public async Task<List<StockItem>> GetSalesStockDetails()
 		{
-			
 			try
 			{
 				_logger.LogInformation("Beginning to retrieve sales stock details");
@@ -74,8 +73,9 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("One or more required API responses returned null data");
 					throw new ApplicationException("Required data not available from APIs");
 				}
+
 				// Codes to skip
-				var codesToSkip = new HashSet<string> { "SEDAW-SNS", "SEDAW-SKM" };
+				var codesToSkip = new HashSet<string> { "SED-SNS", "SED-SKM" };
 
 				// Create lookup dictionaries
 				var inventoryLookup = inventory.value
@@ -87,18 +87,24 @@ namespace SriKanth.Service.SalesModule
 					.GroupBy(p => p.itemNo)
 					.ToDictionary(g => g.Key, g => g.First().unitPrice);
 
-				// Generate stock items using LINQ (much faster than nested loops)
+				// Generate stock items ONLY for items that have inventory records
 				var stockList = (from item in items.value.Where(i => i?.no != null)
 								 from location in locations.value.Where(l => l?.code != null && !codesToSkip.Contains(l.code))
 								 let key = (item.no, location.code)
-								 where inventoryLookup.ContainsKey(key)
-								 let inv = inventoryLookup[key]
+								 let inv = inventoryLookup.GetValueOrDefault(key)
+								 where inv != null // Only include items with inventory records
+								 let inventoryAmount = inv.inventory 
 								 select new StockItem
 								 {
 									 ItemCode = item.no,
 									 ItemName = item.description ?? string.Empty,
 									 Location = location.name ?? location.code ?? "Unknown",
-									 Stock = item.reorderPoint == 0 ? inv.inventory.ToString() : inv.inventory > item.reorderPoint ? $"{item.reorderPoint}+": inv.inventory.ToString(),
+									 Stock = inventoryAmount == 0
+										? inventoryAmount.ToString()
+										: (inventoryAmount > item.reorderPoint
+										? $"{item.reorderPoint}+"
+										: inventoryAmount.ToString()),
+
 									 UnitPrice = priceLookup.GetValueOrDefault(item.no),
 									 ItemCategory = item.itemCategoryCode ?? string.Empty,
 									 Category = item.parentCategoryCode ?? string.Empty,
@@ -120,7 +126,7 @@ namespace SriKanth.Service.SalesModule
 				throw new ApplicationException("Failed to retrieve stock details. Please try again later.", ex);
 			}
 		}
-
+	
 		public async Task<string> GetImageByItemNo(string itemNo)
 		{
 			try
@@ -414,7 +420,7 @@ namespace SriKanth.Service.SalesModule
 					throw new InvalidOperationException("User has no locations assigned.");
 
 				var inventoryAtLocations = inventory
-					.Where(i => userLocations.Contains(i.locationCode) && i.inventory > 0)
+					.Where(i => userLocations.Contains(i.locationCode))
 					.ToList();
 
 				var availableItemNos = new HashSet<string>(inventoryAtLocations.Select(i => i.itemNo));
@@ -516,21 +522,19 @@ namespace SriKanth.Service.SalesModule
 
 			try
 			{
-				//Retrieve all customer-wise invoices from external API
+				// Retrieve all customer-wise invoices from external API
 				var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
 
 				// Validate that invoice data was successfully retrieved
-				if (customerWiseInvoices == null || !customerWiseInvoices.Any())
+				if (customerWiseInvoices?.Any() != true)
 				{
 					_logger.LogWarning("No customer-wise invoices found in external API response");
 					return null;
 				}
 
-				var customerCodeStr = customerCode.ToString();
-
 				// Find invoices for the specific customer
 				var customerInvoice = customerWiseInvoices
-					.FirstOrDefault(c => c.CustomerNo == customerCodeStr);
+					.FirstOrDefault(c => c.CustomerNo == customerCode);
 
 				if (customerInvoice == null)
 				{
@@ -538,47 +542,15 @@ namespace SriKanth.Service.SalesModule
 					return null;
 				}
 
-				// Filter out invoices with DueAmount == 0
+				// Filter invoices with DueAmount > 0 and valid OrderNo
 				var filteredInvoices = customerInvoice.Invoices
 					.Where(inv => inv.DueAmount > 0)
 					.ToList();
 
-				// Process each invoice to map order dates from database
-				foreach (var invoice in filteredInvoices)
-				{
-					try
-					{
-						if (!string.IsNullOrWhiteSpace(invoice.OrderNo))
-						{
-							if (int.TryParse(invoice.OrderNo, out int orderNumber))
-							{
-								try
-								{
-									var order = await _businessData.GetOrderByIdAsync(orderNumber);
-									invoice.InvoiceDate = order != null ? order.OrderDate : DateTime.Today;
-								}
-								catch
-								{
-									invoice.InvoiceDate = DateTime.Today;
-								}
-							}
-							else
-							{
-								invoice.InvoiceDate = DateTime.Today;
-							}
-						}
-						else
-						{
-							invoice.InvoiceDate = null;
-						}
-					}
-					catch
-					{
-						invoice.InvoiceDate = null;
-					}
-				}
+				// Batch process order dates to reduce database calls
+				await ProcessInvoiceOrderDatesAsync(filteredInvoices);
 
-				// Recalculate totals based on filtered invoices
+				// Update customer invoice with filtered data and recalculated totals
 				customerInvoice.Invoices = filteredInvoices;
 				customerInvoice.TotalDueAmount = filteredInvoices.Sum(i => i.DueAmount);
 				customerInvoice.TotalPdcAmount = filteredInvoices.Sum(i => i.PdcAmount);
@@ -590,10 +562,10 @@ namespace SriKanth.Service.SalesModule
 			{
 				_logger.LogError(ex, "Critical error occurred while retrieving customer-wise invoices for customer code: {CustomerCode}. Error: {ErrorMessage}",
 					customerCode, ex.Message);
-
 				throw new ApplicationException($"Failed to retrieve customer-wise invoices for customer {customerCode}. Please try again later.", ex);
 			}
 		}
+		
 		private async Task<List<CustomerWiseInvoices>> GetCustomerWiseInvoicesAsync()
 		{
 			var postedInvoiceResponse = await _externalApiService.GetPostedInvoiceDetailsAsync();
@@ -749,7 +721,7 @@ namespace SriKanth.Service.SalesModule
 		private List<Model.Login_Module.DTOs.Location> ProcessLocationsInParallel(IEnumerable<dynamic> locations)
 		{
 			// Define the codes to skip
-			var codesToSkip = new HashSet<string> { "SEDAW-SNS", "SEDAW-SKM" };
+			var codesToSkip = new HashSet<string> { "SED-SNS", "SED-SKM" };
 
 			// Use PLINQ for parallel processing with filtering
 			return locations.AsParallel()
@@ -793,9 +765,8 @@ namespace SriKanth.Service.SalesModule
 				.ToList();
 		}
 
-		private List<OrderItemDetails> ProcessItemsInParallel(IEnumerable<dynamic> items,Dictionary<string, decimal> priceLookup,IEnumerable<dynamic> inventory) // Pass inventory data here)
+		private List<OrderItemDetails> ProcessItemsInParallel(IEnumerable<dynamic> items, Dictionary<string, decimal> priceLookup, IEnumerable<dynamic> inventory)
 		{
-			// Group inventory by itemNo for quick lookup
 			var inventoryLookup = inventory
 				.GroupBy(inv => inv.itemNo)
 				.ToDictionary(g => g.Key, g => g.ToList());
@@ -804,7 +775,6 @@ namespace SriKanth.Service.SalesModule
 				.WithDegreeOfParallelism(Environment.ProcessorCount)
 				.Select(i =>
 				{
-					// Build location-wise inventory for this item
 					var locationInventories = inventoryLookup.TryGetValue(i.no, out List<dynamic> invList)
 						? invList.Select(inv => new LocationByItemInventory
 						{
@@ -813,12 +783,15 @@ namespace SriKanth.Service.SalesModule
 						}).ToList()
 						: new List<LocationByItemInventory>();
 
+					// Fix: Wrap SubstituteItem in a list
+					var substituteItem = CreateSubstituteItem(i.itemsubstitutions, priceLookup);
+
 					return new OrderItemDetails
 					{
 						ItemCode = i.no,
 						ItemName = i.description,
 						Unitprice = priceLookup.TryGetValue(i.no, out decimal price) ? price.ToString() : "0",
-						SubstituteItems = CreateSubstituteItem(i.itemsubstitutions, priceLookup),
+						SubstituteItems = substituteItem != null ? new List<SubstituteItem> { substituteItem } : new List<SubstituteItem>(),
 						LocationWiseInventory = locationInventories
 					};
 				})
@@ -836,6 +809,93 @@ namespace SriKanth.Service.SalesModule
 				ItemName = firstSubstitution.description,
 				UnitPrice = priceLookup.TryGetValue(firstSubstitution.substituteNo, out decimal subPrice) ? subPrice : 0
 			};
+		}
+
+		private async Task ProcessInvoiceOrderDatesAsync(List<InvoiceSummary> invoices)
+		{
+			// Extract valid order numbers
+			var orderNumbers = invoices
+				.Where(inv => int.TryParse(inv.OrderNo, out _))
+				.Select(inv => int.Parse(inv.OrderNo))
+				.Distinct()
+				.ToList();
+
+			// Batch retrieve orders if any valid order numbers exist
+			Dictionary<int, DateTime> orderDateCache = new();
+
+			if (orderNumbers.Any())
+			{
+				try
+				{
+					var orders = await _businessData.GetListOfOrdersByOrderNumbersAsync(orderNumbers);
+					orderDateCache = orders?.ToDictionary(o => o.OrderNumber, o => o.OrderDate) ?? new Dictionary<int, DateTime>();
+				}
+				catch (Exception ex)
+				{
+					_logger.LogWarning(ex, "Failed to batch retrieve orders for invoice processing");
+				}
+			}
+
+			// Process each invoice with cached order data
+			foreach (var invoice in invoices)
+			{
+				if (string.IsNullOrWhiteSpace(invoice.OrderNo))
+				{
+					invoice.InvoiceDate = null;
+					continue;
+				}
+
+				if (int.TryParse(invoice.OrderNo, out int orderNumber) &&
+					orderDateCache.TryGetValue(orderNumber, out DateTime orderDate))
+				{
+					invoice.InvoiceDate = orderDate;
+				}
+				else
+				{
+					invoice.InvoiceDate = DateTime.Today;
+				}
+			}
+		}
+
+		// Alternative method if batch retrieval isn't available
+		private async Task ProcessInvoiceOrderDatesAsync_Alternative(List<InvoiceSummary> invoices)
+		{
+			var semaphore = new SemaphoreSlim(5, 5); // Limit concurrent database calls
+			var tasks = invoices.Select(async invoice =>
+			{
+				await semaphore.WaitAsync();
+				try
+				{
+					if (string.IsNullOrWhiteSpace(invoice.OrderNo))
+					{
+						invoice.InvoiceDate = null;
+						return;
+					}
+
+					if (int.TryParse(invoice.OrderNo, out int orderNumber))
+					{
+						try
+						{
+							var order = await _businessData.GetOrderByIdAsync(orderNumber);
+							invoice.InvoiceDate = order?.OrderDate ?? DateTime.Today;
+						}
+						catch
+						{
+							invoice.InvoiceDate = DateTime.Today;
+						}
+					}
+					else
+					{
+						invoice.InvoiceDate = DateTime.Today;
+					}
+				}
+				finally
+				{
+					semaphore.Release();
+				}
+			});
+
+			await Task.WhenAll(tasks);
 		}
 
 	}

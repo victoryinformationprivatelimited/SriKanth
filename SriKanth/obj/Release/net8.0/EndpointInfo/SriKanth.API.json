@@ -17,7 +17,7 @@
         }
       }
     },
-    "/api/Business/item-image/{itemNo}": {
+    "/api/Business/item-image": {
       "get": {
         "tags": [
           "Business"
@@ -25,8 +25,7 @@
         "parameters": [
           {
             "name": "itemNo",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "string"
             }
@@ -52,6 +51,72 @@
       }
     },
     "/api/Business/GetOrderCreationDetailsByUser": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Business/GetLocationDetailsByUser": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Business/GetCustomersDetailsByUser": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Business/GetItemsDetailsByUser": {
       "get": {
         "tags": [
           "Business"
