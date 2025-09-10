@@ -1,0 +1,373 @@
+2025-07-24 15:36:05.858 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-24 15:36:06.268 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-24 15:36:06.271 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-24 15:36:06.435 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-24 15:36:06.487 +05:30 [INF] Hosting environment: Test
+2025-07-24 15:36:06.489 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-24 15:36:08.243 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-24 15:36:08.569 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 342.1519ms
+2025-07-24 15:36:08.722 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-24 15:36:08.722 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-24 15:36:08.735 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 12.8939ms
+2025-07-24 15:36:08.814 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 92.6782ms
+2025-07-24 15:36:09.588 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-24 15:36:09.624 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 36.0877ms
+2025-07-24 15:36:09.902 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - null null
+2025-07-24 15:36:09.953 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-07-24 15:36:09.967 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - 200 628 image/png 64.6696ms
+2025-07-24 15:36:58.270 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-24 15:36:58.523 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-24 15:36:58.527 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-24 15:36:58.731 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-24 15:36:58.733 +05:30 [INF] Hosting environment: Test
+2025-07-24 15:36:58.734 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-24 15:36:59.186 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-24 15:36:59.451 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 279.4939ms
+2025-07-24 15:36:59.479 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-24 15:36:59.492 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 13.2689ms
+2025-07-24 15:36:59.573 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-24 15:36:59.635 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.8276ms
+2025-07-24 15:37:00.381 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-24 15:37:00.416 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 35.2612ms
+2025-07-24 15:50:44.885 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - application/json 362
+2025-07-24 15:50:45.072 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (SalesPerson)
+2025-07-24 15:50:45.078 +05:30 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-07-24 15:50:45.091 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - 403 0 null 205.9396ms
+2025-07-24 15:52:10.838 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/User/login - application/json 87
+2025-07-24 15:52:10.855 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-07-24 15:52:10.898 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-07-24 15:52:15.447 +05:30 [INF] Login attempt started for the user with username or email: Admin.
+2025-07-24 15:52:17.101 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 15:52:17.104 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 15:52:17.106 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 15:52:17.109 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 15:52:19.810 +05:30 [INF] Executed DbCommand (296ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-07-24 15:52:20.191 +05:30 [INF] Executed DbCommand (246ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-07-24 15:52:20.591 +05:30 [INF] Executed DbCommand (245ms) [Parameters=[@p16='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [Email] = @p1, [FailedLoginCount] = @p2, [FirstName] = @p3, [IsActive] = @p4, [IsEmailVerified] = @p5, [IsLocked] = @p6, [IsPhoneNumberVerified] = @p7, [LastLoginAt] = @p8, [LastName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [RememberMe] = @p12, [SalesPersonCode] = @p13, [UserRoleId] = @p14, [Username] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+2025-07-24 15:52:20.609 +05:30 [INF] Updated the last login time for user: 1.
+2025-07-24 15:52:21.573 +05:30 [WRN] API Response: {
+  "ip": "::1",
+  "bogon": true
+}
+2025-07-24 15:52:21.988 +05:30 [INF] Executed DbCommand (234ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (Size = 50), @p4='?' (Size = 255), @p5='?' (Size = 50), @p6='?' (DbType = Boolean), @p7='?' (Size = 50), @p8='?' (DbType = DateTime2), @p9='?' (Size = 50), @p10='?' (DbType = Boolean), @p11='?' (Size = 50), @p12='?' (Size = 255), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginTrack] ([Browser], [City], [Country], [DeviceType], [FailureReason], [IPAddress], [IsSuccessful], [LoginMethod], [LoginTime], [MFAMethod], [MFAUsed], [OperatingSystem], [SessionID], [UserID])
+OUTPUT INSERTED.[LoginTrackID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2025-07-24 15:52:22.266 +05:30 [INF] Executed DbCommand (231ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-07-24 15:52:24.459 +05:30 [INF] Executed DbCommand (246ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-24 15:52:24.466 +05:30 [INF] JWT token generated and stored for user 1.
+2025-07-24 15:52:24.702 +05:30 [INF] Executed DbCommand (228ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-24 15:52:24.707 +05:30 [INF] Login successful without MFA for user: 1.
+2025-07-24 15:52:24.721 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-24 15:52:24.742 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 13834.3616ms
+2025-07-24 15:52:24.743 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-07-24 15:52:24.754 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/User/login - 200 null application/json; charset=utf-8 13915.8562ms
+2025-07-24 15:52:40.917 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - application/json 362
+2025-07-24 15:52:40.927 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-24 15:52:40.935 +05:30 [INF] Route matched with {action = "CreateOrder", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrder(Int32, SriKanth.Model.BusinessModule.DTOs.OrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-24 15:52:42.652 +05:30 [INF] Beginning order submission for user 1, customer 405, location COL-SKM
+2025-07-24 15:52:43.064 +05:30 [INF] Executed DbCommand (366ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-24 15:52:45.264 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 15:52:45.269 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 15:52:46.069 +05:30 [INF] Received HTTP response headers after 795.2401ms - 200
+2025-07-24 15:52:46.074 +05:30 [INF] End processing HTTP request after 810.9854ms - 200
+2025-07-24 15:52:46.079 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/customers
+2025-07-24 15:52:46.080 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/customers
+2025-07-24 15:52:47.494 +05:30 [INF] Received HTTP response headers after 1411.9468ms - 200
+2025-07-24 15:52:47.497 +05:30 [INF] End processing HTTP request after 1418.2054ms - 200
+2025-07-24 15:52:49.095 +05:30 [INF] Entering ValidateInventory for location COL-SKM
+2025-07-24 15:52:50.232 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/inventoryBalances
+2025-07-24 15:52:50.234 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/inventoryBalances
+2025-07-24 15:52:50.840 +05:30 [INF] Received HTTP response headers after 605.205ms - 200
+2025-07-24 15:52:50.842 +05:30 [INF] End processing HTTP request after 610.2419ms - 200
+2025-07-24 15:52:51.617 +05:30 [WRN] No inventory data found for location COL-SKM
+2025-07-24 15:52:51.620 +05:30 [WRN] Inventory validation failed for location COL-SKM
+2025-07-24 15:52:51.887 +05:30 [INF] Executed DbCommand (251ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-24 15:52:51.892 +05:30 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-24 15:52:51.896 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API) in 10959.3569ms
+2025-07-24 15:52:51.897 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-24 15:52:51.900 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - 400 null application/json; charset=utf-8 10982.6239ms
+2025-07-24 15:53:24.760 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-24 15:53:25.110 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-24 15:53:25.112 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-24 15:53:25.235 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-24 15:53:25.236 +05:30 [INF] Hosting environment: Test
+2025-07-24 15:53:25.237 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-24 15:53:25.479 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-24 15:53:25.740 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 274.6836ms
+2025-07-24 15:53:25.842 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-24 15:53:25.855 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 14.1029ms
+2025-07-24 15:53:25.883 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-24 15:53:25.946 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 63.1817ms
+2025-07-24 15:53:26.529 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-24 15:53:26.566 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 36.335ms
+2025-07-24 15:53:30.310 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - application/json 362
+2025-07-24 15:53:30.476 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-24 15:53:30.636 +05:30 [INF] Route matched with {action = "CreateOrder", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrder(Int32, SriKanth.Model.BusinessModule.DTOs.OrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-24 15:53:32.386 +05:30 [INF] Beginning order submission for user 1, customer 405, location COL-SKM
+2025-07-24 15:53:34.069 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 15:53:34.073 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 15:53:34.074 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 15:53:34.076 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 15:53:36.426 +05:30 [INF] Executed DbCommand (273ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-24 15:53:38.809 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 15:53:38.815 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 15:53:39.552 +05:30 [INF] Received HTTP response headers after 733.1547ms - 200
+2025-07-24 15:53:39.555 +05:30 [INF] End processing HTTP request after 746.6251ms - 200
+2025-07-24 15:53:39.561 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-07-24 15:53:39.562 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-07-24 15:53:40.881 +05:30 [INF] Received HTTP response headers after 1316.7951ms - 200
+2025-07-24 15:53:40.883 +05:30 [INF] End processing HTTP request after 1322.062ms - 200
+2025-07-24 15:53:42.258 +05:30 [INF] Entering ValidateInventory for location COL-SKM
+2025-07-24 15:53:43.277 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/inventoryBalances
+2025-07-24 15:53:43.279 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/inventoryBalances
+2025-07-24 15:53:44.054 +05:30 [INF] Received HTTP response headers after 773.2999ms - 200
+2025-07-24 15:53:44.057 +05:30 [INF] End processing HTTP request after 780.0608ms - 200
+2025-07-24 15:53:44.856 +05:30 [INF] Exiting ValidateInventory with validation success
+2025-07-24 15:53:45.347 +05:30 [INF] Executed DbCommand (242ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (DbType = Date), @p3='?' (Size = 4000), @p4='?' (Size = 1000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p7='?' (Size = 1000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Order] ([CustomerCode], [DelivertPersonName], [DeliveryDate], [LocationCode], [Note], [OrderDate], [PaymentMethodCode], [RejectReason], [SalesPersonCode], [Status], [TotalAmount], [TrackingNumber])
+OUTPUT INSERTED.[OrderNumber]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+2025-07-24 15:53:45.640 +05:30 [INF] Executed DbCommand (228ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [OrderItem] ([Description], [DiscountPercent], [ItemCode], [OrderNumber], [Quantity], [UnitPrice])
+OUTPUT INSERTED.[OrderItemId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-24 15:53:45.647 +05:30 [INF] Successfully submitted order 1000 for customer 405 by user 1
+2025-07-24 15:53:45.903 +05:30 [INF] Executed DbCommand (224ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-24 15:53:45.917 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-24 15:53:45.940 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API) in 15296.2237ms
+2025-07-24 15:53:45.945 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-24 15:53:45.956 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - 200 null application/json; charset=utf-8 15645.6777ms
+2025-07-24 15:55:07.649 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/User/login - application/json 87
+2025-07-24 15:55:07.658 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-07-24 15:55:07.662 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-07-24 15:55:09.314 +05:30 [INF] Login attempt started for the user with username or email: Admin.
+2025-07-24 15:55:09.624 +05:30 [INF] Executed DbCommand (278ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-07-24 15:55:09.865 +05:30 [INF] Executed DbCommand (228ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-07-24 15:55:10.108 +05:30 [INF] Executed DbCommand (228ms) [Parameters=[@p16='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [Email] = @p1, [FailedLoginCount] = @p2, [FirstName] = @p3, [IsActive] = @p4, [IsEmailVerified] = @p5, [IsLocked] = @p6, [IsPhoneNumberVerified] = @p7, [LastLoginAt] = @p8, [LastName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [RememberMe] = @p12, [SalesPersonCode] = @p13, [UserRoleId] = @p14, [Username] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+2025-07-24 15:55:10.113 +05:30 [INF] Updated the last login time for user: 1.
+2025-07-24 15:55:10.829 +05:30 [WRN] API Response: {
+  "ip": "::1",
+  "bogon": true
+}
+2025-07-24 15:55:11.127 +05:30 [INF] Executed DbCommand (233ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (Size = 50), @p4='?' (Size = 255), @p5='?' (Size = 50), @p6='?' (DbType = Boolean), @p7='?' (Size = 50), @p8='?' (DbType = DateTime2), @p9='?' (Size = 50), @p10='?' (DbType = Boolean), @p11='?' (Size = 50), @p12='?' (Size = 255), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginTrack] ([Browser], [City], [Country], [DeviceType], [FailureReason], [IPAddress], [IsSuccessful], [LoginMethod], [LoginTime], [MFAMethod], [MFAUsed], [OperatingSystem], [SessionID], [UserID])
+OUTPUT INSERTED.[LoginTrackID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2025-07-24 15:55:11.379 +05:30 [INF] Executed DbCommand (233ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-07-24 15:55:12.647 +05:30 [INF] Executed DbCommand (237ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-24 15:55:12.652 +05:30 [INF] JWT token generated and stored for user 1.
+2025-07-24 15:55:12.888 +05:30 [INF] Executed DbCommand (233ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-24 15:55:12.893 +05:30 [INF] Login successful without MFA for user: 1.
+2025-07-24 15:55:12.894 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-24 15:55:12.896 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 5233.0834ms
+2025-07-24 15:55:12.897 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-07-24 15:55:12.898 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/User/login - 200 null application/json; charset=utf-8 5249.0043ms
+2025-07-24 15:56:12.214 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - application/json 160
+2025-07-24 15:56:12.224 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-07-24 15:56:12.229 +05:30 [INF] Route matched with {action = "UpdateOrderStatus", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateOrderStatus(SriKanth.Model.BusinessModule.DTOs.UpdateOrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-24 15:56:15.884 +05:30 [INF] Beginning status update for order 1000 to status "Processing"
+2025-07-24 15:56:16.188 +05:30 [INF] Executed DbCommand (233ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-07-24 15:56:27.911 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 15:56:27.914 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 15:56:27.920 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 15:56:27.920 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 15:56:28.794 +05:30 [INF] Received HTTP response headers after 879.2858ms - 200
+2025-07-24 15:56:28.796 +05:30 [INF] End processing HTTP request after 884.4899ms - 200
+2025-07-24 15:56:28.798 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-07-24 15:56:28.800 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-07-24 15:56:28.909 +05:30 [INF] Received HTTP response headers after 988.1353ms - 200
+2025-07-24 15:56:28.915 +05:30 [INF] End processing HTTP request after 994.9308ms - 200
+2025-07-24 15:56:28.917 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/locations
+2025-07-24 15:56:28.918 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/locations
+2025-07-24 15:56:29.637 +05:30 [INF] Received HTTP response headers after 718.8417ms - 200
+2025-07-24 15:56:29.643 +05:30 [INF] End processing HTTP request after 725.9801ms - 200
+2025-07-24 15:56:30.121 +05:30 [INF] Received HTTP response headers after 1319.9897ms - 200
+2025-07-24 15:56:30.125 +05:30 [INF] End processing HTTP request after 1327.0177ms - 200
+2025-07-24 15:56:31.376 +05:30 [INF] Executed DbCommand (231ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[Description], [o].[DiscountPercent], [o].[ItemCode], [o].[OrderNumber], [o].[Quantity], [o].[UnitPrice]
+FROM [OrderItem] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-07-24 15:56:59.272 +05:30 [INF] Start processing HTTP request POST https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/salesIntegrations?$expand=salesIntegrationLines
+2025-07-24 15:56:59.273 +05:30 [INF] Sending HTTP request POST https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/salesIntegrations?$expand=salesIntegrationLines
+2025-07-24 15:56:59.878 +05:30 [INF] Received HTTP response headers after 603.7471ms - 201
+2025-07-24 15:56:59.881 +05:30 [INF] End processing HTTP request after 609.4975ms - 201
+2025-07-24 15:58:05.661 +05:30 [INF] Successfully posted order 1000 to external API
+2025-07-24 15:58:10.115 +05:30 [INF] Executed DbCommand (408ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (DbType = Date), @p3='?' (Size = 4000), @p4='?' (Size = 1000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p7='?' (Size = 1000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Order] SET [CustomerCode] = @p0, [DelivertPersonName] = @p1, [DeliveryDate] = @p2, [LocationCode] = @p3, [Note] = @p4, [OrderDate] = @p5, [PaymentMethodCode] = @p6, [RejectReason] = @p7, [SalesPersonCode] = @p8, [Status] = @p9, [TotalAmount] = @p10, [TrackingNumber] = @p11
+OUTPUT 1
+WHERE [OrderNumber] = @p12;
+2025-07-24 15:58:10.119 +05:30 [INF] Successfully updated status of order 1000 to "Processing"
+2025-07-24 15:58:10.343 +05:30 [INF] Executed DbCommand (223ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-24 15:58:10.346 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-24 15:58:10.347 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API) in 118117.4381ms
+2025-07-24 15:58:10.348 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-07-24 15:58:10.350 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - 200 null application/json; charset=utf-8 118137.3436ms
+2025-07-24 16:13:06.512 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-24 16:13:06.797 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-24 16:13:06.799 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-24 16:13:06.888 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-24 16:13:06.890 +05:30 [INF] Hosting environment: Test
+2025-07-24 16:13:06.891 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-24 16:13:07.456 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-24 16:13:07.766 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 327.0166ms
+2025-07-24 16:13:07.802 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-24 16:13:07.829 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 26.7947ms
+2025-07-24 16:13:07.900 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-24 16:13:07.968 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 67.8838ms
+2025-07-24 16:13:08.692 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-24 16:13:08.735 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 44.0173ms
+2025-07-24 16:13:11.306 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - application/json 157
+2025-07-24 16:13:11.489 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-07-24 16:13:11.760 +05:30 [INF] Route matched with {action = "UpdateOrderStatus", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateOrderStatus(SriKanth.Model.BusinessModule.DTOs.UpdateOrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-24 16:13:14.299 +05:30 [INF] Beginning status update for order 1 to status "Processing"
+2025-07-24 16:13:15.865 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 16:13:15.870 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 16:13:15.877 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 16:13:15.878 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-24 16:13:18.385 +05:30 [INF] Executed DbCommand (276ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-07-24 16:13:24.688 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 16:13:24.697 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 16:13:24.712 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 16:13:24.715 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 16:13:26.005 +05:30 [INF] Received HTTP response headers after 1281.0585ms - 200
+2025-07-24 16:13:26.015 +05:30 [INF] End processing HTTP request after 1302.6211ms - 200
+2025-07-24 16:13:26.031 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/locations
+2025-07-24 16:13:26.037 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/locations
+2025-07-24 16:13:26.039 +05:30 [INF] Received HTTP response headers after 1337.023ms - 200
+2025-07-24 16:13:26.048 +05:30 [INF] End processing HTTP request after 1361.1613ms - 200
+2025-07-24 16:13:26.056 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-07-24 16:13:26.060 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-07-24 16:13:26.861 +05:30 [INF] Received HTTP response headers after 817.1822ms - 200
+2025-07-24 16:13:26.866 +05:30 [INF] End processing HTTP request after 835.035ms - 200
+2025-07-24 16:13:27.182 +05:30 [INF] Received HTTP response headers after 1119.2975ms - 200
+2025-07-24 16:13:27.185 +05:30 [INF] End processing HTTP request after 1129.1206ms - 200
+2025-07-24 16:13:28.855 +05:30 [WRN] Location COLOMB-SKM not found in external API during order processing
+2025-07-24 16:13:29.333 +05:30 [INF] Executed DbCommand (312ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-24 16:13:29.360 +05:30 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-24 16:13:29.378 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API) in 17606.0704ms
+2025-07-24 16:13:29.384 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-07-24 16:13:29.398 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - 400 null application/json; charset=utf-8 18091.9082ms
+2025-07-24 16:13:54.136 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - application/json 157
+2025-07-24 16:13:54.164 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-07-24 16:13:54.188 +05:30 [INF] Route matched with {action = "UpdateOrderStatus", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateOrderStatus(SriKanth.Model.BusinessModule.DTOs.UpdateOrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-24 16:13:56.549 +05:30 [INF] Beginning status update for order 1 to status "Processing"
+2025-07-24 16:13:56.877 +05:30 [INF] Executed DbCommand (274ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-07-24 16:13:59.671 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 16:13:59.674 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 16:13:59.681 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 16:13:59.688 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-24 16:14:00.052 +05:30 [INF] Received HTTP response headers after 361.0435ms - 200
+2025-07-24 16:14:00.052 +05:30 [INF] Received HTTP response headers after 375.9444ms - 200
+2025-07-24 16:14:00.055 +05:30 [INF] End processing HTTP request after 373.7508ms - 200
+2025-07-24 16:14:00.056 +05:30 [INF] End processing HTTP request after 385.1122ms - 200
+2025-07-24 16:14:00.058 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/locations
+2025-07-24 16:14:00.061 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-07-24 16:14:00.062 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/locations
+2025-07-24 16:14:00.064 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-07-24 16:14:00.461 +05:30 [INF] Received HTTP response headers after 395.6109ms - 200
+2025-07-24 16:14:00.464 +05:30 [INF] End processing HTTP request after 405.8171ms - 200
+2025-07-24 16:14:00.705 +05:30 [INF] Received HTTP response headers after 637.3377ms - 200
+2025-07-24 16:14:00.708 +05:30 [INF] End processing HTTP request after 646.6487ms - 200
+2025-07-24 16:14:02.509 +05:30 [INF] Executed DbCommand (286ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[Description], [o].[DiscountPercent], [o].[ItemCode], [o].[OrderNumber], [o].[Quantity], [o].[UnitPrice]
+FROM [OrderItem] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-07-24 16:14:23.869 +05:30 [INF] Start processing HTTP request POST https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/salesIntegrations?$expand=salesIntegrationLines
+2025-07-24 16:14:23.872 +05:30 [INF] Sending HTTP request POST https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/salesIntegrations?$expand=salesIntegrationLines
+2025-07-24 16:14:24.833 +05:30 [INF] Received HTTP response headers after 959.4013ms - 400
+2025-07-24 16:14:24.837 +05:30 [INF] End processing HTTP request after 967.2714ms - 400

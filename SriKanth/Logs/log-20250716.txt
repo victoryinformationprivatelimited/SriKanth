@@ -1,0 +1,683 @@
+2025-07-16 09:25:17.262 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:25:17.296 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:25:17.296 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:25:17.296 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:26:09.358 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:26:09.390 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:26:09.390 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:26:09.390 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:26:11.236 +05:30 [INF] Executed DbCommand (219ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-16 09:26:11.245 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-16 09:26:11.473 +05:30 [INF] Executed DbCommand (227ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-07-16 09:26:11.953 +05:30 [INF] Executed DbCommand (222ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-07-16 09:26:12.584 +05:30 [INF] Executed DbCommand (203ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-16 09:26:12.786 +05:30 [INF] Executed DbCommand (202ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-16 09:26:13.021 +05:30 [INF] Executed DbCommand (230ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-16 09:26:13.031 +05:30 [INF] Applying migration '20250522072311_InitialCreate'.
+2025-07-16 09:26:13.292 +05:30 [ERR] Failed executing DbCommand (234ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Message] (
+    [MessageId] int NOT NULL IDENTITY,
+    [MessageName] nvarchar(max) NOT NULL,
+    [MessageBody] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Message] PRIMARY KEY ([MessageId])
+);
+2025-07-16 09:30:38.713 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:30:38.741 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:30:38.741 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:30:38.741 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 09:30:40.409 +05:30 [INF] Executed DbCommand (202ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-16 09:30:40.419 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-16 09:30:40.638 +05:30 [INF] Executed DbCommand (217ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-07-16 09:30:41.353 +05:30 [INF] Executed DbCommand (476ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-07-16 09:30:42.294 +05:30 [INF] Executed DbCommand (181ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-16 09:30:42.487 +05:30 [INF] Executed DbCommand (192ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-16 09:30:42.717 +05:30 [INF] Executed DbCommand (225ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-16 09:30:42.728 +05:30 [INF] Applying migration '20250522072311_InitialCreate'.
+2025-07-16 09:30:43.070 +05:30 [INF] Executed DbCommand (317ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Message] (
+    [MessageId] int NOT NULL IDENTITY,
+    [MessageName] nvarchar(max) NOT NULL,
+    [MessageBody] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Message] PRIMARY KEY ([MessageId])
+);
+2025-07-16 09:30:43.275 +05:30 [INF] Executed DbCommand (205ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [SentNotification] (
+    [NotificationId] int NOT NULL IDENTITY,
+    [Recipient] nvarchar(max) NOT NULL,
+    [NotificationType] nvarchar(max) NOT NULL,
+    [Subject] nvarchar(max) NOT NULL,
+    [Message] nvarchar(max) NOT NULL,
+    [SentAt] datetime2 NOT NULL,
+    [IsSuccess] bit NOT NULL,
+    CONSTRAINT [PK_SentNotification] PRIMARY KEY ([NotificationId])
+);
+2025-07-16 09:30:43.517 +05:30 [INF] Executed DbCommand (241ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserRole] (
+    [UserRoleID] int NOT NULL IDENTITY,
+    [UserRoleName] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [IsActive] bit NOT NULL,
+    CONSTRAINT [PK_UserRole] PRIMARY KEY ([UserRoleID])
+);
+2025-07-16 09:30:43.762 +05:30 [INF] Executed DbCommand (244ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [UserID] int NOT NULL IDENTITY,
+    [Username] nvarchar(100) NOT NULL,
+    [FirstName] nvarchar(100) NOT NULL,
+    [LastName] nvarchar(100) NOT NULL,
+    [POSName] nvarchar(100) NOT NULL,
+    [PasswordHash] nvarchar(255) NOT NULL,
+    [UserRoleId] int NOT NULL,
+    [Email] nvarchar(255) NOT NULL,
+    [PhoneNumber] nvarchar(50) NULL,
+    [IsPhoneNumberVerified] bit NOT NULL,
+    [IsEmailVerified] bit NOT NULL,
+    [IsActive] bit NOT NULL,
+    [IsLocked] bit NOT NULL,
+    [RememberMe] bit NOT NULL,
+    [FailedLoginCount] int NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [LastLoginAt] datetime2 NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([UserID]),
+    CONSTRAINT [FK_Users_UserRole_UserRoleId] FOREIGN KEY ([UserRoleId]) REFERENCES [UserRole] ([UserRoleID])
+);
+2025-07-16 09:30:43.957 +05:30 [INF] Executed DbCommand (195ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [LoginTrack] (
+    [LoginTrackID] int NOT NULL IDENTITY,
+    [UserID] int NOT NULL,
+    [LoginMethod] nvarchar(50) NOT NULL,
+    [LoginTime] datetime2 NOT NULL,
+    [IPAddress] nvarchar(50) NULL,
+    [DeviceType] nvarchar(50) NULL,
+    [OperatingSystem] nvarchar(50) NULL,
+    [Browser] nvarchar(100) NULL,
+    [Country] nvarchar(50) NULL,
+    [City] nvarchar(50) NULL,
+    [IsSuccessful] bit NOT NULL,
+    [MFAUsed] bit NULL,
+    [MFAMethod] nvarchar(50) NULL,
+    [SessionID] nvarchar(255) NULL,
+    [FailureReason] nvarchar(255) NULL,
+    CONSTRAINT [PK_LoginTrack] PRIMARY KEY ([LoginTrackID]),
+    CONSTRAINT [FK_LoginTrack_Users_UserID] FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON DELETE CASCADE
+);
+2025-07-16 09:30:44.182 +05:30 [INF] Executed DbCommand (224ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MFASetting] (
+    [MFASettingID] int NOT NULL IDENTITY,
+    [UserID] int NOT NULL,
+    [IsMFAEnabled] bit NOT NULL,
+    [PreferredMFAType] nvarchar(50) NULL,
+    CONSTRAINT [PK_MFASetting] PRIMARY KEY ([MFASettingID]),
+    CONSTRAINT [FK_MFASetting_Users_UserID] FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID])
+);
+2025-07-16 09:30:44.381 +05:30 [INF] Executed DbCommand (199ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [SendToken] (
+    [SendTokenID] int NOT NULL IDENTITY,
+    [UserID] int NOT NULL,
+    [MFADeviceID] int NOT NULL,
+    [UserTokenID] int NOT NULL,
+    [SendAt] datetime2 NOT NULL,
+    [SendSuccessful] bit NULL,
+    CONSTRAINT [PK_SendToken] PRIMARY KEY ([SendTokenID]),
+    CONSTRAINT [FK_SendToken_Users_UserID] FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID])
+);
+2025-07-16 09:30:44.586 +05:30 [INF] Executed DbCommand (204ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserToken] (
+    [TokenID] int NOT NULL IDENTITY,
+    [UserID] int NOT NULL,
+    [Token] nvarchar(500) NOT NULL,
+    [TokenType] nvarchar(50) NOT NULL,
+    [CreatedAt] datetime2 NULL,
+    [ExpiresAt] datetime2 NULL,
+    [IsUsed] bit NULL,
+    [IsRevoked] bit NULL,
+    [Purpose] nvarchar(255) NOT NULL,
+    [LastUsedAt] datetime2 NULL,
+    CONSTRAINT [PK_UserToken] PRIMARY KEY ([TokenID]),
+    CONSTRAINT [FK_UserToken_Users_UserID] FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID])
+);
+2025-07-16 09:30:44.788 +05:30 [INF] Executed DbCommand (202ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_LoginTrack_UserID] ON [LoginTrack] ([UserID]);
+2025-07-16 09:30:44.977 +05:30 [INF] Executed DbCommand (189ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MFASetting_UserID] ON [MFASetting] ([UserID]);
+2025-07-16 09:30:45.168 +05:30 [INF] Executed DbCommand (191ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_SendToken_UserID] ON [SendToken] ([UserID]);
+2025-07-16 09:30:45.361 +05:30 [INF] Executed DbCommand (192ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_UserRoleId] ON [Users] ([UserRoleId]);
+2025-07-16 09:30:45.553 +05:30 [INF] Executed DbCommand (192ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserToken_UserID] ON [UserToken] ([UserID]);
+2025-07-16 09:30:45.750 +05:30 [INF] Executed DbCommand (197ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250522072311_InitialCreate', N'9.0.3');
+2025-07-16 09:30:45.751 +05:30 [INF] Applying migration '20250525191458_changeusertable'.
+2025-07-16 09:30:46.382 +05:30 [INF] Executed DbCommand (615ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[Users].[POSName]', N'SalesPersonCode', 'COLUMN';
+2025-07-16 09:30:46.572 +05:30 [INF] Executed DbCommand (191ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Users] ADD [LocationCode] nvarchar(max) NOT NULL DEFAULT N'';
+2025-07-16 09:30:46.772 +05:30 [INF] Executed DbCommand (199ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250525191458_changeusertable', N'9.0.3');
+2025-07-16 09:30:46.773 +05:30 [INF] Applying migration '20250528011043_changeuser'.
+2025-07-16 09:30:46.992 +05:30 [INF] Executed DbCommand (207ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250528011043_changeuser', N'9.0.3');
+2025-07-16 09:30:46.992 +05:30 [INF] Applying migration '20250528090443_changeusertoken'.
+2025-07-16 09:30:47.240 +05:30 [INF] Executed DbCommand (235ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var sysname;
+SELECT @var = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[UserToken]') AND [c].[name] = N'Token');
+IF @var IS NOT NULL EXEC(N'ALTER TABLE [UserToken] DROP CONSTRAINT [' + @var + '];');
+ALTER TABLE [UserToken] ALTER COLUMN [Token] nvarchar(1000) NOT NULL;
+2025-07-16 09:30:47.435 +05:30 [INF] Executed DbCommand (195ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250528090443_changeusertoken', N'9.0.3');
+2025-07-16 09:30:47.435 +05:30 [INF] Applying migration '20250602193428_changeordertable'.
+2025-07-16 09:30:47.653 +05:30 [INF] Executed DbCommand (206ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Order] (
+    [OrderNumber] int NOT NULL IDENTITY,
+    [CustomerCode] nvarchar(max) NOT NULL,
+    [LocationCode] nvarchar(max) NOT NULL,
+    [OrderDate] datetime2 NOT NULL,
+    [Status] nvarchar(max) NOT NULL,
+    [TotalAmount] decimal(18,2) NOT NULL,
+    [SalesPersonCode] nvarchar(max) NOT NULL,
+    [PaymentMethodCode] nvarchar(max) NOT NULL,
+    [Note] nvarchar(1000) NULL,
+    [RejectReason] nvarchar(1000) NULL,
+    CONSTRAINT [PK_Order] PRIMARY KEY ([OrderNumber])
+);
+2025-07-16 09:30:47.847 +05:30 [INF] Executed DbCommand (194ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [OrderItem] (
+    [OrderItemId] int NOT NULL IDENTITY,
+    [ItemCode] nvarchar(max) NOT NULL,
+    [OrderNumber] int NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [Quantity] decimal(18,2) NOT NULL,
+    [UnitPrice] decimal(18,2) NOT NULL,
+    [DiscountPercent] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_OrderItem] PRIMARY KEY ([OrderItemId])
+);
+2025-07-16 09:30:48.052 +05:30 [INF] Executed DbCommand (205ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250602193428_changeordertable', N'9.0.3');
+2025-07-16 09:30:48.052 +05:30 [INF] Applying migration '20250603092202_adduserhistorytb'.
+2025-07-16 09:30:48.257 +05:30 [INF] Executed DbCommand (196ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserHistory] (
+    [UserHistoryId] int NOT NULL IDENTITY,
+    [UserId] int NOT NULL,
+    [ActionType] nvarchar(max) NOT NULL,
+    [EntityType] nvarchar(max) NOT NULL,
+    [Endpoint] nvarchar(max) NOT NULL,
+    [Timestamp] datetime2 NOT NULL,
+    [IPAddress] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_UserHistory] PRIMARY KEY ([UserHistoryId])
+);
+2025-07-16 09:30:48.454 +05:30 [INF] Executed DbCommand (196ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250603092202_adduserhistorytb', N'9.0.3');
+2025-07-16 09:30:48.454 +05:30 [INF] Applying migration '20250605144259_documnetstore'.
+2025-07-16 09:30:48.667 +05:30 [INF] Executed DbCommand (202ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserDocumentStorage] (
+    [UserDocumentStorageId] int NOT NULL IDENTITY,
+    [UserId] int NOT NULL,
+    [DocumentReference] nvarchar(max) NOT NULL,
+    [DocumentType] nvarchar(max) NOT NULL,
+    [AddedDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_UserDocumentStorage] PRIMARY KEY ([UserDocumentStorageId])
+);
+2025-07-16 09:30:48.871 +05:30 [INF] Executed DbCommand (204ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250605144259_documnetstore', N'9.0.3');
+2025-07-16 09:30:48.871 +05:30 [INF] Applying migration '20250605155010_changedocumnetstore'.
+2025-07-16 09:30:49.066 +05:30 [INF] Executed DbCommand (188ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [UserDocumentStorage] ADD [FileSize] bigint NOT NULL DEFAULT CAST(0 AS bigint);
+2025-07-16 09:30:49.261 +05:30 [INF] Executed DbCommand (194ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [UserDocumentStorage] ADD [OriginalFileName] nvarchar(max) NOT NULL DEFAULT N'';
+2025-07-16 09:30:49.454 +05:30 [INF] Executed DbCommand (192ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250605155010_changedocumnetstore', N'9.0.3');
+2025-07-16 09:30:49.454 +05:30 [INF] Applying migration '20250606200107_adduserlocationtb'.
+2025-07-16 09:30:49.739 +05:30 [INF] Executed DbCommand (270ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Users]') AND [c].[name] = N'LocationCode');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Users] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [Users] DROP COLUMN [LocationCode];
+2025-07-16 09:30:49.927 +05:30 [INF] Executed DbCommand (187ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserLocation] (
+    [UserLocationId] int NOT NULL IDENTITY,
+    [UserId] int NOT NULL,
+    [LocationCode] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_UserLocation] PRIMARY KEY ([UserLocationId]),
+    CONSTRAINT [FK_UserLocation_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserID])
+);
+2025-07-16 09:30:50.129 +05:30 [INF] Executed DbCommand (202ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserHistory_UserId] ON [UserHistory] ([UserId]);
+2025-07-16 09:30:50.333 +05:30 [INF] Executed DbCommand (203ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserDocumentStorage_UserId] ON [UserDocumentStorage] ([UserId]);
+2025-07-16 09:30:50.521 +05:30 [INF] Executed DbCommand (188ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserLocation_UserId] ON [UserLocation] ([UserId]);
+2025-07-16 09:30:50.724 +05:30 [INF] Executed DbCommand (203ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [UserDocumentStorage] ADD CONSTRAINT [FK_UserDocumentStorage_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserID]);
+2025-07-16 09:30:50.930 +05:30 [INF] Executed DbCommand (205ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [UserHistory] ADD CONSTRAINT [FK_UserHistory_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserID]);
+2025-07-16 09:30:51.124 +05:30 [INF] Executed DbCommand (194ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250606200107_adduserlocationtb', N'9.0.3');
+2025-07-16 09:30:51.124 +05:30 [INF] Applying migration '20250617051326_changeorderstaus'.
+2025-07-16 09:30:51.349 +05:30 [INF] Executed DbCommand (212ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Order] ADD [DelivertPersonName] nvarchar(100) NULL;
+2025-07-16 09:30:51.544 +05:30 [INF] Executed DbCommand (195ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Order] ADD [DeliveryDate] datetime2 NULL;
+2025-07-16 09:30:51.747 +05:30 [INF] Executed DbCommand (203ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Order] ADD [TrackingNumber] nvarchar(100) NULL;
+2025-07-16 09:30:51.949 +05:30 [INF] Executed DbCommand (202ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250617051326_changeorderstaus', N'9.0.3');
+2025-07-16 09:30:51.949 +05:30 [INF] Applying migration '20250617052105_changeorderstausdate'.
+2025-07-16 09:30:52.196 +05:30 [INF] Executed DbCommand (235ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Order]') AND [c].[name] = N'DeliveryDate');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [Order] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [Order] ALTER COLUMN [DeliveryDate] date NULL;
+2025-07-16 09:30:52.384 +05:30 [INF] Executed DbCommand (187ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250617052105_changeorderstausdate', N'9.0.3');
+2025-07-16 09:30:52.384 +05:30 [INF] Applying migration '20250618100809_changeordertb'.
+2025-07-16 09:30:52.587 +05:30 [INF] Executed DbCommand (195ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250618100809_changeordertb', N'9.0.3');
+2025-07-16 09:30:52.587 +05:30 [INF] Applying migration '20250630125432_appconfigtable'.
+2025-07-16 09:30:52.795 +05:30 [INF] Executed DbCommand (199ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AppEnvironmentConfig] (
+    [Id] int NOT NULL IDENTITY,
+    [EnvironmentName] nvarchar(max) NOT NULL,
+    [CompanyId] nvarchar(max) NOT NULL,
+    [DbConnectionString] nvarchar(max) NOT NULL,
+    [IsActive] bit NOT NULL,
+    CONSTRAINT [PK_AppEnvironmentConfig] PRIMARY KEY ([Id])
+);
+2025-07-16 09:30:52.978 +05:30 [INF] Executed DbCommand (182ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250630125432_appconfigtable', N'9.0.3');
+2025-07-16 09:30:52.978 +05:30 [INF] Applying migration '20250630145546_removeconfig'.
+2025-07-16 09:30:53.167 +05:30 [INF] Executed DbCommand (181ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [AppEnvironmentConfig];
+2025-07-16 09:30:53.362 +05:30 [INF] Executed DbCommand (195ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250630145546_removeconfig', N'9.0.3');
+2025-07-16 09:30:53.363 +05:30 [INF] Applying migration '20250630171207_newdatabase'.
+2025-07-16 09:30:53.559 +05:30 [INF] Executed DbCommand (189ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250630171207_newdatabase', N'9.0.3');
+2025-07-16 09:30:53.559 +05:30 [INF] Applying migration '20250707083703_addnewdb'.
+2025-07-16 09:30:53.754 +05:30 [INF] Executed DbCommand (189ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250707083703_addnewdb', N'9.0.3');
+2025-07-16 09:30:53.754 +05:30 [INF] Applying migration '20250707095114_addnew'.
+2025-07-16 09:30:53.962 +05:30 [INF] Executed DbCommand (198ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250707095114_addnew', N'9.0.3');
+2025-07-16 09:30:53.962 +05:30 [INF] Applying migration '20250716035518_changetable'.
+2025-07-16 09:30:54.172 +05:30 [INF] Executed DbCommand (201ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250716035518_changetable', N'9.0.3');
+2025-07-16 09:30:54.544 +05:30 [INF] Executed DbCommand (186ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-07-16 14:31:48.065 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-16 14:31:48.418 +05:30 [INF] Now listening on: https://localhost:7168
+2025-07-16 14:31:48.420 +05:30 [INF] Now listening on: http://localhost:5076
+2025-07-16 14:31:48.520 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-16 14:31:48.521 +05:30 [INF] Hosting environment: Test
+2025-07-16 14:31:48.524 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-07-16 14:31:49.719 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger - null null
+2025-07-16 14:31:50.061 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger - 301 0 null 431.9813ms
+2025-07-16 14:31:50.075 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-07-16 14:31:50.167 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 93.2075ms
+2025-07-16 14:31:50.203 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/swagger-ui.css - null null
+2025-07-16 14:31:50.208 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/swagger-ui-standalone-preset.js - null null
+2025-07-16 14:31:50.208 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/swagger-ui-bundle.js - null null
+2025-07-16 14:31:50.312 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-07-16 14:31:50.341 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-07-16 14:31:50.312 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-16 14:31:50.361 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 153.3481ms
+2025-07-16 14:31:50.341 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-07-16 14:31:50.394 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 82.7288ms
+2025-07-16 14:31:50.395 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-07-16 14:31:50.397 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/swagger-ui.css - 200 143943 text/css 196.2404ms
+2025-07-16 14:31:50.402 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 194.2054ms
+2025-07-16 14:31:50.508 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 196.6968ms
+2025-07-16 14:31:51.352 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-07-16 14:31:51.402 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 50.2966ms
+2025-07-16 14:31:51.447 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - null null
+2025-07-16 14:31:51.480 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-07-16 14:31:51.483 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/favicon-32x32.png - 200 628 image/png 36.3081ms
+2025-07-16 14:40:11.112 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/AddUser - application/json 363
+2025-07-16 14:40:11.226 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.AddNewUser (SriKanth.API)'
+2025-07-16 14:40:11.504 +05:30 [INF] Route matched with {action = "AddNewUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddNewUser(SriKanth.Model.Login_Module.DTOs.UserDetails) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-07-16 14:40:16.141 +05:30 [INF] Creating user: Admin
+2025-07-16 14:40:17.810 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 14:40:17.813 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 14:40:17.813 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 14:40:17.814 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-16 14:40:20.290 +05:30 [INF] Executed DbCommand (288ms) [Parameters=[@__normalizedUsername_0='?' (Size = 100), @__normalizedEmail_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Username]) = @__normalizedUsername_0 OR LOWER([u].[Email]) = @__normalizedEmail_1
+2025-07-16 14:40:20.698 +05:30 [INF] Executed DbCommand (229ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedAt], [Email], [FailedLoginCount], [FirstName], [IsActive], [IsEmailVerified], [IsLocked], [IsPhoneNumberVerified], [LastLoginAt], [LastName], [PasswordHash], [PhoneNumber], [RememberMe], [SalesPersonCode], [UserRoleId], [Username])
+OUTPUT INSERTED.[UserID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2025-07-16 14:40:20.964 +05:30 [INF] Executed DbCommand (221ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserLocation] ([LocationCode], [UserId])
+OUTPUT INSERTED.[UserLocationId]
+VALUES (@p0, @p1);
+2025-07-16 14:40:21.197 +05:30 [INF] Executed DbCommand (219ms) [Parameters=[@p0='?' (DbType = Boolean), @p1='?' (Size = 50), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [MFASetting] ([IsMFAEnabled], [PreferredMFAType], [UserID])
+OUTPUT INSERTED.[MFASettingID]
+VALUES (@p0, @p1, @p2);
+2025-07-16 14:40:21.206 +05:30 [INF] User created: 1
+2025-07-16 14:40:21.213 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 14:40:21.225 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.AddNewUser (SriKanth.API) in 9712.7872ms
+2025-07-16 14:40:21.227 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.AddNewUser (SriKanth.API)'
+2025-07-16 14:40:21.233 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/AddUser - 200 null application/json; charset=utf-8 10121.1205ms
+2025-07-16 14:42:12.273 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/login - application/json 81
+2025-07-16 14:42:12.307 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-07-16 14:42:12.315 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-07-16 14:42:14.125 +05:30 [INF] Login attempt started for the user with username or email: Admin.
+2025-07-16 14:42:14.402 +05:30 [INF] Executed DbCommand (238ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-07-16 14:42:14.642 +05:30 [INF] Executed DbCommand (225ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-07-16 14:42:14.881 +05:30 [INF] Executed DbCommand (223ms) [Parameters=[@p16='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [Email] = @p1, [FailedLoginCount] = @p2, [FirstName] = @p3, [IsActive] = @p4, [IsEmailVerified] = @p5, [IsLocked] = @p6, [IsPhoneNumberVerified] = @p7, [LastLoginAt] = @p8, [LastName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [RememberMe] = @p12, [SalesPersonCode] = @p13, [UserRoleId] = @p14, [Username] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+2025-07-16 14:42:14.889 +05:30 [INF] Updated the last login time for user: 1.
+2025-07-16 14:42:15.766 +05:30 [WRN] API Response: {
+  "ip": "::1",
+  "bogon": true
+}
+2025-07-16 14:42:16.138 +05:30 [INF] Executed DbCommand (248ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (Size = 50), @p4='?' (Size = 255), @p5='?' (Size = 50), @p6='?' (DbType = Boolean), @p7='?' (Size = 50), @p8='?' (DbType = DateTime2), @p9='?' (Size = 50), @p10='?' (DbType = Boolean), @p11='?' (Size = 50), @p12='?' (Size = 255), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginTrack] ([Browser], [City], [Country], [DeviceType], [FailureReason], [IPAddress], [IsSuccessful], [LoginMethod], [LoginTime], [MFAMethod], [MFAUsed], [OperatingSystem], [SessionID], [UserID])
+OUTPUT INSERTED.[LoginTrackID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2025-07-16 14:42:16.393 +05:30 [INF] Executed DbCommand (224ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-07-16 14:42:17.808 +05:30 [INF] Executed DbCommand (226ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-16 14:42:17.815 +05:30 [INF] JWT token generated and stored for user 1.
+2025-07-16 14:42:18.050 +05:30 [INF] Executed DbCommand (226ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-16 14:42:18.058 +05:30 [INF] Login successful without MFA for user: 1.
+2025-07-16 14:42:18.067 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 14:42:18.075 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 5758.9518ms
+2025-07-16 14:42:18.078 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-07-16 14:42:18.082 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/login - 200 null application/json; charset=utf-8 5808.8804ms
+2025-07-16 14:43:59.752 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=2 - application/json 362
+2025-07-16 14:43:59.797 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (SalesPerson)
+2025-07-16 14:43:59.803 +05:30 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-07-16 14:43:59.808 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=2 - 403 0 null 55.7967ms
+2025-07-16 14:44:11.497 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - application/json 362
+2025-07-16 14:44:11.519 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (SalesPerson)
+2025-07-16 14:44:11.522 +05:30 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-07-16 14:44:11.525 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - 403 0 null 27.9281ms
+2025-07-16 14:47:42.841 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7168/api/User/login - application/json 81
+2025-07-16 14:47:42.886 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-07-16 14:47:42.888 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-07-16 14:47:44.422 +05:30 [INF] Login attempt started for the user with username or email: Admin.
+2025-07-16 14:47:45.547 +05:30 [INF] Executed DbCommand (197ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-07-16 14:47:45.749 +05:30 [INF] Executed DbCommand (196ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-07-16 14:47:45.963 +05:30 [INF] Executed DbCommand (208ms) [Parameters=[@p16='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [Email] = @p1, [FailedLoginCount] = @p2, [FirstName] = @p3, [IsActive] = @p4, [IsEmailVerified] = @p5, [IsLocked] = @p6, [IsPhoneNumberVerified] = @p7, [LastLoginAt] = @p8, [LastName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [RememberMe] = @p12, [SalesPersonCode] = @p13, [UserRoleId] = @p14, [Username] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+2025-07-16 14:47:45.967 +05:30 [INF] Updated the last login time for user: 1.
+2025-07-16 14:47:46.622 +05:30 [WRN] API Response: {
+  "ip": "::1",
+  "bogon": true
+}
+2025-07-16 14:47:46.865 +05:30 [INF] Executed DbCommand (214ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (Size = 50), @p4='?' (Size = 255), @p5='?' (Size = 50), @p6='?' (DbType = Boolean), @p7='?' (Size = 50), @p8='?' (DbType = DateTime2), @p9='?' (Size = 50), @p10='?' (DbType = Boolean), @p11='?' (Size = 50), @p12='?' (Size = 255), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginTrack] ([Browser], [City], [Country], [DeviceType], [FailureReason], [IPAddress], [IsSuccessful], [LoginMethod], [LoginTime], [MFAMethod], [MFAUsed], [OperatingSystem], [SessionID], [UserID])
+OUTPUT INSERTED.[LoginTrackID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2025-07-16 14:47:47.076 +05:30 [INF] Executed DbCommand (203ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-07-16 14:47:48.304 +05:30 [INF] Executed DbCommand (349ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-16 14:47:48.315 +05:30 [INF] JWT token generated and stored for user 1.
+2025-07-16 14:47:48.518 +05:30 [INF] Executed DbCommand (198ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-07-16 14:47:48.522 +05:30 [INF] Login successful without MFA for user: 1.
+2025-07-16 14:47:48.523 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 14:47:48.525 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 5626.5031ms
+2025-07-16 14:47:48.527 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-07-16 14:47:48.529 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7168/api/User/login - 200 null application/json; charset=utf-8 5688.7546ms
+2025-07-16 14:48:05.738 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - application/json 362
+2025-07-16 14:48:05.747 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-16 14:48:05.756 +05:30 [INF] Route matched with {action = "CreateOrder", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrder(Int32, SriKanth.Model.BusinessModule.DTOs.OrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-16 14:48:11.310 +05:30 [INF] Beginning order submission for user 1, customer 405, location COL-SKM
+2025-07-16 14:48:11.662 +05:30 [INF] Executed DbCommand (323ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-16 14:48:13.651 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-16 14:48:13.657 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-16 14:48:14.166 +05:30 [INF] Received HTTP response headers after 504.5002ms - 200
+2025-07-16 14:48:14.169 +05:30 [INF] End processing HTTP request after 520.7153ms - 200
+2025-07-16 14:48:14.175 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/customers
+2025-07-16 14:48:14.177 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/customers
+2025-07-16 14:48:16.094 +05:30 [INF] Received HTTP response headers after 1915.6008ms - 200
+2025-07-16 14:48:16.098 +05:30 [INF] End processing HTTP request after 1922.4651ms - 200
+2025-07-16 14:48:17.829 +05:30 [INF] Entering ValidateInventory for location COL-SKM
+2025-07-16 14:48:19.584 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/inventoryBalances
+2025-07-16 14:48:19.586 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/inventoryBalances
+2025-07-16 14:48:20.260 +05:30 [INF] Received HTTP response headers after 672.2048ms - 200
+2025-07-16 14:48:20.262 +05:30 [INF] End processing HTTP request after 678.3066ms - 200
+2025-07-16 14:48:21.213 +05:30 [WRN] No inventory data found for location COL-SKM
+2025-07-16 14:48:21.216 +05:30 [WRN] Inventory validation failed for location COL-SKM
+2025-07-16 14:48:21.427 +05:30 [INF] Executed DbCommand (194ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-16 14:48:21.433 +05:30 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 14:48:21.436 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API) in 15676.7927ms
+2025-07-16 14:48:21.438 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-16 14:48:21.439 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - 400 null application/json; charset=utf-8 15700.7769ms
+2025-07-16 14:48:54.013 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - application/json 366
+2025-07-16 14:48:54.017 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-16 14:48:54.020 +05:30 [INF] Route matched with {action = "CreateOrder", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrder(Int32, SriKanth.Model.BusinessModule.DTOs.OrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-16 14:48:55.580 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 14:48:55.606 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API) in 1584.6996ms
+2025-07-16 14:48:55.608 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-16 14:48:55.609 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - 400 null application/problem+json; charset=utf-8 1595.5168ms
+2025-07-16 14:49:35.536 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - application/json 365
+2025-07-16 14:49:35.543 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-16 14:49:35.544 +05:30 [INF] Route matched with {action = "CreateOrder", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrder(Int32, SriKanth.Model.BusinessModule.DTOs.OrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-16 14:49:37.342 +05:30 [INF] Beginning order submission for user 1, customer 405, location COLOMB-SKM
+2025-07-16 14:49:37.547 +05:30 [INF] Executed DbCommand (198ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-16 14:49:40.061 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-16 14:49:40.063 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-16 14:49:40.405 +05:30 [INF] Received HTTP response headers after 340.4698ms - 200
+2025-07-16 14:49:40.409 +05:30 [INF] End processing HTTP request after 347.732ms - 200
+2025-07-16 14:49:40.410 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/customers
+2025-07-16 14:49:40.413 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/customers
+2025-07-16 14:49:41.963 +05:30 [INF] Received HTTP response headers after 1549.5977ms - 200
+2025-07-16 14:49:41.966 +05:30 [INF] End processing HTTP request after 1556.1925ms - 200
+2025-07-16 14:49:43.499 +05:30 [INF] Entering ValidateInventory for location COLOMB-SKM
+2025-07-16 14:49:44.570 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/inventoryBalances
+2025-07-16 14:49:44.573 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/inventoryBalances
+2025-07-16 14:49:45.737 +05:30 [INF] Received HTTP response headers after 1162.0198ms - 200
+2025-07-16 14:49:45.740 +05:30 [INF] End processing HTTP request after 1169.8446ms - 200
+2025-07-16 14:49:47.202 +05:30 [INF] Exiting ValidateInventory with validation success
+2025-07-16 14:49:47.441 +05:30 [INF] Executed DbCommand (201ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (DbType = Date), @p3='?' (Size = 4000), @p4='?' (Size = 1000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p7='?' (Size = 1000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Order] ([CustomerCode], [DelivertPersonName], [DeliveryDate], [LocationCode], [Note], [OrderDate], [PaymentMethodCode], [RejectReason], [SalesPersonCode], [Status], [TotalAmount], [TrackingNumber])
+OUTPUT INSERTED.[OrderNumber]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+2025-07-16 14:49:47.665 +05:30 [INF] Executed DbCommand (204ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [OrderItem] ([Description], [DiscountPercent], [ItemCode], [OrderNumber], [Quantity], [UnitPrice])
+OUTPUT INSERTED.[OrderItemId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-16 14:49:47.670 +05:30 [INF] Successfully submitted order 1 for customer 405 by user 1
+2025-07-16 14:49:47.867 +05:30 [INF] Executed DbCommand (195ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-16 14:49:47.871 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 14:49:47.872 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API) in 12326.0907ms
+2025-07-16 14:49:47.874 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.CreateOrder (SriKanth.API)'
+2025-07-16 14:49:47.874 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/CreateOrder?userId=1 - 200 null application/json; charset=utf-8 12339.3087ms
+2025-07-16 14:51:09.413 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetPendingOrders?userId=1 - null null
+2025-07-16 14:51:09.417 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetPendingOrdersByUser (SriKanth.API)'
+2025-07-16 14:51:09.421 +05:30 [INF] Route matched with {action = "GetPendingOrdersByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingOrdersByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-07-16 14:51:11.533 +05:30 [INF] Beginning to retrieve orders for user 1 with status "Pending"
+2025-07-16 14:51:11.737 +05:30 [INF] Executed DbCommand (199ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-16 14:51:11.936 +05:30 [INF] Executed DbCommand (193ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-07-16 14:51:12.166 +05:30 [INF] Executed DbCommand (214ms) [Parameters=[@__salesPersonCode_0='?' (Size = 4000), @__orderStatus_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[SalesPersonCode] = @__salesPersonCode_0 AND [o].[Status] = @__orderStatus_1
+2025-07-16 14:51:12.376 +05:30 [INF] Executed DbCommand (200ms) [Parameters=[@__salesPersonCode_0='?' (Size = 4000), @__orderStatus_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[SalesPersonCode] = @__salesPersonCode_0 AND [o].[Status] = @__orderStatus_1
+2025-07-16 14:51:13.799 +05:30 [INF] Executed DbCommand (207ms) [Parameters=[@__orderNumbers_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[Description], [o].[DiscountPercent], [o].[ItemCode], [o].[OrderNumber], [o].[Quantity], [o].[UnitPrice]
+FROM [OrderItem] AS [o]
+WHERE [o].[OrderNumber] IN (
+    SELECT [o0].[value]
+    FROM OPENJSON(@__orderNumbers_0) WITH ([value] int '$') AS [o0]
+)
+2025-07-16 14:51:17.169 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-16 14:51:17.171 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-16 14:51:18.122 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-16 14:51:18.125 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-07-16 14:51:19.046 +05:30 [INF] Received HTTP response headers after 920.8574ms - 200
+2025-07-16 14:51:19.048 +05:30 [INF] End processing HTTP request after 926.1615ms - 200
+2025-07-16 14:51:19.051 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/salesPeople
+2025-07-16 14:51:19.054 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/salesPeople
+2025-07-16 14:51:19.082 +05:30 [INF] Received HTTP response headers after 1908.513ms - 200
+2025-07-16 14:51:19.084 +05:30 [INF] End processing HTTP request after 1915.1713ms - 200
+2025-07-16 14:51:19.086 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/customers
+2025-07-16 14:51:19.087 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(8df6b248-6555-f011-be59-6045bd204fef)/customers
+2025-07-16 14:51:19.793 +05:30 [INF] Received HTTP response headers after 735.915ms - 200
+2025-07-16 14:51:19.797 +05:30 [INF] End processing HTTP request after 745.4793ms - 200
+2025-07-16 14:51:20.347 +05:30 [INF] Received HTTP response headers after 1258.5868ms - 200
+2025-07-16 14:51:20.349 +05:30 [INF] End processing HTTP request after 1262.5279ms - 200
+2025-07-16 14:51:21.512 +05:30 [INF] Retrieved 1 "Pending" orders for user 1
+2025-07-16 14:51:21.727 +05:30 [INF] Executed DbCommand (211ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserHistory] ([ActionType], [Endpoint], [EntityType], [IPAddress], [Timestamp], [UserId])
+OUTPUT INSERTED.[UserHistoryId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-16 14:51:21.732 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.BusinessModule.DTOs.OrderReturn, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 14:51:21.745 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetPendingOrdersByUser (SriKanth.API) in 12322.9255ms
+2025-07-16 14:51:21.747 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetPendingOrdersByUser (SriKanth.API)'
+2025-07-16 14:51:21.749 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetPendingOrders?userId=1 - 200 null application/json; charset=utf-8 12335.8428ms

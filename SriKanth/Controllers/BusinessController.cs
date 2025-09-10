@@ -251,6 +251,28 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		[HttpGet("GetProcessingOrders")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetProcessingOrdersByUser(int userId)
+		{
+			// Security validation for userId
+			if (!IsValidUserId(userId))
+			{
+				return BadRequest(new { message = "Invalid or missing userId. UserId must be greater than 0." });
+			}
+			try
+			{
+				// Get pending orders for the specified user
+				var stockData = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Processing);
+				return Ok(stockData);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+
 		/// <summary>
 		/// Retrieves delivered orders for a specific user
 		/// </summary>

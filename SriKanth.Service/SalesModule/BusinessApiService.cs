@@ -606,19 +606,22 @@ namespace SriKanth.Service.SalesModule
 				{
 					var invoiceSummaries = g.Select(inv =>
 					{
-						// Calculate total amount from all lines in this invoice
-						decimal totalAmount = inv.Amount;
-						// Adjust these fields if your model uses different names for PDC/Due
-						decimal pdcAmount = inv.PdcAmount; // Replace with actual property if needed
-						decimal dueAmount = inv.RemainingAmount; // Replace with actual property if needed
+						decimal originalAmount = inv.Amount;
+						decimal releasedPDCs = inv.PdcAmount;
+						decimal balanceAfterPDCs = inv.RemainingAmount;
+						decimal balanceBeforePDCs = balanceAfterPDCs + releasedPDCs;
 
 						return new InvoiceSummary
 						{
-							InvoiceNo = inv.DocumentNo, // Replace with actual invoice number property
-							OrderNo = inv.OrderNo, // Replace with actual order number property
-							PdcAmount = pdcAmount,
-							DueAmount = dueAmount,
-							TotalAmount = totalAmount
+							InvoiceNo = inv.DocumentNo,
+							OrderNo = inv.OrderNo,
+							PdcAmount = releasedPDCs,
+							DueAmount = balanceAfterPDCs,
+							TotalAmount = originalAmount,
+							OriginalAmount = originalAmount,
+							BalanceBeforePDCs = balanceBeforePDCs,
+							ReleasedPDCs = releasedPDCs,
+							BalanceAfterPDCs = balanceAfterPDCs
 						};
 					}).ToList();
 
