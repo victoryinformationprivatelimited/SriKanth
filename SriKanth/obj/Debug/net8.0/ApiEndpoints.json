@@ -250,6 +250,22 @@
   },
   {
     "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetProcessingOrdersByUser",
+    "RelativePath": "api/Business/GetProcessingOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
     "Method": "GetRejectedOrdersByUser",
     "RelativePath": "api/Business/GetRejectedOrders",
     "HttpMethod": "GET",

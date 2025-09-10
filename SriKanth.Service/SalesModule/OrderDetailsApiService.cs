@@ -140,10 +140,10 @@ namespace SriKanth.Service.SalesModule
 
 				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
 				List<Order> orders;
-
-				// If status is Pending, fetch both Pending and Processing
-				if (orderStatus == OrderStatus.Pending)
+				
+				if (userRole == "Admin")
 				{
+<<<<<<< Updated upstream
 					List<Order> pendingOrders, processingOrders;
 					if (userRole == "Admin" || userRole == "SalesCoordinator")
 					{
@@ -167,6 +167,18 @@ namespace SriKanth.Service.SalesModule
 					{
 						orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
 					}
+=======
+					orders = await _businessData.GetAllOrdersAsync(orderStatus);
+				}
+				else if (userRole == "SalesCoordinator")
+				{
+					var locations = await _loginData.GetUserLocationCodesAsync(userId);
+					orders = await _businessData.GetAllOrdersByLocationsAsync(locations, orderStatus);						
+				}
+				else
+				{
+					orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
+>>>>>>> Stashed changes
 				}
 
 				if (!orders.Any())
@@ -188,9 +200,10 @@ namespace SriKanth.Service.SalesModule
 				// Get customer and salesperson details in parallel
 				var customersTask = _externalApiService.GetCustomersAsync();
 				var salesPeopleTask = _externalApiService.GetSalesPeopleAsync();
+				var locationsTask = _externalApiService.GetLocationsAsync();
 
 				// Create list of tasks to wait for
-				var tasks = new List<Task> { customersTask, salesPeopleTask };
+				var tasks = new List<Task> { customersTask, salesPeopleTask , locationsTask};
 				Task<InvoiceApiResponse>? invoiceTask = null;
 
 				// Only fetch invoices if delivered orders are requested
@@ -205,6 +218,7 @@ namespace SriKanth.Service.SalesModule
 				// Safely extract results with null checks
 				var customersResponse = await customersTask;
 				var salesPeopleResponse = await salesPeopleTask;
+				var locationsResponse = await locationsTask;
 
 				if (customersResponse?.value == null || salesPeopleResponse?.value == null)
 				{
@@ -214,10 +228,12 @@ namespace SriKanth.Service.SalesModule
 
 				var customers = customersResponse.value;
 				var salesPeople = salesPeopleResponse.value;
+				var locationsReturn = locationsResponse.value;
 
 				// Create lookup dictionaries for names
 				var customerDict = customers.ToDictionary(c => c.no, c => c.name);
 				var salesPersonDict = salesPeople.ToDictionary(s => s.code, s => s.name);
+				var locationDict = locationsReturn.ToDictionary(l => l.code, l => l.name);
 
 				// Prepare invoice lookup if needed
 				var invoiceLines = new List<SriKanth.Model.ExistingApis.Invoice>();
@@ -251,10 +267,20 @@ namespace SriKanth.Service.SalesModule
 
 					// Invoiced items: for delivered orders, from invoice lines; otherwise, null
 					List<OrderItemReturn>? invoicedItems = null;
+					string? invoiceNumber = null;
 					if (orderStatus == OrderStatus.Delivered && invoiceLines.Any())
 					{
 						try
 						{
+							// Find the first invoice for this order
+							var invoice = invoiceLines
+								.FirstOrDefault(inv =>
+									inv != null &&
+									!string.IsNullOrWhiteSpace(inv.OrderNo) &&
+									int.TryParse(inv.OrderNo.Trim(), out int orderNo) &&
+									orderNo == order.OrderNumber);
+
+							invoiceNumber = invoice?.DocumentNo;
 							// Filter invoice lines for this order with better error handling
 							var lines = invoiceLines
 								.Where(inv =>
@@ -280,18 +306,22 @@ namespace SriKanth.Service.SalesModule
 							invoicedItems = null;
 						}
 					}
+					var locationName = order.LocationCode != null && locationDict.TryGetValue(order.LocationCode, out var locName)
+						 ? locName : order.LocationCode ?? string.Empty;
 
 					return new OrderReturn
 					{
 						OrderNumber = order.OrderNumber,
 						CustomerName = customerDict.TryGetValue(order.CustomerCode, out var custName) ? custName : string.Empty,
 						SalesPersonName = salesPersonDict.TryGetValue(order.SalesPersonCode, out var spName) ? spName : string.Empty,
+						Location = locationName,
 						OrderDate = order.OrderDate,
 						PaymentMethodType = order.PaymentMethodCode,
 						Status = order.Status.ToString(),
 						SpecialNote = order.Note ?? string.Empty,
 						TotalAmount = order.TotalAmount,
 						OrderedItems = orderedItems,
+						InvoiceNumber = invoiceNumber,
 						InvoicedItems = invoicedItems,
 						RejectReason = order.RejectReason,
 						DeliveryDate = orderStatus == OrderStatus.Delivered ? order.DeliveryDate : null,

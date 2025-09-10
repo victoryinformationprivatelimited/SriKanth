@@ -11,12 +11,14 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public int OrderNumber { get; set; }
 		public string CustomerName { get; set; }
 		public string SalesPersonName { get; set; }
+		public string Location { get; set; }
 		public DateTime OrderDate { get; set; }
 		public string PaymentMethodType { get; set; }
 		public decimal TotalAmount { get; set; }
 		public string Status { get; set; } // Pending, Completed, Rejected
 		public string SpecialNote { get; set; }
 		public List<OrderItemReturn> OrderedItems { get; set; }
+		public string? InvoiceNumber { get; set; }
 		public List<OrderItemReturn>? InvoicedItems { get; set; }
 		public string? RejectReason { get; set; }
 		public string? TrackingNumber { get; set; }

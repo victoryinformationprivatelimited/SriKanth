@@ -25,6 +25,7 @@ namespace SriKanth.Service.SalesModule
 		private DateTime _tokenExpiryTime;
 		private readonly IEncryptionService _encryption;
 		private readonly string _baseApiUrl;
+		private readonly string _baseImageUrl;
 
 		/// <summary>
 		/// Initializes a new instance of the ExternalApiService class
@@ -37,6 +38,7 @@ namespace SriKanth.Service.SalesModule
 			_configuration = configuration;
 			_encryption = encryption;
 			_baseApiUrl = BuildBaseApiUrl();
+			_baseImageUrl = BuildBaseImageUrl();
 		}
 
 		private string BuildBaseApiUrl()
@@ -49,6 +51,17 @@ namespace SriKanth.Service.SalesModule
 				throw new InvalidOperationException("BusinessCentral:EnvironmentName and BusinessCentral:CompanyId must be configured");
 			}
 			return $"https://api.businesscentral.dynamics.com/v2.0/{environmentName}/api/asttrum/sales/v1.0/companies({companyId})";
+		}
+		private string BuildBaseImageUrl()
+		{
+			var environmentName = _configuration["BusinessCentral:EnvironmentName"];
+			var companyId = _configuration["BusinessCentral:CompanyId"];
+
+			if (string.IsNullOrEmpty(environmentName) || string.IsNullOrEmpty(companyId))
+			{
+				throw new InvalidOperationException("BusinessCentral:EnvironmentName and BusinessCentral:CompanyId must be configured");
+			}
+			return $"https://api.businesscentral.dynamics.com/v2.0/{environmentName}/api/v2.0/companies({companyId})";
 		}
 		/// <summary>
 		/// Retrieves an access token for Business Central API authentication
@@ -285,7 +298,7 @@ namespace SriKanth.Service.SalesModule
 		{
 			try
 			{
-				string apiUrl = $"{_baseApiUrl}/items({systemId})/picture/pictureContent";
+				string apiUrl = $"{_baseImageUrl}/items({systemId})/picture/pictureContent";
 				var imageBytes = await GetDataFromApiAsync<byte[]>(apiUrl);
 				return Convert.ToBase64String(imageBytes);
 			}

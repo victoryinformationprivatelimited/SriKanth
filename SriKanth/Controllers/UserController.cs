@@ -204,7 +204,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userDetails">Complete user information</param>
 		/// <returns>Confirmation of user creation</returns>
 		[HttpPost("AddUser")]
-		[Authorize(Roles = "Admin")] // Only Admins can add new users
+		//[Authorize(Roles = "Admin")] // Only Admins can add new users
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> AddNewUser([FromBody] UserDetails userDetails)
 		{

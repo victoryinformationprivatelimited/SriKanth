@@ -577,3 +577,7 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\SriKanth.API.
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\SriKanth.API.genruntimeconfig.cache
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\ref\SriKanth.API.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
