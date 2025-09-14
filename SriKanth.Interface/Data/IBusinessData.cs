@@ -18,5 +18,6 @@ namespace SriKanth.Data
 		Task<List<UserDocumentStorage>> GetUserDocumentsAsync(int userId);
 		Task<UserDocumentStorage?> GetUserDocumenByUrlAsync(string url);
 		Task RemoveDocumentAsync(UserDocumentStorage userDocument);
+		Task<List<Order>> GetAllOrdersByLocationsAsync(List<string> locations, OrderStatus orderStatus);
 	}
 }

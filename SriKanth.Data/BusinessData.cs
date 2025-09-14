@@ -95,6 +95,12 @@ namespace SriKanth.Data
 			_context.UserDocumentStorage.Remove(userDocument);
 			await _context.SaveChangesAsync();
 		}
+		public async Task<List<Order>> GetAllOrdersByLocationsAsync(List<string> locations, OrderStatus orderStatus)
+		{
+			return await _context.Order
+				.Where(o => locations.Contains(o.LocationCode) && o.Status == orderStatus)
+				.ToListAsync();
+		}
 
 	}
 }

@@ -459,7 +459,7 @@ namespace SriKanth.Service.SalesModule
 				var invoiceResponse = await invoiceTask;
 
 				var customers = customerResponse?.value ?? new List<Customer>();
-				var invoices = invoiceResponse?.value ?? new List<PostedInvoice>();
+				var invoices = invoiceResponse?.Value ?? new List<PostedInvoice>();
 
 				// OPTIMIZATION 2: Filter customers early and create lookup dictionary
 				var filteredCustomers = FilterCustomersByRole(customers, userRole, user.SalesPersonCode);
@@ -516,7 +516,7 @@ namespace SriKanth.Service.SalesModule
 
 			try
 			{
-				//Retrieve all customer-wise invoices from external API
+				// Retrieve all customer-wise invoices from external API
 				var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
 
 				// Validate that invoice data was successfully retrieved
@@ -543,40 +543,7 @@ namespace SriKanth.Service.SalesModule
 					.Where(inv => inv.DueAmount > 0)
 					.ToList();
 
-				// Process each invoice to map order dates from database
-				foreach (var invoice in filteredInvoices)
-				{
-					try
-					{
-						if (!string.IsNullOrWhiteSpace(invoice.OrderNo))
-						{
-							if (int.TryParse(invoice.OrderNo, out int orderNumber))
-							{
-								try
-								{
-									var order = await _businessData.GetOrderByIdAsync(orderNumber);
-									invoice.InvoiceDate = order != null ? order.OrderDate : DateTime.Today;
-								}
-								catch
-								{
-									invoice.InvoiceDate = DateTime.Today;
-								}
-							}
-							else
-							{
-								invoice.InvoiceDate = DateTime.Today;
-							}
-						}
-						else
-						{
-							invoice.InvoiceDate = null;
-						}
-					}
-					catch
-					{
-						invoice.InvoiceDate = null;
-					}
-				}
+				// No need to set or process order date
 
 				// Recalculate totals based on filtered invoices
 				customerInvoice.Invoices = filteredInvoices;
@@ -597,7 +564,7 @@ namespace SriKanth.Service.SalesModule
 		private async Task<List<CustomerWiseInvoices>> GetCustomerWiseInvoicesAsync()
 		{
 			var postedInvoiceResponse = await _externalApiService.GetPostedInvoiceDetailsAsync();
-			var invoices = postedInvoiceResponse.value;
+			var invoices = postedInvoiceResponse.Value;
 
 			// Group by customer
 			var customerGroups = invoices
@@ -615,10 +582,10 @@ namespace SriKanth.Service.SalesModule
 						{
 							InvoiceNo = inv.DocumentNo,
 							OrderNo = inv.OrderNo,
+							PostedDate = inv.PostingDate,
 							PdcAmount = releasedPDCs,
 							DueAmount = balanceAfterPDCs,
 							TotalAmount = originalAmount,
-							OriginalAmount = originalAmount,
 							BalanceBeforePDCs = balanceBeforePDCs,
 							ReleasedPDCs = releasedPDCs,
 							BalanceAfterPDCs = balanceAfterPDCs
@@ -649,9 +616,13 @@ namespace SriKanth.Service.SalesModule
 					{
 						InvoiceNo = inv.DocumentNo,
 						OrderNo = inv.OrderNo,
+						PostedDate = inv.PostingDate,
 						PdcAmount = inv.PdcAmount,
 						DueAmount = inv.RemainingAmount,
-						TotalAmount = inv.Amount
+						TotalAmount = inv.Amount,
+						BalanceBeforePDCs = inv.RemainingAmount + inv.PdcAmount,
+						ReleasedPDCs = inv.PdcAmount,
+						BalanceAfterPDCs = inv.RemainingAmount
 					}).ToList();
 
 					return new CustomerWiseInvoices
@@ -704,7 +675,7 @@ namespace SriKanth.Service.SalesModule
 					CustomerCode = invoice.CustomerNo,
 					CustomerName = customerName,
 					InvoiceDocumentNo = invoice.DocumentNo,
-					InvoiceDate = invoiceDate,
+					OrderDate = invoiceDate,
 					InvoicedAmount = invoice.Amount,
 					DueAmount = invoice.RemainingAmount
 				});
@@ -809,12 +780,16 @@ namespace SriKanth.Service.SalesModule
 				{
 					// Build location-wise inventory for this item
 					var locationInventories = inventoryLookup.TryGetValue(i.no, out List<dynamic> invList)
-						? invList.Select(inv => new LocationByItemInventory
-						{
-							LocationCode = inv.locationCode,
-							Inventory = inv.inventory
-						}).ToList()
-						: new List<LocationByItemInventory>();
+					   ? invList.Select(inv => new LocationByItemInventory
+					   {
+						   LocationCode = inv.locationCode,
+						   Inventory = i.reorderPoint == 0
+							   ? inv.inventory.ToString()
+							   : inv.inventory > i.reorderPoint
+								   ? $"{i.reorderPoint}+"
+								   : inv.inventory.ToString()
+					   }).ToList()
+					   : new List<LocationByItemInventory>();
 
 					return new OrderItemDetails
 					{
