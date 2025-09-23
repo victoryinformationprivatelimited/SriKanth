@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SriKanth.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd5012d97665323beb49ef45da110ebd3eca022e")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7c90478405f7d0501762e44032548df6c762075")]
+>>>>>>> Stashed changes
 [assembly: System.Reflection.AssemblyProductAttribute("SriKanth.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SriKanth.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
