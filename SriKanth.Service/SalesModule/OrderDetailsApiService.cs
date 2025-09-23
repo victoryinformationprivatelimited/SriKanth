@@ -140,58 +140,18 @@ namespace SriKanth.Service.SalesModule
 				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
 				List<Order> orders;
 
-				// If status is Pending, fetch both Pending and Processing
-				if (orderStatus == OrderStatus.Pending)
+				if (userRole == "Admin")
 				{
-					List<Order> pendingOrders;
-					if (userRole == "Admin")
-					{
-						pendingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Pending);
-					}
-					else if (userRole == "SalesCoordinator")
-					{
-						var locations = await _loginData.GetUserLocationCodesAsync(userId);
-						pendingOrders = await _businessData.GetAllOrdersByLocationsAsync(locations, OrderStatus.Pending);
-					}
-					else
-					{
-						pendingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Pending);
-					}
-					orders = pendingOrders.ToList();
+					orders = await _businessData.GetAllOrdersAsync(orderStatus);
 				}
-				else if (orderStatus == OrderStatus.Processing)
+				else if (userRole == "SalesCoordinator")
 				{
-					List<Order> processingOrders;
-					if (userRole == "Admin")
-					{
-						processingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Processing);
-					}
-					else if (userRole == "SalesCoordinator")
-					{
-						var locations = await _loginData.GetUserLocationCodesAsync(userId);
-						processingOrders = await _businessData.GetAllOrdersByLocationsAsync(locations, OrderStatus.Processing);
-					}
-					else
-					{
-						processingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Processing);
-					}
-					orders = processingOrders.ToList();
+					var locations = await _loginData.GetUserLocationCodesAsync(userId);
+					orders = await _businessData.GetAllOrdersByLocationsAsync(locations, orderStatus);
 				}
 				else
 				{
-					if (userRole == "Admin")
-					{
-						orders = await _businessData.GetAllOrdersAsync(orderStatus);
-					}
-					else if (userRole == "SalesCoordinator")
-					{
-						var locations = await _loginData.GetUserLocationCodesAsync(userId);
-						orders = await _businessData.GetAllOrdersByLocationsAsync(locations, orderStatus);
-					}
-					else
-					{
-						orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
-					}
+					orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
 				}
 
 				if (!orders.Any())

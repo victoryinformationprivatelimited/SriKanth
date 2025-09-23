@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SriKanth.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fdd430e4dd7f72987b0cd7cf1ec76b9961fa325c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7c90478405f7d0501762e44032548df6c762075")]
 [assembly: System.Reflection.AssemblyProductAttribute("SriKanth.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SriKanth.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
