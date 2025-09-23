@@ -371,8 +371,7 @@
               "ViewState": "AgIAAHMCAAAAAAAAAAAAAE0AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T14:44:06.079Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -429,8 +428,7 @@
               "RelativeToolTip": "Controllers\\BusinessController.cs",
               "ViewState": "AgIAAEoAAAAAAAAAAAAgwF4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T01:49:30.379Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T01:49:30.379Z"
             },
             {
               "$type": "Document",
@@ -442,8 +440,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\EncryptionService.cs",
               "ViewState": "AgIAAG4AAAAAAAAAAAAgwHkAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:10:42.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T04:10:42.338Z"
             },
             {
               "$type": "Document",
@@ -455,8 +452,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAAAI4BAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:21:35.234Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T02:21:35.234Z"
             },
             {
               "$type": "Document",
