@@ -3,74 +3,21 @@
   "WorkspaceRootPath": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\",
   "Documents": [
     {
-<<<<<<< Updated upstream
-=======
+      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\orderdetailsapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\externalapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
->>>>>>> Stashed changes
       "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-<<<<<<< Updated upstream
-=======
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\businessapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\dtos\\customerwiseinvoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\dtos\\customerinvoicereturn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\orderdetailsapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\encryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
->>>>>>> Stashed changes
       "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\controllers\\businesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:controllers\\businesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< Updated upstream
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\externalapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\businessapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\login_module\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\login_module\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\passwordreset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\requestlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\login_module\\tracklogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\login_module\\imfaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\login_module\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\login_module\\mfaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> Stashed changes
     },
     {
       "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -106,82 +53,7 @@
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\dtos\\customerinvoicereturn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\orderdetailsapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\authenticatedresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\data\\ilogindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FFFDC3D6-CDB1-4BDF-BB49-E84A510C850B}|..\\SriKanth.Data\\SriKanth.Data.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.data\\logindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\notification\\ismsnotification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\notification\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\notification\\iemailnotification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\notification\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\notification\\smsnotification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\validationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\notificationresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\notificationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\loginresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\notification\\emailnotification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\entities\\sentnotification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\entities\\mfasetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\entities\\logintrack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\entities\\sendtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\entities\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\entities\\usertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\existingapis\\salesorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\srikanthdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -193,7 +65,6 @@
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\existingapis\\salesintegrationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{FFFDC3D6-CDB1-4BDF-BB49-E84A510C850B}|..\\SriKanth.Data\\SriKanth.Data.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.data\\businessdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -201,115 +72,20 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\dtos\\ordercreationdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\existingapis\\invoiceapiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\salesmodule\\iexternalapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> Stashed changes
     },
     {
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\dtos\\orderreturn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\existingapis\\itemapiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\migrations\\20250716035518_changetable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\migrations\\20250707095114_addnew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\srikanth.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:srikanth.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\userreturn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\usercreationdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\passwordresetreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\iuserhistoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\imessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\iencryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\userhistoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\userhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\azureblobstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> Stashed changes
     },
     {
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\existingapis\\inventoryapiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\existingapis\\postedinvoiceapiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-=======
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\entities\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FFFDC3D6-CDB1-4BDF-BB49-E84A510C850B}|..\\SriKanth.Data\\SriKanth.Data.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.data\\businessdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\infrastructure\\userhistoryactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:infrastructure\\userhistoryactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\enumerableextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\existingapis\\postedinvoiceapiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\entities\\userlocation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\dtos\\orderstatussummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\data\\ibusinessdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\dtos\\ordercreationdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\businessmodule\\dtos\\orderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\existingapis\\itemapiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\srikanth.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:srikanth.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\migrations\\20250707083703_addnewdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
->>>>>>> Stashed changes
       "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\salesmodule\\iorderdetailsapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -347,7 +123,6 @@
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\existingapis\\salespeopleapiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{FFFDC3D6-CDB1-4BDF-BB49-E84A510C850B}|..\\SriKanth.Data\\SriKanth.Data.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.data\\logindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -416,11 +191,6 @@
       "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:logs\\log-20250603.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-=======
-      "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\entities\\userdocumentstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
->>>>>>> Stashed changes
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\mfavalidationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -430,7 +200,6 @@
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\validations\\pdfimagefilevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\passwordreset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -476,11 +245,6 @@
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\login_module\\dtos\\loginresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-=======
-      "AbsoluteMoniker": "D:0:0:{36CF04E8-58EB-498B-8BFF-96B2F57C891F}|..\\SriKanth.Interface\\SriKanth.Interface.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.interface\\salesmodule\\iazureblobstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
->>>>>>> Stashed changes
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\My projects\\Victory\\SriKanthWeb\\SriKanth.Service\\Login_Module\\UserService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -581,7 +345,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 282,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -593,21 +357,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
-              "DocumentIndex": 1,
-              "Title": "BusinessController.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\BusinessController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BusinessController.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\BusinessController.cs",
-              "RelativeToolTip": "Controllers\\BusinessController.cs",
-              "ViewState": "AgIAAAMCAAAAAAAAAAAgwAwCAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T01:49:30.379Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MessageService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\MessageService.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Service\\MessageService.cs",
@@ -615,12 +365,11 @@
               "RelativeToolTip": "..\\SriKanth.Service\\MessageService.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAYwEIAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:14:01.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:14:01.333Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
@@ -628,25 +377,24 @@
               "RelativeToolTip": "Controllers\\UserController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAA1wMUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T00:03:08.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T00:03:08.772Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ExternalApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAtwDIAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAIAwwDIAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-02T02:21:35.234Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Login_Module\\UserService.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Service\\Login_Module\\UserService.cs",
@@ -654,12 +402,11 @@
               "RelativeToolTip": "..\\SriKanth.Service\\Login_Module\\UserService.cs",
               "ViewState": "AgIAAEsBAAAAAAAAAAAtwFoBAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:39:28.517Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T04:39:28.517Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "EncryptionService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\EncryptionService.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Service\\EncryptionService.cs",
@@ -667,12 +414,11 @@
               "RelativeToolTip": "..\\SriKanth.Service\\EncryptionService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:10:42.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T04:10:42.338Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -685,28 +431,44 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderDetailsApiService.cs",
+              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
+              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
+              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
+              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAlwK4CAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T17:27:48.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
-=======
-              "DocumentIndex": 2,
->>>>>>> Stashed changes
+              "Title": "BusinessController.cs",
+              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\BusinessController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BusinessController.cs",
+              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\BusinessController.cs",
+              "RelativeToolTip": "Controllers\\BusinessController.cs",
+              "ViewState": "AgIAAAMCAAAAAAAAAAAgwAwCAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T01:49:30.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "BusinessApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
-<<<<<<< Updated upstream
               "ViewState": "AgIAAO4CAAAAAAAAAAAAwDYBAAADAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAGsAAAAAAAAAAAAqwGICAAADAAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T14:44:06.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-01T14:44:06.079Z"
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "SriKanthDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanthDbContext.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Model\\SriKanthDbContext.cs",
@@ -714,12 +476,11 @@
               "RelativeToolTip": "..\\SriKanth.Model\\SriKanthDbContext.cs",
               "ViewState": "AgIAAOwAAAAAAAAAAAAtwPcAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:46:42.899Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T02:46:42.899Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -727,12 +488,11 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAGMAAAAAAAAAAAAgwDMAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T06:38:28.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T06:38:28.098Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "20250707083703_addnewdb.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Migrations\\20250707083703_addnewdb.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Model\\Migrations\\20250707083703_addnewdb.cs",
@@ -740,12 +500,11 @@
               "RelativeToolTip": "..\\SriKanth.Model\\Migrations\\20250707083703_addnewdb.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-07T08:37:50.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-07T08:37:50.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "SriKanth.http",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\SriKanth.http",
               "RelativeDocumentMoniker": "SriKanth.http",
@@ -757,189 +516,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-=======
-              "DocumentIndex": 4,
->>>>>>> Stashed changes
+              "DocumentIndex": 14,
               "Title": "CustomerInvoiceReturn.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerInvoiceReturn.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerInvoiceReturn.cs",
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerInvoiceReturn.cs",
               "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerInvoiceReturn.cs",
-<<<<<<< Updated upstream
               "ViewState": "AgIAAAYAAAAAAAAAAAAuwAgAAAAOAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAgAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T08:10:44.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CustomerWiseInvoices.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerWiseInvoices.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerWiseInvoices.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerWiseInvoices.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerWiseInvoices.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAkwB0AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T12:54:03.712Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ExternalApiService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
-              "ViewState": "AgIAAB4BAAAAAAAAAAAAACwBAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:21:35.234Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-27T17:07:31.218Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EncryptionService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\EncryptionService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\EncryptionService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\EncryptionService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\EncryptionService.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAYwHkAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:10:42.338Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BusinessController.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\BusinessController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BusinessController.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\BusinessController.cs",
-              "RelativeToolTip": "Controllers\\BusinessController.cs",
-              "ViewState": "AgIAAGsBAAAAAAAAAAAMwFsBAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T01:49:30.379Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OrderDetailsApiService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "ViewState": "AgIAAN4CAAAAAAAAAAAAwL4BAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T17:27:48.834Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "TrackLogin.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Login_Module\\TrackLogin.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\Login_Module\\TrackLogin.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Login_Module\\TrackLogin.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\Login_Module\\TrackLogin.cs",
-              "ViewState": "AgIAALEAAAAAAAAAAAAowOoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T09:31:17.747Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Login_Module\\IUserService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\Login_Module\\IUserService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Login_Module\\IUserService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\Login_Module\\IUserService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwA8AAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T19:40:52.101Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "IJwtTokenService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Login_Module\\IJwtTokenService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\Login_Module\\IJwtTokenService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Login_Module\\IJwtTokenService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\Login_Module\\IJwtTokenService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T05:42:53.022Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAALcAAAAAAAAAAAAAAOUAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T00:03:08.772Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "UserDetails.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\UserDetails.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\UserDetails.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\UserDetails.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\UserDetails.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAgwAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T11:06:09.263Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "PasswordReset.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\PasswordReset.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\PasswordReset.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\PasswordReset.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\PasswordReset.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T19:47:13.083Z"
+              "WhenOpened": "2025-06-05T08:10:44.178Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "RequestLogin.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\RequestLogin.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\RequestLogin.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\RequestLogin.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\RequestLogin.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAcwB0AAAACAAAAAAAAAA==",
->>>>>>> Stashed changes
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T19:48:46.517Z"
-            },
-            {
-              "$type": "Document",
-<<<<<<< Updated upstream
-              "DocumentIndex": 12,
               "Title": "CustomerWiseInvoices.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerWiseInvoices.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\CustomerWiseInvoices.cs",
@@ -958,21 +547,11 @@
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesIntegrationResponse.cs",
               "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\SalesIntegrationResponse.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAswBYAAAAnAAAAAAAAAA==",
-=======
-              "DocumentIndex": 9,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Login_Module\\UserService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\Login_Module\\UserService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Login_Module\\UserService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\Login_Module\\UserService.cs",
-              "ViewState": "AgIAAJsBAAAAAAAAAAAowKoBAAADAAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:39:28.517Z"
+              "WhenOpened": "2025-06-07T02:32:18.617Z"
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 16,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\Entities\\Order.cs",
@@ -994,19 +573,6 @@
               "ViewState": "AgIAADgAAAAAAAAAAAAlwEEAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-02T04:09:56.895Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "OrderDetailsApiService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "ViewState": "AgIAAC4BAAAAAAAAAAApwK4CAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T17:27:48.834Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -1053,21 +619,11 @@
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\User.cs",
               "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\User.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAtwBcAAAAiAAAAAAAAAA==",
-=======
-              "DocumentIndex": 15,
-              "Title": "IMfaService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Login_Module\\IMfaService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\Login_Module\\IMfaService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Login_Module\\IMfaService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\Login_Module\\IMfaService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA5AAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T03:50:49.339Z"
+              "WhenOpened": "2025-06-02T03:07:29.913Z"
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 24,
               "Title": "InventoryApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\InventoryApiResponse.cs",
@@ -1099,21 +655,11 @@
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderReturn.cs",
               "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\OrderReturn.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAxwAgAAAAOAAAAAAAAAA==",
-=======
-              "DocumentIndex": 17,
-              "Title": "MfaService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Login_Module\\MfaService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\Login_Module\\MfaService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Login_Module\\MfaService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\Login_Module\\MfaService.cs",
-              "ViewState": "AgIAANMAAAAAAAAAAAAAAOQAAAADAAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T10:22:19.981Z"
+              "WhenOpened": "2025-06-02T02:41:15.63Z"
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 25,
               "Title": "PostedInvoiceApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\PostedInvoiceApiResponse.cs",
@@ -1133,21 +679,11 @@
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SalesModule\\IOrderDetailsApiService.cs",
               "RelativeToolTip": "..\\SriKanth.Interface\\SalesModule\\IOrderDetailsApiService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABIAAAAAAAAAA==",
-=======
-              "DocumentIndex": 18,
-              "Title": "JwtTokenService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Login_Module\\JwtTokenService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\Login_Module\\JwtTokenService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Login_Module\\JwtTokenService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\Login_Module\\JwtTokenService.cs",
-              "ViewState": "AgIAAMcAAAAAAAAAAAAkwD4AAAAXAAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T05:27:03.895Z"
+              "WhenOpened": "2025-07-01T17:34:35.627Z"
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 29,
               "Title": "CustomerApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\CustomerApiResponse.cs",
@@ -1155,21 +691,11 @@
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\CustomerApiResponse.cs",
               "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\CustomerApiResponse.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAA7wAkAAAAOAAAAAAAAAA==",
-=======
-              "DocumentIndex": 19,
-              "Title": "AuthenticatedResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\AuthenticatedResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\AuthenticatedResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\AuthenticatedResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\AuthenticatedResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T03:17:44.053Z"
+              "WhenOpened": "2025-06-02T03:01:53.641Z"
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 27,
               "Title": "IBusinessApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SalesModule\\IBusinessApiService.cs",
@@ -1346,8 +872,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\Login_Module\\JwtTokenService.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAIwDgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T05:27:03.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T05:27:03.895Z"
             },
             {
               "$type": "Document",
@@ -1388,21 +913,17 @@
             {
               "$type": "Document",
               "DocumentIndex": 46,
-=======
-              "DocumentIndex": 20,
->>>>>>> Stashed changes
               "Title": "ILoginData.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Data\\ILoginData.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Interface\\Data\\ILoginData.cs",
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Data\\ILoginData.cs",
               "RelativeToolTip": "..\\SriKanth.Interface\\Data\\ILoginData.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAmwCkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAA2wCgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-03T08:26:33.141Z"
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 47,
               "Title": "AzureBlobStorageService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
@@ -1422,401 +943,8 @@
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserDocumentStorage.cs",
               "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\UserDocumentStorage.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
-=======
-              "DocumentIndex": 21,
-              "Title": "LoginData.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Data\\LoginData.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Data\\LoginData.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Data\\LoginData.cs",
-              "RelativeToolTip": "..\\SriKanth.Data\\LoginData.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAuwKEAAAADAAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T03:15:38.102Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "ISmsNotification.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Notification\\ISmsNotification.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\Notification\\ISmsNotification.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Notification\\ISmsNotification.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\Notification\\ISmsNotification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T03:10:46.518Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "INotificationService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Notification\\INotificationService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\Notification\\INotificationService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Notification\\INotificationService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\Notification\\INotificationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T03:10:27.977Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "NotificationService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Notification\\NotificationService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\Notification\\NotificationService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Notification\\NotificationService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\Notification\\NotificationService.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAgwIMAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:13:57.496Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "IEmailNotification.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Notification\\IEmailNotification.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\Notification\\IEmailNotification.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Notification\\IEmailNotification.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\Notification\\IEmailNotification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T03:34:02.338Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "SmsNotification.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Notification\\SmsNotification.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\Notification\\SmsNotification.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Notification\\SmsNotification.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\Notification\\SmsNotification.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAQwIkAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:13:48.598Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ValidationService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\ValidationService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\ValidationService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\ValidationService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\ValidationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T16:18:14.491Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "ServiceResult.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\ServiceResult.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\ServiceResult.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\ServiceResult.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\ServiceResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T02:50:11.625Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "NotificationResult.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\NotificationResult.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\NotificationResult.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\NotificationResult.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\NotificationResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T02:47:26.14Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "NotificationRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\NotificationRequest.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\NotificationRequest.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\NotificationRequest.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\NotificationRequest.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwB0AAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T02:47:24.216Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "LoginResult.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\LoginResult.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\LoginResult.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\LoginResult.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\LoginResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T19:44:23.412Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "EmailNotification.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Notification\\EmailNotification.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\Notification\\EmailNotification.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\Notification\\EmailNotification.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\Notification\\EmailNotification.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAAwFoAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:13:53.893Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Message.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Message.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Message.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Message.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Message.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T15:50:18.739Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "SentNotification.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\SentNotification.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\Entities\\SentNotification.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\SentNotification.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\SentNotification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T16:03:07.194Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "MFASetting.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\MFASetting.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\Entities\\MFASetting.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\MFASetting.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\MFASetting.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T02:38:51.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "SendToken.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\SendToken.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\Entities\\SendToken.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\SendToken.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\SendToken.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T08:22:48.227Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "UserRole.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserRole.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\Entities\\UserRole.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserRole.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\UserRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T11:40:46.672Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "LoginTrack.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\LoginTrack.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\Entities\\LoginTrack.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\LoginTrack.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\LoginTrack.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAA9wCwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T16:01:46.535Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\User.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\User.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T03:07:29.913Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "UpdateOrderRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\UpdateOrderRequest.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\UpdateOrderRequest.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\UpdateOrderRequest.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\UpdateOrderRequest.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAWwBEAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T09:19:55.751Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "UserToken.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserToken.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\Entities\\UserToken.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserToken.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\UserToken.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwB0AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T15:48:23.863Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "MessageService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\MessageService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\MessageService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\MessageService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\MessageService.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAkwFMAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:14:01.333Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "SriKanthDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanthDbContext.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\SriKanthDbContext.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\SriKanthDbContext.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\SriKanthDbContext.cs",
-              "ViewState": "AgIAAOsAAAAAAAAAAAAWwPcAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:46:42.899Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "SalesOrderRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesOrderRequest.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\SalesOrderRequest.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesOrderRequest.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\SalesOrderRequest.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAD4v0EAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:09:56.895Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "SalesIntegrationResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesIntegrationResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\SalesIntegrationResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesIntegrationResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\SalesIntegrationResponse.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAuwBYAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T02:32:18.617Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\Entities\\Order.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\Entities\\Order.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\Entities\\Order.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\Entities\\Order.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAApwBMAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:38:33.284Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "InvoiceApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\InvoiceApiResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\InvoiceApiResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\InvoiceApiResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\InvoiceApiResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T07:56:46.974Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "IExternalApiService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SalesModule\\IExternalApiService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\SalesModule\\IExternalApiService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SalesModule\\IExternalApiService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\SalesModule\\IExternalApiService.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAmwBwAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T08:59:28.411Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAgwKIAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T06:38:28.098Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "OrderReturn.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderReturn.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\OrderReturn.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderReturn.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\OrderReturn.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:41:15.63Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "20250716035518_changetable.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Migrations\\20250716035518_changetable.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Migrations\\20250716035518_changetable.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Migrations\\20250716035518_changetable.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Migrations\\20250716035518_changetable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T03:57:04.146Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "20250707095114_addnew.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Migrations\\20250707095114_addnew.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Migrations\\20250707095114_addnew.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Migrations\\20250707095114_addnew.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Migrations\\20250707095114_addnew.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T03:57:06.852Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "SriKanth.API.csproj",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\SriKanth.API.csproj",
-              "RelativeDocumentMoniker": "SriKanth.API.csproj",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\SriKanth.API.csproj",
-              "RelativeToolTip": "SriKanth.API.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-12T09:04:34.364Z"
+              "WhenOpened": "2025-06-05T11:34:44.991Z"
             },
             {
               "$type": "Document",
@@ -1832,7 +960,6 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 50,
               "Title": "UserHistoryActionFilter.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Infrastructure\\UserHistoryActionFilter.cs",
@@ -1841,8 +968,7 @@
               "RelativeToolTip": "Infrastructure\\UserHistoryActionFilter.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAArwBcAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T08:53:04.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T08:53:04.393Z"
             },
             {
               "$type": "Document",
@@ -2003,25 +1129,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 64,
-=======
-              "DocumentIndex": 56,
->>>>>>> Stashed changes
               "Title": "PasswordResetReq.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\PasswordResetReq.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\PasswordResetReq.cs",
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\PasswordResetReq.cs",
               "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\PasswordResetReq.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-07T02:49:39.009Z"
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 65,
-=======
-              "DocumentIndex": 57,
->>>>>>> Stashed changes
               "Title": "RefreshTokenRequest.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\RefreshTokenRequest.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\RefreshTokenRequest.cs",
@@ -2033,7 +1152,6 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 66,
               "Title": "ServiceResult.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\ServiceResult.cs",
@@ -2053,153 +1171,11 @@
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\NotificationResult.cs",
               "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\NotificationResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-=======
-              "DocumentIndex": 58,
-              "Title": "IUserHistoryService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\IUserHistoryService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\IUserHistoryService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\IUserHistoryService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\IUserHistoryService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAACAAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T08:27:29.887Z"
+              "WhenOpened": "2025-06-07T02:47:26.14Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "UserCreationDetails.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\UserCreationDetails.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\UserCreationDetails.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\UserCreationDetails.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\UserCreationDetails.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T02:50:04.903Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 59,
-              "Title": "IMessageService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\IMessageService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\IMessageService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\IMessageService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\IMessageService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T03:10:08.28Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 60,
-              "Title": "IEncryptionService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\IEncryptionService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\IEncryptionService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\IEncryptionService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\IEncryptionService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T09:03:49.633Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "UserHistoryService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\UserHistoryService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\UserHistoryService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\UserHistoryService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\UserHistoryService.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAjwCEAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T08:17:10.55Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
-              "Title": "UserHistory.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\UserHistory.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\UserHistory.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\UserHistory.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\UserHistory.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAuwBQAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T08:11:46.62Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 63,
-              "Title": "AzureBlobStorageService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAuwM8AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T10:49:48.677Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 64,
-              "Title": "InventoryApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\InventoryApiResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\InventoryApiResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\InventoryApiResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\InventoryApiResponse.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAADgvxIAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T06:35:48.768Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 65,
-              "Title": "OrderItem.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\Entities\\OrderItem.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\Entities\\OrderItem.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\Entities\\OrderItem.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\Entities\\OrderItem.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:38:37.648Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 66,
-              "Title": "BusinessData.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Data\\BusinessData.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Data\\BusinessData.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Data\\BusinessData.cs",
-              "RelativeToolTip": "..\\SriKanth.Data\\BusinessData.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAA2wDAAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T03:15:29.229Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 67,
-              "Title": "UserHistoryActionFilter.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Infrastructure\\UserHistoryActionFilter.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\UserHistoryActionFilter.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Infrastructure\\UserHistoryActionFilter.cs",
-              "RelativeToolTip": "Infrastructure\\UserHistoryActionFilter.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAADgv0AAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T08:53:04.393Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 68,
-              "Title": "EnumerableExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\EnumerableExtensions.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\EnumerableExtensions.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\EnumerableExtensions.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\EnumerableExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T16:59:31.851Z"
-            },
-            {
-              "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 68,
               "Title": "NotificationRequest.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\NotificationRequest.cs",
@@ -2207,17 +1183,8 @@
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\NotificationRequest.cs",
               "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\NotificationRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-=======
-              "DocumentIndex": 69,
-              "Title": "PostedInvoiceApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\PostedInvoiceApiResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\PostedInvoiceApiResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\PostedInvoiceApiResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\PostedInvoiceApiResponse.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwAkAAAAOAAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T14:56:05.187Z"
+              "WhenOpened": "2025-06-07T02:47:24.216Z"
             },
             {
               "$type": "Document",
@@ -2234,246 +1201,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 70,
-              "Title": "UserLocation.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserLocation.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\Entities\\UserLocation.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserLocation.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\UserLocation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T19:06:59.8Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 71,
-              "Title": "OrderStatusSummary.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderStatusSummary.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\OrderStatusSummary.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderStatusSummary.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\OrderStatusSummary.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T16:45:19.363Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 72,
-              "Title": "IBusinessData.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Data\\IBusinessData.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\Data\\IBusinessData.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\Data\\IBusinessData.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\Data\\IBusinessData.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAADwvxQAAABiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T03:15:20.002Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 73,
-              "Title": "OrderCreationDetails.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderCreationDetails.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\OrderCreationDetails.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderCreationDetails.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\OrderCreationDetails.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAIA9wCYAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T03:03:15.333Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 74,
-              "Title": "OrderRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderRequest.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\OrderRequest.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderRequest.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\OrderRequest.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowAkAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:41:41.818Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 75,
-              "Title": "ItemApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\ItemApiResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\ItemApiResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\ItemApiResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\ItemApiResponse.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAADgvw8AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:25:17.112Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 76,
-              "Title": "SriKanth.http",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\SriKanth.http",
-              "RelativeDocumentMoniker": "SriKanth.http",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\SriKanth.http",
-              "RelativeToolTip": "SriKanth.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-06-17T05:15:44.54Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 77,
-              "Title": "20250707083703_addnewdb.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Migrations\\20250707083703_addnewdb.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Migrations\\20250707083703_addnewdb.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Migrations\\20250707083703_addnewdb.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Migrations\\20250707083703_addnewdb.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-07T08:37:50.57Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 78,
-              "Title": "IOrderDetailsApiService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SalesModule\\IOrderDetailsApiService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\SalesModule\\IOrderDetailsApiService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SalesModule\\IOrderDetailsApiService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\SalesModule\\IOrderDetailsApiService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T17:34:35.627Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 80,
-              "Title": "CustomerApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\CustomerApiResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\CustomerApiResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\CustomerApiResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\CustomerApiResponse.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAA7wAkAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T03:01:53.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 79,
-              "Title": "IBusinessApiService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SalesModule\\IBusinessApiService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Interface\\SalesModule\\IBusinessApiService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SalesModule\\IBusinessApiService.cs",
-              "RelativeToolTip": "..\\SriKanth.Interface\\SalesModule\\IBusinessApiService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAIA9wBUAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T03:10:45.961Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 81,
-              "Title": "LocationApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\LocationApiResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\LocationApiResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\LocationApiResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\LocationApiResponse.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAASwA8AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T20:23:00.083Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 82,
-              "Title": "StockItem.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\StockItem.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\StockItem.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\StockItem.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\StockItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T11:42:14.52Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 83,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAABwAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-30T14:31:10.803Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 84,
-              "Title": "SalesPriceApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesPriceApiResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\SalesPriceApiResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesPriceApiResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\SalesPriceApiResponse.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAtwA4AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:25:27.344Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 85,
-              "Title": "SalesPeopleApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesPeopleApiResponse.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\ExistingApis\\SalesPeopleApiResponse.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesPeopleApiResponse.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\ExistingApis\\SalesPeopleApiResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:25:03.847Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 86,
-              "Title": "UserDocumentStorage.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserDocumentStorage.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\Entities\\UserDocumentStorage.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserDocumentStorage.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\Entities\\UserDocumentStorage.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T11:34:44.991Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 87,
-              "Title": "MFAValidationRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\MFAValidationRequest.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Login_Module\\DTOs\\MFAValidationRequest.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\MFAValidationRequest.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Login_Module\\DTOs\\MFAValidationRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T02:47:21.016Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 88,
-              "Title": "DocumentAdd.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\DocumentAdd.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\BusinessModule\\DTOs\\DocumentAdd.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\DocumentAdd.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\BusinessModule\\DTOs\\DocumentAdd.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T14:26:49.471Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 89,
-              "Title": "PdfImageFileValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Validations\\PdfImageFileValidator.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Model\\Validations\\PdfImageFileValidator.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Validations\\PdfImageFileValidator.cs",
-              "RelativeToolTip": "..\\SriKanth.Model\\Validations\\PdfImageFileValidator.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwAsAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T02:59:41.753Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 90,
               "Title": "IAzureBlobStorageService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Interface\\SalesModule\\IAzureBlobStorageService.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Interface\\SalesModule\\IAzureBlobStorageService.cs",
@@ -2485,7 +1212,6 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 71,
               "Title": "UserRole.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserRole.cs",
@@ -2571,9 +1297,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 83,
-=======
-              "DocumentIndex": 96,
->>>>>>> Stashed changes
               "Title": "JwtTokenService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\Login_Module\\JwtTokenService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\Login_Module\\JwtTokenService.cs",
@@ -2584,11 +1307,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 82,
-=======
-              "DocumentIndex": 95,
->>>>>>> Stashed changes
               "Title": "TrackLogin.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\Login_Module\\TrackLogin.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\Login_Module\\TrackLogin.cs",
@@ -2599,11 +1318,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 81,
-=======
-              "DocumentIndex": 94,
->>>>>>> Stashed changes
               "Title": "EncryptionService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\EncryptionService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\EncryptionService.cs",
@@ -2614,11 +1329,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 80,
-=======
-              "DocumentIndex": 93,
->>>>>>> Stashed changes
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\Login_Module\\UserService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\Login_Module\\UserService.cs",
@@ -2629,11 +1340,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 84,
-=======
-              "DocumentIndex": 97,
->>>>>>> Stashed changes
               "Title": "ExternalApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\ExternalApiService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\ExternalApiService.cs",
@@ -2644,11 +1351,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 85,
-=======
-              "DocumentIndex": 98,
->>>>>>> Stashed changes
               "Title": "BusinessApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\BusinessApiService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\BusinessApiService.cs",
@@ -2659,11 +1362,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 86,
-=======
-              "DocumentIndex": 99,
->>>>>>> Stashed changes
               "Title": "BusinessData.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Data\\BusinessData.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Data\\BusinessData.cs",
@@ -2674,11 +1373,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 87,
-=======
-              "DocumentIndex": 100,
->>>>>>> Stashed changes
               "Title": "IBusinessData.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\Data\\IBusinessData.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\Data\\IBusinessData.cs",
@@ -2689,11 +1384,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 88,
-=======
-              "DocumentIndex": 101,
->>>>>>> Stashed changes
               "Title": "IBusinessApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\IBusinessApiService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\IBusinessApiService.cs",
@@ -2704,11 +1395,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 89,
-=======
-              "DocumentIndex": 102,
->>>>>>> Stashed changes
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\Entities\\Order.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\Entities\\Order.cs",
@@ -2719,11 +1406,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 90,
-=======
-              "DocumentIndex": 103,
->>>>>>> Stashed changes
               "Title": "LoginData.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Data\\LoginData.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Data\\LoginData.cs",
@@ -2734,11 +1417,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 91,
-=======
-              "DocumentIndex": 104,
->>>>>>> Stashed changes
               "Title": "ILoginData.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\Data\\ILoginData.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\Data\\ILoginData.cs",
@@ -2749,11 +1428,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 92,
-=======
-              "DocumentIndex": 105,
->>>>>>> Stashed changes
               "Title": "ServiceResult.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\ServiceResult.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\ServiceResult.cs",
@@ -2764,11 +1439,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 93,
-=======
-              "DocumentIndex": 106,
->>>>>>> Stashed changes
               "Title": "OrderItem.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\Entities\\OrderItem.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\Entities\\OrderItem.cs",
@@ -2779,11 +1450,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 94,
-=======
-              "DocumentIndex": 107,
->>>>>>> Stashed changes
               "Title": "InventoryApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\InventoryApiResponse.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\InventoryApiResponse.cs",
@@ -2794,11 +1461,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 95,
-=======
-              "DocumentIndex": 108,
->>>>>>> Stashed changes
               "Title": "StockItem.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\StockItem.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\StockItem.cs",
@@ -2809,11 +1472,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 96,
-=======
-              "DocumentIndex": 109,
->>>>>>> Stashed changes
               "Title": "OrderRequest.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderRequest.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderRequest.cs",
@@ -2824,11 +1483,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 97,
-=======
-              "DocumentIndex": 110,
->>>>>>> Stashed changes
               "Title": "LoginTrack.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\LoginTrack.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\LoginTrack.cs",
@@ -2839,11 +1494,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 98,
-=======
-              "DocumentIndex": 111,
->>>>>>> Stashed changes
               "Title": "OrderCreationDetails.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderCreationDetails.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\BusinessModule\\DTOs\\OrderCreationDetails.cs",
@@ -2854,11 +1505,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 99,
-=======
-              "DocumentIndex": 112,
->>>>>>> Stashed changes
               "Title": "MfaService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\Login_Module\\MfaService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Service\\Login_Module\\MfaService.cs",
@@ -2869,11 +1516,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 100,
-=======
-              "DocumentIndex": 113,
->>>>>>> Stashed changes
               "Title": "SalesPriceApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesPriceApiResponse.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesPriceApiResponse.cs",
@@ -2884,11 +1527,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 101,
-=======
-              "DocumentIndex": 114,
->>>>>>> Stashed changes
               "Title": "ItemApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\ItemApiResponse.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\ItemApiResponse.cs",
@@ -2899,11 +1538,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 102,
-=======
-              "DocumentIndex": 115,
->>>>>>> Stashed changes
               "Title": "CustomerApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\CustomerApiResponse.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\CustomerApiResponse.cs",
@@ -2914,11 +1549,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 103,
-=======
-              "DocumentIndex": 116,
->>>>>>> Stashed changes
               "Title": "IExternalApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\IExternalApiService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Interface\\IExternalApiService.cs",
@@ -2929,11 +1560,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 104,
-=======
-              "DocumentIndex": 117,
->>>>>>> Stashed changes
               "Title": "UserCreationDetails.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\UserCreationDetails.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\DTOs\\UserCreationDetails.cs",
@@ -2944,11 +1571,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 105,
-=======
-              "DocumentIndex": 118,
->>>>>>> Stashed changes
               "Title": "LocationApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\LocationApiResponse.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\LocationApiResponse.cs",
@@ -2959,11 +1582,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 106,
-=======
-              "DocumentIndex": 119,
->>>>>>> Stashed changes
               "Title": "SalesPeopleApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesPeopleApiResponse.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\ExistingApis\\SalesPeopleApiResponse.cs",
@@ -2974,11 +1593,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 107,
-=======
-              "DocumentIndex": 120,
->>>>>>> Stashed changes
               "Title": "UserToken.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserToken.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\UserToken.cs",
@@ -2989,11 +1604,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 108,
-=======
-              "DocumentIndex": 121,
->>>>>>> Stashed changes
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\User.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\SriKanth\\SriKanth.Model\\Login_Module\\Entities\\User.cs",
@@ -3004,11 +1615,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 79,
-=======
-              "DocumentIndex": 92,
->>>>>>> Stashed changes
               "Title": "IUserService.cs",
               "DocumentMoniker": "D:\\My projects\\Victory\\SriKanthWeb\\SriKanth.Interface\\Login_Module\\IUserService.cs",
               "ToolTip": "D:\\My projects\\Victory\\SriKanthWeb\\SriKanth.Interface\\Login_Module\\IUserService.cs",
@@ -3017,11 +1624,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
               "DocumentIndex": 78,
-=======
-              "DocumentIndex": 91,
->>>>>>> Stashed changes
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\My projects\\Victory\\SriKanthWeb\\SriKanth.Service\\Login_Module\\UserService.cs",
               "ToolTip": "D:\\My projects\\Victory\\SriKanthWeb\\SriKanth.Service\\Login_Module\\UserService.cs",
