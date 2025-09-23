@@ -483,6 +483,18 @@
         }
       }
     },
+    "/api/Business/test-direct-sql": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/User/login": {
       "post": {
         "tags": [

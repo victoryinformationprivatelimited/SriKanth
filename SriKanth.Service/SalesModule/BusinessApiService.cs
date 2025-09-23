@@ -75,7 +75,7 @@ namespace SriKanth.Service.SalesModule
 					throw new ApplicationException("Required data not available from APIs");
 				}
 				// Codes to skip
-				var codesToSkip = new HashSet<string> { "SEDAW-SNS", "SEDAW-SKM" };
+				var codesToSkip = new HashSet<string> { "SED-SNS", "SED-SKM" };
 
 				// Create lookup dictionaries
 				var inventoryLookup = inventory.value
@@ -540,14 +540,14 @@ namespace SriKanth.Service.SalesModule
 
 				// Filter out invoices with DueAmount == 0
 				var filteredInvoices = customerInvoice.Invoices
-					.Where(inv => inv.DueAmount > 0)
+					.Where(inv => inv.BalanceBeforePDCs > 0)
 					.ToList();
 
 				// No need to set or process order date
 
 				// Recalculate totals based on filtered invoices
 				customerInvoice.Invoices = filteredInvoices;
-				customerInvoice.TotalDueAmount = filteredInvoices.Sum(i => i.DueAmount);
+				customerInvoice.TotalDueAmount = filteredInvoices.Sum(i => i.BalanceBeforePDCs);
 				customerInvoice.TotalPdcAmount = filteredInvoices.Sum(i => i.PdcAmount);
 
 				_logger.LogInformation("Successfully retrieved and processed invoice summary for customer code: {CustomerCode}", customerCode);
@@ -575,8 +575,8 @@ namespace SriKanth.Service.SalesModule
 					{
 						decimal originalAmount = inv.Amount;
 						decimal releasedPDCs = inv.PdcAmount;
-						decimal balanceAfterPDCs = inv.RemainingAmount;
-						decimal balanceBeforePDCs = balanceAfterPDCs + releasedPDCs;
+						decimal balanceBeforePDCs = inv.RemainingAmount;
+						decimal balanceAfterPDCs =  balanceBeforePDCs - releasedPDCs;
 
 						return new InvoiceSummary
 						{
@@ -595,7 +595,7 @@ namespace SriKanth.Service.SalesModule
 					return new CustomerWiseInvoices
 					{
 						CustomerNo = g.Key,
-						TotalDueAmount = invoiceSummaries.Sum(i => i.DueAmount),
+						TotalDueAmount = invoiceSummaries.Sum(i => i.BalanceBeforePDCs),
 						TotalPdcAmount = invoiceSummaries.Sum(i => i.PdcAmount),
 						Invoices = invoiceSummaries
 					};
@@ -618,17 +618,17 @@ namespace SriKanth.Service.SalesModule
 						OrderNo = inv.OrderNo,
 						PostedDate = inv.PostingDate,
 						PdcAmount = inv.PdcAmount,
-						DueAmount = inv.RemainingAmount,
+						DueAmount = inv.RemainingAmount - inv.PdcAmount,
 						TotalAmount = inv.Amount,
-						BalanceBeforePDCs = inv.RemainingAmount + inv.PdcAmount,
+						BalanceBeforePDCs = inv.RemainingAmount,
 						ReleasedPDCs = inv.PdcAmount,
-						BalanceAfterPDCs = inv.RemainingAmount
+						BalanceAfterPDCs = inv.RemainingAmount - inv.PdcAmount
 					}).ToList();
 
 					return new CustomerWiseInvoices
 					{
 						CustomerNo = g.Key,
-						TotalDueAmount = invoiceSummaries.Sum(i => i.DueAmount),
+						TotalDueAmount = invoiceSummaries.Sum(i => i.BalanceBeforePDCs),
 						TotalPdcAmount = invoiceSummaries.Sum(i => i.PdcAmount),
 						Invoices = invoiceSummaries
 					};
@@ -677,7 +677,7 @@ namespace SriKanth.Service.SalesModule
 					InvoiceDocumentNo = invoice.DocumentNo,
 					OrderDate = invoiceDate,
 					InvoicedAmount = invoice.Amount,
-					DueAmount = invoice.RemainingAmount
+					DueAmount = invoice.RemainingAmount,
 				});
 			}
 
@@ -723,7 +723,7 @@ namespace SriKanth.Service.SalesModule
 		private List<Model.Login_Module.DTOs.Location> ProcessLocationsInParallel(IEnumerable<dynamic> locations)
 		{
 			// Define the codes to skip
-			var codesToSkip = new HashSet<string> { "SEDAW-SNS", "SEDAW-SKM" };
+			var codesToSkip = new HashSet<string> { "SED-SNS", "SED-SKM" };
 
 			// Use PLINQ for parallel processing with filtering
 			return locations.AsParallel()
@@ -767,13 +767,12 @@ namespace SriKanth.Service.SalesModule
 				.ToList();
 		}
 
-		private List<OrderItemDetails> ProcessItemsInParallel(IEnumerable<dynamic> items,Dictionary<string, decimal> priceLookup,IEnumerable<dynamic> inventory) // Pass inventory data here)
+		private List<OrderItemDetails> ProcessItemsInParallel(IEnumerable<dynamic> items, Dictionary<string, decimal> priceLookup, IEnumerable<dynamic> inventory) // Pass inventory data here)
 		{
 			// Group inventory by itemNo for quick lookup
 			var inventoryLookup = inventory
 				.GroupBy(inv => inv.itemNo)
 				.ToDictionary(g => g.Key, g => g.ToList());
-
 			return items.AsParallel()
 				.WithDegreeOfParallelism(Environment.ProcessorCount)
 				.Select(i =>
@@ -790,30 +789,29 @@ namespace SriKanth.Service.SalesModule
 								   : inv.inventory.ToString()
 					   }).ToList()
 					   : new List<LocationByItemInventory>();
-
 					return new OrderItemDetails
 					{
 						ItemCode = i.no,
 						ItemName = i.description,
 						Unitprice = priceLookup.TryGetValue(i.no, out decimal price) ? price.ToString() : "0",
-						SubstituteItems = CreateSubstituteItem(i.itemsubstitutions, priceLookup),
+						SubstituteItems = CreateSubstituteItems(i.itemsubstitutions, priceLookup),
 						LocationWiseInventory = locationInventories
 					};
 				})
 				.ToList();
 		}
 
-		private SubstituteItem CreateSubstituteItem(IEnumerable<ItemSubstitution> itemSubstitutions, Dictionary<string, decimal> priceLookup)
+		private List<SubstituteItem> CreateSubstituteItems(IEnumerable<ItemSubstitution> itemSubstitutions, Dictionary<string, decimal> priceLookup)
 		{
-			var firstSubstitution = itemSubstitutions?.FirstOrDefault();
-			if (firstSubstitution == null) return null;
+			if (itemSubstitutions == null)
+				return new List<SubstituteItem>();
 
-			return new SubstituteItem
+			return itemSubstitutions.Select(substitution => new SubstituteItem
 			{
-				ItemCode = firstSubstitution.substituteNo,
-				ItemName = firstSubstitution.description,
-				UnitPrice = priceLookup.TryGetValue(firstSubstitution.substituteNo, out decimal subPrice) ? subPrice : 0
-			};
+				ItemCode = substitution.substituteNo,
+				ItemName = substitution.description,
+				UnitPrice = priceLookup.TryGetValue(substitution.substituteNo, out decimal subPrice) ? subPrice : 0
+			}).ToList();
 		}
 
 	}

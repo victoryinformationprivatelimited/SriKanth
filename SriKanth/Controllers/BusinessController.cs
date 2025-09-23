@@ -1,6 +1,7 @@
 ﻿using HRIS.API.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using SriKanth.Interface.SalesModule;
 using SriKanth.Model.BusinessModule.DTOs;
 using SriKanth.Model.BusinessModule.Entities;
@@ -547,6 +548,25 @@ namespace SriKanth.API.Controllers
 			return Ok(new { Environment = envName, CompanyId = companyId });
 		}
 
+		[HttpGet("test-direct-sql")]
+		public async Task<IActionResult> TestDirectSql()
+		{
+			try
+			{
+				var connectionString = _configuration.GetConnectionString("DefaultConnection");
+				using var connection = new SqlConnection(connectionString);
+				await connection.OpenAsync();
+
+				using var command = new SqlCommand("SELECT COUNT(*) FROM Users", connection);
+				var count = await command.ExecuteScalarAsync();
+
+				return Ok(new { UserCount = count, Status = "Success" });
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, new { Error = ex.Message, FullError = ex.ToString() });
+			}
+		}
 
 		private bool IsValidUserId(int userId)
 		{

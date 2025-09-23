@@ -143,24 +143,39 @@ namespace SriKanth.Service.SalesModule
 				// If status is Pending, fetch both Pending and Processing
 				if (orderStatus == OrderStatus.Pending)
 				{
-					List<Order> pendingOrders, processingOrders;
+					List<Order> pendingOrders;
 					if (userRole == "Admin")
 					{
 						pendingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Pending);
-						processingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Processing);
 					}
 					else if (userRole == "SalesCoordinator")
 					{
 						var locations = await _loginData.GetUserLocationCodesAsync(userId);
 						pendingOrders = await _businessData.GetAllOrdersByLocationsAsync(locations, OrderStatus.Pending);
-						processingOrders = await _businessData.GetAllOrdersByLocationsAsync(locations, OrderStatus.Processing);
 					}
 					else
 					{
 						pendingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Pending);
+					}
+					orders = pendingOrders.ToList();
+				}
+				else if (orderStatus == OrderStatus.Processing)
+				{
+					List<Order> processingOrders;
+					if (userRole == "Admin")
+					{
+						processingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Processing);
+					}
+					else if (userRole == "SalesCoordinator")
+					{
+						var locations = await _loginData.GetUserLocationCodesAsync(userId);
+						processingOrders = await _businessData.GetAllOrdersByLocationsAsync(locations, OrderStatus.Processing);
+					}
+					else
+					{
 						processingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Processing);
 					}
-					orders = pendingOrders.Concat(processingOrders).ToList();
+					orders = processingOrders.ToList();
 				}
 				else
 				{
