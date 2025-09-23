@@ -4,7 +4,7 @@
   "Documents": [
     {
 <<<<<<< Updated upstream
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\businessapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\orderdetailsapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
 =======
       "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\externalapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -14,24 +14,24 @@
 >>>>>>> Stashed changes
     },
     {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\azureblobstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\businessapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\azureblobstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth\\controllers\\businesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6656E1EE-7DE8-44DE-B727-95F446F80BEF}|SriKanth.API.csproj|solutionrelative:controllers\\businesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\orderdetailsapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{D35935A7-DBB2-4510-9543-EE5CC1471BBB}|..\\SriKanth.Model\\SriKanth.Model.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.model\\srikanthdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{078E1F50-23E8-4CFE-8D79-85B9F7308557}|..\\SriKanth.Service\\SriKanth.Service.csproj|c:\\users\\dinuk\\documents\\github\\srikanth\\srikanth.service\\salesmodule\\externalapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -362,26 +362,13 @@
           "DockedHeight": 282,
 <<<<<<< Updated upstream
           "SelectedChildIndex": 5,
+=======
+          "SelectedChildIndex": 8,
+>>>>>>> Stashed changes
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-=======
-          "SelectedChildIndex": 8,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BusinessApiService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAA9wE0AAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T14:44:06.079Z",
-              "IsPinned": true
->>>>>>> Stashed changes
             },
             {
               "$type": "Bookmark",
@@ -417,47 +404,43 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-<<<<<<< Updated upstream
               "WhenOpened": "2025-05-27T17:07:31.218Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AzureBlobStorageService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAuwM8AAAAfAAAAAAAAAA==",
-=======
-              "WhenOpened": "2025-09-11T02:02:39.292Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OrderDetailsApiService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAuwKEAAAAJAAAAAAAAAA==",
->>>>>>> Stashed changes
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T10:49:48.677Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
 <<<<<<< Updated upstream
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "BusinessApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\BusinessApiService.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAAANMCAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAHEBAAAAAAAAAAAkwNMCAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T14:44:06.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
 =======
+              "DocumentIndex": 7,
+>>>>>>> Stashed changes
+              "Title": "OrderDetailsApiService.cs",
+              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
+              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
+              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
+              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
+              "ViewState": "AgIAABgBAAAAAAAAAAAAABcCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< Updated upstream
+              "WhenOpened": "2025-07-01T17:27:48.834Z",
+=======
+              "WhenOpened": "2025-07-01T17:27:48.834Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "BusinessController.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\BusinessController.cs",
@@ -465,9 +448,22 @@
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\BusinessController.cs",
               "RelativeToolTip": "Controllers\\BusinessController.cs",
               "ViewState": "AgIAAEoAAAAAAAAAAAAgwP4AAAAfAAAAAAAAAA==",
->>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T14:44:06.079Z",
+              "WhenOpened": "2025-05-28T01:49:30.379Z",
+>>>>>>> Stashed changes
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AzureBlobStorageService.cs",
+              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
+              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
+              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
+              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\AzureBlobStorageService.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAuwM8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T10:49:48.677Z",
               "EditorCaption": ""
             },
             {
@@ -475,25 +471,13 @@
 <<<<<<< Updated upstream
               "DocumentIndex": 5,
 =======
-              "DocumentIndex": 12,
-              "Title": "EncryptionService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\EncryptionService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\EncryptionService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\EncryptionService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\EncryptionService.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAgwHkAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T04:10:42.338Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ExternalApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
               "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAAAI4BAAADAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAwI4BAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-02T02:21:35.234Z",
               "EditorCaption": ""
@@ -633,19 +617,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OrderDetailsApiService.cs",
-              "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "ViewState": "AgIAAO4AAAAAAAAAAAAAABcCAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T17:27:48.834Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
               "Title": "ExternalApiService.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
@@ -658,7 +629,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "BusinessController.cs",
               "DocumentMoniker": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth\\Controllers\\BusinessController.cs",
               "RelativeDocumentMoniker": "Controllers\\BusinessController.cs",
