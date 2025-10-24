@@ -39,7 +39,7 @@ namespace SriKanth.Model.BusinessModule.DTOs
 	public class LocationByItemInventory
 	{ 
 		public string LocationCode { get; set; }
-		public Decimal Inventory { get; set; }
+		public string Inventory { get; set; }
 	}
 
 	public class SubstituteItem

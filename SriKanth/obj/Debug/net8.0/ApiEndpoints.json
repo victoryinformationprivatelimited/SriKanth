@@ -308,6 +308,16 @@
   },
   {
     "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "TestDirectSql",
+    "RelativePath": "api/Business/test-direct-sql",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
     "Method": "UploadUserDocument",
     "RelativePath": "api/Business/UploadUserDocument",
     "HttpMethod": "POST",

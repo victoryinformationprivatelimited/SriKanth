@@ -12,13 +12,17 @@ namespace SriKanth.Model.ExistingApis
 		[JsonPropertyName("@odata.context")]
 		public string ODataContext { get; set; }
 
-		public List<PostedInvoice> value { get; set; }
+		[JsonPropertyName("value")]
+		public List<PostedInvoice> Value { get; set; }
 	}
 
 	public class PostedInvoice
 	{
 		[JsonPropertyName("@odata.etag")]
 		public string ODataEtag { get; set; }
+
+		[JsonPropertyName("entryNo")]
+		public int EntryNo { get; set; }
 
 		[JsonPropertyName("no")]
 		public string DocumentNo { get; set; }
@@ -37,6 +41,12 @@ namespace SriKanth.Model.ExistingApis
 
 		[JsonPropertyName("pdcAmount")]
 		public decimal PdcAmount { get; set; }
+
+		[JsonPropertyName("postingDate")]
+		public DateTime PostingDate { get; set; }
+
+		[JsonPropertyName("dueDate")]
+		public DateTime DueDate { get; set; }
 
 		[JsonPropertyName("postedInvoiceLines")]
 		public List<InvoiceLine> Lines { get; set; }

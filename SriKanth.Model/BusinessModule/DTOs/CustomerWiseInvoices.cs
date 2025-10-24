@@ -19,11 +19,10 @@ namespace SriKanth.Model.BusinessModule.DTOs
 	{
 		public string InvoiceNo { get; set; }
 		public string? OrderNo { get; set; }
-		public DateTime? InvoiceDate { get; set; }
+		public DateTime? PostedDate { get; set; }
 		public decimal PdcAmount { get; set; }
 		public decimal DueAmount { get; set; }
 		public decimal TotalAmount { get; set; }// total amount get from items wise amount
-		public decimal OriginalAmount { get; set; }
 		public decimal BalanceBeforePDCs { get; set; }
 		public decimal ReleasedPDCs { get; set; }
 		public decimal BalanceAfterPDCs { get; set; }

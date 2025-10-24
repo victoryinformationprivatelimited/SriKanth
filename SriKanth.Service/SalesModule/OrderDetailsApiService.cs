@@ -127,8 +127,7 @@ namespace SriKanth.Service.SalesModule
 		{
 			try
 			{
-				_logger.LogInformation("Beginning to retrieve orders for user {UserId} with status {OrderStatus}",
-					userId, orderStatus);
+				_logger.LogInformation("Beginning to retrieve orders for user {UserId} with status {OrderStatus}", userId, orderStatus);
 
 				// Validate user exists
 				var user = await _loginData.GetUserByIdAsync(userId);
@@ -140,45 +139,19 @@ namespace SriKanth.Service.SalesModule
 
 				string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
 				List<Order> orders;
-				
+
 				if (userRole == "Admin")
 				{
-<<<<<<< Updated upstream
-					List<Order> pendingOrders, processingOrders;
-					if (userRole == "Admin" || userRole == "SalesCoordinator")
-					{
-						pendingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Pending);
-						processingOrders = await _businessData.GetAllOrdersAsync(OrderStatus.Processing);
-					}
-					else
-					{
-						pendingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Pending);
-						processingOrders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, OrderStatus.Processing);
-					}
-					orders = pendingOrders.Concat(processingOrders).ToList();
-				}
-				else
-				{
-					if (userRole == "Admin" || userRole == "SalesCoordinator")
-					{
-						orders = await _businessData.GetAllOrdersAsync(orderStatus);
-					}
-					else
-					{
-						orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
-					}
-=======
 					orders = await _businessData.GetAllOrdersAsync(orderStatus);
 				}
 				else if (userRole == "SalesCoordinator")
 				{
 					var locations = await _loginData.GetUserLocationCodesAsync(userId);
-					orders = await _businessData.GetAllOrdersByLocationsAsync(locations, orderStatus);						
+					orders = await _businessData.GetAllOrdersByLocationsAsync(locations, orderStatus);
 				}
 				else
 				{
 					orders = await _businessData.GetListOfOrdersAsync(user.SalesPersonCode, orderStatus);
->>>>>>> Stashed changes
 				}
 
 				if (!orders.Any())
@@ -203,7 +176,7 @@ namespace SriKanth.Service.SalesModule
 				var locationsTask = _externalApiService.GetLocationsAsync();
 
 				// Create list of tasks to wait for
-				var tasks = new List<Task> { customersTask, salesPeopleTask , locationsTask};
+				var tasks = new List<Task> { customersTask, salesPeopleTask, locationsTask };
 				Task<InvoiceApiResponse>? invoiceTask = null;
 
 				// Only fetch invoices if delivered orders are requested
@@ -330,13 +303,11 @@ namespace SriKanth.Service.SalesModule
 					};
 				}).ToList();
 
-				_logger.LogInformation("Retrieved {OrderCount} {OrderStatus} orders for user {UserId}",
-					result.Count, orderStatus, userId);
+				_logger.LogInformation("Retrieved {OrderCount} {OrderStatus} orders for user {UserId}", result.Count, orderStatus, userId);
 				return result;
 			}
 			catch (ApplicationException)
 			{
-				// Re-throw application exceptions as they are already user-friendly
 				throw;
 			}
 			catch (Exception ex)
@@ -377,7 +348,7 @@ namespace SriKanth.Service.SalesModule
 						Message = $"Invalid status transition from {order.Status} to {updateOrderRequest.Status}."
 					};
 				}
-				if (order.Status == OrderStatus.Delivered)
+				if (updateOrderRequest.Status == OrderStatus.Delivered)
 				{
 					bool isInvoiced = await CheckInvoicedStatusAsync(order);
 					if (isInvoiced)
@@ -400,12 +371,8 @@ namespace SriKanth.Service.SalesModule
 						return new ServiceResult { Success = false, Message = $"Order {updateOrderRequest.Ordernumber} cannot be updated to Delivered status as it is not invoiced." };
 					}
 				}
-				// Update order status
-				order.Status = updateOrderRequest.Status;
-				order.RejectReason = updateOrderRequest.RejectReason ?? null;
-				await _businessData.UpdateOrderStatusAsync(order);
 
-				// Additional processing for orders moving to Processing status
+				// Handle Processing status: send to external API first, then update DB if successful
 				if (updateOrderRequest.Status == OrderStatus.Processing)
 				{
 					// Get customer and location details in parallel
@@ -468,6 +435,15 @@ namespace SriKanth.Service.SalesModule
 						// Submit to external API
 						await _externalApiService.PostSalesOrderAsync(salesOrderRequest);
 						_logger.LogInformation("Successfully posted order {OrderNumber} to external API", updateOrderRequest.Ordernumber);
+
+						// Only update DB if external API call succeeded
+						order.Status = updateOrderRequest.Status;
+						order.RejectReason = updateOrderRequest.RejectReason ?? null;
+						await _businessData.UpdateOrderStatusAsync(order);
+
+						_logger.LogInformation("Successfully updated status of order {OrderNumber} to {OrderStatus}",
+							updateOrderRequest.Ordernumber, updateOrderRequest.Status);
+						return new ServiceResult { Success = true, Message = "Order status updated successfully." };
 					}
 					catch (Exception ex)
 					{
@@ -480,6 +456,17 @@ namespace SriKanth.Service.SalesModule
 					}
 				}
 
+				// Handle Rejected status: update DB immediately, no external API call
+				if (updateOrderRequest.Status == OrderStatus.Rejected)
+				{
+					order.Status = updateOrderRequest.Status;
+					order.RejectReason = updateOrderRequest.RejectReason ?? null;
+					await _businessData.UpdateOrderStatusAsync(order);
+
+					_logger.LogInformation("Order {OrderNumber} marked as Rejected.", order.OrderNumber);
+					return new ServiceResult { Success = true, Message = "Order status updated to Rejected." };
+				}
+
 				_logger.LogInformation("Successfully updated status of order {OrderNumber} to {OrderStatus}",
 					updateOrderRequest.Ordernumber, updateOrderRequest.Status);
 				return new ServiceResult { Success = true, Message = "Order status updated successfully." };
@@ -490,7 +477,6 @@ namespace SriKanth.Service.SalesModule
 				return new ServiceResult { Success = false, Message = "Unexpected error updating order status." };
 			}
 		}
-
 
 		/// <summary>
 		/// Retrieves a summary of order counts grouped by status for a specific user.
@@ -748,10 +734,13 @@ namespace SriKanth.Service.SalesModule
 					return false;
 				}
 
+				// Normalize order number for comparison
+				string orderNumberStr = order.OrderNumber.ToString().TrimStart('0');
+
 				var isInvoiced = invoices.Any(inv =>
 					!string.IsNullOrWhiteSpace(inv.OrderNo) &&
-					int.TryParse(inv.OrderNo.Trim(), out var orderNo) &&
-					orderNo == order.OrderNumber);
+					inv.OrderNo.TrimStart('0').Trim() == orderNumberStr);
+
 
 				if (!isInvoiced)
 				{

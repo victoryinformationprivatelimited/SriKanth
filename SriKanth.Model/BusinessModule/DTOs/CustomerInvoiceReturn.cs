@@ -17,7 +17,7 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public string CustomerCode { get; set; }
 		public string CustomerName { get; set; }
 		public string InvoiceDocumentNo { get; set; }
-		public DateTime? InvoiceDate { get; set; }
+		public DateTime? OrderDate { get; set; }
 		public Decimal InvoicedAmount { get; set; }
 		public Decimal? DueAmount { get; set; }
 	}

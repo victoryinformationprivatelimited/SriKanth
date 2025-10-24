@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SriKanth.Interface")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbc9e1baf6c0eac8c689a69ef8aa3082dd9be99a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07e994d3ce69c342815a3e3769445e5ff4a99f88")]
 [assembly: System.Reflection.AssemblyProductAttribute("SriKanth.Interface")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SriKanth.Interface")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
