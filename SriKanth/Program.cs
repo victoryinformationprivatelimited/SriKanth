@@ -43,7 +43,6 @@ builder.Services.AddTransient<IEncryptionService, EncryptionService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IMfaService, MfaService>();
 builder.Services.AddScoped<ILoginData, LoginData>();
-builder.Services.AddScoped<IExternalApiService, ExternalApiService>();
 builder.Services.AddScoped<IBusinessApiService, BusinessApiService>();
 builder.Services.AddScoped<IBusinessData, BusinessData>();
 builder.Services.AddScoped<IUserHistoryService, UserHistoryService>();
@@ -54,6 +53,23 @@ builder.Services.AddScoped<IOrderDetailsApiService, OrderDetailsApiService>();
 	.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
 	.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
 	.AddEnvironmentVariables();*/
+builder.Services.AddHttpClient("ExternalApi", client =>
+{
+	client.Timeout = TimeSpan.FromSeconds(300); // 5 minutes
+})
+.ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+{
+	// This handler will now automatically add Accept-Encoding
+	// and automatically decompress the response for you.
+	PooledConnectionLifetime = TimeSpan.FromMinutes(15),
+	PooledConnectionIdleTimeout = TimeSpan.FromMinutes(5),
+	MaxConnectionsPerServer = 20,
+	ConnectTimeout = TimeSpan.FromSeconds(30),
+	ResponseDrainTimeout = TimeSpan.FromSeconds(30)
+});
+
+// Then add the service registration
+builder.Services.AddScoped<IExternalApiService, ExternalApiService>();
 
 builder.Services.AddDbContext<SriKanthDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),

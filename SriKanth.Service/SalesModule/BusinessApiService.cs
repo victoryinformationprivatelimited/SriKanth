@@ -11,6 +11,8 @@ using SriKanth.Model.BusinessModule.DTOs;
 using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.ExistingApis;
 using SriKanth.Model.Login_Module.DTOs;
+using System.Collections.Concurrent;
+using System.Diagnostics;
 
 namespace SriKanth.Service.SalesModule
 {
@@ -49,10 +51,10 @@ namespace SriKanth.Service.SalesModule
 		/// <returns>List of stock items with comprehensive details</returns>
 		public async Task<List<StockItem>> GetSalesStockDetails()
 		{
-			
 			try
 			{
 				_logger.LogInformation("Beginning to retrieve sales stock details");
+				var sw = Stopwatch.StartNew();
 
 				// Execute all API calls in parallel
 				var inventoryTask = _externalApiService.GetInventoryBalanceAsync();
@@ -61,6 +63,8 @@ namespace SriKanth.Service.SalesModule
 				var locationsTask = _externalApiService.GetLocationsAsync();
 
 				await Task.WhenAll(inventoryTask, itemsTask, salesPricesTask, locationsTask);
+
+				_logger.LogInformation("API calls completed in {Ms}ms", sw.ElapsedMilliseconds);
 
 				var inventory = await inventoryTask;
 				var items = await itemsTask;
@@ -74,44 +78,13 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("One or more required API responses returned null data");
 					throw new ApplicationException("Required data not available from APIs");
 				}
-				// Codes to skip
-				var codesToSkip = new HashSet<string> { "SED-SNS", "SED-SKM" };
 
-				// Create lookup dictionaries
-				var inventoryLookup = inventory.value
-					.Where(i => i?.itemNo != null && i?.locationCode != null)
-					.ToDictionary(i => (i.itemNo, i.locationCode), i => i);
+				sw.Restart();
+				var stockList = BuildStockList(inventory, items, salesPrices, locations);
 
-				var priceLookup = salesPrices.value
-					.Where(p => p?.itemNo != null)
-					.GroupBy(p => p.itemNo)
-					.ToDictionary(g => g.Key, g => g.First().unitPrice);
+				_logger.LogInformation("Successfully built {StockItemCount} stock items in {Ms}ms",
+					stockList.Count, sw.ElapsedMilliseconds);
 
-				// Generate stock items using LINQ (much faster than nested loops)
-				var stockList = (from item in items.value.Where(i => i?.no != null)
-								 from location in locations.value.Where(l => l?.code != null && !codesToSkip.Contains(l.code))
-								 let key = (item.no, location.code)
-								 where inventoryLookup.ContainsKey(key)
-								 let inv = inventoryLookup[key]
-								 select new StockItem
-								 {
-									 ItemCode = item.no,
-									 ItemName = item.description ?? string.Empty,
-									 Location = location.name ?? location.code ?? "Unknown",
-									 Stock = item.reorderPoint == 0 ? inv.inventory.ToString() : inv.inventory > item.reorderPoint ? $"{item.reorderPoint}+": inv.inventory.ToString(),
-									 UnitPrice = priceLookup.GetValueOrDefault(item.no),
-									 ItemCategory = item.itemCategoryCode ?? string.Empty,
-									 Category = item.parentCategoryCode ?? string.Empty,
-									 SubCategory = item.childCategoryCode ?? string.Empty,
-									 Description = item.description ?? string.Empty,
-									 Description2 = item.description2 ?? string.Empty,
-									 UnitOfMeasure = item.unitOfMeasure ?? string.Empty,
-									 Size = item.size ?? string.Empty,
-									 ReorderQuantity = item.reorderQuantity,
-									 Image = null // Load separately if needed
-								 }).ToList();
-
-				_logger.LogInformation("Successfully retrieved {StockItemCount} stock items", stockList.Count);
 				return stockList;
 			}
 			catch (Exception ex)
@@ -121,6 +94,249 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		private List<StockItem> BuildStockList(dynamic inventory, dynamic items, dynamic salesPrices, dynamic locations)
+		{
+			var sw = Stopwatch.StartNew();
+
+			// Codes to skip - case insensitive for better matching
+			var codesToSkip = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "SED-SNS", "SED-SKM" };
+
+			// Pre-filter and materialize valid locations
+			var validLocations = new List<(string Code, string Name)>();
+			foreach (var loc in locations.value)
+			{
+				if (loc?.code != null && !codesToSkip.Contains(loc.code))
+				{
+					validLocations.Add((loc.code, loc.name ?? loc.code ?? "Unknown"));
+				}
+			}
+
+			_logger.LogInformation("Filtered to {Count} valid locations in {Ms}ms",
+				validLocations.Count, sw.ElapsedMilliseconds);
+			sw.Restart();
+
+			// Build inventory lookup with proper capacity
+			var inventoryArray = inventory.value.ToArray();
+			var inventoryLookup = new Dictionary<(string, string), dynamic>(inventoryArray.Length);
+
+			foreach (var inv in inventoryArray)
+			{
+				if (inv?.itemNo != null && inv?.locationCode != null)
+				{
+					inventoryLookup[(inv.itemNo, inv.locationCode)] = inv;
+				}
+			}
+
+			_logger.LogInformation("Built inventory lookup ({Count} items) in {Ms}ms",
+				inventoryLookup.Count, sw.ElapsedMilliseconds);
+			sw.Restart();
+
+			// Build price lookup - optimized with early exit
+			var pricesArray = salesPrices.value.ToArray();
+			var priceLookup = new Dictionary<string, decimal>(pricesArray.Length);
+
+			foreach (var price in pricesArray)
+			{
+				if (price?.itemNo != null && !priceLookup.ContainsKey(price.itemNo))
+				{
+					priceLookup[price.itemNo] = price.unitPrice;
+				}
+			}
+
+			_logger.LogInformation("Built price lookup ({Count} items) in {Ms}ms",
+				priceLookup.Count, sw.ElapsedMilliseconds);
+			sw.Restart();
+
+			// Pre-filter valid items
+			var validItems = new List<dynamic>();
+			foreach (var item in items.value)
+			{
+				if (item?.no != null)
+				{
+					validItems.Add(item);
+				}
+			}
+
+			// Estimate capacity for stock list
+			int estimatedSize = Math.Min(validItems.Count * validLocations.Count, 100000);
+			var stockList = new List<StockItem>(estimatedSize);
+
+			// Decide processing strategy based on dataset size
+			int totalCombinations = validItems.Count * validLocations.Count;
+
+			if (totalCombinations > 20000)
+			{
+				// Parallel processing for large datasets
+				_logger.LogInformation("Using parallel processing for {Count} combinations", totalCombinations);
+				stockList = BuildStockListParallel(validItems, validLocations, inventoryLookup, priceLookup);
+			}
+			else
+			{
+				// Sequential processing for smaller datasets (less overhead)
+				_logger.LogInformation("Using sequential processing for {Count} combinations", totalCombinations);
+				BuildStockListSequential(validItems, validLocations, inventoryLookup, priceLookup, stockList);
+			}
+
+			_logger.LogInformation("Built stock list ({Count} items) in {Ms}ms",
+				stockList.Count, sw.ElapsedMilliseconds);
+
+			return stockList;
+		}
+
+		// Sequential processing (optimized for smaller datasets)
+		private void BuildStockListSequential(
+			List<dynamic> items,
+			List<(string Code, string Name)> locations,
+			Dictionary<(string, string), dynamic> inventoryLookup,
+			Dictionary<string, decimal> priceLookup,
+			List<StockItem> stockList)
+		{
+			foreach (var item in items)
+			{
+				string itemNo = item.no;
+				string itemName = item.description ?? string.Empty;
+				string itemCategory = item.itemCategoryCode ?? string.Empty;
+				string category = item.parentCategoryCode ?? string.Empty;
+				string subCategory = item.childCategoryCode ?? string.Empty;
+				string description = item.description ?? string.Empty;
+				string description2 = item.description2 ?? string.Empty;
+				string unitOfMeasure = item.unitOfMeasure ?? string.Empty;
+				string size = item.size ?? string.Empty;
+				decimal reorderPoint = item.reorderPoint;
+				decimal reorderQuantity = item.reorderQuantity;
+				decimal unitPrice = priceLookup.GetValueOrDefault(itemNo, 0);
+
+				foreach (var location in locations)
+				{
+					var key = (itemNo, location.Code);
+
+					if (inventoryLookup.TryGetValue(key, out var inv))
+					{
+						decimal inventoryQty = inv.inventory;
+
+						string stock;
+						if (reorderPoint == 0)
+						{
+							stock = inventoryQty.ToString();
+						}
+						else
+						{
+							stock = inventoryQty > reorderPoint
+								? $"{reorderPoint}+"
+								: inventoryQty.ToString();
+						}
+
+						stockList.Add(new StockItem
+						{
+							ItemCode = itemNo,
+							ItemName = itemName,
+							Location = location.Name,
+							Stock = stock,
+							UnitPrice = unitPrice,
+							ItemCategory = itemCategory,
+							Category = category,
+							SubCategory = subCategory,
+							Description = description,
+							Description2 = description2,
+							UnitOfMeasure = unitOfMeasure,
+							Size = size,
+							ReorderQuantity = reorderQuantity,
+							Image = null
+						});
+					}
+				}
+			}
+		}
+
+		// Parallel processing (optimized for larger datasets)
+		private List<StockItem> BuildStockListParallel(
+			List<dynamic> items,
+			List<(string Code, string Name)> locations,
+			Dictionary<(string, string), dynamic> inventoryLookup,
+			Dictionary<string, decimal> priceLookup)
+		{
+			var partitions = Partitioner.Create(0, items.Count);
+			var localLists = new ConcurrentBag<List<StockItem>>();
+
+			Parallel.ForEach(partitions, new ParallelOptions
+			{
+				MaxDegreeOfParallelism = Math.Min(Environment.ProcessorCount, 8)
+			}, range =>
+			{
+				var localList = new List<StockItem>(1000);
+
+				for (int i = range.Item1; i < range.Item2; i++)
+				{
+					var item = items[i];
+
+					string itemNo = item.no;
+					string itemName = item.description ?? string.Empty;
+					string itemCategory = item.itemCategoryCode ?? string.Empty;
+					string category = item.parentCategoryCode ?? string.Empty;
+					string subCategory = item.childCategoryCode ?? string.Empty;
+					string description = item.description ?? string.Empty;
+					string description2 = item.description2 ?? string.Empty;
+					string unitOfMeasure = item.unitOfMeasure ?? string.Empty;
+					string size = item.size ?? string.Empty;
+					decimal reorderPoint = item.reorderPoint;
+					decimal reorderQuantity = item.reorderQuantity;
+					decimal unitPrice = priceLookup.GetValueOrDefault(itemNo, 0);
+
+					foreach (var location in locations)
+					{
+						var key = (itemNo, location.Code);
+
+						if (inventoryLookup.TryGetValue(key, out var inv))
+						{
+							decimal inventoryQty = inv.inventory;
+
+							string stock;
+							if (reorderPoint == 0)
+							{
+								stock = inventoryQty.ToString();
+							}
+							else
+							{
+								stock = inventoryQty > reorderPoint
+									? $"{reorderPoint}+"
+									: inventoryQty.ToString();
+							}
+
+							localList.Add(new StockItem
+							{
+								ItemCode = itemNo,
+								ItemName = itemName,
+								Location = location.Name,
+								Stock = stock,
+								UnitPrice = unitPrice,
+								ItemCategory = itemCategory,
+								Category = category,
+								SubCategory = subCategory,
+								Description = description,
+								Description2 = description2,
+								UnitOfMeasure = unitOfMeasure,
+								Size = size,
+								ReorderQuantity = reorderQuantity,
+								Image = null
+							});
+						}
+					}
+				}
+
+				localLists.Add(localList);
+			});
+
+			// Merge results efficiently
+			var totalCount = localLists.Sum(list => list.Count);
+			var result = new List<StockItem>(totalCount);
+
+			foreach (var localList in localLists)
+			{
+				result.AddRange(localList);
+			}
+
+			return result;
+		}
 		public async Task<string> GetImageByItemNo(string itemNo)
 		{
 			try
@@ -349,33 +565,35 @@ namespace SriKanth.Service.SalesModule
 		{
 			_logger.LogInformation("Retrieving filtered customers for user {UserId}", userId);
 
-			var user = await _loginData.GetUserByIdAsync(userId)
+			// Parallel fetch of user and customers
+			var userTask = _loginData.GetUserByIdAsync(userId);
+			var customersTask = _externalApiService.GetCustomersAsync();
+
+			await Task.WhenAll(userTask, customersTask);
+
+			var user = await userTask
 				?? throw new InvalidOperationException("User Not found");
+			var customersResponse = await customersTask;
 
-			string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
-
-			var customersResponse = await _externalApiService.GetCustomersAsync();
 			ValidateApiData(customersResponse?.value, "customer");
 
-			List<Customer> filteredCustomers;
+			// Get role and filter customers
+			string userRole = await _loginData.GetUserRoleNameAsync(user.UserRoleId);
+
+			IEnumerable<Customer> filteredCustomers;
 			if (userRole == "Admin")
 			{
 				_logger.LogInformation("Admin user {UserId} accessing all customers", userId);
-				filteredCustomers = customersResponse.value.ToList();
+				filteredCustomers = customersResponse.value;
 			}
 			else
 			{
 				filteredCustomers = customersResponse.value
-					.Where(c => c.salespersonCode == user.SalesPersonCode)
-					.ToList();
+					.Where(c => c.salespersonCode == user.SalesPersonCode);
 			}
 
-			// Fetch due amounts
-			var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
-			var dueAmountLookup = customerWiseInvoices.ToDictionary(
-				cwi => cwi.CustomerNo,
-				cwi => cwi.TotalDueAmount
-			);
+			// Fetch due amounts and build lookup in one pass
+			var dueAmountLookup = await GetCustomerDueAmountsAsync();
 
 			return ProcessCustomersInParallel(filteredCustomers, dueAmountLookup);
 		}
@@ -561,49 +779,70 @@ namespace SriKanth.Service.SalesModule
 				throw new ApplicationException($"Failed to retrieve customer-wise invoices for customer {customerCode}. Please try again later.", ex);
 			}
 		}
+
+		private async Task<Dictionary<string, decimal>> GetCustomerDueAmountsAsync()
+		{
+			var postedInvoiceResponse = await _externalApiService.GetPostedInvoiceDetailsAsync();
+			var invoices = postedInvoiceResponse.Value;
+
+			// Build dictionary directly during grouping - single pass
+			return invoices
+				.GroupBy(inv => inv.CustomerNo)
+				.ToDictionary(
+					g => g.Key,
+					g => g.Sum(inv => inv.RemainingAmount) // TotalDueAmount = sum of RemainingAmount
+				);
+		}
+
 		private async Task<List<CustomerWiseInvoices>> GetCustomerWiseInvoicesAsync()
 		{
 			var postedInvoiceResponse = await _externalApiService.GetPostedInvoiceDetailsAsync();
 			var invoices = postedInvoiceResponse.Value;
 
-			// Group by customer
-			var customerGroups = invoices
-				.GroupBy(inv => inv.CustomerNo)
-				.Select(g =>
+			// Single enumeration with immediate materialization
+			var customerGroups = new List<CustomerWiseInvoices>(invoices.Count() / 10); // rough estimate
+
+			foreach (var group in invoices.GroupBy(inv => inv.CustomerNo))
+			{
+				var invoiceSummaries = new List<InvoiceSummary>(group.Count());
+				decimal totalDue = 0;
+				decimal totalPdc = 0;
+
+				foreach (var inv in group)
 				{
-					var invoiceSummaries = g.Select(inv =>
-					{
-						decimal originalAmount = inv.Amount;
-						decimal releasedPDCs = inv.PdcAmount;
-						decimal balanceBeforePDCs = inv.RemainingAmount;
-						decimal balanceAfterPDCs =  balanceBeforePDCs - releasedPDCs;
+					decimal balanceBeforePDCs = inv.RemainingAmount;
+					decimal releasedPDCs = inv.PdcAmount;
+					decimal balanceAfterPDCs = balanceBeforePDCs - releasedPDCs;
 
-						return new InvoiceSummary
-						{
-							InvoiceNo = inv.DocumentNo,
-							OrderNo = inv.OrderNo,
-							PostedDate = inv.PostingDate,
-							PdcAmount = releasedPDCs,
-							DueAmount = balanceAfterPDCs,
-							TotalAmount = originalAmount,
-							BalanceBeforePDCs = balanceBeforePDCs,
-							ReleasedPDCs = releasedPDCs,
-							BalanceAfterPDCs = balanceAfterPDCs
-						};
-					}).ToList();
+					totalDue += balanceBeforePDCs;
+					totalPdc += releasedPDCs;
 
-					return new CustomerWiseInvoices
+					invoiceSummaries.Add(new InvoiceSummary
 					{
-						CustomerNo = g.Key,
-						TotalDueAmount = invoiceSummaries.Sum(i => i.BalanceBeforePDCs),
-						TotalPdcAmount = invoiceSummaries.Sum(i => i.PdcAmount),
-						Invoices = invoiceSummaries
-					};
-				})
-				.ToList();
+						InvoiceNo = inv.DocumentNo,
+						OrderNo = inv.OrderNo,
+						PostedDate = inv.PostingDate,
+						PdcAmount = releasedPDCs,
+						DueAmount = balanceAfterPDCs,
+						TotalAmount = inv.Amount,
+						BalanceBeforePDCs = balanceBeforePDCs,
+						ReleasedPDCs = releasedPDCs,
+						BalanceAfterPDCs = balanceAfterPDCs
+					});
+				}
+
+				customerGroups.Add(new CustomerWiseInvoices
+				{
+					CustomerNo = group.Key,
+					TotalDueAmount = totalDue,
+					TotalPdcAmount = totalPdc,
+					Invoices = invoiceSummaries
+				});
+			}
 
 			return customerGroups;
 		}
+
 		private List<CustomerWiseInvoices> GetCustomerWiseInvoicesOptimized(List<PostedInvoice> invoices, HashSet<string> allowedCustomerCodes)
 		{
 			return invoices
@@ -749,10 +988,30 @@ namespace SriKanth.Service.SalesModule
 				.ToList();
 		}
 
-		private List<OrderCustomer> ProcessCustomersInParallel(IEnumerable<dynamic> customers, Dictionary<string, decimal> dueAmountLookup)
+		private List<OrderCustomer> ProcessCustomersInParallel(IEnumerable<Customer> customers, Dictionary<string, decimal> dueAmountLookup)
 		{
-			return customers.AsParallel()
-				.WithDegreeOfParallelism(Environment.ProcessorCount)
+			// Only parallelize if dataset is large enough to benefit
+			var customerList = customers as IList<Customer> ?? customers.ToList();
+    
+			if (customerList.Count < 100)
+			{
+				// Sequential processing for small datasets (faster due to less overhead)
+				return customerList.Select(c => new OrderCustomer
+				{
+					CustomerCode = c.no,
+					CustomerName = c.name,
+					DueAmount = dueAmountLookup.TryGetValue(c.no, out decimal due) ? due : 0,
+					CreditAllowed = c.creditAllowed,
+					CreditLimit = c.creditLimitLCY,
+					BalanceCredit = c.balanceLCY,
+					PaymentTermCode = c.paymentTermsCode,
+					PaymentMethodCode = c.paymentMethodCode
+				}).ToList();
+			}
+    
+			// Parallel processing for larger datasets
+			return customerList.AsParallel()
+				.WithDegreeOfParallelism(Math.Min(Environment.ProcessorCount, 8))
 				.Select(c => new OrderCustomer
 				{
 					CustomerCode = c.no,
@@ -766,6 +1025,7 @@ namespace SriKanth.Service.SalesModule
 				})
 				.ToList();
 		}
+
 
 		private List<OrderItemDetails> ProcessItemsInParallel(IEnumerable<dynamic> items, Dictionary<string, decimal> priceLookup, IEnumerable<dynamic> inventory) // Pass inventory data here)
 		{

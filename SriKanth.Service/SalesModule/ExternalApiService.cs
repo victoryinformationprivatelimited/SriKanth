@@ -128,7 +128,7 @@ namespace SriKanth.Service.SalesModule
 		{
 			// Get authentication token
 			var token = await GetAccessTokenAsync();
-			var client = _httpClientFactory.CreateClient();
+			var client = _httpClientFactory.CreateClient("ExternalApi");
 
 			// Set authorization header
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -163,7 +163,7 @@ namespace SriKanth.Service.SalesModule
 		{
 			// Get authentication token
 			var token = await GetAccessTokenAsync();
-			using var client = _httpClientFactory.CreateClient();
+			using var client = _httpClientFactory.CreateClient("ExternalApi");
 
 			// Set authorization header
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
