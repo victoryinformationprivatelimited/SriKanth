@@ -1,0 +1,311 @@
+2025-10-29 00:10:09.046 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-29 00:10:09.549 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-29 00:10:09.553 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-29 00:10:09.820 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-29 00:10:09.823 +05:30 [INF] Hosting environment: Test
+2025-10-29 00:10:09.826 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-29 00:10:11.407 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-29 00:10:11.953 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 568.5513ms
+2025-10-29 00:10:12.184 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-29 00:10:12.184 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-29 00:10:12.209 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 24.5722ms
+2025-10-29 00:10:12.874 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 690.5649ms
+2025-10-29 00:10:15.146 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-29 00:10:15.405 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 259.2141ms
+2025-10-29 00:10:17.165 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - application/json 187
+2025-10-29 00:10:17.440 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-10-29 00:10:17.932 +05:30 [INF] Route matched with {action = "UpdateOrderStatus", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateOrderStatus(SriKanth.Model.BusinessModule.DTOs.UpdateOrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-29 00:10:20.020 +05:30 [INF] Beginning status update for order 2640 to status "Delivered"
+2025-10-29 00:10:21.117 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:10:21.120 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:10:21.123 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:10:21.126 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:10:22.849 +05:30 [INF] Executed DbCommand (103ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-10-29 00:11:04.794 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:11:04.807 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:11:06.640 +05:30 [INF] Received HTTP response headers after 1818.0889ms - 200
+2025-10-29 00:11:06.648 +05:30 [INF] End processing HTTP request after 1860.3546ms - 200
+2025-10-29 00:11:06.673 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=orderNo%20eq%20%272640%27
+2025-10-29 00:11:06.678 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=orderNo%20eq%20%272640%27
+2025-10-29 00:11:09.900 +05:30 [INF] Received HTTP response headers after 3216.5494ms - 200
+2025-10-29 00:11:09.905 +05:30 [INF] End processing HTTP request after 3232.7736ms - 200
+2025-10-29 00:12:56.615 +05:30 [INF] Order 2640 is invoiced.
+2025-10-29 00:13:02.866 +05:30 [INF] Executed DbCommand (44ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (DbType = Date), @p3='?' (Size = 4000), @p4='?' (Size = 1000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p7='?' (Size = 1000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Order] SET [CustomerCode] = @p0, [DelivertPersonName] = @p1, [DeliveryDate] = @p2, [LocationCode] = @p3, [Note] = @p4, [OrderDate] = @p5, [PaymentMethodCode] = @p6, [RejectReason] = @p7, [SalesPersonCode] = @p8, [Status] = @p9, [TotalAmount] = @p10, [TrackingNumber] = @p11
+OUTPUT 1
+WHERE [OrderNumber] = @p12;
+2025-10-29 00:13:03.002 +05:30 [INF] Order 2640 marked as Delivered after invoice check.
+2025-10-29 00:13:03.040 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-29 00:13:03.070 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API) in 165127.2181ms
+2025-10-29 00:13:03.083 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-10-29 00:13:03.121 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - 200 null application/json; charset=utf-8 165959.3848ms
+2025-10-29 00:13:03.330 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 161
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-29 00:14:32.364 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-29 00:14:32.906 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-29 00:14:32.909 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-29 00:14:33.145 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-29 00:14:33.156 +05:30 [INF] Hosting environment: Test
+2025-10-29 00:14:33.158 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-29 00:14:33.813 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-29 00:14:34.319 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 549.8508ms
+2025-10-29 00:14:34.624 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-29 00:14:34.624 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-29 00:14:34.643 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 19.2272ms
+2025-10-29 00:14:34.734 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 110.7183ms
+2025-10-29 00:14:37.889 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-29 00:14:38.056 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 168.1317ms
+2025-10-29 00:14:48.728 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - application/json 187
+2025-10-29 00:14:49.061 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-10-29 00:14:49.580 +05:30 [INF] Route matched with {action = "UpdateOrderStatus", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateOrderStatus(SriKanth.Model.BusinessModule.DTOs.UpdateOrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-29 00:14:51.611 +05:30 [INF] Beginning status update for order 2641 to status "Delivered"
+2025-10-29 00:14:53.459 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:14:53.583 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:14:53.601 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:14:53.627 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:14:55.602 +05:30 [INF] Executed DbCommand (112ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-10-29 00:15:27.598 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:15:27.609 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:15:28.166 +05:30 [INF] Received HTTP response headers after 547.9549ms - 200
+2025-10-29 00:15:28.173 +05:30 [INF] End processing HTTP request after 583.8549ms - 200
+2025-10-29 00:15:28.193 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=orderNo%20eq%20%272641%27
+2025-10-29 00:15:28.197 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=orderNo%20eq%20%272641%27
+2025-10-29 00:15:29.658 +05:30 [INF] Received HTTP response headers after 1458.4223ms - 200
+2025-10-29 00:15:29.663 +05:30 [INF] End processing HTTP request after 1469.9961ms - 200
+2025-10-29 00:15:53.054 +05:30 [INF] Order 2641 is invoiced.
+2025-10-29 00:15:53.338 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (DbType = Date), @p3='?' (Size = 4000), @p4='?' (Size = 1000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p7='?' (Size = 1000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Order] SET [CustomerCode] = @p0, [DelivertPersonName] = @p1, [DeliveryDate] = @p2, [LocationCode] = @p3, [Note] = @p4, [OrderDate] = @p5, [PaymentMethodCode] = @p6, [RejectReason] = @p7, [SalesPersonCode] = @p8, [Status] = @p9, [TotalAmount] = @p10, [TrackingNumber] = @p11
+OUTPUT 1
+WHERE [OrderNumber] = @p12;
+2025-10-29 00:15:53.387 +05:30 [INF] Order 2641 marked as Delivered after invoice check.
+2025-10-29 00:15:53.414 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-29 00:15:53.449 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API) in 63855.4617ms
+2025-10-29 00:15:53.455 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-10-29 00:15:53.487 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - 200 null application/json; charset=utf-8 64759.6579ms
+2025-10-29 00:15:53.659 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 161
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-29 00:16:17.054 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - application/json 187
+2025-10-29 00:16:17.092 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-10-29 00:16:17.105 +05:30 [INF] Route matched with {action = "UpdateOrderStatus", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateOrderStatus(SriKanth.Model.BusinessModule.DTOs.UpdateOrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-29 00:16:18.669 +05:30 [INF] Beginning status update for order 2703 to status "Delivered"
+2025-10-29 00:16:18.747 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-10-29 00:16:22.917 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:16:22.953 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:16:23.171 +05:30 [INF] Received HTTP response headers after 214.0828ms - 200
+2025-10-29 00:16:23.181 +05:30 [INF] End processing HTTP request after 263.9696ms - 200
+2025-10-29 00:16:23.189 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=orderNo%20eq%20%272703%27
+2025-10-29 00:16:23.192 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=orderNo%20eq%20%272703%27
+2025-10-29 00:16:23.742 +05:30 [INF] Received HTTP response headers after 544.8994ms - 200
+2025-10-29 00:16:23.748 +05:30 [INF] End processing HTTP request after 560.1327ms - 200
+2025-10-29 00:16:33.895 +05:30 [INF] Order 2703 is invoiced.
+2025-10-29 00:16:33.912 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (DbType = Date), @p3='?' (Size = 4000), @p4='?' (Size = 1000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p7='?' (Size = 1000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Order] SET [CustomerCode] = @p0, [DelivertPersonName] = @p1, [DeliveryDate] = @p2, [LocationCode] = @p3, [Note] = @p4, [OrderDate] = @p5, [PaymentMethodCode] = @p6, [RejectReason] = @p7, [SalesPersonCode] = @p8, [Status] = @p9, [TotalAmount] = @p10, [TrackingNumber] = @p11
+OUTPUT 1
+WHERE [OrderNumber] = @p12;
+2025-10-29 00:16:33.922 +05:30 [INF] Order 2703 marked as Delivered after invoice check.
+2025-10-29 00:16:33.931 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-29 00:16:33.939 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API) in 16828.8102ms
+2025-10-29 00:16:33.943 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-10-29 00:16:33.949 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - 200 null application/json; charset=utf-8 16894.6943ms
+2025-10-29 00:16:34.054 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 161
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-29 00:16:51.897 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - application/json 187
+2025-10-29 00:16:51.914 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-10-29 00:16:51.928 +05:30 [INF] Route matched with {action = "UpdateOrderStatus", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateOrderStatus(SriKanth.Model.BusinessModule.DTOs.UpdateOrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-29 00:16:53.335 +05:30 [INF] Beginning status update for order 2696 to status "Delivered"
+2025-10-29 00:16:53.577 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-10-29 00:16:57.489 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:16:57.500 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:16:57.681 +05:30 [INF] Received HTTP response headers after 174.4232ms - 200
+2025-10-29 00:16:57.687 +05:30 [INF] End processing HTTP request after 198.0951ms - 200
+2025-10-29 00:16:57.718 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=orderNo%20eq%20%272696%27
+2025-10-29 00:16:57.721 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=orderNo%20eq%20%272696%27
+2025-10-29 00:16:59.108 +05:30 [INF] Received HTTP response headers after 1383.5602ms - 200
+2025-10-29 00:16:59.112 +05:30 [INF] End processing HTTP request after 1394.1608ms - 200
+2025-10-29 00:17:49.120 +05:30 [INF] Order 2696 is invoiced.
+2025-10-29 00:17:49.184 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 100), @p2='?' (DbType = Date), @p3='?' (Size = 4000), @p4='?' (Size = 1000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p7='?' (Size = 1000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p11='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Order] SET [CustomerCode] = @p0, [DelivertPersonName] = @p1, [DeliveryDate] = @p2, [LocationCode] = @p3, [Note] = @p4, [OrderDate] = @p5, [PaymentMethodCode] = @p6, [RejectReason] = @p7, [SalesPersonCode] = @p8, [Status] = @p9, [TotalAmount] = @p10, [TrackingNumber] = @p11
+OUTPUT 1
+WHERE [OrderNumber] = @p12;
+2025-10-29 00:17:49.192 +05:30 [INF] Order 2696 marked as Delivered after invoice check.
+2025-10-29 00:17:49.195 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-29 00:17:49.201 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API) in 57265.9549ms
+2025-10-29 00:17:49.207 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-10-29 00:17:49.209 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - 200 null application/json; charset=utf-8 57312.1342ms
+2025-10-29 00:17:49.346 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 161
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-29 00:19:57.814 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-29 00:19:58.642 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-29 00:19:58.645 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-29 00:19:58.997 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-29 00:19:59.007 +05:30 [INF] Hosting environment: Test
+2025-10-29 00:19:59.013 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-29 00:19:59.582 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-29 00:20:00.389 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 826.5525ms
+2025-10-29 00:20:00.629 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-29 00:20:00.630 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-29 00:20:00.676 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 47.0673ms
+2025-10-29 00:20:00.799 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 168.6345ms
+2025-10-29 00:20:03.961 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-29 00:20:04.116 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 155.8328ms
+2025-10-29 00:20:44.372 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetCustomersDetailsByUser?userId=1 - text/plain 87
+2025-10-29 00:20:44.737 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API)'
+2025-10-29 00:20:45.107 +05:30 [INF] Route matched with {action = "GetCustomersDetailsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomersDetailsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-29 00:20:47.775 +05:30 [INF] Retrieving filtered customers for user 1
+2025-10-29 00:20:50.840 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:20:50.844 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:20:50.848 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:20:50.853 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-29 00:20:54.318 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:20:54.341 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:20:54.810 +05:30 [INF] Executed DbCommand (126ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-10-29 00:20:54.893 +05:30 [INF] Received HTTP response headers after 541.2552ms - 200
+2025-10-29 00:20:54.899 +05:30 [INF] End processing HTTP request after 589.4674ms - 200
+2025-10-29 00:20:54.946 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-10-29 00:20:54.952 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-10-29 00:20:56.446 +05:30 [INF] Received HTTP response headers after 1490.7689ms - 200
+2025-10-29 00:20:56.451 +05:30 [INF] End processing HTTP request after 1505.2819ms - 200
+2025-10-29 00:20:57.556 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-10-29 00:20:57.682 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.BusinessModule.DTOs.OrderCustomer, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-29 00:20:57.739 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API) in 12614.0064ms
+2025-10-29 00:20:57.752 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API)'
+2025-10-29 00:20:57.797 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetCustomersDetailsByUser?userId=1 - 200 null application/json; charset=utf-8 13425.4187ms
+2025-10-29 00:20:58.003 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 161
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-29 00:21:59.141 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetInvoiceDetails?userId=1 - null null
+2025-10-29 00:21:59.183 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetInvoicedByUser (SriKanth.API)'
+2025-10-29 00:21:59.211 +05:30 [INF] Route matched with {action = "GetInvoicedByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicedByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-29 00:21:59.233 +05:30 [INF] Beginning to retrieve Customer Invoice Details for user 1 
+2025-10-29 00:21:59.296 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-10-29 00:21:59.311 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-10-29 00:22:01.084 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:22:01.089 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:22:03.574 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:22:03.574 +05:30 [INF] Received HTTP response headers after 2477.2374ms - 200
+2025-10-29 00:22:03.581 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:22:03.586 +05:30 [INF] End processing HTTP request after 2501.5994ms - 200
+2025-10-29 00:22:03.603 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-10-29 00:22:03.609 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-10-29 00:22:03.838 +05:30 [INF] Received HTTP response headers after 248.5185ms - 200
+2025-10-29 00:22:03.843 +05:30 [INF] End processing HTTP request after 269.2516ms - 200
+2025-10-29 00:22:03.848 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines
+2025-10-29 00:22:03.853 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines
+2025-10-29 00:22:04.263 +05:30 [INF] Received HTTP response headers after 650.3371ms - 200
+2025-10-29 00:22:04.269 +05:30 [INF] End processing HTTP request after 665.8396ms - 200
+2025-10-29 00:23:18.213 +05:30 [INF] Received HTTP response headers after 74353.7555ms - 200
+2025-10-29 00:23:18.217 +05:30 [INF] End processing HTTP request after 74369.0789ms - 200
+2025-10-29 00:23:24.907 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@__orderNumbers_0='?' (Size = -1)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[OrderNumber] IN (
+    SELECT [o0].[value]
+    FROM OPENJSON(@__orderNumbers_0) WITH ([value] int '$') AS [o0]
+)
+2025-10-29 00:23:25.176 +05:30 [INF] Successfully retrieved customer invoice details for user 1
+2025-10-29 00:23:25.181 +05:30 [INF] Executing OkObjectResult, writing value of type 'SriKanth.Model.BusinessModule.DTOs.CustomerInvoiceReturn'.
+2025-10-29 00:23:25.376 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetInvoicedByUser (SriKanth.API) in 86160.8463ms
+2025-10-29 00:23:25.380 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetInvoicedByUser (SriKanth.API)'
+2025-10-29 00:23:25.384 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetInvoiceDetails?userId=1 - 200 null application/json; charset=utf-8 86242.8554ms
+2025-10-29 00:23:25.750 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 161
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-29 00:25:03.018 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetInvoicesByCustomer?customerId=48 - null null
+2025-10-29 00:25:03.049 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetInvoicesByCustomer (SriKanth.API)'
+2025-10-29 00:25:03.079 +05:30 [INF] Route matched with {action = "GetInvoicesByCustomer", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByCustomer(System.String) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-29 00:25:05.803 +05:30 [INF] Starting invoice retrieval process for customer code: 48
+2025-10-29 00:25:06.912 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:25:06.915 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-29 00:25:07.595 +05:30 [INF] Received HTTP response headers after 676.7062ms - 200
+2025-10-29 00:25:07.599 +05:30 [INF] End processing HTTP request after 686.6783ms - 200
+2025-10-29 00:25:07.603 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines
+2025-10-29 00:25:07.605 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines
+2025-10-29 00:26:28.628 +05:30 [INF] Received HTTP response headers after 81020.2681ms - 200
+2025-10-29 00:26:28.633 +05:30 [INF] End processing HTTP request after 81030.0855ms - 200
+2025-10-29 00:26:39.239 +05:30 [INF] Successfully retrieved and processed invoice summary for customer code: 48
+2025-10-29 00:26:39.242 +05:30 [INF] Executing OkObjectResult, writing value of type 'SriKanth.Model.BusinessModule.DTOs.CustomerWiseInvoices'.
+2025-10-29 00:26:39.256 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetInvoicesByCustomer (SriKanth.API) in 96170.4028ms
+2025-10-29 00:26:39.260 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetInvoicesByCustomer (SriKanth.API)'
+2025-10-29 00:26:39.436 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetInvoicesByCustomer?customerId=48 - 200 null application/json; charset=utf-8 96418.5758ms
+2025-10-29 00:26:39.549 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'IServiceProvider'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ThrowHelper.ThrowObjectDisposedException()
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.get_StateManager()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.EntryWithoutDetectChanges(TEntity entity)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.AddAsync(TEntity entity, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 160
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44

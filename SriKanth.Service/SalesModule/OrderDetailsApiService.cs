@@ -724,31 +724,38 @@ namespace SriKanth.Service.SalesModule
 		{
 			try
 			{
-				// Get all invoices for delivery status checking
-				var invoiceResponse = await _externalApiService.GetInvoiceDetailsAsync();
-				var invoices = invoiceResponse?.value ?? new List<Invoice>();
-
-				if (!invoices.Any())
+				if (order == null || string.IsNullOrEmpty(order.OrderNumber.ToString()))
 				{
-					_logger.LogWarning("No invoices found for delivery status update");
+					_logger.LogWarning("Invalid order object or missing order number.");
 					return false;
 				}
 
 				// Normalize order number for comparison
-				string orderNumberStr = order.OrderNumber.ToString().TrimStart('0');
+				string orderNumberStr = order.OrderNumber.ToString().Trim().Replace(" ", string.Empty);
 
-				var isInvoiced = invoices.Any(inv =>
-					!string.IsNullOrWhiteSpace(inv.OrderNo) &&
-					inv.OrderNo.TrimStart('0').Trim() == orderNumberStr);
+				// Get all invoices for delivery status checking
+				var invoiceResponse = await _externalApiService.GetPostedInvoiceDetailsFilterAsync("orderNo", orderNumberStr);
+				var invoices = invoiceResponse?.Value;
 
-
-				if (!isInvoiced)
+				if (invoices == null || !invoices.Any())
 				{
 					_logger.LogWarning("Order {OrderNumber} cannot be marked as Delivered because no invoice found.", order.OrderNumber);
 					return false;
 				}
 
-				// Success path
+				// Check if any invoice matches this specific order number
+				bool isInvoiced = invoices.Any(i => 
+					string.Equals(i.OrderNo, order.OrderNumber.ToString(), StringComparison.OrdinalIgnoreCase)
+					|| string.Equals(i.OrderNo?.TrimStart('0'), orderNumberStr, StringComparison.OrdinalIgnoreCase)
+				);
+
+				if (!isInvoiced)
+				{
+					_logger.LogWarning("No matching invoice found for order {OrderNumber}.", order.OrderNumber);
+					return false;
+				}
+
+				_logger.LogInformation("Order {OrderNumber} is invoiced.", order.OrderNumber);
 				return true;
 			}
 			catch (Exception ex)
@@ -757,6 +764,7 @@ namespace SriKanth.Service.SalesModule
 				return false;
 			}
 		}
+
 
 		private Task<bool> ValidateStatusTransition(OrderStatus currentStatus, OrderStatus newStatus)
 		{
