@@ -1,0 +1,469 @@
+2025-10-28 09:43:04.126 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-28 09:43:04.806 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-28 09:43:04.811 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-28 09:43:05.067 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-28 09:43:05.120 +05:30 [INF] Hosting environment: Test
+2025-10-28 09:43:05.122 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-28 09:43:07.737 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-28 09:43:08.300 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 577.2145ms
+2025-10-28 09:43:08.524 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-28 09:43:08.526 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-28 09:43:08.568 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 42.2509ms
+2025-10-28 09:43:08.801 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 276.7656ms
+2025-10-28 09:43:11.363 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-28 09:43:11.429 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 66.2591ms
+2025-10-28 09:44:36.893 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetCustomerDetailsByUser?userId=1 - text/plain 87
+2025-10-28 09:44:37.139 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetCustomerDetailsByUser?userId=1 - 404 0 null 245.4336ms
+2025-10-28 09:44:37.153 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7168/api/Business/GetCustomerDetailsByUser, Response status code: 404
+2025-10-28 09:44:49.261 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetCustomersDetailsByUser?userId=1 - text/plain 87
+2025-10-28 09:44:49.322 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API)'
+2025-10-28 09:47:18.473 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-28 09:47:18.873 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-28 09:47:18.877 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-28 09:47:19.340 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-28 09:47:19.343 +05:30 [INF] Hosting environment: Test
+2025-10-28 09:47:19.345 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-28 09:47:19.635 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-28 09:47:20.164 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 553.2738ms
+2025-10-28 09:47:20.423 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-28 09:47:20.423 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-28 09:47:20.473 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 49.9567ms
+2025-10-28 09:47:20.602 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 179.3761ms
+2025-10-28 09:47:22.551 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-28 09:47:22.636 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 85.9718ms
+2025-10-28 09:47:26.231 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetCustomersDetailsByUser?userId=1 - text/plain 87
+2025-10-28 09:47:26.543 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API)'
+2025-10-28 09:47:26.975 +05:30 [INF] Route matched with {action = "GetCustomersDetailsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomersDetailsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-28 09:47:29.600 +05:30 [INF] Retrieving filtered customers for user 1
+2025-10-28 09:47:32.422 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 09:47:32.426 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 09:47:32.430 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 09:47:32.432 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 09:47:33.681 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 09:47:33.691 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 09:47:34.084 +05:30 [INF] Executed DbCommand (124ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-10-28 09:47:34.195 +05:30 [INF] Received HTTP response headers after 487.3537ms - 200
+2025-10-28 09:47:34.198 +05:30 [INF] End processing HTTP request after 525.8017ms - 200
+2025-10-28 09:47:34.233 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-10-28 09:47:34.237 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-10-28 09:47:35.578 +05:30 [INF] Received HTTP response headers after 1337.0193ms - 200
+2025-10-28 09:47:35.581 +05:30 [INF] End processing HTTP request after 1347.5801ms - 200
+2025-10-28 09:47:36.980 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-10-28 09:47:36.989 +05:30 [INF] Admin user 1 accessing all customers
+2025-10-28 09:47:37.073 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.BusinessModule.DTOs.OrderCustomer, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-28 09:47:37.136 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API) in 10147.2584ms
+2025-10-28 09:47:37.140 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API)'
+2025-10-28 09:47:37.162 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetCustomersDetailsByUser?userId=1 - 200 null application/json; charset=utf-8 10931.7869ms
+2025-10-28 09:47:37.287 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 161
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-28 09:48:37.901 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-28 09:48:38.329 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-28 09:48:38.333 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-28 09:48:38.761 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-28 09:48:38.764 +05:30 [INF] Hosting environment: Test
+2025-10-28 09:48:38.769 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-28 09:48:39.322 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-28 09:48:39.752 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 457.0941ms
+2025-10-28 09:48:39.952 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-28 09:48:39.952 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-28 09:48:39.986 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 34.9191ms
+2025-10-28 09:48:40.042 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.6444ms
+2025-10-28 09:48:42.030 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-28 09:48:42.078 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 48.5003ms
+2025-10-28 09:48:46.603 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetCustomersDetailsByUser?userId=1 - text/plain 87
+2025-10-28 09:48:46.840 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API)'
+2025-10-28 09:48:47.097 +05:30 [INF] Route matched with {action = "GetCustomersDetailsByUser", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomersDetailsByUser(Int32) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-28 09:48:48.894 +05:30 [INF] Retrieving filtered customers for user 1
+2025-10-28 09:48:50.834 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 09:48:50.838 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 09:48:50.844 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 09:48:50.846 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 09:48:52.253 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 09:48:52.267 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 09:48:52.558 +05:30 [INF] Executed DbCommand (91ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-10-28 09:48:52.641 +05:30 [INF] Received HTTP response headers after 367.1227ms - 200
+2025-10-28 09:48:52.645 +05:30 [INF] End processing HTTP request after 395.5575ms - 200
+2025-10-28 09:48:52.688 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-10-28 09:48:52.690 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/customers
+2025-10-28 09:48:54.154 +05:30 [INF] Received HTTP response headers after 1461.7104ms - 200
+2025-10-28 09:48:54.160 +05:30 [INF] End processing HTTP request after 1472.1786ms - 200
+2025-10-28 09:48:56.588 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-10-28 09:48:56.595 +05:30 [INF] Admin user 1 accessing all customers
+2025-10-28 09:48:56.602 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines
+2025-10-28 09:48:56.607 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines
+2025-10-28 09:50:37.565 +05:30 [INF] Received HTTP response headers after 100956.0885ms - 200
+2025-10-28 09:50:37.569 +05:30 [INF] End processing HTTP request after 100967.4316ms - 200
+2025-10-28 09:51:25.457 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SriKanth.Model.BusinessModule.DTOs.OrderCustomer, SriKanth.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-28 09:51:25.508 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API) in 158400.3226ms
+2025-10-28 09:51:25.514 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetCustomersDetailsByUser (SriKanth.API)'
+2025-10-28 09:51:25.529 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetCustomersDetailsByUser?userId=1 - 200 null application/json; charset=utf-8 158926.5511ms
+2025-10-28 09:51:25.621 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 161
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-28 10:18:44.396 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-28 10:18:44.804 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-28 10:18:44.808 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-28 10:18:44.982 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-28 10:18:44.984 +05:30 [INF] Hosting environment: Test
+2025-10-28 10:18:44.986 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-28 10:18:45.891 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-28 10:18:47.574 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 1704.4474ms
+2025-10-28 10:18:47.654 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-28 10:18:47.706 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 52.0681ms
+2025-10-28 10:18:47.763 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-28 10:18:47.864 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 100.7726ms
+2025-10-28 10:18:49.797 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-28 10:18:49.908 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 111.045ms
+2025-10-28 10:19:58.020 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=10 - null null
+2025-10-28 10:19:58.173 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-10-28 10:19:58.182 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-28 10:19:58.198 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=10 - 401 0 null 178.9546ms
+2025-10-28 10:20:14.786 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/User/login - application/json 87
+2025-10-28 10:20:14.812 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-10-28 10:20:14.847 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-10-28 10:20:15.142 +05:30 [INF] Login attempt started for the user with username or email: Admin.
+2025-10-28 10:20:15.997 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 10:20:16.001 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 10:20:16.005 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 10:20:16.006 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 10:20:17.206 +05:30 [INF] Executed DbCommand (93ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-10-28 10:20:17.405 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-10-28 10:20:17.616 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@p16='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [Email] = @p1, [FailedLoginCount] = @p2, [FirstName] = @p3, [IsActive] = @p4, [IsEmailVerified] = @p5, [IsLocked] = @p6, [IsPhoneNumberVerified] = @p7, [LastLoginAt] = @p8, [LastName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [RememberMe] = @p12, [SalesPersonCode] = @p13, [UserRoleId] = @p14, [Username] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+2025-10-28 10:20:17.641 +05:30 [INF] Updated the last login time for user: 1.
+2025-10-28 10:20:18.549 +05:30 [WRN] API Response: {
+  "ip": "::1",
+  "bogon": true
+}
+2025-10-28 10:20:18.771 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (Size = 50), @p4='?' (Size = 255), @p5='?' (Size = 50), @p6='?' (DbType = Boolean), @p7='?' (Size = 50), @p8='?' (DbType = DateTime2), @p9='?' (Size = 50), @p10='?' (DbType = Boolean), @p11='?' (Size = 50), @p12='?' (Size = 255), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginTrack] ([Browser], [City], [Country], [DeviceType], [FailureReason], [IPAddress], [IsSuccessful], [LoginMethod], [LoginTime], [MFAMethod], [MFAUsed], [OperatingSystem], [SessionID], [UserID])
+OUTPUT INSERTED.[LoginTrackID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2025-10-28 10:20:18.831 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-10-28 10:20:20.849 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-10-28 10:20:20.862 +05:30 [INF] JWT token generated and stored for user 1.
+2025-10-28 10:20:20.872 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-10-28 10:20:20.876 +05:30 [INF] Login successful without MFA for user: 1.
+2025-10-28 10:20:20.884 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-28 10:20:20.900 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 6044.5205ms
+2025-10-28 10:20:20.905 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-10-28 10:20:20.918 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/User/login - 200 null application/json; charset=utf-8 6132.0533ms
+2025-10-28 10:21:33.487 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=10 - null null
+2025-10-28 10:21:33.565 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API)'
+2025-10-28 10:21:33.581 +05:30 [INF] Route matched with {action = "GetDueAmountByCustomer", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDueAmountByCustomer(System.String) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-28 10:21:33.725 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:21:33.733 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:21:34.487 +05:30 [INF] Received HTTP response headers after 746.271ms - 200
+2025-10-28 10:21:34.493 +05:30 [INF] End processing HTTP request after 770.6327ms - 200
+2025-10-28 10:21:34.508 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=CustomerNo%20eq%20%2710%27
+2025-10-28 10:21:34.514 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=CustomerNo%20eq%20%2710%27
+2025-10-28 10:21:35.443 +05:30 [INF] Received HTTP response headers after 924.2736ms - 400
+2025-10-28 10:21:35.448 +05:30 [INF] End processing HTTP request after 939.4504ms - 400
+2025-10-28 10:21:35.583 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2025-10-28 10:21:35.588 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API) in 2001.6191ms
+2025-10-28 10:21:35.592 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API)'
+2025-10-28 10:21:35.613 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=10 - 500 null text/plain; charset=utf-8 2125.3476ms
+2025-10-28 10:21:35.673 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'IServiceProvider'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ThrowHelper.ThrowObjectDisposedException()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.get_StateManager()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.EntryWithoutDetectChanges(TEntity entity)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.AddAsync(TEntity entity, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 160
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-28 10:22:00.276 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=10 - null null
+2025-10-28 10:22:00.286 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API)'
+2025-10-28 10:22:00.295 +05:30 [INF] Route matched with {action = "GetDueAmountByCustomer", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDueAmountByCustomer(System.String) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-28 10:22:29.514 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:22:29.516 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:22:29.843 +05:30 [INF] Received HTTP response headers after 325.5317ms - 200
+2025-10-28 10:22:29.845 +05:30 [INF] End processing HTTP request after 331.9143ms - 200
+2025-10-28 10:22:44.737 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=CustomerNo%20eq%20%2710%27
+2025-10-28 10:22:44.739 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=CustomerNo%20eq%20%2710%27
+2025-10-28 10:22:45.803 +05:30 [INF] Received HTTP response headers after 1061.7355ms - 400
+2025-10-28 10:22:45.810 +05:30 [INF] End processing HTTP request after 1072.5515ms - 400
+2025-10-28 10:26:33.327 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-28 10:26:33.826 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-28 10:26:33.828 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-28 10:26:34.034 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-28 10:26:34.039 +05:30 [INF] Hosting environment: Test
+2025-10-28 10:26:34.042 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-28 10:26:34.973 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-28 10:26:35.396 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 437.1281ms
+2025-10-28 10:26:35.610 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-28 10:26:35.610 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-28 10:26:35.629 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 19.0609ms
+2025-10-28 10:26:35.696 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 86.5161ms
+2025-10-28 10:26:39.030 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-28 10:26:39.068 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 38.3428ms
+2025-10-28 10:26:43.578 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=10 - null null
+2025-10-28 10:26:43.843 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API)'
+2025-10-28 10:26:44.183 +05:30 [INF] Route matched with {action = "GetDueAmountByCustomer", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDueAmountByCustomer(System.String) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-28 10:26:52.152 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:26:52.162 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:26:52.907 +05:30 [INF] Received HTTP response headers after 738.9911ms - 200
+2025-10-28 10:26:52.912 +05:30 [INF] End processing HTTP request after 764.9031ms - 200
+2025-10-28 10:27:08.624 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=sellToCustomerNo%20eq%20%2710%27
+2025-10-28 10:27:08.628 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=sellToCustomerNo%20eq%20%2710%27
+2025-10-28 10:27:09.483 +05:30 [INF] Received HTTP response headers after 852.1547ms - 200
+2025-10-28 10:27:09.486 +05:30 [INF] End processing HTTP request after 862.2417ms - 200
+2025-10-28 10:27:15.205 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Decimal'.
+2025-10-28 10:27:15.223 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API) in 31029.9502ms
+2025-10-28 10:27:15.227 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API)'
+2025-10-28 10:27:15.371 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=10 - 200 null application/json; charset=utf-8 31793.3353ms
+2025-10-28 10:27:15.383 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetInfrastructure[T](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, ModelDependencies modelDependencies)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel(Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_4(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.get_StateManager()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.EntryWithoutDetectChanges(TEntity entity)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.AddAsync(TEntity entity, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 160
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-28 10:27:22.613 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=10 - null null
+2025-10-28 10:27:22.633 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API)'
+2025-10-28 10:27:22.638 +05:30 [INF] Route matched with {action = "GetDueAmountByCustomer", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDueAmountByCustomer(System.String) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-28 10:27:52.647 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:27:52.657 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:27:52.922 +05:30 [INF] Received HTTP response headers after 263.2653ms - 200
+2025-10-28 10:27:52.925 +05:30 [INF] End processing HTTP request after 278.8731ms - 200
+2025-10-28 10:27:52.930 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=sellToCustomerNo%20eq%20%2710%27
+2025-10-28 10:27:52.933 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=sellToCustomerNo%20eq%20%2710%27
+2025-10-28 10:27:53.332 +05:30 [INF] Received HTTP response headers after 396.5609ms - 200
+2025-10-28 10:27:53.335 +05:30 [INF] End processing HTTP request after 405.498ms - 200
+2025-10-28 10:28:49.374 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Decimal'.
+2025-10-28 10:28:49.377 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API) in 86734.3498ms
+2025-10-28 10:28:49.379 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API)'
+2025-10-28 10:28:49.387 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=10 - 200 null application/json; charset=utf-8 86773.8629ms
+2025-10-28 10:28:49.437 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetInfrastructure[T](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, ModelDependencies modelDependencies)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel(Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_4(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.get_StateManager()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.EntryWithoutDetectChanges(TEntity entity)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.AddAsync(TEntity entity, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 160
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-28 10:35:48.740 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=48 - null null
+2025-10-28 10:35:48.753 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API)'
+2025-10-28 10:35:48.765 +05:30 [INF] Route matched with {action = "GetDueAmountByCustomer", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDueAmountByCustomer(System.String) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-28 10:35:52.611 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:35:52.614 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 10:35:53.260 +05:30 [INF] Received HTTP response headers after 643.3619ms - 200
+2025-10-28 10:35:53.263 +05:30 [INF] End processing HTTP request after 651.9169ms - 200
+2025-10-28 10:35:53.268 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=sellToCustomerNo%20eq%20%2748%27
+2025-10-28 10:35:53.271 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoices?$expand=postedInvoiceLines&$filter=sellToCustomerNo%20eq%20%2748%27
+2025-10-28 10:35:54.285 +05:30 [INF] Received HTTP response headers after 1010.8511ms - 200
+2025-10-28 10:35:54.288 +05:30 [INF] End processing HTTP request after 1020.7851ms - 200
+2025-10-28 10:35:55.772 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Decimal'.
+2025-10-28 10:35:55.775 +05:30 [INF] Executed action SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API) in 7004.3561ms
+2025-10-28 10:35:55.778 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.BusinessController.GetDueAmountByCustomer (SriKanth.API)'
+2025-10-28 10:35:55.804 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7168/api/Business/GetDueAmountByCustomer?customerNo=48 - 200 null application/json; charset=utf-8 7063.7586ms
+2025-10-28 10:35:55.851 +05:30 [ERR] Error occurred while logging user history in background task
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'SriKanthDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetInfrastructure[T](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, ModelDependencies modelDependencies)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel(Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_4(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.get_StateManager()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.EntryWithoutDetectChanges(TEntity entity)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.AddAsync(TEntity entity, CancellationToken cancellationToken)
+   at SriKanth.Data.LoginData.AddUserHistoryAsync(UserHistory userHistory) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Data\LoginData.cs:line 160
+   at SriKanth.Service.UserHistoryService.LogUserActionAsync(Int32 userId, String actionType, String entityType, String endpoint, String ipAddress) in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\UserHistoryService.cs:line 33
+   at HRIS.API.Infrastructure.Helpers.UserHistoryActionFilter.<>c__DisplayClass4_0.<<OnActionExecutionAsync>b__0>d.MoveNext() in C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\Infrastructure\UserHistoryActionFilter.cs:line 44
+2025-10-28 10:36:22.623 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-28 10:36:23.281 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-28 10:36:23.285 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-28 10:36:23.633 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-28 10:36:23.636 +05:30 [INF] Hosting environment: Test
+2025-10-28 10:36:23.638 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-28 10:36:24.352 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-28 10:36:24.764 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 432.9925ms
+2025-10-28 10:36:25.018 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-28 10:36:25.018 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-28 10:36:25.047 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 29.044ms
+2025-10-28 10:36:25.119 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 100.8518ms
+2025-10-28 10:36:27.562 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-28 10:36:27.608 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.5354ms
+2025-10-28 10:38:10.171 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-28 10:38:10.537 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-28 10:38:10.540 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-28 10:38:10.741 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-28 10:38:10.745 +05:30 [INF] Hosting environment: Test
+2025-10-28 10:38:10.764 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-28 10:38:11.766 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-28 10:38:12.129 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 380.6741ms
+2025-10-28 10:38:12.317 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-28 10:38:12.317 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-28 10:38:12.345 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 28.1147ms
+2025-10-28 10:38:12.407 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.1317ms
+2025-10-28 10:38:14.464 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-28 10:38:14.519 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 55.6373ms

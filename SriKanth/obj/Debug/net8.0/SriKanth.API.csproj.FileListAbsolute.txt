@@ -198,10 +198,12 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\staticwebasse
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\SriKanth.8A6726F6.Up2Date
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\SriKanth.API.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\refint\SriKanth.API.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\SriKanth.API.pdb
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\SriKanth.API.genruntimeconfig.cache
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\ref\SriKanth.API.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Debug\net8.0\MySqlConnector.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

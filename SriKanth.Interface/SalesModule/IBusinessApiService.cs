@@ -20,5 +20,6 @@ namespace SriKanth.Interface.SalesModule
 		Task<List<OrderItemDetails>> GetFilteredItemsAsync(int userId);
 		Task<CustomerInvoiceReturn> GetCustomerInvoicesAsync(int userId);
 		Task<CustomerWiseInvoices> GetCustomerInvoiceDetailsAsync(string customerCode);
+		Task<decimal> GetSingleCustomerDueAmountAsync(string customerNo);
 	}
 }

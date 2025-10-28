@@ -71,9 +71,11 @@ builder.Services.AddHttpClient("ExternalApi", client =>
 // Then add the service registration
 builder.Services.AddScoped<IExternalApiService, ExternalApiService>();
 
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// BEFORE
 builder.Services.AddDbContext<SriKanthDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-        b => b.MigrationsAssembly("SriKanth.Model")));
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddRateLimiter(options =>
 {
@@ -153,7 +155,7 @@ builder.Services.AddCors(o =>
 			 .AllowCredentials();
 	});
 });
-
+builder.Services.AddMemoryCache();
 
 builder.Services.AddControllers();
 builder.Services.AddHttpClient();

@@ -46,7 +46,9 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\MimeKit.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\MySqlConnector.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Serilog.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Serilog.AspNetCore.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\PubTmp\Out\Serilog.Extensions.Hosting.dll

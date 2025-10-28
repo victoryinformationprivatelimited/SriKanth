@@ -593,7 +593,7 @@ namespace SriKanth.Service.SalesModule
 			}
 
 			// Fetch due amounts and build lookup in one pass
-			var dueAmountLookup = await GetCustomerDueAmountsAsync();
+			var dueAmountLookup =  new Dictionary<string, decimal>();
 
 			return ProcessCustomersInParallel(filteredCustomers, dueAmountLookup);
 		}
@@ -780,18 +780,28 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
-		private async Task<Dictionary<string, decimal>> GetCustomerDueAmountsAsync()
+		/// <summary>
+		/// Gets the total due amount for a *single* customer by calling the filtered API.
+		/// </summary>
+		/// <param name="customerNo">The customer's number to filter by.</param>
+		/// <returns>The total due amount (sum of RemainingAmount) for that customer.</returns>
+		public async Task<decimal> GetSingleCustomerDueAmountAsync(string customerNo)
 		{
-			var postedInvoiceResponse = await _externalApiService.GetPostedInvoiceDetailsAsync();
+			// 1. Call your external API method with the filter
+			// Note: I am assuming the filter field name is "CustomerNo". 
+			// Please adjust if the API expects a different field name.
+			var postedInvoiceResponse = await _externalApiService.GetPostedInvoiceDetailsFilterAsync("sellToCustomerNo", customerNo);
+
 			var invoices = postedInvoiceResponse.Value;
 
-			// Build dictionary directly during grouping - single pass
-			return invoices
-				.GroupBy(inv => inv.CustomerNo)
-				.ToDictionary(
-					g => g.Key,
-					g => g.Sum(inv => inv.RemainingAmount) // TotalDueAmount = sum of RemainingAmount
-				);
+			// 2. If no invoices are found, return 0
+			if (invoices == null || !invoices.Any())
+			{
+				return 0;
+			}
+
+			// 3. Calculate and return the sum of RemainingAmount
+			return invoices.Sum(inv => inv.RemainingAmount);
 		}
 
 		private async Task<List<CustomerWiseInvoices>> GetCustomerWiseInvoicesAsync()

@@ -164,6 +164,24 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		[HttpGet("GetDueAmountByCustomer")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetDueAmountByCustomer(string customerNo)
+		{ 
+			try
+			{
+				// Get filtered order creation details for the specified user
+				var customers = await _businessApiService.GetSingleCustomerDueAmountAsync(customerNo);
+				return Ok(customers);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+
+
 		[HttpGet("GetItemsDetailsByUser")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]

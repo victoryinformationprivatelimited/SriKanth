@@ -112,6 +112,22 @@
   },
   {
     "ContainingType": "SriKanth.API.Controllers.BusinessController",
+    "Method": "GetDueAmountByCustomer",
+    "RelativePath": "api/Business/GetDueAmountByCustomer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerNo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SriKanth.API.Controllers.BusinessController",
     "Method": "GetInvoicedByUser",
     "RelativePath": "api/Business/GetInvoiceDetails",
     "HttpMethod": "GET",

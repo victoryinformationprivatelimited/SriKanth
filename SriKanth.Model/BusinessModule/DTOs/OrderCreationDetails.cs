@@ -1,5 +1,4 @@
-﻿using Microsoft.Identity.Client;
-using SriKanth.Model.Login_Module.DTOs;
+﻿using SriKanth.Model.Login_Module.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace SriKanth.Model.BusinessModule.DTOs
 	{
 		public string CustomerCode { get; set; }
 		public string CustomerName { get; set; }
-		public Decimal DueAmount { get; set; }
+		public Decimal? DueAmount { get; set; }
 		public bool CreditAllowed { get; set; }
 		public Decimal CreditLimit { get; set; }
 		public Decimal BalanceCredit { get; set; }

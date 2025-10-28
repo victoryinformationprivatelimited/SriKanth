@@ -205,3 +205,5 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\refint\SriK
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\SriKanth.API.pdb
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\SriKanth.API.genruntimeconfig.cache
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\obj\Release\net8.0\ref\SriKanth.API.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Release\net8.0\MySqlConnector.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth\bin\Release\net8.0\Pomelo.EntityFrameworkCore.MySql.dll

@@ -116,6 +116,27 @@
         }
       }
     },
+    "/api/Business/GetDueAmountByCustomer": {
+      "get": {
+        "tags": [
+          "Business"
+        ],
+        "parameters": [
+          {
+            "name": "customerNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Business/GetItemsDetailsByUser": {
       "get": {
         "tags": [
