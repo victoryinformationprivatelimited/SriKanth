@@ -1,0 +1,141 @@
+2025-10-28 23:34:39.135 +05:30 [INF] User profile is available. Using 'C:\Users\Dinuk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-28 23:34:40.178 +05:30 [INF] Now listening on: https://localhost:7168
+2025-10-28 23:34:40.182 +05:30 [INF] Now listening on: http://localhost:5076
+2025-10-28 23:34:40.447 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-28 23:34:40.452 +05:30 [INF] Hosting environment: Test
+2025-10-28 23:34:40.454 +05:30 [INF] Content root path: C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth
+2025-10-28 23:34:43.540 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/index.html - null null
+2025-10-28 23:34:44.133 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/index.html - 200 null text/html;charset=utf-8 616.7084ms
+2025-10-28 23:34:44.478 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-28 23:34:44.478 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/_vs/browserLink - null null
+2025-10-28 23:34:44.554 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_framework/aspnetcore-browser-refresh.js - 200 16509 application/javascript; charset=utf-8 75.8541ms
+2025-10-28 23:34:44.796 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/_vs/browserLink - 200 null text/javascript; charset=UTF-8 319.0391ms
+2025-10-28 23:34:47.362 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - null null
+2025-10-28 23:34:47.433 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7168/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 71.7929ms
+2025-10-28 23:35:29.411 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/User/login - application/json 87
+2025-10-28 23:35:29.585 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-10-28 23:35:29.646 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-10-28 23:35:30.097 +05:30 [INF] Login attempt started for the user with username or email: Admin.
+2025-10-28 23:35:33.470 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 23:35:33.474 +05:30 [WRN] No store type was specified for the decimal property 'DiscountPercent' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 23:35:33.477 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 23:35:33.479 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-28 23:35:35.495 +05:30 [INF] Executed DbCommand (133ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-10-28 23:35:35.741 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-10-28 23:35:35.964 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@p16='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [Email] = @p1, [FailedLoginCount] = @p2, [FirstName] = @p3, [IsActive] = @p4, [IsEmailVerified] = @p5, [IsLocked] = @p6, [IsPhoneNumberVerified] = @p7, [LastLoginAt] = @p8, [LastName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [RememberMe] = @p12, [SalesPersonCode] = @p13, [UserRoleId] = @p14, [Username] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+2025-10-28 23:35:35.985 +05:30 [INF] Updated the last login time for user: 1.
+2025-10-28 23:35:39.017 +05:30 [WRN] API Response: {
+  "ip": "::1",
+  "bogon": true
+}
+2025-10-28 23:35:39.420 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (Size = 50), @p4='?' (Size = 255), @p5='?' (Size = 50), @p6='?' (DbType = Boolean), @p7='?' (Size = 50), @p8='?' (DbType = DateTime2), @p9='?' (Size = 50), @p10='?' (DbType = Boolean), @p11='?' (Size = 50), @p12='?' (Size = 255), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginTrack] ([Browser], [City], [Country], [DeviceType], [FailureReason], [IPAddress], [IsSuccessful], [LoginMethod], [LoginTime], [MFAMethod], [MFAUsed], [OperatingSystem], [SessionID], [UserID])
+OUTPUT INSERTED.[LoginTrackID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2025-10-28 23:35:39.481 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-10-28 23:36:13.034 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-10-28 23:36:13.045 +05:30 [INF] JWT token generated and stored for user 1.
+2025-10-28 23:36:13.058 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-10-28 23:36:13.064 +05:30 [INF] Login successful without MFA for user: 1.
+2025-10-28 23:36:13.083 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-28 23:36:13.116 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 43458.4232ms
+2025-10-28 23:36:13.124 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-10-28 23:36:13.143 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/User/login - 200 null application/json; charset=utf-8 43732.2839ms
+2025-10-28 23:37:14.727 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - application/json 187
+2025-10-28 23:37:14.867 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (SalesCoordinator)
+2025-10-28 23:37:14.879 +05:30 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-28 23:37:14.884 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - 403 0 null 156.99ms
+2025-10-28 23:43:01.514 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/User/login - application/json 87
+2025-10-28 23:43:01.524 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-10-28 23:43:01.526 +05:30 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SriKanth.Model.Login_Module.DTOs.RequestLogin) on controller SriKanth.API.Controllers.UserController (SriKanth.API).
+2025-10-28 23:43:01.543 +05:30 [INF] Login attempt started for the user with username or email: Admin.
+2025-10-28 23:43:01.582 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__usernameOrEmail_0='?' (Size = 100), @__usernameOrEmail_0_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[FailedLoginCount], [u].[FirstName], [u].[IsActive], [u].[IsEmailVerified], [u].[IsLocked], [u].[IsPhoneNumberVerified], [u].[LastLoginAt], [u].[LastName], [u].[PasswordHash], [u].[PhoneNumber], [u].[RememberMe], [u].[SalesPersonCode], [u].[UserRoleId], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__usernameOrEmail_0 OR [u].[Email] = @__usernameOrEmail_0_1
+2025-10-28 23:43:01.591 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MFASettingID], [m].[IsMFAEnabled], [m].[PreferredMFAType], [m].[UserID]
+FROM [MFASetting] AS [m]
+WHERE [m].[UserID] = @__userId_0
+2025-10-28 23:43:01.600 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p16='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime2), @p9='?' (Size = 100), @p10='?' (Size = 255), @p11='?' (Size = 50), @p12='?' (DbType = Boolean), @p13='?' (Size = 100), @p14='?' (DbType = Int32), @p15='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [Email] = @p1, [FailedLoginCount] = @p2, [FirstName] = @p3, [IsActive] = @p4, [IsEmailVerified] = @p5, [IsLocked] = @p6, [IsPhoneNumberVerified] = @p7, [LastLoginAt] = @p8, [LastName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [RememberMe] = @p12, [SalesPersonCode] = @p13, [UserRoleId] = @p14, [Username] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+2025-10-28 23:43:01.603 +05:30 [INF] Updated the last login time for user: 1.
+2025-10-28 23:43:02.471 +05:30 [WRN] API Response: {
+  "ip": "::1",
+  "bogon": true
+}
+2025-10-28 23:43:02.510 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (Size = 50), @p4='?' (Size = 255), @p5='?' (Size = 50), @p6='?' (DbType = Boolean), @p7='?' (Size = 50), @p8='?' (DbType = DateTime2), @p9='?' (Size = 50), @p10='?' (DbType = Boolean), @p11='?' (Size = 50), @p12='?' (Size = 255), @p13='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginTrack] ([Browser], [City], [Country], [DeviceType], [FailureReason], [IPAddress], [IsSuccessful], [LoginMethod], [LoginTime], [MFAMethod], [MFAUsed], [OperatingSystem], [SessionID], [UserID])
+OUTPUT INSERTED.[LoginTrackID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+2025-10-28 23:43:02.519 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__userRoleId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserRoleName]
+FROM [UserRole] AS [u]
+WHERE [u].[UserRoleID] = @__userRoleId_0
+2025-10-28 23:43:04.196 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-10-28 23:43:04.201 +05:30 [INF] JWT token generated and stored for user 1.
+2025-10-28 23:43:04.209 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 255), @p6='?' (Size = 1000), @p7='?' (Size = 50), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([CreatedAt], [ExpiresAt], [IsRevoked], [IsUsed], [LastUsedAt], [Purpose], [Token], [TokenType], [UserID])
+OUTPUT INSERTED.[TokenID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-10-28 23:43:04.214 +05:30 [INF] Login successful without MFA for user: 1.
+2025-10-28 23:43:04.215 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-28 23:43:04.218 +05:30 [INF] Executed action SriKanth.API.Controllers.UserController.Login (SriKanth.API) in 2688.8394ms
+2025-10-28 23:43:04.219 +05:30 [INF] Executed endpoint 'SriKanth.API.Controllers.UserController.Login (SriKanth.API)'
+2025-10-28 23:43:04.222 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7168/api/User/login - 200 null application/json; charset=utf-8 2708.341ms
+2025-10-28 23:43:23.227 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7168/api/Business/ChangeStatus - application/json 187
+2025-10-28 23:43:23.242 +05:30 [INF] Executing endpoint 'SriKanth.API.Controllers.BusinessController.UpdateOrderStatus (SriKanth.API)'
+2025-10-28 23:43:23.259 +05:30 [INF] Route matched with {action = "UpdateOrderStatus", controller = "Business"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateOrderStatus(SriKanth.Model.BusinessModule.DTOs.UpdateOrderRequest) on controller SriKanth.API.Controllers.BusinessController (SriKanth.API).
+2025-10-28 23:43:25.998 +05:30 [INF] Beginning status update for order 2640 to status "Delivered"
+2025-10-28 23:43:26.155 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@__orderNumber_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderNumber], [o].[CustomerCode], [o].[DelivertPersonName], [o].[DeliveryDate], [o].[LocationCode], [o].[Note], [o].[OrderDate], [o].[PaymentMethodCode], [o].[RejectReason], [o].[SalesPersonCode], [o].[Status], [o].[TotalAmount], [o].[TrackingNumber]
+FROM [Order] AS [o]
+WHERE [o].[OrderNumber] = @__orderNumber_0
+2025-10-28 23:44:07.101 +05:30 [INF] Start processing HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 23:44:07.107 +05:30 [INF] Sending HTTP request POST https://login.microsoftonline.com/6dfae1d4-52b9-4fc7-9b7c-1014447db47b/oauth2/v2.0/token
+2025-10-28 23:44:07.894 +05:30 [INF] Received HTTP response headers after 782.0147ms - 200
+2025-10-28 23:44:07.900 +05:30 [INF] End processing HTTP request after 801.288ms - 200
+2025-10-28 23:44:07.913 +05:30 [INF] Start processing HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoiceLines
+2025-10-28 23:44:07.918 +05:30 [INF] Sending HTTP request GET https://api.businesscentral.dynamics.com/v2.0/Production/api/asttrum/sales/v1.0/companies(b452a9e8-ba54-f011-be59-6045bd204fef)/postedInvoiceLines
+2025-10-28 23:44:12.189 +05:30 [INF] Received HTTP response headers after 4266.1869ms - 200
+2025-10-28 23:44:12.193 +05:30 [INF] End processing HTTP request after 4279.8972ms - 200
