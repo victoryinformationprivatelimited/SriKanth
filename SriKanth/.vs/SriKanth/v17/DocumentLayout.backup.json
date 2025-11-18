@@ -389,7 +389,7 @@
               "RelativeDocumentMoniker": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
               "ToolTip": "C:\\Users\\Dinuk\\Documents\\GitHub\\SriKanth\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\OrderDetailsApiService.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAlwI4AAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAHQBAAAAAAAAAAAlwIEBAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-01T17:27:48.834Z",
               "EditorCaption": ""
@@ -417,8 +417,7 @@
               "RelativeToolTip": "Controllers\\BusinessController.cs",
               "ViewState": "AgIAACsBAAAAAAAAAAAlwDgBAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T01:49:30.379Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T01:49:30.379Z"
             },
             {
               "$type": "Document",
@@ -430,8 +429,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAHAQAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-11T02:02:39.292Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-11T02:02:39.292Z"
             },
             {
               "$type": "Document",
@@ -455,8 +453,7 @@
               "RelativeToolTip": "..\\SriKanth.Service\\SalesModule\\ExternalApiService.cs",
               "ViewState": "AgIAAEwAAAAAAAAAAAAlwFYAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T02:21:35.234Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T02:21:35.234Z"
             },
             {
               "$type": "Document",
@@ -468,8 +465,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T06:38:28.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T06:38:28.098Z"
             },
             {
               "$type": "Document",
@@ -493,8 +489,7 @@
               "RelativeToolTip": "Controllers\\UserController.cs",
               "ViewState": "AgIAAPwAAAAAAAAAAAAwwAsBAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T00:03:08.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T00:03:08.772Z"
             },
             {
               "$type": "Document",
@@ -686,8 +681,7 @@
               "RelativeToolTip": "Infrastructure\\UserHistoryActionFilter.cs",
               "ViewState": "AgIAAEoAAAAAAAAAAAAgwFUAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T08:53:04.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T08:53:04.393Z"
             },
             {
               "$type": "Document",

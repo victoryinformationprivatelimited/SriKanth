@@ -1,2 +1,48 @@
-"SriKanth/obj/" 
-"obj/" 
+## Ignore .NET build output
+bin/
+obj/
+
+## Ignore VS files
+.vs/
+
+## Ignore user-specific Visual Studio files
+*.user
+*.suo
+
+## Ignore build artifacts
+*.dll
+*.pdb
+*.exe
+*.cache
+*.log
+
+## Ignore temp files
+*.tmp
+*.temp
+*.db
+*.ldb
+
+## Ignore logs
+Logs/
+*.txt
+
+## Ignore publish output
+publish/
+wwwroot/dist/
+
+## Ignore Rider / VS Code settings
+.idea/
+.vscode/
+
+## Ignore generated files
+*.generated.cs
+
+## Ignore Azure Functions build artifacts
+bin/
+obj/
+local.settings.json
+
+## Ignore other unwanted files
+Thumbs.db
+Desktop.ini
+
