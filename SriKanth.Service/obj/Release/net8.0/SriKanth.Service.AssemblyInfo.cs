@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SriKanth.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31eefef3810d58ab96defe220412ab9874bb47d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b480beb54861478aa7ada75f3734f3a4e25bb59")]
 [assembly: System.Reflection.AssemblyProductAttribute("SriKanth.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SriKanth.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

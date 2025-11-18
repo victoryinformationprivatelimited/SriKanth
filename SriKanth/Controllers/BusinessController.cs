@@ -261,8 +261,8 @@ namespace SriKanth.API.Controllers
 			try
 			{
 				// Get pending orders for the specified user
-				var stockData = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Pending);
-				return Ok(stockData);
+				var orders = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Pending);
+				return Ok(orders);
 			}
 			catch (Exception ex)
 			{
@@ -283,8 +283,8 @@ namespace SriKanth.API.Controllers
 			try
 			{
 				// Get pending orders for the specified user
-				var stockData = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Processing);
-				return Ok(stockData);
+				var orders = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Processing);
+				return Ok(orders);
 			}
 			catch (Exception ex)
 			{
@@ -310,8 +310,8 @@ namespace SriKanth.API.Controllers
 			try
 			{
 				// Get delivered orders for the specified user
-				var stockData = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Delivered);
-				return Ok(stockData);
+				var orders = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Delivered);
+				return Ok(orders);
 			}
 			catch (Exception ex)
 			{
@@ -336,8 +336,8 @@ namespace SriKanth.API.Controllers
 			try
 			{
 				// Get rejected orders for the specified user
-				var stockData = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Rejected);
-				return Ok(stockData);
+				var orders = await _orderDetailsApiService.GetOrdersListAsync(userId, OrderStatus.Rejected);
+				return Ok(orders);
 			}
 			catch (Exception ex)
 			{
