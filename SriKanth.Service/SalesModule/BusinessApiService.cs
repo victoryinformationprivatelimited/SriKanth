@@ -386,6 +386,7 @@ namespace SriKanth.Service.SalesModule
 				var items = await itemsTask;
 				var salesPrices = await salesPriceTask;
 				var inventory = await inventoryTask;
+
 				// Validate data existence early (type-safe)
 				ValidateApiData(locations?.value, "location");
 				ValidateApiData(customers?.value, "customer");
@@ -402,12 +403,15 @@ namespace SriKanth.Service.SalesModule
 				var locationDtos = ProcessLocationsInParallel(locations.value);
 				var customerDtos = ProcessCustomersInParallel(customers.value,dueAmountLookup);
 				var itemDtos = ProcessItemsInParallel(items.value, priceLookup,inventory.value);
+				//get payment Methods
+				var paymentMethods = await _businessData.GetPaymentMethodsAsync();
 
 				var details = new OrderCreationDetails
 				{
 					Locations = locationDtos,
 					Customers = customerDtos,
-					Items = itemDtos
+					Items = itemDtos,
+					PaymentMethods = paymentMethods
 				};
 
 				_logger.LogInformation("Retrieved order creation details with {LocationCount} locations, {CustomerCount} customers, and {ItemCount} items",
@@ -500,12 +504,14 @@ namespace SriKanth.Service.SalesModule
 				var locationDtos = ProcessLocationsInParallel(filteredLocations);
 				var customerDtos = ProcessCustomersInParallel(filteredCustomers,dueAmountLookup);
 				var itemDtos = ProcessItemsInParallel(items.value.Where(i => availableItemNos.Contains(i.no)), priceLookup,inventoryAtLocations);
-
+				//get payment Methods
+				var paymentMethods = await _businessData.GetPaymentMethodsAsync();
 				var details = new OrderCreationDetails
 				{
 					Locations = locationDtos,
 					Customers = customerDtos,
-					Items = itemDtos
+					Items = itemDtos,
+					PaymentMethods = paymentMethods
 				};
 
 				_logger.LogInformation("Retrieved filtered order details for user {UserId} with {LocationCount} locations, {CustomerCount} customers, and {ItemCount} items",

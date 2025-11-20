@@ -1,6 +1,7 @@
 ﻿using HRIS.Model.Employee_Module.Entities;
 using Microsoft.EntityFrameworkCore;
 using SriKanth.Model;
+using SriKanth.Model.BusinessModule.DTOs;
 using SriKanth.Model.BusinessModule.Entities;
 using SriKanth.Model.Login_Module.Entities;
 using System;
@@ -99,6 +100,16 @@ namespace SriKanth.Data
 		{
 			return await _context.Order
 				.Where(o => locations.Contains(o.LocationCode) && o.Status == orderStatus)
+				.ToListAsync();
+		}
+		public async Task<List<PaymentMethodDto>> GetPaymentMethodsAsync()
+		{
+			return await _context.PaymentMethod
+				.Select(pm => new PaymentMethodDto
+				{
+					PaymentMethodCode = pm.PaymentMethodCode,
+					Description = pm.Description
+				})
 				.ToListAsync();
 		}
 

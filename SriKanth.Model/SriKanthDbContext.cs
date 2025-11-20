@@ -41,6 +41,7 @@ namespace SriKanth.Model
 		public virtual DbSet<UserHistory> UserHistory { get; set; }
 		public virtual DbSet<UserDocumentStorage> UserDocumentStorage { get; set; }
 		public virtual DbSet<UserLocation> UserLocation { get; set; }
+		public virtual DbSet<PaymentMethod> PaymentMethod { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -242,6 +243,13 @@ namespace SriKanth.Model
 					  .WithMany()
 					  .HasForeignKey(e => e.UserId)
 					  .OnDelete(DeleteBehavior.NoAction);
+
+			});
+			modelBuilder.Entity<PaymentMethod>(entity =>
+			{
+				entity.HasKey(e => e.PaymentMethodId);
+				entity.Property(e => e.PaymentMethodCode).IsRequired();
+				entity.Property(e => e.Description).IsRequired();
 
 			});
 			base.OnModelCreating(modelBuilder);

@@ -414,7 +414,7 @@ namespace SriKanth.Service.SalesModule
 						customerNo = order.CustomerCode,
 						orderDate = order.OrderDate.ToString("yyyy-MM-dd"),
 						salespersonCode = order.SalesPersonCode,
-						paymentMethodCode = paymentMethodCode,
+						paymentMethodCode = order.PaymentMethodCode,
 						paymentTermCode = paymentTermCode,
 						salesIntegrationLines = orderItems
 							.Select((line, index) => new SalesIntegrationLine

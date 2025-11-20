@@ -36,3 +36,5 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Release\net8.0\SriKa
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Release\net8.0\refint\SriKanth.Model.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Release\net8.0\SriKanth.Model.pdb
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Release\net8.0\ref\SriKanth.Model.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\bin\Release\net8.0\SriKanth.Model.runtimeconfig.json
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Model\obj\Release\net8.0\SriKanth.Model.genruntimeconfig.cache

@@ -1,4 +1,5 @@
 ﻿using HRIS.Model.Employee_Module.Entities;
+using SriKanth.Model.BusinessModule.DTOs;
 using SriKanth.Model.BusinessModule.Entities;
 
 namespace SriKanth.Data
@@ -19,5 +20,6 @@ namespace SriKanth.Data
 		Task<UserDocumentStorage?> GetUserDocumenByUrlAsync(string url);
 		Task RemoveDocumentAsync(UserDocumentStorage userDocument);
 		Task<List<Order>> GetAllOrdersByLocationsAsync(List<string> locations, OrderStatus orderStatus);
+		Task<List<PaymentMethodDto>> GetPaymentMethodsAsync();
 	}
 }

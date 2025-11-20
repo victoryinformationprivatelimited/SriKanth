@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SriKanth.Model")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b480beb54861478aa7ada75f3734f3a4e25bb59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4661a0a5aecf21489fc0353ab93871f97febf591")]
 [assembly: System.Reflection.AssemblyProductAttribute("SriKanth.Model")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SriKanth.Model")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

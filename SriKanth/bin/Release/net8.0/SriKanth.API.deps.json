@@ -1472,6 +1472,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.EntityFrameworkCore": "9.0.3",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.3",
           "Microsoft.Extensions.Configuration": "9.0.3",
           "Microsoft.Extensions.Options": "9.0.3",
           "Pomelo.EntityFrameworkCore.MySql": "9.0.0"

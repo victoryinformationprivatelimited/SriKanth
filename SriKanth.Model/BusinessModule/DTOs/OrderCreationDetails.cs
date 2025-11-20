@@ -12,6 +12,7 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public List<Location> Locations { get; set; }
 		public List<OrderCustomer> Customers{ get; set; }
 		public List<OrderItemDetails> Items { get; set; }
+		public List<PaymentMethodDto> PaymentMethods { get; set; }
 
 	}
 	public class OrderCustomer
