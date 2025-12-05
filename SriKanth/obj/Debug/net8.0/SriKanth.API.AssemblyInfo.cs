@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SriKanth.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67afb9cf661b634023a8542e90807df9a06ca1f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c666d76829c21f17f621f1acfc3ea123bedaabfd")]
 [assembly: System.Reflection.AssemblyProductAttribute("SriKanth.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SriKanth.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

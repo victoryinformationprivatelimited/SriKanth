@@ -195,8 +195,24 @@ namespace SriKanth.API.Controllers
 			try
 			{
 				// Get filtered order creation details for the specified user
-				var locations = await _businessApiService.GetFilteredItemsAsync(userId);
-				return Ok(locations);
+				var items = await _businessApiService.GetFilteredItemsAsync(userId);
+				return Ok(items);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
+		[HttpGet("GetPaymentMethods")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetPaymentMethods()
+		{
+			try
+			{
+				// Get filtered order creation details for the specified user
+				var paymentMethods = await _businessApiService.GetPaymentMethodsAsync();
+				return Ok(paymentMethods);
 			}
 			catch (Exception ex)
 			{

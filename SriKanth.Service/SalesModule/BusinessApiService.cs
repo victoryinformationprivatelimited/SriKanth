@@ -652,6 +652,23 @@ namespace SriKanth.Service.SalesModule
 			// Pass inventory to ProcessItemsInParallel
 			return ProcessItemsInParallel(filteredItems, priceLookup, inventory);
 		}
+		public async Task<List<PaymentMethodDto>> GetPaymentMethodsAsync()
+		{
+			_logger.LogInformation("Action: RetrievePaymentMethods | Status: Started");
+
+			try
+			{
+				var paymentMethods = await _businessData.GetPaymentMethodsAsync();
+
+				return paymentMethods;
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Failed to retrieve payment methods");
+				throw new ApplicationException("Failed to retrieve payment methods. Please try again later.", ex);
+			}
+		}
+
 
 		/// <summary>
 		/// Retrieves invoice details for customers assigned to the specified user
