@@ -1,6 +1,5 @@
 ﻿using Azure.Core;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Identity.Client;
 using SriKanth.Interface;
 using SriKanth.Interface.SalesModule;
 using SriKanth.Model.ExistingApis;
