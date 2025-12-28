@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using SriKanth.Interface;
 using SriKanth.Interface.Login_Module;
 using SriKanth.Model.Login_Module.DTOs;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace SriKanth.API.Controllers
 {
@@ -204,7 +205,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="userDetails">Complete user information</param>
 		/// <returns>Confirmation of user creation</returns>
 		[HttpPost("AddUser")]
-		//[Authorize(Roles = "Admin")] // Only Admins can add new users
+		[Authorize(Roles = "Admin")] // Only Admins can add new users
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> AddNewUser([FromBody] UserDetails userDetails)
 		{
@@ -347,6 +348,40 @@ namespace SriKanth.API.Controllers
 				return StatusCode(500, new { message = "Internal server error.", error = ex.Message });
 			}
 		}
+
+		[HttpGet("raw-db-test")]
+		public IActionResult RawDbTest()
+		{
+			var cs = _configuration.GetConnectionString("DefaultConnection");
+			if (string.IsNullOrWhiteSpace(cs))
+				return StatusCode(500, "Connection string not found");
+
+			try
+			{
+				using var conn = new MySqlConnector.MySqlConnection(cs);
+				conn.Open();
+
+				// Test a simple query
+				using var cmd = new MySqlConnector.MySqlCommand("SELECT VERSION();", conn);
+				var version = cmd.ExecuteScalar();
+
+				return Ok(new
+				{
+					Status = "CONNECTED SUCCESSFULLY",
+					MySQLVersion = version
+				});
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, new
+				{
+					Error = ex.Message,
+					InnerError = ex.InnerException?.Message,
+					StackTrace = ex.StackTrace
+				});
+			}
+		}
+
 
 
 

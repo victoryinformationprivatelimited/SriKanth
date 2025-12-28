@@ -162,7 +162,7 @@ namespace SriKanth.Service.Login_Module
 			catch (Exception ex)
 			{
 				_logger.LogError(ex, "An error occurred during login for the user with username or email: {UsernameOrEmail}.", loginRequest.UsernameOrEmail);
-				return new LoginResult { Success = false, Message = "An error occurred during login. Please try again." };
+				return new LoginResult { Success = false, Message = $"An error occurred during login. Please try again." };
 			}
 		}
 
@@ -567,7 +567,7 @@ namespace SriKanth.Service.Login_Module
 					throw new InvalidOperationException("No role data found.");
 				}
 
-				var codesToSkip = new HashSet<string> { "SEDAW-SNS", "SEDAW-SKM" };
+				var codesToSkip = new HashSet<string> { "SED-SNS", "SED-SKM" };
 
 				// Filter out locations with codes in codesToSkip
 				var filteredLocations = locations.value
@@ -599,6 +599,7 @@ namespace SriKanth.Service.Login_Module
 			catch (Exception ex)
 			{
 				_logger.LogError(ex, "Error getting user creation details");
+				Console.WriteLine(ex.Message);
 				throw;
 			}
 		}

@@ -110,7 +110,7 @@ namespace SriKanth.Service.SalesModule
 			// Cache the token with expiration buffer (1 minute before actual expiry)
 			_cachedToken = tokenResponse.access_token;
 			_tokenExpiryTime = DateTime.UtcNow.AddSeconds(tokenResponse.expires_in - 60);
-
+			
 			return _cachedToken;
 		}
 
@@ -125,30 +125,38 @@ namespace SriKanth.Service.SalesModule
 		/// </remarks>
 		public async Task<T> GetDataFromApiAsync<T>(string apiUrl)
 		{
-			// Get authentication token
-			var token = await GetAccessTokenAsync();
-			var client = _httpClientFactory.CreateClient("ExternalApi");
-
-			// Set authorization header
-			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-			// Make API request
-			var response = await client.GetAsync(apiUrl);
-
-			if (!response.IsSuccessStatusCode)
+			try
 			{
-				throw new Exception($"API request failed. Status: {response.StatusCode}");
-			}
+				// Get authentication token
+				var token = await GetAccessTokenAsync();
+				var client = _httpClientFactory.CreateClient("ExternalApi");
 
-			// Special handling for image requests (byte array responses)
-			if (typeof(T) == typeof(byte[]))
+				// Set authorization header
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+				// Make API request
+				var response = await client.GetAsync(apiUrl);
+
+				if (!response.IsSuccessStatusCode)
+				{
+					throw new Exception($"API request failed. Status: {response.StatusCode}");
+				}
+
+				// Special handling for image requests (byte array responses)
+				if (typeof(T) == typeof(byte[]))
+				{
+					return (T)(object)await response.Content.ReadAsByteArrayAsync();
+				}
+
+				// Standard JSON response handling
+				var content = await response.Content.ReadAsStringAsync();
+				return JsonSerializer.Deserialize<T>(content);
+			}
+			catch (Exception ex)
 			{
-				return (T)(object)await response.Content.ReadAsByteArrayAsync();
+				Console.WriteLine($"GetDataFromApiAsync Exception for URL '{apiUrl}': {ex}");
+				throw;
 			}
-
-			// Standard JSON response handling
-			var content = await response.Content.ReadAsStringAsync();
-			return JsonSerializer.Deserialize<T>(content);
 		}
 
 		/// <summary>
@@ -411,6 +419,7 @@ namespace SriKanth.Service.SalesModule
 			return await GetDataFromApiAsync<PostedInvoiceApiResponse>(apiUrl);
 		}
 
+
 		/// <summary>
 		/// Internal class for deserializing token responses from Azure AD
 		/// </summary>
@@ -420,5 +429,7 @@ namespace SriKanth.Service.SalesModule
 			public int expires_in { get; set; }
 			public string access_token { get; set; }
 		}
+
+
 	}
 }

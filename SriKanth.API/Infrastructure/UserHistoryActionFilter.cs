@@ -19,44 +19,37 @@ namespace HRIS.API.Infrastructure.Helpers
 
 		public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
 		{
-			var resultContext = await next(); // Execute the action first
+			var resultContext = await next(); // Execute action first
 
-			// Only log if the main action succeeded and user is authenticated
-			if (resultContext.Exception == null && context.HttpContext.User.Identity?.IsAuthenticated == true)
+			if (resultContext.Exception == null &&
+				context.HttpContext.User.Identity?.IsAuthenticated == true)
 			{
-				// Fire and forget - don't block the main response
-				_ = Task.Run(async () =>
+				try
 				{
-					try
-					{
-						var userId = GetUserIdFromClaims(context.HttpContext.User);
-						var ipAddress = _httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString() ?? "Unknown";
-						var endpoint = context.HttpContext.Request.Path.ToString();
-						var actionType = GetActionTypeFromMethod(context.HttpContext.Request.Method);
-						var entityType = GetEntityTypeFromController(context.Controller);
+					var userId = GetUserIdFromClaims(context.HttpContext.User);
+					var ipAddress = context.HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
+					var endpoint = context.HttpContext.Request.Path.ToString();
+					var actionType = GetActionTypeFromMethod(context.HttpContext.Request.Method);
+					var entityType = GetEntityTypeFromController(context.Controller);
 
-						_logger.LogDebug("User history logging - UserId: {UserId}, ActionType: {ActionType}, EntityType: {EntityType}, Endpoint: {Endpoint}",
-							userId, actionType, entityType, endpoint);
-
-						// Only log if we have valid data
-						if (userId > 0 && !string.IsNullOrEmpty(actionType) && !string.IsNullOrEmpty(entityType))
-						{
-							await _userHistoryService.LogUserActionAsync(userId, actionType, entityType, endpoint, ipAddress);
-						}
-						else
-						{
-							_logger.LogWarning("Skipping user history log due to invalid data - UserId: {UserId}, ActionType: {ActionType}, EntityType: {EntityType}",
-								userId, actionType, entityType);
-						}
-					}
-					catch (Exception ex)
+					if (userId > 0 && actionType != "Unknown")
 					{
-						// Log but don't throw - we don't want to affect the main response
-						_logger.LogError(ex, "Error occurred while logging user history in background task");
+						await _userHistoryService.LogUserActionAsync(
+							userId,
+							actionType,
+							entityType,
+							endpoint,
+							ipAddress
+						);
 					}
-				});
+				}
+				catch (Exception ex)
+				{
+					_logger.LogError(ex, "Error occurred while logging user history");
+				}
 			}
 		}
+
 
 		private int GetUserIdFromClaims(ClaimsPrincipal user)
 		{

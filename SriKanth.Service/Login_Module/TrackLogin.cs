@@ -5,11 +5,7 @@ using Newtonsoft.Json.Linq;
 using SriKanth.Interface.Data;
 using SriKanth.Interface.Login_Module;
 using SriKanth.Model.Login_Module.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 
 namespace SriKanth.Service.Login_Module
 {
@@ -93,46 +89,132 @@ namespace SriKanth.Service.Login_Module
 		/// <returns>Client's IP address as a string.</returns>
 		private string GetClientIpAddress()
 		{
-			try
+			var httpContext = _httpContextAccessor.HttpContext;
+			if (httpContext == null) return "Unknown IP";
+
+			// 1) Prefer X-Forwarded-For if present (may contain a comma-separated list)
+			var forwardedFor = httpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+			if (!string.IsNullOrEmpty(forwardedFor))
 			{
-				var httpContext = _httpContextAccessor.HttpContext;
-				return httpContext?.Request.Headers["X-Forwarded-For"].FirstOrDefault()
-					   ?? httpContext?.Connection.RemoteIpAddress?.ToString();
+				// pick first public IP in the list (left-most is original client in standard proxy chains)
+				var ipList = forwardedFor.Split(',')
+					.Select(ip => ip.Trim())
+					.Where(ip => IPAddress.TryParse(ip, out _))
+					.ToList();
+
+				foreach (var ip in ipList)
+				{
+					if (!IsLocalOrPrivateIP(ip))
+						return ip;
+				}
+
+				// if no public IP found, return first valid entry
+				if (ipList.Any())
+					return ipList.First();
 			}
-			catch (Exception ex)
-			{
-				return "Unknown IP";
-			}
+
+			// 2) Fallback to X-Real-IP header
+			var realIp = httpContext.Request.Headers["X-Real-IP"].FirstOrDefault();
+			if (!string.IsNullOrEmpty(realIp) && IPAddress.TryParse(realIp, out _))
+				return realIp;
+
+			// 3) Last fallback - use the connection remote IP (after UseForwardedHeaders, this may be the original client)
+			var remoteIp = httpContext.Connection.RemoteIpAddress?.ToString();
+			if (!string.IsNullOrEmpty(remoteIp))
+				return remoteIp;
+
+			return "Unknown IP";
 		}
 
-		/// <summary>
-		/// Retrieves the User-Agent string from the HTTP context.
-		/// </summary>
-		/// <returns>User-Agent string representing the client's device/browser details.</returns>
 		private string GetUserAgent()
 		{
-			try
-			{
-				var httpContext = _httpContextAccessor.HttpContext;
-				return httpContext?.Request.Headers["User-Agent"].ToString() ?? "Unknown User-Agent";
-			}
-			catch (Exception ex)
-			{
-				return "Unknown User-Agent";
-			}
+			var httpContext = _httpContextAccessor.HttpContext;
+			if (httpContext == null) return "Unknown User-Agent";
+			var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+			return string.IsNullOrEmpty(userAgent) ? "Unknown User-Agent" : userAgent;
 		}
 
-
-		/// <summary>
-		/// Retrieves the session ID from the HTTP context.
-		/// </summary>
-		/// <returns>The session ID as a string.</returns>
 		private string GetSessionId()
 		{
 			try
 			{
 				var httpContext = _httpContextAccessor.HttpContext;
-				return httpContext?.Session?.Id ?? "Unknown Session";
+				if (httpContext == null)
+				{
+					return "Unknown Session";
+				}
+
+				// Check if session is configured and available
+
+				if (httpContext.Session != null)
+				{
+					var sessionId = httpContext.Session.Id; ;
+
+					if (!string.IsNullOrEmpty(sessionId))
+						return sessionId;
+				}
+
+
+				// Try to get from authentication cookies
+				var cookies = httpContext.Request.Cookies;
+				// Check for common session/auth cookies
+				var sessionCookies = new[]
+				{
+					".AspNetCore.Session",
+					".AspNetCore.Identity.Application",
+					".AspNetCore.Antiforgery",
+					"ASP.NET_SessionId",
+					"JSESSIONID",
+					"PHPSESSID"
+				};
+
+				foreach (var cookieName in sessionCookies)
+				{
+					var cookieValue = cookies[cookieName];
+					if (!string.IsNullOrEmpty(cookieValue))
+					{
+						return cookieValue;
+					}
+				}
+
+				// Try to get from custom headers (if your frontend sends any)
+				var customSessionHeaders = new[]
+				{
+					"X-Session-ID",
+					"X-Request-ID",
+					"X-Correlation-ID",
+					"Authorization"
+				};
+
+				foreach (var headerName in customSessionHeaders)
+				{
+					var headerValue = httpContext.Request.Headers[headerName].FirstOrDefault();
+					if (!string.IsNullOrEmpty(headerValue))
+					{
+						// For Authorization header, just take first 20 chars for tracking
+						return headerName == "Authorization" ?
+							headerValue.Substring(0, Math.Min(20, headerValue.Length)) :
+							headerValue;
+					}
+				}
+
+				// Try to create a session identifier from request characteristics
+				var userAgent = httpContext.Request.Headers["User-Agent"].FirstOrDefault() ?? "";
+				var acceptLanguage = httpContext.Request.Headers["Accept-Language"].FirstOrDefault() ?? "";
+				var acceptEncoding = httpContext.Request.Headers["Accept-Encoding"].FirstOrDefault() ?? "";
+
+				if (!string.IsNullOrEmpty(userAgent))
+				{
+					// Create a hash-based session ID from request characteristics
+					var combinedString = $"{userAgent}|{acceptLanguage}|{acceptEncoding}|{DateTime.UtcNow:yyyyMMdd}";
+					var hash = combinedString.GetHashCode();
+					var pseudoSessionId = $"PSI_{Math.Abs(hash):X8}";
+					return pseudoSessionId;
+				}
+
+				// Final fallback - generate tracking ID
+				var trackingId = $"Track_{Guid.NewGuid():N}";
+				return trackingId;
 			}
 			catch (Exception ex)
 			{
@@ -140,29 +222,9 @@ namespace SriKanth.Service.Login_Module
 			}
 		}
 
-		/// <summary>
-		/// Parses the User-Agent string to extract device details like device type, OS, and browser.
-		/// </summary>
-		/// <param name="userAgent">The User-Agent string to parse.</param>
-		/// <returns>An object containing parsed device details.</returns>
 		private DeviceDetails GetDeviceDetails(string userAgent)
 		{
-			try
-			{
-				if (string.IsNullOrEmpty(userAgent)) return null;
-
-				// Use a parser to extract device, OS, and browser information
-				var uaParser = UAParser.Parser.GetDefault();
-				var clientInfo = uaParser.Parse(userAgent);
-
-				return new DeviceDetails
-				{
-					DeviceType = clientInfo.Device.Family ?? "Unknown Device",
-					OperatingSystem = clientInfo.OS.Family ?? "Unknown OS",
-					Browser = clientInfo.UA.Family ?? "Unknown Browser"
-				};
-			}
-			catch (Exception ex)
+			if (string.IsNullOrEmpty(userAgent))
 			{
 				return new DeviceDetails
 				{
@@ -171,46 +233,132 @@ namespace SriKanth.Service.Login_Module
 					Browser = "Unknown Browser"
 				};
 			}
+
+			try
+			{
+				var uaParser = UAParser.Parser.GetDefault();
+				var clientInfo = uaParser.Parse(userAgent);
+
+				return new DeviceDetails
+				{
+					DeviceType = GetDeviceType(clientInfo, userAgent),
+					OperatingSystem = GetOperatingSystem(clientInfo, userAgent),
+					Browser = GetBrowser(clientInfo, userAgent)
+				};
+			}
+			catch
+			{
+				return ParseUserAgentManually(userAgent);
+			}
 		}
 
-		/// <summary>
-		/// Retrieves geolocation information (country and city) for the provided IP address using an external API.
-		/// </summary>
-		/// <param name="ipAddress">The IP address to get geolocation data for.</param>
-		/// <returns>A GeoLocation object with country and city details.</returns>
+		private string GetDeviceType(UAParser.ClientInfo clientInfo, string userAgent)
+		{
+			var deviceFamily = clientInfo?.Device.Family;
+			if (!string.IsNullOrEmpty(deviceFamily) && deviceFamily != "Other") return deviceFamily;
+
+			if (userAgent.Contains("Mobile") || userAgent.Contains("Android")) return "Mobile";
+			if (userAgent.Contains("Tablet") || userAgent.Contains("iPad")) return "Tablet";
+			return "Desktop";
+		}
+
+		private string GetOperatingSystem(UAParser.ClientInfo clientInfo, string userAgent)
+		{
+			var osFamily = clientInfo?.OS.Family;
+			var osVersion = clientInfo?.OS.Major;
+
+			if (!string.IsNullOrEmpty(osFamily) && osFamily != "Other")
+				return !string.IsNullOrEmpty(osVersion) ? $"{osFamily} {osVersion}" : osFamily;
+
+			if (userAgent.Contains("Windows NT 10.0")) return "Windows 10";
+			if (userAgent.Contains("Windows NT 6.3")) return "Windows 8.1";
+			if (userAgent.Contains("Windows NT 6.1")) return "Windows 7";
+			if (userAgent.Contains("Mac OS X")) return "macOS";
+			if (userAgent.Contains("Android")) return "Android";
+			if (userAgent.Contains("iPhone") || userAgent.Contains("iPad")) return "iOS";
+			if (userAgent.Contains("Linux")) return "Linux";
+
+			return "Unknown OS";
+		}
+
+		private string GetBrowser(UAParser.ClientInfo clientInfo, string userAgent)
+		{
+			var browserFamily = clientInfo?.UA.Family;
+			var browserVersion = clientInfo?.UA.Major;
+
+			if (!string.IsNullOrEmpty(browserFamily) && browserFamily != "Other")
+				return !string.IsNullOrEmpty(browserVersion) ? $"{browserFamily} {browserVersion}" : browserFamily;
+
+			if (userAgent.Contains("Edg/")) return "Microsoft Edge";
+			if (userAgent.Contains("Chrome/")) return "Google Chrome";
+			if (userAgent.Contains("Firefox/")) return "Mozilla Firefox";
+			if (userAgent.Contains("Safari/") && !userAgent.Contains("Chrome")) return "Safari";
+			if (userAgent.Contains("Opera/")) return "Opera";
+
+			return "Unknown Browser";
+		}
+
+		private DeviceDetails ParseUserAgentManually(string userAgent)
+		{
+			return new DeviceDetails
+			{
+				DeviceType = GetDeviceType(null, userAgent),
+				OperatingSystem = GetOperatingSystem(null, userAgent),
+				Browser = GetBrowser(null, userAgent)
+			};
+		}
+
 		private async Task<GeoLocation> GetGeoLocationAsync(string ipAddress)
 		{
 			try
 			{
-				if (string.IsNullOrEmpty(ipAddress)) return null;
+				if (string.IsNullOrEmpty(ipAddress) || ipAddress == "Unknown IP")
+					return new GeoLocation { Country = "Unknown Country", City = "Unknown City" };
 
-				// Get the API key from configuration
-				var apiKey = _configuration["IPSecretKey"]; // Replace with your IP Geolocation API Key
+				if (IsLocalOrPrivateIP(ipAddress))
+					return new GeoLocation { Country = "Local Network", City = "Local Network" };
+
+				var apiKey = _configuration["IPSecretKey"];
+				if (string.IsNullOrEmpty(apiKey))
+					return new GeoLocation { Country = "API Key Missing", City = "API Key Missing" };
+
 				var url = $"https://ipinfo.io/{ipAddress}?token={apiKey}";
-				// Fetch geolocation data from the external API
-				using (var httpClient = new HttpClient())
+				using (var httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(30) })
 				{
 					var response = await httpClient.GetStringAsync(url);
-					_logger.LogWarning("API Response: " + response);
 					var json = JObject.Parse(response);
+
 					return new GeoLocation
 					{
-						Country = json["country"]?.ToString(),
-						City = json["city"]?.ToString()
-
+						Country = json["country"]?.ToString() ?? "Unknown Country",
+						City = json["city"]?.ToString() ?? "Unknown City"
 					};
 				}
 			}
-			catch (Exception ex)
+			catch
 			{
-				return new GeoLocation
-				{
-					Country = "Unknown Country",
-					City = "Unknown City"
-				};
+				return new GeoLocation { Country = "Error", City = "Error" };
 			}
 		}
+
+		private bool IsLocalOrPrivateIP(string ipAddress)
+		{
+			if (string.IsNullOrEmpty(ipAddress)) return true;
+
+			return ipAddress == "127.0.0.1" ||
+				   ipAddress == "::1" ||
+				   ipAddress.StartsWith("192.168.") ||
+				   ipAddress.StartsWith("10.") ||
+				   ipAddress.StartsWith("172.16.") ||
+				   ipAddress.StartsWith("172.17.") ||
+				   ipAddress.StartsWith("172.18.") ||
+				   ipAddress.StartsWith("172.19.") ||
+				   ipAddress.StartsWith("172.2") ||
+				   ipAddress.StartsWith("172.30.") ||
+				   ipAddress.StartsWith("172.31.");
+		}
 	}
+
 
 	/// <summary>
 	/// Represents details about the device used during login.

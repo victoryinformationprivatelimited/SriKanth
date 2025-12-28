@@ -2,8 +2,10 @@ using HRIS.API.Infrastructure.Helpers;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Serilog;
 using SriKanth.Data;
 using SriKanth.Interface;
@@ -71,15 +73,13 @@ builder.Services.AddHttpClient("ExternalApi", client =>
 // Then add the service registration
 builder.Services.AddScoped<IExternalApiService, ExternalApiService>();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
 builder.Services.AddDbContext<SriKanthDbContext>(options =>
 {
-	options.UseMySql(
-		connectionString,
-		new MariaDbServerVersion(new Version(10, 4, 32))
-	);
+	var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+	options.UseMySql(connectionString,
+		ServerVersion.Create(new Version(10, 4, 32), ServerType.MariaDb));
 });
+
 
 builder.Services.AddRateLimiter(options =>
 {
@@ -159,6 +159,16 @@ builder.Services.AddCors(o =>
 			 .AllowCredentials();
 	});
 });
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+	options.ForwardedHeaders =
+		ForwardedHeaders.XForwardedFor |
+		ForwardedHeaders.XForwardedProto;
+
+	options.KnownNetworks.Clear();
+	options.KnownProxies.Clear();
+});
 builder.Services.AddMemoryCache();
 
 builder.Services.AddControllers();
@@ -168,6 +178,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseForwardedHeaders();
 
 app.UseSwagger();
 app.UseSwaggerUI();
