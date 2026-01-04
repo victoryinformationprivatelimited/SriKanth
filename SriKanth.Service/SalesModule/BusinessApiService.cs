@@ -751,55 +751,47 @@ namespace SriKanth.Service.SalesModule
 		/// </summary>
 		/// <param name="customerCode">The unique identifier code for the customer whose invoices are to be retrieved</param>
 		/// <returns>CustomerWiseInvoices object containing all invoice details for the specified customer, or null if no invoices are found</returns>
-		public async Task<CustomerWiseInvoices> GetCustomerInvoiceDetailsAsync(string customerCode)
+		public async Task<CustomerWiseInvoices?> GetCustomerInvoiceDetailsAsync(string customerCode)
 		{
-			_logger.LogInformation("Starting invoice retrieval process for customer code: {CustomerCode}", customerCode);
+			_logger.LogInformation("Starting invoice retrieval for customer code: {CustomerCode}", customerCode);
 
 			try
 			{
-				// Retrieve all customer-wise invoices from external API
-				var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
-
-				// Validate that invoice data was successfully retrieved
-				if (customerWiseInvoices == null || !customerWiseInvoices.Any())
+				var allCustomers = await GetCustomerWiseInvoicesAsync();
+				if (allCustomers == null || allCustomers.Count == 0)
 				{
-					_logger.LogWarning("No customer-wise invoices found in external API response");
+					_logger.LogWarning("No customer invoices received from external API");
 					return null;
 				}
 
-				var customerCodeStr = customerCode.ToString();
-
-				// Find invoices for the specific customer
-				var customerInvoice = customerWiseInvoices
-					.FirstOrDefault(c => c.CustomerNo == customerCodeStr);
+				var customerInvoice = allCustomers
+					.FirstOrDefault(c => c.CustomerNo == customerCode);
 
 				if (customerInvoice == null)
 				{
-					_logger.LogWarning("No invoices found for customer code: {CustomerCode}. Customer may not have any invoices or code may be invalid", customerCode);
+					_logger.LogWarning("No invoices found for customer code: {CustomerCode}", customerCode);
 					return null;
 				}
 
-				// Filter out invoices with DueAmount == 0
-				var filteredInvoices = customerInvoice.Invoices
-					.Where(inv => inv.BalanceBeforePDCs > 0)
+				// Filter invoices once
+				var validInvoices = customerInvoice.Invoices
+					.Where(i => i.BalanceBeforePDCs > 0)
 					.ToList();
 
-				// No need to set or process order date
+				customerInvoice.Invoices = validInvoices;
+				customerInvoice.TotalDueAmount = validInvoices.Sum(i => i.BalanceBeforePDCs);
+				customerInvoice.TotalPdcAmount = validInvoices.Sum(i => i.PdcAmount);
 
-				// Recalculate totals based on filtered invoices
-				customerInvoice.Invoices = filteredInvoices;
-				customerInvoice.TotalDueAmount = filteredInvoices.Sum(i => i.BalanceBeforePDCs);
-				customerInvoice.TotalPdcAmount = filteredInvoices.Sum(i => i.PdcAmount);
-
-				_logger.LogInformation("Successfully retrieved and processed invoice summary for customer code: {CustomerCode}", customerCode);
+				_logger.LogInformation("Invoice processing completed for customer code: {CustomerCode}", customerCode);
 				return customerInvoice;
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Critical error occurred while retrieving customer-wise invoices for customer code: {CustomerCode}. Error: {ErrorMessage}",
-					customerCode, ex.Message);
-
-				throw new ApplicationException($"Failed to retrieve customer-wise invoices for customer {customerCode}. Please try again later.", ex);
+				_logger.LogError(ex, "Failed to retrieve invoices for customer {CustomerCode}", customerCode);
+				throw new ApplicationException(
+					$"Failed to retrieve customer-wise invoices for customer {customerCode}.",
+					ex
+				);
 			}
 		}
 
@@ -829,52 +821,56 @@ namespace SriKanth.Service.SalesModule
 
 		private async Task<List<CustomerWiseInvoices>> GetCustomerWiseInvoicesAsync()
 		{
-			var postedInvoiceResponse = await _externalApiService.GetPostedInvoiceDetailsAsync();
-			var invoices = postedInvoiceResponse.Value;
+			var response = await _externalApiService.GetPostedInvoiceDetailsAsync();
+			var invoices = response?.Value;
 
-			// Single enumeration with immediate materialization
-			var customerGroups = new List<CustomerWiseInvoices>(invoices.Count() / 10); // rough estimate
-
-			foreach (var group in invoices.GroupBy(inv => inv.CustomerNo))
+			if (invoices == null || invoices.Count == 0)
 			{
-				var invoiceSummaries = new List<InvoiceSummary>(group.Count());
-				decimal totalDue = 0;
-				decimal totalPdc = 0;
-
-				foreach (var inv in group)
-				{
-					decimal balanceBeforePDCs = inv.RemainingAmount;
-					decimal releasedPDCs = inv.PdcAmount;
-					decimal balanceAfterPDCs = balanceBeforePDCs - releasedPDCs;
-
-					totalDue += balanceBeforePDCs;
-					totalPdc += releasedPDCs;
-
-					invoiceSummaries.Add(new InvoiceSummary
-					{
-						InvoiceNo = inv.DocumentNo,
-						OrderNo = inv.OrderNo,
-						PostedDate = inv.PostingDate,
-						PdcAmount = releasedPDCs,
-						DueAmount = balanceAfterPDCs,
-						TotalAmount = inv.Amount,
-						BalanceBeforePDCs = balanceBeforePDCs,
-						ReleasedPDCs = releasedPDCs,
-						BalanceAfterPDCs = balanceAfterPDCs
-					});
-				}
-
-				customerGroups.Add(new CustomerWiseInvoices
-				{
-					CustomerNo = group.Key,
-					TotalDueAmount = totalDue,
-					TotalPdcAmount = totalPdc,
-					Invoices = invoiceSummaries
-				});
+				return new List<CustomerWiseInvoices>();
 			}
 
-			return customerGroups;
+			return invoices
+				.GroupBy(inv => inv.CustomerNo)
+				.Select(group =>
+				{
+					var invoiceList = new List<InvoiceSummary>();
+					decimal totalDue = 0;
+					decimal totalPdc = 0;
+
+					foreach (var inv in group)
+					{
+						var balanceBeforePdc = inv.RemainingAmount;
+						var pdcAmount = inv.PdcAmount;
+						var balanceAfterPdc = balanceBeforePdc - pdcAmount;
+
+						totalDue += balanceBeforePdc;
+						totalPdc += pdcAmount;
+
+						invoiceList.Add(new InvoiceSummary
+						{
+							InvoiceNo = inv.DocumentNo,
+							OrderNo = inv.OrderNo,
+							PostedDate = inv.PostingDate,
+							PdcAmount = pdcAmount,
+							DueAmount = balanceAfterPdc,
+							TotalAmount = inv.Amount,
+							BalanceBeforePDCs = balanceBeforePdc,
+							ReleasedPDCs = pdcAmount,
+							BalanceAfterPDCs = balanceAfterPdc
+						});
+					}
+
+					return new CustomerWiseInvoices
+					{
+						CustomerNo = group.Key,
+						TotalDueAmount = totalDue,
+						TotalPdcAmount = totalPdc,
+						Invoices = invoiceList
+					};
+				})
+				.ToList();
 		}
+
 
 		private List<CustomerWiseInvoices> GetCustomerWiseInvoicesOptimized(List<PostedInvoice> invoices, HashSet<string> allowedCustomerCodes)
 		{
