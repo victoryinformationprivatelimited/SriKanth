@@ -440,6 +440,31 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		[HttpGet("GetInvoicesByTime")]
+		[Authorize]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> GetInvoicesByTime(string customerId, string startDate , string endDate)
+		{
+			if (!IsValidCustomerCode(customerId))
+			{
+				return BadRequest(new { message = "Invalid or missing customerId. CustomerId cannot be null or empty." });
+			}
+			try
+			{
+				if (!DateTime.TryParse(startDate, out var start) ||
+					!DateTime.TryParse(endDate, out var end))
+				{
+					return BadRequest("Invalid date format");
+				}
+				// Get invoice details for the specified user
+				var invoices = await _businessApiService.GetCustomerInvoiceGivenTimeAsync(customerId,start,end);
+				return Ok(invoices);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Error: {ex.Message}");
+			}
+		}
 		[HttpGet("GetOrdersCount")]
 		[Authorize]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]

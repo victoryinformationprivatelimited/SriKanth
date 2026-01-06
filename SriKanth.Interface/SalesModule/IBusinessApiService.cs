@@ -21,6 +21,7 @@ namespace SriKanth.Interface.SalesModule
 		Task<List<PaymentMethodDto>> GetPaymentMethodsAsync();
 		Task<CustomerInvoiceReturn> GetCustomerInvoicesAsync(int userId);
 		Task<CustomerWiseInvoices> GetCustomerInvoiceDetailsAsync(string customerCode);
+		Task<CustomerWiseInvoices?> GetCustomerInvoiceGivenTimeAsync(string customerCode, DateTime startDate, DateTime endDate);
 		Task<decimal> GetSingleCustomerDueAmountAsync(string customerNo);
 	}
 }
