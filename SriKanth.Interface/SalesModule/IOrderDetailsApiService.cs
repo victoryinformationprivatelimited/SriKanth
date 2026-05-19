@@ -14,6 +14,7 @@ namespace SriKanth.Interface.SalesModule
 		Task<ServiceResult> SubmitOrderAsync(int userId, OrderRequest request);
 		Task<List<OrderReturn>> GetOrdersListAsync(int userId, OrderStatus orderStatus);
 		Task<ServiceResult> UpdateOrderStatusAsync(UpdateOrderRequest updateOrderRequest);
+		Task<ServiceResult> UpdateLocationAsync(LocationRequest updateLocationRequest);
 		Task<OrderStatusSummary> GetOrderStatusSummaryByUserAsync(int userId);
 	}
 }

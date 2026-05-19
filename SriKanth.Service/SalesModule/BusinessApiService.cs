@@ -82,6 +82,10 @@ namespace SriKanth.Service.SalesModule
 				sw.Restart();
 				var stockList = BuildStockList(inventory, items, salesPrices, locations);
 
+				stockList = stockList
+						.OrderBy(x => x.ItemCode)
+						.ToList();
+
 				_logger.LogInformation("Successfully built {StockItemCount} stock items in {Ms}ms",
 					stockList.Count, sw.ElapsedMilliseconds);
 
@@ -231,6 +235,7 @@ namespace SriKanth.Service.SalesModule
 							ItemCode = itemNo,
 							ItemName = itemName,
 							Location = location.Name,
+							LocationCode = location.Code,
 							Stock = stock,
 							UnitPrice = unitPrice,
 							ItemCategory = itemCategory,
@@ -307,6 +312,7 @@ namespace SriKanth.Service.SalesModule
 								ItemCode = itemNo,
 								ItemName = itemName,
 								Location = location.Name,
+								LocationCode = location.Code,
 								Stock = stock,
 								UnitPrice = unitPrice,
 								ItemCategory = itemCategory,
@@ -394,8 +400,11 @@ namespace SriKanth.Service.SalesModule
 
 				// Create price lookup dictionary with better performance
 				var priceLookup = CreatePriceLookupDictionary(salesPrices?.value);
+				var dueAmountLookup = new Dictionary<string, decimal>();
+
 				var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
-				var dueAmountLookup = customerWiseInvoices.ToDictionary(
+
+				dueAmountLookup = customerWiseInvoices.ToDictionary(
 					cwi => cwi.CustomerNo,
 					cwi => cwi.TotalDueAmount
 				);
@@ -495,8 +504,11 @@ namespace SriKanth.Service.SalesModule
 
 				// Create price lookup dictionary
 				var priceLookup = CreatePriceLookupDictionary(salesPrices?.value);
+				var dueAmountLookup = new Dictionary<string, decimal>();
+
 				var customerWiseInvoices = await GetCustomerWiseInvoicesAsync();
-				var dueAmountLookup = customerWiseInvoices.ToDictionary(
+
+				dueAmountLookup = customerWiseInvoices.ToDictionary(
 					cwi => cwi.CustomerNo,
 					cwi => cwi.TotalDueAmount
 				);
@@ -590,12 +602,15 @@ namespace SriKanth.Service.SalesModule
 			if (userRole == "Admin")
 			{
 				_logger.LogInformation("Admin user {UserId} accessing all customers", userId);
-				filteredCustomers = customersResponse.value;
+				filteredCustomers = customersResponse.value
+									.Where(c => string.IsNullOrWhiteSpace(c.blocked));
 			}
 			else
 			{
 				filteredCustomers = customersResponse.value
-					.Where(c => c.salespersonCode == user.SalesPersonCode);
+					.Where(c =>
+					c.salespersonCode == user.SalesPersonCode &&
+					string.IsNullOrWhiteSpace(c.blocked));
 			}
 
 			// Fetch due amounts and build lookup in one pass
@@ -783,6 +798,9 @@ namespace SriKanth.Service.SalesModule
 				customerInvoice.Invoices = validInvoices;
 				customerInvoice.TotalDueAmount = validInvoices.Sum(i => i.BalanceBeforePDCs);
 				customerInvoice.TotalPdcAmount = validInvoices.Sum(i => i.PdcAmount);
+				customerInvoice.TotalBalanceBeforePdcAmount = validInvoices.Sum(i => i.BalanceBeforePDCs);
+				customerInvoice.TotalBalanceAfterPdcAmount = validInvoices.Sum(i => i.BalanceAfterPDCs);
+				
 
 				_logger.LogInformation("Invoice processing completed for customer code: {CustomerCode}", customerCode);
 				return customerInvoice;
@@ -830,6 +848,8 @@ namespace SriKanth.Service.SalesModule
 				customerInvoice.Invoices = validInvoices;
 				customerInvoice.TotalDueAmount = validInvoices.Sum(i => i.BalanceBeforePDCs);
 				customerInvoice.TotalPdcAmount = validInvoices.Sum(i => i.PdcAmount);
+				customerInvoice.TotalBalanceBeforePdcAmount = validInvoices.Sum(i => i.BalanceBeforePDCs);
+				customerInvoice.TotalBalanceAfterPdcAmount = validInvoices.Sum(i => i.BalanceAfterPDCs);
 
 				_logger.LogInformation("Invoice processing completed for customer code: {CustomerCode}", customerCode);
 				return customerInvoice;
@@ -919,10 +939,11 @@ namespace SriKanth.Service.SalesModule
 				})
 				.ToList();
 		}
+
+
 		private async Task<List<CustomerWiseInvoices>> GetPerCustomerWiseInvoicesAsync(string customerNo)
 		{
-			var response = await _externalApiService
-				.GetPostedInvoiceDetailsFilterAsync("sellToCustomerNo", customerNo);
+			var response = await _externalApiService.GetPostedInvoiceDetailsFilterAsync("sellToCustomerNo", customerNo);
 
 			var invoices = response?.Value;
 

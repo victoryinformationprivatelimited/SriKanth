@@ -21,5 +21,6 @@ namespace SriKanth.Data
 		Task RemoveDocumentAsync(UserDocumentStorage userDocument);
 		Task<List<Order>> GetAllOrdersByLocationsAsync(List<string> locations, OrderStatus orderStatus);
 		Task<List<PaymentMethodDto>> GetPaymentMethodsAsync();
+		Task UpdateOrderAsync(Order order);
 	}
 }

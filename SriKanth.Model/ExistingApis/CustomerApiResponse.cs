@@ -33,5 +33,6 @@ namespace SriKanth.Model.ExistingApis
 		public string paymentMethodCode { get; set; }
 		public string salespersonCode { get; set; }
 		public decimal balanceLCY { get; set; }
+		public string blocked {  get; set; }
 	}
 }

@@ -10,8 +10,11 @@ namespace SriKanth.Model.BusinessModule.DTOs
 	{
 		public int OrderNumber { get; set; }
 		public string CustomerName { get; set; }
+		public string? Address { get; set; }
+		public string SalesPersonCode { get; set; }
 		public string SalesPersonName { get; set; }
 		public string Location { get; set; }
+		public string LocationCode { get; set; }
 		public DateTime OrderDate { get; set; }
 		public string PaymentMethodType { get; set; }
 		public decimal TotalAmount { get; set; }

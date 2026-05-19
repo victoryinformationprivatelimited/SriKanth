@@ -77,7 +77,35 @@ namespace SriKanth.Service.SalesModule
 					_logger.LogWarning("Inventory validation failed for location {LocationCode}", request.LocationCode);
 					return inventoryValidation;
 				}
+				var customersResponse = await _externalApiService.GetCustomersFilterAsync("no",request.CustomerCode);
 
+				var customer = customersResponse?.value?.FirstOrDefault();
+
+				if (customer == null)
+				{
+					_logger.LogWarning("Customer not found: {CustomerCode}",
+						request.CustomerCode);
+
+					return new ServiceResult
+					{
+						Success = false,
+						Message = "Customer not found."
+					};
+				}
+
+				// Check blocked status
+				if (!string.IsNullOrWhiteSpace(customer.blocked))
+				{
+					_logger.LogWarning("Blocked customer attempted order creation. CustomerCode: {CustomerCode}, BlockedStatus: {Blocked}",
+						request.CustomerCode,
+						customer.blocked);
+
+					return new ServiceResult
+					{
+						Success = false,
+						Message = "This customer is blocked and cannot place orders."
+					};
+				}
 				// Create order record
 				var order = new Order
 				{
@@ -281,13 +309,18 @@ namespace SriKanth.Service.SalesModule
 					}
 					var locationName = order.LocationCode != null && locationDict.TryGetValue(order.LocationCode, out var locName)
 						 ? locName : order.LocationCode ?? string.Empty;
+					var locationCode = !string.IsNullOrWhiteSpace(order.LocationCode)
+						? order.LocationCode: string.Empty;
 
 					return new OrderReturn
 					{
 						OrderNumber = order.OrderNumber,
 						CustomerName = customerDict.TryGetValue(order.CustomerCode, out var custName) ? custName : string.Empty,
+						Address = customerDict.TryGetValue(order.CustomerCode, out var custNameForAddress) ? custNameForAddress : string.Empty, // Assuming address is same as name for demo
+						SalesPersonCode = order.SalesPersonCode,
 						SalesPersonName = salesPersonDict.TryGetValue(order.SalesPersonCode, out var spName) ? spName : string.Empty,
 						Location = locationName,
+						LocationCode = locationCode, 
 						OrderDate = order.OrderDate,
 						PaymentMethodType = order.PaymentMethodCode,
 						Status = order.Status.ToString(),
@@ -478,6 +511,77 @@ namespace SriKanth.Service.SalesModule
 			}
 		}
 
+		/// <summary>
+		/// Updates the location of an order
+		/// </summary>
+		/// <param name="updateLocationRequest">Request containing order number and location code</param>
+		/// <returns>ServiceResult indicating success or failure</returns>
+		public async Task<ServiceResult> UpdateLocationAsync(LocationRequest updateLocationRequest)
+		{
+			try
+			{
+				_logger.LogInformation(
+					"Beginning location update for order {OrderNumber} to location {LocationCode}",
+					updateLocationRequest.Ordernumber,
+					updateLocationRequest.Locationcode);
+
+				// Get the order
+				var order = await _businessData.GetOrderByIdAsync(updateLocationRequest.Ordernumber);
+
+				if (order == null)
+				{
+					_logger.LogWarning(
+						"Order {OrderNumber} not found during location update",
+						updateLocationRequest.Ordernumber);
+
+					return new ServiceResult
+					{
+						Success = false,
+						Message = $"Order {updateLocationRequest.Ordernumber} not found."
+					};
+				}
+
+				// Prevent updating location when order is pending
+				if (order.Status != OrderStatus.Pending)
+				{
+					_logger.LogWarning(
+						"Location update is not allowed for not a pending order {OrderNumber}",
+						updateLocationRequest.Ordernumber);
+
+					return new ServiceResult
+					{
+						Success = false,
+						Message = $"Location update is not allowed for pending orders."
+					};
+				}
+
+				// Update location
+				order.LocationCode = updateLocationRequest.Locationcode;
+
+				// Save changes
+				await _businessData.UpdateOrderAsync(order);
+
+				_logger.LogInformation("Successfully updated location for order {OrderNumber}",
+					updateLocationRequest.Ordernumber);
+
+				return new ServiceResult
+				{
+					Success = true,
+					Message = "Order location updated successfully."
+				};
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex,"Failed to update location for order {OrderNumber}",
+					updateLocationRequest.Ordernumber);
+
+				return new ServiceResult
+				{
+					Success = false,
+					Message = "Unexpected error updating order location."
+				};
+			}
+		}
 		/// <summary>
 		/// Retrieves a summary of order counts grouped by status for a specific user.
 		/// </summary>

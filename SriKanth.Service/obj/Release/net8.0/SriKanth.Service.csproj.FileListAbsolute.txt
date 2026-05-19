@@ -47,8 +47,6 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\bin\Release\net8.0\Sri
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\bin\Release\net8.0\SriKanth.Model.pdb
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.csproj.AssemblyReference.cache
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.AssemblyInfoInputs.cache
-C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.AssemblyInfo.cs
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.csproj.CoreCompileInputs.cache
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.Service.sourcelink.json
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Release\net8.0\SriKanth.0456A22D.Up2Date

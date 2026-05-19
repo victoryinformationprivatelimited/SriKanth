@@ -11,6 +11,7 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public string ItemCode { get; set; }
 		public string ItemName { get; set; }
 		public string Location { get; set; }
+		public string LocationCode { get; set; }
 		public string Stock { get; set; }
 		public decimal UnitPrice { get; set; }
 		public string ItemCategory { get; set; }

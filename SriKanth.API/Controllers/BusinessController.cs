@@ -393,6 +393,34 @@ namespace SriKanth.API.Controllers
 			}
 		}
 
+		[HttpPut("ChangeLocation")]
+		[Authorize(Roles = "SalesCoordinator")]
+		[ServiceFilter(typeof(UserHistoryActionFilter))]
+		public async Task<IActionResult> UpdateLocation(LocationRequest locationRequest)
+		{
+			try
+			{
+				// Validate the model state
+				if (!ModelState.IsValid)
+				{
+					return BadRequest(ModelState);
+				}
+
+				// Update the order status through the business service
+				var result = await _orderDetailsApiService.UpdateLocationAsync(locationRequest);
+
+				if (!result.Success)
+				{
+					return BadRequest(new { message = result.Message });
+				}
+				return Ok(new { message = result.Message });
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Internal server error:{ex.InnerException}");
+			}
+		}
+
 		/// <summary>
 		/// Retrieves invoice details for a specific user
 		/// </summary>

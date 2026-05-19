@@ -12,6 +12,8 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public string CustomerName { get; set; }
 		public decimal TotalDueAmount { get; set; }
 		public decimal TotalPdcAmount { get; set; }
+		public decimal TotalBalanceBeforePdcAmount { get; set; }
+		public decimal TotalBalanceAfterPdcAmount { get; set; }
 		public List<InvoiceSummary> Invoices { get; set; }
 	}
 

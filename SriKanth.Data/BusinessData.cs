@@ -112,6 +112,11 @@ namespace SriKanth.Data
 				})
 				.ToListAsync();
 		}
+		public async Task UpdateOrderAsync(Order order)
+		{
+			 _context.Order.Update(order);
+			await _context.SaveChangesAsync();
+		}
 
 	}
 }
