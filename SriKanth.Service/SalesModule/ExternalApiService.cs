@@ -419,7 +419,41 @@ namespace SriKanth.Service.SalesModule
 			return await GetDataFromApiAsync<PostedInvoiceApiResponse>(apiUrl);
 		}
 
+		/// <summary>
+		/// Retrieves customer wise loyalty points from Business Central
+		/// </summary>
+		/// <returns>CustomerLoyaltyPointsApiResponse containing loyaltypoint data</returns>
+		public async Task<CustomerLoyaltyPointsApiResponse> GetLoyaltyPointsDetailsAsync()
+		{
+			string apiUrl = $"{_baseApiUrl}/customerLoyaltyPoints";
+			return await GetDataFromApiAsync<CustomerLoyaltyPointsApiResponse>(apiUrl);
+		}
+		public async Task<CustomerLoyaltyPointsApiResponse> GetLoyaltyPointsFilterAsync(string? filterField = null, string? filterValue = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/customerLoyaltyPoints";
 
+			if (!string.IsNullOrWhiteSpace(filterField) && !string.IsNullOrWhiteSpace(filterValue))
+			{
+				string encodedValue = Uri.EscapeDataString($"'{filterValue}'");
+				apiUrl += $"?$filter={filterField} eq {encodedValue}";
+			}
+
+			return await GetDataFromApiAsync<CustomerLoyaltyPointsApiResponse>(apiUrl);
+		}
+		public async Task<CustomerLoyaltyPointsApiResponse> GetLoyaltyPointsFilterByDataAsync(DateTime? fromDate = null,DateTime? toDate = null)
+		{
+			string apiUrl = $"{_baseApiUrl}/customerLoyaltyPoints";
+
+			if (fromDate.HasValue && toDate.HasValue)
+			{
+				string from = fromDate.Value.ToString("yyyy-MM-dd");
+				string to = toDate.Value.ToString("yyyy-MM-dd");
+
+				apiUrl += $"?$filter=dateFilter ge '{from}' and dateFilter le '{to}'";
+			}
+
+			return await GetDataFromApiAsync<CustomerLoyaltyPointsApiResponse>(apiUrl);
+		}
 		/// <summary>
 		/// Internal class for deserializing token responses from Azure AD
 		/// </summary>

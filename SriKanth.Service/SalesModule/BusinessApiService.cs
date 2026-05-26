@@ -579,7 +579,7 @@ namespace SriKanth.Service.SalesModule
 			return ProcessLocationsInParallel(filteredLocationDetails);
 		}
 
-		public async Task<List<OrderCustomer>> GetFilteredCustomersAsync(int userId)
+		public async Task<List<OrderCustomerWithLoyalty>> GetFilteredCustomersAsync(int userId)
 		{
 			_logger.LogInformation("Retrieving filtered customers for user {UserId}", userId);
 
@@ -612,11 +612,34 @@ namespace SriKanth.Service.SalesModule
 					c.salespersonCode == user.SalesPersonCode &&
 					string.IsNullOrWhiteSpace(c.blocked));
 			}
+			DateTime currentYearStart = new DateTime(DateTime.UtcNow.Year, 1, 1);
 
-			// Fetch due amounts and build lookup in one pass
-			var dueAmountLookup =  new Dictionary<string, decimal>();
+			DateTime currentYearEnd = new DateTime(DateTime.UtcNow.Year, 12, 31);
 
-			return ProcessCustomersInParallel(filteredCustomers, dueAmountLookup);
+			DateTime lastYearStart = new DateTime(DateTime.UtcNow.Year - 1, 1, 1);
+
+			DateTime lastYearEnd = new DateTime(DateTime.UtcNow.Year - 1, 12, 31);
+
+			var currentYearTask = _externalApiService.GetLoyaltyPointsFilterByDataAsync(currentYearStart,currentYearEnd);
+
+			var lastYearTask = _externalApiService.GetLoyaltyPointsFilterByDataAsync(lastYearStart,lastYearEnd);
+
+			await Task.WhenAll(currentYearTask, lastYearTask);
+
+			var currentYearResponse = await currentYearTask;
+			var lastYearResponse = await lastYearTask;
+
+			var currentYearLookup = currentYearResponse?.value?
+				.ToDictionary(x => x.no, x => x)
+				?? new Dictionary<string, CustomerLoyaltyPoints>();
+
+			var lastYearLookup = lastYearResponse?.value?
+				.ToDictionary(x => x.no, x => x)
+				?? new Dictionary<string, CustomerLoyaltyPoints>();
+
+			var dueAmountLookup = new Dictionary<string, decimal>();
+
+			return ProcessCustomersWithLoyaltyInParallel(filteredCustomers,dueAmountLookup,currentYearLookup,lastYearLookup);
 		}
 
 		public async Task<List<OrderItemDetails>> GetFilteredItemsAsync(int userId)
@@ -1157,7 +1180,7 @@ namespace SriKanth.Service.SalesModule
 					CreditLimit = c.creditLimitLCY,
 					BalanceCredit = c.balanceLCY,
 					PaymentTermCode = c.paymentTermsCode,
-					PaymentMethodCode = c.paymentMethodCode
+					PaymentMethodCode = c.paymentMethodCode,
 				}).ToList();
 			}
     
@@ -1177,7 +1200,47 @@ namespace SriKanth.Service.SalesModule
 				})
 				.ToList();
 		}
+		private List<OrderCustomerWithLoyalty> ProcessCustomersWithLoyaltyInParallel(IEnumerable<Customer> customers,Dictionary<string, decimal> dueAmountLookup,Dictionary<string, CustomerLoyaltyPoints> currentYearLookup,Dictionary<string, CustomerLoyaltyPoints> lastYearLookup)
+		{
+			var customerList = customers as IList<Customer> ?? customers.ToList();
 
+			OrderCustomerWithLoyalty Map(Customer c)
+			{
+				currentYearLookup.TryGetValue(c.no, out var thisYear);
+				lastYearLookup.TryGetValue(c.no, out var lastYear);
+
+				return new OrderCustomerWithLoyalty
+				{
+					CustomerCode = c.no,
+					CustomerName = c.name,
+					DueAmount = dueAmountLookup.TryGetValue(c.no, out decimal due) ? due : 0,
+					CreditAllowed = c.creditAllowed,
+					CreditLimit = c.creditLimitLCY,
+					BalanceCredit = c.balanceLCY,
+					PaymentTermCode = c.paymentTermsCode,
+					PaymentMethodCode = c.paymentMethodCode,
+					ThisYear = thisYear is null ? null : new LoyaltyPoints
+					{
+						LoyaltyPointsOnInvoices = thisYear.loyaltyPointsOnInvoices,
+						LoyaltyPointsOnCrMemos = thisYear.loyaltyPointsOnCrMemos
+					},
+					LastYear = lastYear is null ? null : new LoyaltyPoints
+					{
+						LoyaltyPointsOnInvoices = lastYear.loyaltyPointsOnInvoices,
+						LoyaltyPointsOnCrMemos = lastYear.loyaltyPointsOnCrMemos
+					}
+				};
+			}
+
+			if (customerList.Count < 100)
+				return customerList.Select(Map).ToList();
+
+			return customerList
+				.AsParallel()
+				.WithDegreeOfParallelism(Math.Min(Environment.ProcessorCount, 8))
+				.Select(Map)
+				.ToList();
+		}
 
 		private List<OrderItemDetails> ProcessItemsInParallel(IEnumerable<dynamic> items, Dictionary<string, decimal> priceLookup, IEnumerable<dynamic> inventory) // Pass inventory data here)
 		{

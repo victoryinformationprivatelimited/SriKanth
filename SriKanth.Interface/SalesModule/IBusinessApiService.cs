@@ -16,7 +16,7 @@ namespace SriKanth.Interface.SalesModule
 		Task<OrderCreationDetails> GetOrderCreationDetailsAsync();
 		Task<OrderCreationDetails> GetFilteredOrderCreationDetailsAsync(int userId);
 		Task<List<Location>> GetFilteredLocationsAsync(int userId);
-		Task<List<OrderCustomer>> GetFilteredCustomersAsync(int userId);
+		Task<List<OrderCustomerWithLoyalty>> GetFilteredCustomersAsync(int userId);
 		Task<List<OrderItemDetails>> GetFilteredItemsAsync(int userId);
 		Task<List<PaymentMethodDto>> GetPaymentMethodsAsync();
 		Task<CustomerInvoiceReturn> GetCustomerInvoicesAsync(int userId);

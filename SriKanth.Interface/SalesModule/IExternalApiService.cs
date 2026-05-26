@@ -30,5 +30,8 @@ namespace SriKanth.Interface.SalesModule
 		Task<InvoiceApiResponse> GetInvoiceDetailsFilterAsync(string? filterField = null, string? filterValue = null);
 		Task<PostedInvoiceApiResponse> GetPostedInvoiceDetailsAsync();
 		Task<PostedInvoiceApiResponse> GetPostedInvoiceDetailsFilterAsync(string? filterField = null, string? filterValue = null);
+		Task<CustomerLoyaltyPointsApiResponse> GetLoyaltyPointsDetailsAsync();
+		Task<CustomerLoyaltyPointsApiResponse> GetLoyaltyPointsFilterAsync(string? filterField = null, string? filterValue = null);
+		Task<CustomerLoyaltyPointsApiResponse> GetLoyaltyPointsFilterByDataAsync(DateTime? fromDate = null, DateTime? toDate = null);
 	}
 }

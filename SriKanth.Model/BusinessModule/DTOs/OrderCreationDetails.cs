@@ -48,4 +48,23 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public string ItemName { get; set; }
 		public Decimal UnitPrice { get; set; }
 	}
+
+	public class OrderCustomerWithLoyalty
+	{
+		public string CustomerCode { get; set; }
+		public string CustomerName { get; set; }
+		public Decimal? DueAmount { get; set; }
+		public bool CreditAllowed { get; set; }
+		public Decimal CreditLimit { get; set; }
+		public Decimal BalanceCredit { get; set; }
+		public string PaymentTermCode { get; set; }
+		public string PaymentMethodCode { get; set; }
+		public LoyaltyPoints? ThisYear { get; set; }
+		public LoyaltyPoints? LastYear { get; set; }
+	}
+	public class LoyaltyPoints
+	{
+		public decimal LoyaltyPointsOnInvoices { get; set; }
+		public decimal LoyaltyPointsOnCrMemos { get; set; }
+	}
 }

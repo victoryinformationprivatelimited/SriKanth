@@ -158,7 +158,7 @@ builder.Services.AddCors(o =>
 {
 	o.AddPolicy("AllowSpecificOrigin", build =>
 	{
-		build.WithOrigins( "http://207.180.217.101:3000/","http://localhost:3000")
+		build.WithOrigins("https://skm-uat.vercel.app/", "https://skmsalesapptestapi.h2so4.lk/",  "http://localhost:3000")
 			 .AllowAnyMethod()
 			 .AllowAnyHeader()
 			 .AllowCredentials();
