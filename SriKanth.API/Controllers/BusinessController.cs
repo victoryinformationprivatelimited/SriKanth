@@ -366,7 +366,7 @@ namespace SriKanth.API.Controllers
 		/// <param name="updateOrderRequest">Order status update request</param>
 		/// <returns>Result of the status update</returns>
 		[HttpPost("ChangeStatus")]
-		[Authorize(Roles = "SalesCoordinator")]
+		[Authorize(Roles = "Admin,SalesCoordinator")]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> UpdateOrderStatus(UpdateOrderRequest updateOrderRequest)
 		{
@@ -394,7 +394,7 @@ namespace SriKanth.API.Controllers
 		}
 
 		[HttpPut("ChangeLocation")]
-		[Authorize(Roles = "SalesCoordinator")]
+		[Authorize(Roles = "Admin,SalesCoordinator")]
 		[ServiceFilter(typeof(UserHistoryActionFilter))]
 		public async Task<IActionResult> UpdateLocation(LocationRequest locationRequest)
 		{

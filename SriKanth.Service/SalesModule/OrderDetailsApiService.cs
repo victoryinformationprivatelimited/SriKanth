@@ -530,9 +530,7 @@ namespace SriKanth.Service.SalesModule
 
 				if (order == null)
 				{
-					_logger.LogWarning(
-						"Order {OrderNumber} not found during location update",
-						updateLocationRequest.Ordernumber);
+					_logger.LogWarning("Order {OrderNumber} not found during location update",updateLocationRequest.Ordernumber);
 
 					return new ServiceResult
 					{
@@ -545,13 +543,14 @@ namespace SriKanth.Service.SalesModule
 				if (order.Status != OrderStatus.Pending)
 				{
 					_logger.LogWarning(
-						"Location update is not allowed for not a pending order {OrderNumber}",
+						"Location update is not allowed for a {OrderStatus} order {OrderNumber}",
+						order.Status.ToString(),
 						updateLocationRequest.Ordernumber);
 
 					return new ServiceResult
 					{
 						Success = false,
-						Message = $"Location update is not allowed for pending orders."
+						Message = "Location update is only allowed for pending orders."
 					};
 				}
 

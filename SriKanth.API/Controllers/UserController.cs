@@ -340,7 +340,7 @@ namespace SriKanth.API.Controllers
 					return BadRequest(new { message = "Text is required." });
 				}
 
-				var result = _encryptionService.DecryptData(request.Text);
+				var result = _encryptionService.EncryptData(request.Text);
 				return Ok(new { encrypted = result });
 			}
 			catch (Exception ex)

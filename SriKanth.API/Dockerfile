@@ -12,11 +12,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["../SriKanth.API/SriKanth.API.csproj", "SriKanth.API/"]
-COPY ["../SriKanth.Data/SriKanth.Data.csproj", "SriKanth.Data/"]
-COPY ["../SriKanth.Interface/SriKanth.Interface.csproj", "SriKanth.Interface/"]
-COPY ["../SriKanth.Model/SriKanth.Model.csproj", "SriKanth.Model/"]
-COPY ["../SriKanth.Service/SriKanth.Service.csproj", "SriKanth.Service/"]
+COPY ["SriKanth.API/SriKanth.API.csproj", "SriKanth.API/"]
+COPY ["SriKanth.Data/SriKanth.Data.csproj", "SriKanth.Data/"]
+COPY ["SriKanth.Interface/SriKanth.Interface.csproj", "SriKanth.Interface/"]
+COPY ["SriKanth.Model/SriKanth.Model.csproj", "SriKanth.Model/"]
+COPY ["SriKanth.Service/SriKanth.Service.csproj", "SriKanth.Service/"]
 RUN dotnet restore "SriKanth.API/SriKanth.API.csproj"
 COPY . .
 WORKDIR "/src/SriKanth.API"
