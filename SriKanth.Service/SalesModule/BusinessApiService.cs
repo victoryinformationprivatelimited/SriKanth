@@ -676,7 +676,7 @@ namespace SriKanth.Service.SalesModule
 					throw new InvalidOperationException("User has no locations assigned.");
 
 				var inventoryAtLocations = inventory
-					.Where(i => userLocations.Contains(i.locationCode) && i.inventory > 0)
+					.Where(i => userLocations.Contains(i.locationCode))
 					.ToList();
 
 				var availableItemNos = new HashSet<string>(inventoryAtLocations.Select(i => i.itemNo));
