@@ -602,15 +602,13 @@ namespace SriKanth.Service.SalesModule
 			if (userRole == "Admin")
 			{
 				_logger.LogInformation("Admin user {UserId} accessing all customers", userId);
-				filteredCustomers = customersResponse.value
-									.Where(c => string.IsNullOrWhiteSpace(c.blocked));
+				filteredCustomers = customersResponse.value;
 			}
 			else
 			{
 				filteredCustomers = customersResponse.value
 					.Where(c =>
-					c.salespersonCode == user.SalesPersonCode &&
-					string.IsNullOrWhiteSpace(c.blocked));
+					c.salespersonCode == user.SalesPersonCode);
 			}
 			DateTime currentYearStart = new DateTime(DateTime.UtcNow.Year, 1, 1);
 
@@ -676,7 +674,7 @@ namespace SriKanth.Service.SalesModule
 					throw new InvalidOperationException("User has no locations assigned.");
 
 				var inventoryAtLocations = inventory
-					.Where(i => userLocations.Contains(i.locationCode) && i.inventory > 0)
+					.Where(i => userLocations.Contains(i.locationCode))
 					.ToList();
 
 				var availableItemNos = new HashSet<string>(inventoryAtLocations.Select(i => i.itemNo));
