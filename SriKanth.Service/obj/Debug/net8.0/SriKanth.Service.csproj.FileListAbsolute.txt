@@ -56,6 +56,10 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.API\SriKanth.Service\obj\Debug
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.API\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.pdb
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.API\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.genruntimeconfig.cache
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.API\SriKanth.Service\obj\Debug\net8.0\ref\SriKanth.Service.dll
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.csproj.AssemblyReference.cache
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.csproj.CoreCompileInputs.cache
+C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.sourcelink.json
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\bin\Debug\net8.0\SriKanth.Service.deps.json
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\bin\Debug\net8.0\SriKanth.Service.runtimeconfig.json
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\bin\Debug\net8.0\SriKanth.Service.dll
@@ -64,10 +68,6 @@ C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\bin\Debug\net8.0\SriKa
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\bin\Debug\net8.0\SriKanth.Model.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\bin\Debug\net8.0\SriKanth.Interface.pdb
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\bin\Debug\net8.0\SriKanth.Model.pdb
-C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.csproj.AssemblyReference.cache
-C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.csproj.CoreCompileInputs.cache
-C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.sourcelink.json
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.0456A22D.Up2Date
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\SriKanth.Service.dll
 C:\Users\Dinuk\Documents\GitHub\SriKanth\SriKanth.Service\obj\Debug\net8.0\refint\SriKanth.Service.dll

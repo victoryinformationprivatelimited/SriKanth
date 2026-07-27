@@ -913,6 +913,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.EntityFrameworkCore >= 9.0.3",
       "Pomelo.EntityFrameworkCore.MySql >= 9.0.0",
       "SriKanth.Interface >= 1.0.0",
       "SriKanth.Model >= 1.0.0"
@@ -975,6 +976,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[9.0.3, )"
+          },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[9.0.0, )"

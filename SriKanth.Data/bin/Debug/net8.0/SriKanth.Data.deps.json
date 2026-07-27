@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "SriKanth.Data/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.3",
           "Pomelo.EntityFrameworkCore.MySql": "9.0.0",
           "SriKanth.Interface": "1.0.0",
           "SriKanth.Model": "1.0.0"

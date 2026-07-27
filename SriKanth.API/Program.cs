@@ -73,18 +73,18 @@ builder.Services.AddHttpClient("ExternalApi", client =>
 // Then add the service registration
 builder.Services.AddScoped<IExternalApiService, ExternalApiService>();
 
-builder.Services.AddDbContext<SriKanthDbContext>(options =>
+/*builder.Services.AddDbContext<SriKanthDbContext>(options =>
 {
 	var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 	options.UseMySql(connectionString,
 		ServerVersion.Create(new Version(10, 4, 32), ServerType.MariaDb));
-});
-/*builder.Services.AddDbContext<SriKanthDbContext>(options =>
+});*/
+builder.Services.AddDbContext<SriKanthDbContext>(options =>
 {
 	var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 	options.UseSqlServer(connectionString);
-});*/
+});
 
 builder.Services.AddRateLimiter(options =>
 {
