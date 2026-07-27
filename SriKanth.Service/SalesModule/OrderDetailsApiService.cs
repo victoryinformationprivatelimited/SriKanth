@@ -63,7 +63,7 @@ namespace SriKanth.Service.SalesModule
 				}
 
 				// Validate customer credit
-				var creditValidation = await ValidateCustomerCredit(request.CustomerCode, request.TotalAmount);
+				var creditValidation = await ValidateCustomerCredit(request.CustomerCode, request.TotalAmount, request.PaymentMethodCode);
 				if (!creditValidation.Success)
 				{
 					_logger.LogWarning("Credit validation failed for customer {CustomerCode}", request.CustomerCode);
@@ -675,7 +675,7 @@ namespace SriKanth.Service.SalesModule
 		/// <param name="customerCode">Customer code to validate</param>
 		/// <param name="orderTotal">Total amount of the order</param>
 		/// <returns>ServiceResult indicating validation success or failure</returns>
-		private async Task<ServiceResult> ValidateCustomerCredit(string customerCode, decimal orderTotal)
+		private async Task<ServiceResult> ValidateCustomerCredit(string customerCode, decimal orderTotal, string? paymentMethod)
 		{
 			try
 			{
@@ -699,7 +699,7 @@ namespace SriKanth.Service.SalesModule
 				}
 
 				// Check if credit is allowed for this customer
-				if (!customer.creditAllowed)
+				if (!customer.creditAllowed && paymentMethod == "CREDIT")
 				{
 					_logger.LogWarning("Customer {CustomerCode} is not allowed credit purchases", customerCode);
 					return new ServiceResult { Success = false, Message = "Customer is not allowed credit purchases" };
