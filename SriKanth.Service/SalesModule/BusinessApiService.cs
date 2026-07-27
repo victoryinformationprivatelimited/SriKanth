@@ -696,7 +696,17 @@ namespace SriKanth.Service.SalesModule
 			{
 				var paymentMethods = await _businessData.GetPaymentMethodsAsync();
 
-				return paymentMethods;
+				var allowedPaymentMethods = new[]
+				{
+					"BNKTRNSFR",
+					"CA-COL-SKM",
+					"CA-COL-SNS",
+					"CREDIT"
+				};
+
+				return paymentMethods
+					.Where(x => allowedPaymentMethods.Contains(x.PaymentMethodCode))
+					.ToList();
 			}
 			catch (Exception ex)
 			{

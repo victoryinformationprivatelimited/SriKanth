@@ -18,7 +18,6 @@ namespace SriKanth.Model.BusinessModule.DTOs
 		public string LocationCode { get; set; }
 
 		[Required(ErrorMessage = "Payment method is required.")]
-		[StringLength(10, ErrorMessage = "Payment method code cannot exceed {1} characters.")]
 		public string PaymentMethodCode { get; set; }
 
 		[StringLength(500, ErrorMessage = "Special note cannot exceed {1} characters.")]
