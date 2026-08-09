@@ -103,7 +103,7 @@ namespace SriKanth.Service.SalesModule
 			var sw = Stopwatch.StartNew();
 
 			// Codes to skip - case insensitive for better matching
-			var codesToSkip = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "SED-SNS", "SED-SKM" };
+			var codesToSkip = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "SED-SNS", "SED-SKM" ,"SPE-SKM","SPE-SNS","ROS-SKM","ROS-SNS"};
 
 			// Pre-filter and materialize valid locations
 			var validLocations = new List<(string Code, string Name)>();
@@ -1145,7 +1145,7 @@ namespace SriKanth.Service.SalesModule
 		private List<Model.Login_Module.DTOs.Location> ProcessLocationsInParallel(IEnumerable<dynamic> locations)
 		{
 			// Define the codes to skip
-			var codesToSkip = new HashSet<string> { "SED-SNS", "SED-SKM" };
+			var codesToSkip = new HashSet<string> { "SED-SNS", "SED-SKM", "SPE-SKM", "SPE-SNS", "ROS-SKM", "ROS-SNS" };
 
 			// Use PLINQ for parallel processing with filtering
 			return locations.AsParallel()
