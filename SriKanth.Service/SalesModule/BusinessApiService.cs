@@ -161,39 +161,71 @@ namespace SriKanth.Service.SalesModule
 				}
 			}
 
-			// Estimate capacity for stock list
-			int estimatedSize = Math.Min(validItems.Count * validLocations.Count, 100000);
-			var stockList = new List<StockItem>(estimatedSize);
+			// Cache: globalDimension1Code -> matching locations, so items sharing a dimension
+			// code (e.g. many items with "SKM") don't re-filter validLocations each time.
+			var locationsByDimensionCache = new Dictionary<string, List<(string Code, string Name)>>(StringComparer.OrdinalIgnoreCase);
 
-			// Decide processing strategy based on dataset size
-			int totalCombinations = validItems.Count * validLocations.Count;
+			List<(string Code, string Name)> GetLocationsForItem(dynamic item)
+			{
+				string dimCode = item?.globalDimension1Code;
+				if (string.IsNullOrEmpty(dimCode))
+				{
+					// Item has no dimension code - no locations qualify
+					return new List<(string Code, string Name)>();
+				}
+
+				if (!locationsByDimensionCache.TryGetValue(dimCode, out var matched))
+				{
+					matched = validLocations
+						.Where(l => l.Code.EndsWith(dimCode, StringComparison.OrdinalIgnoreCase))
+						.ToList();
+					locationsByDimensionCache[dimCode] = matched;
+				}
+
+				return matched;
+			}
+
+			// Build a per-item location map (keyed by item no) and total combination count
+			var itemLocationMap = new Dictionary<string, List<(string Code, string Name)>>();
+			int totalCombinations = 0;
+			foreach (var item in validItems)
+			{
+				string itemNo = item.no;
+				var locs = GetLocationsForItem(item);
+				itemLocationMap[itemNo] = locs;
+				totalCombinations += locs.Count;
+			}
+			_logger.LogInformation("Resolved per-item locations for {Count} items ({Combinations} combinations) in {Ms}ms",
+				validItems.Count, totalCombinations, sw.ElapsedMilliseconds);
+			sw.Restart();
+
+			int estimatedSize = Math.Min(totalCombinations, 100000);
+			var stockList = new List<StockItem>(estimatedSize);
 
 			if (totalCombinations > 20000)
 			{
 				// Parallel processing for large datasets
 				_logger.LogInformation("Using parallel processing for {Count} combinations", totalCombinations);
-				stockList = BuildStockListParallel(validItems, validLocations, inventoryLookup, priceLookup);
+				stockList = BuildStockListParallel(validItems, itemLocationMap, inventoryLookup, priceLookup);
 			}
 			else
 			{
 				// Sequential processing for smaller datasets (less overhead)
 				_logger.LogInformation("Using sequential processing for {Count} combinations", totalCombinations);
-				BuildStockListSequential(validItems, validLocations, inventoryLookup, priceLookup, stockList);
+				BuildStockListSequential(validItems, itemLocationMap, inventoryLookup, priceLookup, stockList);
 			}
 
 			_logger.LogInformation("Built stock list ({Count} items) in {Ms}ms",
 				stockList.Count, sw.ElapsedMilliseconds);
-
 			return stockList;
 		}
-
 		// Sequential processing (optimized for smaller datasets)
 		private void BuildStockListSequential(
-			List<dynamic> items,
-			List<(string Code, string Name)> locations,
-			Dictionary<(string, string), dynamic> inventoryLookup,
-			Dictionary<string, decimal> priceLookup,
-			List<StockItem> stockList)
+	List<dynamic> items,
+	Dictionary<string, List<(string Code, string Name)>> itemLocationMap,
+	Dictionary<(string, string), dynamic> inventoryLookup,
+	Dictionary<string, decimal> priceLookup,
+	List<StockItem> stockList)
 		{
 			foreach (var item in items)
 			{
@@ -210,14 +242,17 @@ namespace SriKanth.Service.SalesModule
 				decimal reorderQuantity = item.reorderQuantity;
 				decimal unitPrice = priceLookup.GetValueOrDefault(itemNo, 0);
 
+				if (!itemLocationMap.TryGetValue(itemNo, out var locations) || locations.Count == 0)
+				{
+					continue;
+				}
+
 				foreach (var location in locations)
 				{
 					var key = (itemNo, location.Code);
-
 					if (inventoryLookup.TryGetValue(key, out var inv))
 					{
 						decimal inventoryQty = inv.inventory;
-
 						string stock;
 						if (reorderPoint == 0)
 						{
@@ -229,7 +264,6 @@ namespace SriKanth.Service.SalesModule
 								? $"{reorderPoint}+"
 								: inventoryQty.ToString();
 						}
-
 						stockList.Add(new StockItem
 						{
 							ItemCode = itemNo,
@@ -256,24 +290,21 @@ namespace SriKanth.Service.SalesModule
 		// Parallel processing (optimized for larger datasets)
 		private List<StockItem> BuildStockListParallel(
 			List<dynamic> items,
-			List<(string Code, string Name)> locations,
+			Dictionary<string, List<(string Code, string Name)>> itemLocationMap,
 			Dictionary<(string, string), dynamic> inventoryLookup,
 			Dictionary<string, decimal> priceLookup)
 		{
 			var partitions = Partitioner.Create(0, items.Count);
 			var localLists = new ConcurrentBag<List<StockItem>>();
-
 			Parallel.ForEach(partitions, new ParallelOptions
 			{
 				MaxDegreeOfParallelism = Math.Min(Environment.ProcessorCount, 8)
 			}, range =>
 			{
 				var localList = new List<StockItem>(1000);
-
 				for (int i = range.Item1; i < range.Item2; i++)
 				{
 					var item = items[i];
-
 					string itemNo = item.no;
 					string itemName = item.description ?? string.Empty;
 					string itemCategory = item.itemCategoryCode ?? string.Empty;
@@ -287,14 +318,17 @@ namespace SriKanth.Service.SalesModule
 					decimal reorderQuantity = item.reorderQuantity;
 					decimal unitPrice = priceLookup.GetValueOrDefault(itemNo, 0);
 
+					if (!itemLocationMap.TryGetValue(itemNo, out var locations) || locations.Count == 0)
+					{
+						continue;
+					}
+
 					foreach (var location in locations)
 					{
 						var key = (itemNo, location.Code);
-
 						if (inventoryLookup.TryGetValue(key, out var inv))
 						{
 							decimal inventoryQty = inv.inventory;
-
 							string stock;
 							if (reorderPoint == 0)
 							{
@@ -306,7 +340,6 @@ namespace SriKanth.Service.SalesModule
 									? $"{reorderPoint}+"
 									: inventoryQty.ToString();
 							}
-
 							localList.Add(new StockItem
 							{
 								ItemCode = itemNo,
@@ -328,19 +361,16 @@ namespace SriKanth.Service.SalesModule
 						}
 					}
 				}
-
 				localLists.Add(localList);
 			});
 
 			// Merge results efficiently
 			var totalCount = localLists.Sum(list => list.Count);
 			var result = new List<StockItem>(totalCount);
-
 			foreach (var localList in localLists)
 			{
 				result.AddRange(localList);
 			}
-
 			return result;
 		}
 		public async Task<string> GetImageByItemNo(string itemNo)
@@ -1260,9 +1290,13 @@ namespace SriKanth.Service.SalesModule
 				.WithDegreeOfParallelism(Environment.ProcessorCount)
 				.Select(i =>
 				{
+					string dimCode = i.globalDimension1Code;
 					// Build location-wise inventory for this item
 					var locationInventories = inventoryLookup.TryGetValue(i.no, out List<dynamic> invList)
-					   ? invList.Select(inv => new LocationByItemInventory
+					   ? invList
+					   .Where(inv => inv?.locationCode != null
+					   && ((string)inv.locationCode).EndsWith(dimCode, StringComparison.OrdinalIgnoreCase))
+					   .Select(inv => new LocationByItemInventory
 					   {
 						   LocationCode = inv.locationCode,
 						   Inventory = i.reorderPoint == 0
